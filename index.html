@@ -1,0 +1,379 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HYEOKJAE ARCHIVE</title>
+<style>
+* { box-sizing: border-box; }
+
+:root {
+  --bg: #171519;
+  --panel: #242027;
+  --text: #f2eaf2;
+  --muted: #bbaaba;
+  --accent: #b89ac1;
+  --line: #403641;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, "Malgun Gothic", sans-serif;
+}
+
+header, main, footer {
+  width: min(760px, 100%);
+  margin: auto;
+}
+
+header {
+  padding: 23px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+
+.logo {
+  font-size: 15px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+header span {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.hero { padding: 55px 20px 35px; }
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+h1 {
+  font-size: clamp(35px, 9vw, 58px);
+  line-height: 1.12;
+  margin: 17px 0;
+  letter-spacing: -2px;
+}
+
+.intro {
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 13px;
+}
+
+.section-title {
+  padding: 0 20px;
+  margin-top: 25px;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.character-list {
+  padding: 15px 20px 55px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.character {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 5px;
+}
+
+.art {
+  aspect-ratio: 3 / 4;
+  background: #302633;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #a997ac;
+  font-size: 11px;
+  text-align: center;
+  padding: 10px;
+}
+
+.art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.character-info { padding: 13px; }
+
+.number {
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.character h3 {
+  margin: 9px 0;
+  font-size: 16px;
+}
+
+.character p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+  min-height: 18px;
+}
+
+button {
+  width: 100%;
+  border: 1px solid #735b7b;
+  background: #3a2d40;
+  color: white;
+  padding: 12px 5px;
+  cursor: pointer;
+  font-size: 11px;
+}
+
+button:active { opacity: .7; }
+
+footer {
+  border-top: 1px solid var(--line);
+  padding: 24px 20px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* 캐릭터 프로필 화면 */
+#profile {
+  display: none;
+  padding: 25px 20px 50px;
+}
+
+.back {
+  width: auto;
+  padding: 10px 15px;
+  margin-bottom: 28px;
+}
+
+.profile-art {
+  width: 100%;
+  max-height: 470px;
+  aspect-ratio: 4 / 5;
+  background: #302633;
+  object-fit: contain;
+  margin: 20px 0;
+}
+
+.profile-name {
+  font-size: 36px;
+  margin: 12px 0;
+  overflow-wrap: anywhere;
+}
+
+.profile-type {
+  color: var(--accent);
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.profile-description {
+  color: #d2c5d2;
+  line-height: 1.9;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+}
+
+.detail {
+  margin-top: 28px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.detail h3 {
+  color: var(--accent);
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.detail p {
+  line-height: 1.8;
+  font-size: 13px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 360px) {
+  .character-list { gap: 8px; padding-left: 12px; padding-right: 12px; }
+  .character-info { padding: 9px; }
+  .character h3 { font-size: 14px; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="logo">HYEOKJAE ARCHIVE</div>
+  <span>PERSONAL DATABASE</span>
+</header>
+
+<main>
+  <section id="home">
+    <div class="hero">
+      <p class="eyebrow">WELCOME TO MY WORLD</p>
+      <h1>CHARACTER<br>ARCHIVE.</h1>
+      <p class="intro">
+        내가 만든 인물과 그들의 이야기.<br>
+        이곳에 하나씩 기록합니다.
+      </p>
+    </div>
+
+    <h2 class="section-title">— CHARACTER INDEX</h2>
+    <div class="character-list" id="characterList"></div>
+  </section>
+
+  <section id="profile">
+    <button class="back" id="backButton">← BACK TO ARCHIVE</button>
+    <p class="eyebrow" id="profileNumber"></p>
+    <img class="profile-art" id="profileArt" alt="캐릭터 그림" hidden>
+    <h2 class="profile-name" id="profileName"></h2>
+    <p class="profile-type" id="profileType"></p>
+    <p class="profile-description" id="profileIntro"></p>
+
+    <div class="detail">
+      <h3>PROFILE</h3>
+      <p id="profileDetails"></p>
+    </div>
+
+    <div class="detail">
+      <h3>STORY / BACKGROUND</h3>
+      <p id="profileStory"></p>
+    </div>
+  </section>
+</main>
+
+<footer>HYEOKJAE ARCHIVE · ALL CHARACTERS ARE ORIGINAL</footer>
+
+<script>
+/* 캐릭터 정보는 여기에서 수정하면 돼 */
+const characters = [
+  {
+    name: "CHARACTER 001",
+    type: "GOTHIC / HUMAN",
+    intro: "첫 번째 캐릭터의 짧은 소개를 적어 주세요.",
+    details: "이름: 미정\n나이: 미정\n성격: 미정\n소속: 미정",
+    story: "이곳에 캐릭터의 과거와 세계관을 적어 주세요.",
+    image: ""
+  },
+  {
+    name: "CHARACTER 002",
+    type: "DARK FANTASY",
+    intro: "두 번째 캐릭터의 짧은 소개를 적어 주세요.",
+    details: "이름: 미정\n나이: 미정\n성격: 미정\n소속: 미정",
+    story: "이곳에 캐릭터의 과거와 세계관을 적어 주세요.",
+    image: ""
+  },
+  {
+    name: "CHARACTER 003",
+    type: "ORIGINAL CHARACTER",
+    intro: "세 번째 캐릭터의 짧은 소개를 적어 주세요.",
+    details: "이름: 미정\n나이: 미정\n성격: 미정\n소속: 미정",
+    story: "이곳에 캐릭터의 과거와 세계관을 적어 주세요.",
+    image: ""
+  }
+];
+
+const home = document.getElementById("home");
+const profile = document.getElementById("profile");
+const list = document.getElementById("characterList");
+
+function openCharacter(index) {
+  const c = characters[index];
+
+  document.getElementById("profileNumber").textContent =
+    "ARCHIVE / " + String(index + 1).padStart(3, "0");
+  document.getElementById("profileName").textContent = c.name;
+  document.getElementById("profileType").textContent = c.type;
+  document.getElementById("profileIntro").textContent = c.intro;
+  document.getElementById("profileDetails").textContent = c.details;
+  document.getElementById("profileStory").textContent = c.story;
+
+  const art = document.getElementById("profileArt");
+  if (c.image) {
+    art.src = c.image;
+    art.hidden = false;
+  } else {
+    art.removeAttribute("src");
+    art.hidden = true;
+  }
+
+  home.style.display = "none";
+  profile.style.display = "block";
+  window.scrollTo(0, 0);
+  history.replaceState(null, "", "#character-" + (index + 1));
+}
+
+function showHome() {
+  profile.style.display = "none";
+  home.style.display = "block";
+  history.replaceState(null, "", location.pathname);
+  window.scrollTo(0, 0);
+}
+
+characters.forEach((c, index) => {
+  const card = document.createElement("article");
+  card.className = "character";
+
+  const art = document.createElement("div");
+  art.className = "art";
+
+  if (c.image) {
+    const img = document.createElement("img");
+    img.src = c.image;
+    img.alt = c.name;
+    art.appendChild(img);
+  } else {
+    art.textContent = "YOUR CHARACTER ART";
+  }
+
+  const info = document.createElement("div");
+  info.className = "character-info";
+
+  const number = document.createElement("span");
+  number.className = "number";
+  number.textContent = "NO. " + String(index + 1).padStart(3, "0");
+
+  const title = document.createElement("h3");
+  title.textContent = c.name;
+
+  const description = document.createElement("p");
+  description.textContent = c.type;
+
+  const button = document.createElement("button");
+  button.textContent = "PROFILE VIEW ↗";
+  button.addEventListener("click", () => openCharacter(index));
+
+  info.append(number, title, description, button);
+  card.append(art, info);
+  list.appendChild(card);
+});
+
+document.getElementById("backButton").addEventListener("click", showHome);
+
+/* 주소에 캐릭터 번호가 있으면 해당 프로필 열기 */
+const match = location.hash.match(/^#character-(\d+)$/);
+if (match) {
+  const index = Number(match[1]) - 1;
+  if (index >= 0 && index < characters.length) {
+    openCharacter(index);
+  }
+}
+</script>
+</body>
+</html>
