@@ -5,19 +5,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>HYEOKJAE ARCHIVE</title>
-<style>
-* { box-sizing: border-box; }
 
+<style>
+* {
+  box-sizing: border-box;
+}
 
 :root {
   --bg: #F7F1E5;
-  --panel: #DCEEF0;
+  --panel: #EEE8DC;
   --text: #35475B;
   --muted: #7C8F91;
   --accent: #303F67;
   --line: #D5DFD7;
+  --water: #DCE8E8;
+  --white: #FFFCF5;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 85px;
+}
 
 body {
   margin: 0;
@@ -26,82 +34,311 @@ body {
   font-family: Arial, "Malgun Gothic", sans-serif;
 }
 
-header, main, footer {
-  width: min(760px, 100%);
-  margin: auto;
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
 }
 
 header {
-  padding: 23px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(247, 241, 229, 0.96);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(10px);
+}
+
+.header-inner {
+  width: min(1040px, 100%);
+  margin: auto;
+  padding: 18px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--line);
+  gap: 18px;
 }
 
 .logo {
-  font-size: 15px;
-  letter-spacing: 2px;
+  color: var(--accent);
+  font-size: 13px;
   font-weight: bold;
+  letter-spacing: 2px;
+  white-space: nowrap;
 }
 
-header span {
+nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+nav a {
   color: var(--muted);
   font-size: 11px;
+  transition: color .2s;
 }
 
-.hero { padding: 55px 20px 35px; }
+nav a:hover {
+  color: var(--accent);
+}
+
+main {
+  width: min(1040px, 100%);
+  margin: auto;
+  padding: 0 24px;
+}
+
+/* 메인 소개 */
+
+.hero {
+  min-height: 440px;
+  padding: 78px 0 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+}
 
 .eyebrow {
-  color: var(--accent);
-  font-size: 11px;
+  color: var(--muted);
+  font-size: 10px;
   letter-spacing: 3px;
+  line-height: 1.8;
 }
 
 h1 {
-  font-size: clamp(35px, 9vw, 58px);
-  line-height: 1.12;
-  margin: 17px 0;
-  letter-spacing: -2px;
+  color: var(--accent);
+  font-size: clamp(43px, 8vw, 82px);
+  line-height: 1.02;
+  letter-spacing: -3px;
+  margin: 18px 0;
 }
 
 .intro {
   color: var(--muted);
-  line-height: 1.9;
   font-size: 13px;
+  line-height: 2;
 }
 
-.section-title {
-  padding: 0 20px;
-  margin-top: 25px;
-  font-size: 14px;
-  letter-spacing: 2px;
+.primary-link {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--white);
+  padding: 13px 20px;
+  margin-top: 18px;
+  border-radius: 3px;
+  font-size: 10px;
+  letter-spacing: 1px;
 }
 
-.character-list {
-  padding: 15px 20px 55px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 13px;
+.bubble {
+  position: absolute;
+  border: 1px solid #C9D8D5;
+  border-radius: 50%;
+  pointer-events: none;
 }
 
-.character {
-  overflow: hidden;
+.bubble-one {
+  width: 100px;
+  height: 100px;
+  right: 12%;
+  top: 90px;
+}
+
+.bubble-two {
+  width: 35px;
+  height: 35px;
+  right: 8%;
+  top: 220px;
+}
+
+.bubble-three {
+  width: 18px;
+  height: 18px;
+  right: 28%;
+  top: 65px;
+}
+
+/* 영상 자리 */
+
+.video-placeholder {
+  min-height: 230px;
   border: 1px solid var(--line);
-  background: var(--panel);
-  border-radius: 5px;
-}
-
-.art {
-  aspect-ratio: 3 / 4;
-  background: #302633;
+  background:
+    radial-gradient(ellipse at 75% 20%, #E5EAE1 0%, transparent 38%),
+    linear-gradient(140deg, #E8E6D9, #DCE8E8);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #a997ac;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.video-placeholder::before,
+.video-placeholder::after {
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 100px;
+  border: 1px solid rgba(48, 63, 103, .10);
+  border-radius: 50%;
+  transform: rotate(-18deg);
+}
+
+.video-placeholder::before {
+  right: -70px;
+  bottom: -30px;
+}
+
+.video-placeholder::after {
+  left: -100px;
+  top: -60px;
+}
+
+.placeholder-symbol {
+  font-size: 28px;
+  color: var(--accent);
+}
+
+.placeholder-label {
+  color: var(--accent);
   font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.placeholder-note {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* 공통 섹션 */
+
+.section {
+  padding: 78px 0 12px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 15px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+}
+
+.section-number {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.section-title {
+  color: var(--accent);
+  font-size: 21px;
+  font-weight: normal;
+  letter-spacing: -0.5px;
+  margin: 8px 0 0;
+}
+
+.section-caption {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* 만화와 글 */
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.content-card {
+  min-height: 180px;
+  border: 1px solid var(--line);
+  padding: 22px;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform .2s, background .2s;
+}
+
+.content-card:hover {
+  transform: translateY(-3px);
+  background: var(--water);
+}
+
+.content-label {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.content-card h3 {
+  color: var(--accent);
+  font-size: 18px;
+  font-weight: normal;
+  margin: 20px 0 8px;
+}
+
+.content-card p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.content-link {
+  color: var(--accent);
+  font-size: 11px;
+  margin-top: 22px;
+}
+
+/* 캐릭터 목록 */
+
+.character-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.character {
+  min-width: 0;
+  border: 1px solid var(--line);
+  background: var(--white);
+  overflow: hidden;
+  transition: transform .2s;
+}
+
+.character:hover {
+  transform: translateY(-4px);
+}
+
+.art {
+  aspect-ratio: 4 / 5;
+  background: var(--water);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1px;
   text-align: center;
   padding: 10px;
+  overflow: hidden;
 }
 
 .art img {
@@ -110,160 +347,364 @@ h1 {
   object-fit: cover;
 }
 
-.character-info { padding: 13px; }
+.character-info {
+  padding: 17px;
+}
 
 .number {
-  color: var(--accent);
+  color: var(--muted);
   font-size: 10px;
   letter-spacing: 1px;
 }
 
 .character h3 {
-  margin: 9px 0;
+  color: var(--accent);
   font-size: 16px;
+  font-weight: normal;
+  margin: 12px 0 8px;
+  overflow-wrap: anywhere;
 }
 
 .character p {
   color: var(--muted);
-  font-size: 11px;
-  line-height: 1.6;
-  min-height: 18px;
+  font-size: 10px;
+  line-height: 1.7;
+  min-height: 17px;
 }
 
-button {
+.action-button {
   width: 100%;
-  border: 1px solid #735b7b;
-  background: #3a2d40;
-  color: white;
-  padding: 12px 5px;
-  cursor: pointer;
-  font-size: 11px;
-}
-
-button:active { opacity: .7; }
-
-footer {
-  border-top: 1px solid var(--line);
-  padding: 24px 20px;
-  color: var(--muted);
+  padding: 12px;
+  margin-top: 10px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
   font-size: 10px;
   letter-spacing: 1px;
-  text-align: center;
+  transition: background .2s, color .2s;
 }
 
-/* 캐릭터 프로필 화면 */
+.action-button:hover {
+  background: var(--accent);
+  color: var(--white);
+}
+
+/* 캐릭터 상세 화면 */
+
 #profile {
   display: none;
-  padding: 25px 20px 50px;
+  padding: 38px 0 80px;
+  min-height: 70vh;
 }
 
 .back {
   width: auto;
-  padding: 10px 15px;
-  margin-bottom: 28px;
+  margin-bottom: 35px;
+  padding: 11px 15px;
+}
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 35px;
+  align-items: start;
 }
 
 .profile-art {
   width: 100%;
-  max-height: 470px;
+  max-height: 650px;
   aspect-ratio: 4 / 5;
-  background: #302633;
+  background: var(--water);
   object-fit: contain;
-  margin: 20px 0;
 }
 
 .profile-name {
-  font-size: 36px;
-  margin: 12px 0;
+  color: var(--accent);
+  font-size: clamp(30px, 5vw, 46px);
+  font-weight: normal;
+  line-height: 1.2;
+  margin: 15px 0;
   overflow-wrap: anywhere;
 }
 
 .profile-type {
-  color: var(--accent);
-  font-size: 11px;
+  color: var(--muted);
+  font-size: 10px;
   letter-spacing: 2px;
 }
 
 .profile-description {
-  color: #d2c5d2;
-  line-height: 1.9;
+  color: var(--text);
+  line-height: 2;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   font-size: 13px;
 }
 
 .detail {
-  margin-top: 28px;
+  margin-top: 30px;
   border-top: 1px solid var(--line);
   padding-top: 18px;
 }
 
 .detail h3 {
-  color: var(--accent);
-  font-size: 11px;
+  color: var(--muted);
+  font-size: 10px;
   letter-spacing: 2px;
 }
 
 .detail p {
-  line-height: 1.8;
+  color: var(--text);
+  line-height: 1.9;
   font-size: 13px;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
 
+/* 하단 */
+
+footer {
+  width: min(1040px, 100%);
+  margin: 80px auto 0;
+  border-top: 1px solid var(--line);
+  padding: 28px 24px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+@media (max-width: 650px) {
+  .header-inner {
+    padding: 16px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  nav {
+    gap: 15px;
+  }
+
+  main {
+    padding: 0 16px;
+  }
+
+  .hero {
+    min-height: 390px;
+    padding-top: 65px;
+  }
+
+  .bubble-one {
+    right: 5%;
+    top: 45px;
+    width: 65px;
+    height: 65px;
+  }
+
+  .bubble-two {
+    right: 4%;
+    top: 150px;
+  }
+
+  .video-placeholder {
+    min-height: 180px;
+  }
+
+  .section {
+    padding-top: 60px;
+  }
+
+  .character-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .character-info {
+    padding: 12px;
+  }
+
+  .character h3 {
+    font-size: 14px;
+  }
+
+  .content-grid {
+    gap: 10px;
+  }
+
+  .content-card {
+    padding: 15px;
+    min-height: 170px;
+  }
+
+  .profile-layout {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .profile-art {
+    max-height: 500px;
+  }
+}
+
 @media (max-width: 360px) {
-  .character-list { gap: 8px; padding-left: 12px; padding-right: 12px; }
-  .character-info { padding: 9px; }
-  .character h3 { font-size: 14px; }
+  .logo {
+    font-size: 12px;
+  }
+
+  nav {
+    gap: 10px;
+  }
+
+  nav a {
+    font-size: 10px;
+  }
+
+  .character-list {
+    gap: 8px;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <header>
-  <div class="logo">HYEOKJAE ARCHIVE</div>
-  <span>PERSONAL DATABASE</span>
+  <div class="header-inner">
+    <a class="logo" href="#top" id="homeLogo">HYEOKJAE ARCHIVE</a>
+    <nav>
+      <a href="#about" class="nav-home">ABOUT</a>
+      <a href="#stories" class="nav-home">STORIES</a>
+      <a href="#characters" class="nav-home">CHARACTERS</a>
+    </nav>
+  </div>
 </header>
 
 <main>
-  <section id="home">
-    <div class="hero">
-      <p class="eyebrow">WELCOME TO MY WORLD</p>
-      <h1>CHARACTER<br>ARCHIVE.</h1>
+  <div id="home">
+    <section class="hero" id="top">
+      <span class="bubble bubble-one"></span>
+      <span class="bubble bubble-two"></span>
+      <span class="bubble bubble-three"></span>
+
+      <p class="eyebrow">PERSONAL CHARACTER ARCHIVE</p>
+      <h1>A LITTLE WORLD,<br>UNDER THE BLUE.</h1>
       <p class="intro">
         내가 만든 인물과 그들의 이야기.<br>
-        이곳에 하나씩 기록합니다.
+        천천히 모아 두는 작은 아카이브입니다.
       </p>
-    </div>
+      <a class="primary-link" href="#characters">EXPLORE ARCHIVE ↓</a>
+    </section>
 
-    <h2 class="section-title">— CHARACTER INDEX</h2>
-    <div class="character-list" id="characterList"></div>
-  </section>
+    <section id="about">
+      <div class="video-placeholder">
+        <span class="placeholder-symbol">◌</span>
+        <span class="placeholder-label">A MOMENT UNDERWATER</span>
+        <span class="placeholder-note">
+          이 공간에는 나중에 메인 영상이 들어갈 예정입니다.
+        </span>
+      </div>
+    </section>
+
+    <section class="section" id="stories">
+      <div class="section-heading">
+        <div>
+          <span class="section-number">01 — COLLECTION</span>
+          <h2 class="section-title">Stories & Records</h2>
+        </div>
+        <span class="section-caption">기록 보관소</span>
+      </div>
+
+      <div class="content-grid">
+        <a class="content-card" href="#comics" id="comicCard">
+          <div>
+            <span class="content-label">01 / VISUAL</span>
+            <h3>Comics</h3>
+            <p>캐릭터 만화와 그림 기록을 모으는 공간.</p>
+          </div>
+          <span class="content-link">VIEW COLLECTION ↗</span>
+        </a>
+
+        <a class="content-card" href="#texts" id="textCard">
+          <div>
+            <span class="content-label">02 / WRITING</span>
+            <h3>Texts & Logs</h3>
+            <p>이야기와 독백, 각종 기록을 모으는 공간.</p>
+          </div>
+          <span class="content-link">VIEW COLLECTION ↗</span>
+        </a>
+      </div>
+
+      <div class="section" id="comics">
+        <div class="section-heading">
+          <div>
+            <span class="section-number">01-A — VISUAL ARCHIVE</span>
+            <h2 class="section-title">Comic Collection</h2>
+          </div>
+        </div>
+        <p class="intro">아직 등록된 만화가 없습니다.</p>
+      </div>
+
+      <div class="section" id="texts">
+        <div class="section-heading">
+          <div>
+            <span class="section-number">01-B — TEXT ARCHIVE</span>
+            <h2 class="section-title">Text Collection</h2>
+          </div>
+        </div>
+        <p class="intro">아직 등록된 글이 없습니다.</p>
+      </div>
+    </section>
+
+    <section class="section" id="characters">
+      <div class="section-heading">
+        <div>
+          <span class="section-number">02 — CHARACTER DATABASE</span>
+          <h2 class="section-title">Character Index</h2>
+        </div>
+        <span class="section-caption">인물 목록</span>
+      </div>
+
+      <div class="character-list" id="characterList"></div>
+    </section>
+  </div>
 
   <section id="profile">
-    <button class="back" id="backButton">← BACK TO ARCHIVE</button>
-    <p class="eyebrow" id="profileNumber"></p>
-    <img class="profile-art" id="profileArt" alt="캐릭터 그림" hidden>
-    <h2 class="profile-name" id="profileName"></h2>
-    <p class="profile-type" id="profileType"></p>
-    <p class="profile-description" id="profileIntro"></p>
+    <button class="action-button back" id="backButton">
+      ← BACK TO ARCHIVE
+    </button>
 
-    <div class="detail">
-      <h3>PROFILE</h3>
-      <p id="profileDetails"></p>
-    </div>
+    <div class="profile-layout">
+      <div>
+        <img class="profile-art" id="profileArt" alt="캐릭터 그림" hidden>
+      </div>
 
-    <div class="detail">
-      <h3>STORY / BACKGROUND</h3>
-      <p id="profileStory"></p>
+      <div>
+        <p class="eyebrow" id="profileNumber"></p>
+        <h2 class="profile-name" id="profileName"></h2>
+        <p class="profile-type" id="profileType"></p>
+        <p class="profile-description" id="profileIntro"></p>
+
+        <div class="detail">
+          <h3>PROFILE</h3>
+          <p id="profileDetails"></p>
+        </div>
+
+        <div class="detail">
+          <h3>STORY / BACKGROUND</h3>
+          <p id="profileStory"></p>
+        </div>
+      </div>
     </div>
   </section>
 </main>
 
-<footer>HYEOKJAE ARCHIVE · ALL CHARACTERS ARE ORIGINAL</footer>
+<footer>
+  HYEOKJAE ARCHIVE · ALL CHARACTERS ARE ORIGINAL
+</footer>
 
 <script>
-/* 캐릭터 정보는 여기에서 수정하면 돼 */
+/* 캐릭터 정보는 이곳에서 수정하세요. */
+
 const characters = [
   {
     name: "CHARACTER 001",
@@ -298,8 +739,11 @@ const list = document.getElementById("characterList");
 function openCharacter(index) {
   const c = characters[index];
 
+  if (!c) return;
+
   document.getElementById("profileNumber").textContent =
     "ARCHIVE / " + String(index + 1).padStart(3, "0");
+
   document.getElementById("profileName").textContent = c.name;
   document.getElementById("profileType").textContent = c.type;
   document.getElementById("profileIntro").textContent = c.intro;
@@ -307,6 +751,7 @@ function openCharacter(index) {
   document.getElementById("profileStory").textContent = c.story;
 
   const art = document.getElementById("profileArt");
+
   if (c.image) {
     art.src = c.image;
     art.hidden = false;
@@ -317,14 +762,19 @@ function openCharacter(index) {
 
   home.style.display = "none";
   profile.style.display = "block";
+
+  history.pushState(null, "", "#character-" + (index + 1));
   window.scrollTo(0, 0);
-  history.replaceState(null, "", "#character-" + (index + 1));
 }
 
-function showHome() {
+function showHome(updateHistory = true) {
   profile.style.display = "none";
   home.style.display = "block";
-  history.replaceState(null, "", location.pathname);
+
+  if (updateHistory) {
+    history.pushState(null, "", location.pathname + location.search);
+  }
+
   window.scrollTo(0, 0);
 }
 
@@ -341,7 +791,7 @@ characters.forEach((c, index) => {
     img.alt = c.name;
     art.appendChild(img);
   } else {
-    art.textContent = "YOUR CHARACTER ART";
+    art.textContent = "CHARACTER ART";
   }
 
   const info = document.createElement("div");
@@ -358,7 +808,8 @@ characters.forEach((c, index) => {
   description.textContent = c.type;
 
   const button = document.createElement("button");
-  button.textContent = "PROFILE VIEW ↗";
+  button.className = "action-button";
+  button.textContent = "VIEW PROFILE ↗";
   button.addEventListener("click", () => openCharacter(index));
 
   info.append(number, title, description, button);
@@ -366,16 +817,92 @@ characters.forEach((c, index) => {
   list.appendChild(card);
 });
 
-document.getElementById("backButton").addEventListener("click", showHome);
+document.getElementById("backButton").addEventListener("click", () => {
+  showHome();
+});
 
-/* 주소에 캐릭터 번호가 있으면 해당 프로필 열기 */
-const match = location.hash.match(/^#character-(\d+)$/);
-if (match) {
-  const index = Number(match[1]) - 1;
+document.getElementById("homeLogo").addEventListener("click", (event) => {
+  if (profile.style.display === "block") {
+    event.preventDefault();
+    showHome();
+  }
+});
+
+document.querySelectorAll(".nav-home").forEach(link => {
+  link.addEventListener("click", event => {
+    if (profile.style.display === "block") {
+      event.preventDefault();
+      showHome();
+      const target = document.querySelector(link.getAttribute("href"));
+      if (target) target.scrollIntoView();
+    }
+  });
+});
+
+document.getElementById("comicCard").addEventListener("click", event => {
+  event.preventDefault();
+  document.getElementById("comics").scrollIntoView({ behavior: "smooth" });
+});
+
+document.getElementById("textCard").addEventListener("click", event => {
+  event.preventDefault();
+  document.getElementById("texts").scrollIntoView({ behavior: "smooth" });
+});
+
+function syncPageFromHash() {
+  const match = location.hash.match(/^#character-(\d+)$/);
+
+  if (match) {
+    const index = Number(match[1]) - 1;
+
+    if (index >= 0 && index < characters.length) {
+      openCharacterFromHistory(index);
+      return;
+    }
+  }
+
+  profile.style.display = "none";
+  home.style.display = "block";
+}
+
+function openCharacterFromHistory(index) {
+  const c = characters[index];
+  if (!c) return;
+
+  document.getElementById("profileNumber").textContent =
+    "ARCHIVE / " + String(index + 1).padStart(3, "0");
+  document.getElementById("profileName").textContent = c.name;
+  document.getElementById("profileType").textContent = c.type;
+  document.getElementById("profileIntro").textContent = c.intro;
+  document.getElementById("profileDetails").textContent = c.details;
+  document.getElementById("profileStory").textContent = c.story;
+
+  const art = document.getElementById("profileArt");
+
+  if (c.image) {
+    art.src = c.image;
+    art.hidden = false;
+  } else {
+    art.removeAttribute("src");
+    art.hidden = true;
+  }
+
+  home.style.display = "none";
+  profile.style.display = "block";
+  window.scrollTo(0, 0);
+}
+
+window.addEventListener("popstate", syncPageFromHash);
+
+const initialMatch = location.hash.match(/^#character-(\d+)$/);
+
+if (initialMatch) {
+  const index = Number(initialMatch[1]) - 1;
   if (index >= 0 && index < characters.length) {
-    openCharacter(index);
+    openCharacterFromHistory(index);
   }
 }
 </script>
+
 </body>
 </html>
