@@ -277,6 +277,65 @@ video {
 @media(prefers-reduced-motion:reduce) {
   * { scroll-behavior: auto !important; }
 }
+  
+/* 다마고치 하단 버튼 새 디자인 */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 28px;
+  margin-top: 22px;
+}
+
+.control-group {
+  width: 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.control-group span {
+  font-size: 10px;
+  font-weight: bold;
+  color: #303f9c;
+}
+
+.control {
+  width: 65px;
+  height: 65px;
+  flex-shrink: 0;
+}
+
+.mini-home {
+  width: 32px;
+  height: 32px;
+  margin-top: 7px;
+  border-radius: 50%;
+  border: 3px solid #303f9c;
+  background: #ffd9eb;
+  color: #303f9c;
+  font-size: 21px;
+  font-weight: bold;
+  box-shadow: 2px 3px 0 #8999dc;
+  cursor: pointer;
+}
+
+.mini-home:active {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+.control-group .mini-label {
+  font-size: 9px;
+}
+
+@media (max-width: 400px) {
+  .controls {
+    gap: 20px;
+  }
+}
+
 </style>
 </head>
 
@@ -382,15 +441,26 @@ video {
     </div>
   </div>
 
-  <div class="controls">
-  <button class="control" id="prevBtn" aria-label="이전 항목">◀</button>
-  <button class="control" id="selectBtn" aria-label="선택">♡</button>
-  <button class="control" id="nextBtn" aria-label="다음 항목">▶</button>
-  <button class="control" id="homeBtn" aria-label="홈으로 이동">⌂</button>
+ 
+<div class="controls">
+  <div class="control-group">
+    <button class="control" id="prevBtn" aria-label="이전 항목">◀</button>
+    <span>PREV</span>
+  </div>
+
+  <div class="control-group">
+    <button class="control" id="selectBtn" aria-label="선택">♡</button>
+    <span>SELECT</span>
+    <button class="mini-home" id="homeBtn" aria-label="홈으로 이동">⌂</button>
+    <span class="mini-label">HOME</span>
+  </div>
+
+  <div class="control-group">
+    <button class="control" id="nextBtn" aria-label="다음 항목">▶</button>
+    <span>NEXT</span>
+  </div>
 </div>
-<div class="control-labels">
-  <span>PREV</span><span>SELECT</span><span>NEXT</span><span>HOME</span>
-</div>
+
 
 <script>
 /* ===== 캐릭터 정보 ===== */
