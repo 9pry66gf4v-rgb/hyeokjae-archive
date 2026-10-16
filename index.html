@@ -563,6 +563,20 @@ footer {
     gap: 8px;
   }
 }
+  
+.video-container {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--water);
+}
+
+.intro-video {
+  display: block;
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+}
+  
 </style>
 </head>
 
@@ -596,13 +610,14 @@ footer {
     </section>
 
     <section id="about">
-      <div class="video-placeholder">
-        <span class="placeholder-symbol">◌</span>
-        <span class="placeholder-label">A MOMENT UNDERWATER</span>
-        <span class="placeholder-note">
-          이 공간에는 나중에 메인 영상이 들어갈 예정입니다.
-        </span>
-      </div>
+     
+<div class="video-container">
+  <video class="intro-video" autoplay muted loop playsinline controls>
+    <source src="intro_compressed.mp4" type="video/mp4">
+    브라우저가 동영상을 지원하지 않습니다.
+  </video>
+</div>
+
     </section>
 
     <section class="section" id="stories">
