@@ -587,7 +587,9 @@ document.getElementById("selectBtn").onclick = () => {
   const buttons = pageButtons();
   if (buttons[selectedIndex]) buttons[selectedIndex].click();
 };
-
+document.getElementById("homeBtn").addEventListener("click", () => {
+  showPage("home");
+});
 document.addEventListener("keydown", event => {
   if (["ArrowLeft","ArrowUp"].includes(event.key)) {
     event.preventDefault();
