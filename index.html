@@ -1368,5 +1368,358 @@ showPage(
 
 </script>
 
+<!-- ===== LETTER 채팅 기록 기능 시작 ===== -->
+
+<style>
+/* LETTER 날짜 목록 */
+
+#letters .chat-day {
+  display: block;
+  width: 100%;
+  margin: 7px 0;
+  padding: 12px;
+  border: 2px solid #aaa0d6;
+  border-radius: 9px;
+  background: linear-gradient(#fffaff, #e9e5ff);
+  box-shadow: 2px 3px #c2b9e3;
+  text-align: left;
+  font-size: 12px;
+}
+
+#letters .chat-day:hover {
+  background: #ffe5f4;
+}
+
+#letters .chat-search {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 2px solid #aaa0d6;
+  border-radius: 8px;
+  background: white;
+  font: inherit;
+  font-size: 12px;
+}
+
+/* 채팅창 */
+
+#letterDetail .chat-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px 2px;
+}
+
+#letterDetail .chat-message {
+  display: flex;
+  flex-direction: column;
+  max-width: 85%;
+  gap: 3px;
+}
+
+#letterDetail .chat-message.jh {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+#letterDetail .chat-message.yj {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+#letterDetail .chat-name {
+  font-size: 10px;
+  color: #8077a8;
+}
+
+#letterDetail .chat-bubble {
+  padding: 9px 11px;
+  border: 1px solid #c9bfe2;
+  border-radius: 13px;
+  background: #dff1ff;
+  color: #5c6891;
+  font-size: 12px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+#letterDetail .jh .chat-bubble {
+  background: #ffe0f0;
+  color: #966b8d;
+}
+
+#letterDetail .chat-time {
+  font-size: 9px;
+  color: #9690ac;
+}
+
+#letterDetail .chat-date {
+  align-self: center;
+  margin: 5px 0 10px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: #e1dcfa;
+  font-size: 11px;
+  color: #756ca5;
+}
+</style>
+
+<script>
+(function () {
+  "use strict";
+
+  const FILE_NAME = "letter_chat.txt";
+
+  const list = document.getElementById("letterList");
+  const title = document.getElementById("letterTitle");
+  const body = document.getElementById("letterBody");
+
+  if (!list || !title || !body) return;
+
+  let allMessages = [];
+  let days = [];
+
+  function parseChat(text) {
+    const messages = [];
+
+    const pattern =
+      /^(\d{4})년\s+(\d{1,2})월\s+(\d{1,2})일\s+(오전|오후)\s+(\d{1,2}):(\d{2})\s+(정혁|홍윤재)\s+\d+\s*(.*)$/;
+
+    for (const line of text.split(/\r?\n/)) {
+      const match = line.match(pattern);
+
+      if (match) {
+        const [
+          ,
+          year,
+          month,
+          day,
+          period,
+          hour,
+          minute,
+          name,
+          message
+        ] = match;
+
+        const date =
+          year + "-" +
+          month.padStart(2, "0") + "-" +
+          day.padStart(2, "0");
+
+        messages.push({
+          date,
+          name,
+          time: period + " " + hour + ":" + minute,
+          text: message
+        });
+      } else if (messages.length && line.trim()) {
+        // 줄바꿈된 메시지도 이어 붙이기
+        messages[messages.length - 1].text += "\n" + line;
+      }
+    }
+
+    return messages;
+  }
+
+  function makeDays(messages) {
+    const map = new Map();
+
+    for (const message of messages) {
+      if (!map.has(message.date)) {
+        map.set(message.date, []);
+      }
+
+      map.get(message.date).push(message);
+    }
+
+    return [...map.entries()].map(([date, messages]) => ({
+      date,
+      messages
+    }));
+  }
+
+  function displayDate(date) {
+    const [year, month, day] = date.split("-");
+
+    return year + "년 " +
+      Number(month) + "월 " +
+      Number(day) + "일";
+  }
+
+  function showChat(day) {
+    title.textContent = "💌 " + displayDate(day.date);
+    body.replaceChildren();
+
+    const area = document.createElement("div");
+    area.className = "chat-area";
+
+    const date = document.createElement("div");
+    date.className = "chat-date";
+    date.textContent = displayDate(day.date);
+
+    area.appendChild(date);
+
+    // 메시지가 많을 때 화면이 멈추지 않도록 나눠서 표시
+    let index = 0;
+    const batchSize = 150;
+
+    function appendBatch() {
+      const fragment = document.createDocumentFragment();
+      const end = Math.min(
+        index + batchSize,
+        day.messages.length
+      );
+
+      for (; index < end; index++) {
+        const item = day.messages[index];
+
+        const message = document.createElement("div");
+        message.className =
+          "chat-message " +
+          (item.name === "정혁" ? "jh" : "yj");
+
+        const name = document.createElement("div");
+        name.className = "chat-name";
+        name.textContent = item.name;
+
+        const bubble = document.createElement("div");
+        bubble.className = "chat-bubble";
+        bubble.textContent = item.text;
+
+        const time = document.createElement("div");
+        time.className = "chat-time";
+        time.textContent = item.time;
+
+        message.append(name, bubble, time);
+        fragment.appendChild(message);
+      }
+
+      area.appendChild(fragment);
+
+      if (index < day.messages.length) {
+        const more = document.createElement("button");
+        more.className = "entry";
+        more.textContent = "＋ 다음 대화 더 보기";
+
+        more.onclick = () => {
+          more.remove();
+          appendBatch();
+        };
+
+        area.appendChild(more);
+      }
+    }
+
+    appendBatch();
+    body.appendChild(area);
+
+    showPage("letterDetail");
+  }
+
+  function renderDays(keyword = "") {
+    list.replaceChildren();
+
+    const filtered = days.filter(day => {
+      if (!keyword) return true;
+
+      return (
+        displayDate(day.date).includes(keyword) ||
+        day.messages.some(item =>
+          item.text.includes(keyword)
+        )
+      );
+    });
+
+    const search = document.createElement("input");
+    search.className = "chat-search";
+    search.placeholder = "날짜 또는 대화 내용 검색...";
+    search.value = keyword;
+
+    search.addEventListener("input", event => {
+      renderDays(event.target.value);
+
+      const nextSearch =
+        list.querySelector(".chat-search");
+
+      nextSearch.focus();
+      nextSearch.setSelectionRange(
+        event.target.value.length,
+        event.target.value.length
+      );
+    });
+
+    list.appendChild(search);
+
+    if (!filtered.length) {
+      const empty = document.createElement("p");
+      empty.className = "empty";
+      empty.textContent = "검색 결과가 없어요.";
+      list.appendChild(empty);
+      return;
+    }
+
+    for (const day of filtered) {
+      const button = document.createElement("button");
+      button.className = "chat-day";
+
+      button.textContent =
+        "💌 " + displayDate(day.date) +
+        "  ·  " + day.messages.length + "개 메시지";
+
+      button.onclick = () => showChat(day);
+
+      list.appendChild(button);
+    }
+  }
+
+  async function loadChat() {
+    list.innerHTML =
+      '<p class="empty">대화 기록을 불러오는 중... 🫧</p>';
+
+    try {
+      const response = await fetch(
+        FILE_NAME,
+        { cache: "no-cache" }
+      );
+
+      if (!response.ok) {
+        throw new Error("파일을 찾지 못했습니다.");
+      }
+
+      const text = await response.text();
+
+      allMessages = parseChat(text);
+      days = makeDays(allMessages);
+
+      if (!allMessages.length) {
+        throw new Error(
+          "대화 형식을 인식하지 못했습니다."
+        );
+      }
+
+      renderDays();
+
+    } catch (error) {
+      list.replaceChildren();
+
+      const notice = document.createElement("p");
+      notice.className = "empty";
+      notice.textContent =
+        "대화 파일을 불러오지 못했어요.\n" +
+        "letter_chat.txt 파일이 GitHub에 있는지 확인해 주세요.";
+
+      list.appendChild(notice);
+
+      console.error(error);
+    }
+  }
+
+  loadChat();
+})();
+</script>
+
+<!-- ===== LETTER 채팅 기록 기능 끝 ===== -->
+
 </body>
 </html>
