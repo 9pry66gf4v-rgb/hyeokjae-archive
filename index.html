@@ -336,6 +336,129 @@ video {
   }
 }
 
+/* ===== AQUARIUM TAMAGOTCHI DESIGN ===== */
+
+body {
+  background-color: #f0f2ff;
+  background-image:
+    radial-gradient(#cbd4ff 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+.device {
+  border-radius: 110px 110px 125px 125px;
+  border: 5px solid #354ba7;
+  background:
+    radial-gradient(ellipse at 18% 12%, #ffffffb0, transparent 30%),
+    linear-gradient(155deg, #f5edff 0%, #d9e3ff 40%, #b8cbff 100%);
+  box-shadow:
+    inset 8px 8px 12px #ffffffb8,
+    inset -8px -12px 15px #8097e455,
+    9px 13px 0 #a4b4e8;
+  padding-bottom: 42px;
+}
+
+.device::before {
+  content: "✧  🫧  ✧";
+  position: absolute;
+  top: 16px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 13px;
+  color: #738fe0;
+  pointer-events: none;
+}
+
+.device-title {
+  margin-top: 12px;
+  margin-bottom: 20px;
+  font-size: 21px;
+  color: #3046a3;
+  text-shadow: 2px 2px white;
+}
+
+.screen-frame {
+  background: linear-gradient(145deg, #b9caff, #899fe7);
+  border-radius: 26px;
+  border: 4px solid #354ba7;
+  box-shadow:
+    inset 4px 4px 0 #e7eeff,
+    4px 5px 0 #8799db;
+}
+
+.screen {
+  background: #f9faff;
+  border-radius: 12px;
+  border-color: #354ba7;
+}
+
+.status {
+  background: #e2ecff;
+  color: #3046a3;
+}
+
+.aquarium {
+  border-radius: 5px;
+  background: linear-gradient(#c7f3ff, #84c9ef);
+}
+
+.welcome {
+  background: #fffefe;
+  border-radius: 5px;
+  border-color: #7189db;
+  box-shadow: inset 0 0 0 3px #e6efff;
+}
+
+.menu-item {
+  border-radius: 8px;
+  border-color: #4055ae;
+  background: linear-gradient(145deg, #ffffff, #dce7ff);
+  box-shadow: 3px 4px 0 #9bafe7;
+  transition: transform .15s, background .15s;
+}
+
+.menu-item:hover,
+.menu-item.selected,
+.menu-item:focus-visible {
+  background: linear-gradient(145deg, #ffe2ef, #e7e7ff);
+  transform: translateY(-2px);
+}
+
+.menu-item .emoji {
+  font-size: 27px;
+}
+
+.control {
+  border: 4px solid #354ba7;
+  background: radial-gradient(circle at 32% 25%, #fff, #b5c7ff 75%);
+  box-shadow:
+    inset 3px 3px 0 #ffffffa8,
+    3px 5px 0 #7c92d9;
+}
+
+.mini-home {
+  background: linear-gradient(#fff0f8, #f3b9da);
+  border: 3px solid #354ba7;
+  box-shadow: 2px 3px 0 #8496d8;
+}
+
+.character-tile,
+.entry {
+  border-radius: 7px;
+  background: linear-gradient(145deg, #fff, #e3ecff);
+}
+
+.character-tile:hover,
+.entry:hover {
+  background: #ffe3f0;
+}
+
+.bottom-text {
+  color: #536bb9;
+  letter-spacing: 1.5px;
+}
+
 </style>
 </head>
 
