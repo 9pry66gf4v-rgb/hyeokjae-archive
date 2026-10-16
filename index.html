@@ -4,17 +4,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#dbe6ff">
+<meta name="theme-color" content="#e8dcff">
 <title>HYEOKJAE ARCHIVE ♡</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
+/* =========================
+   01. 기본 설정
+========================= */
+
 :root {
-  --ink: #354eaa;
-  --edge: #5773c8;
-  --pale: #eaf1ff;
-  --shell: #d5dcff;
-  --pink: #ffd7f0;
-  --blue: #c4e7ff;
+  --lavender: #e8dcff;
+  --purple: #9384d4;
+  --deep: #6b69b4;
+  --blue: #c5edff;
+  --pink: #ffd6ee;
+  --white: #fffaff;
+  --text: #68629b;
 }
 
 * {
@@ -24,16 +31,18 @@
 body {
   margin: 0;
   min-height: 100dvh;
+  padding: 24px 12px 42px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 20px 9px;
-  background-color: #edf1ff;
+  align-items: flex-start;
+
+  background-color: #edf2ff;
   background-image:
-    radial-gradient(#bfcfff 1.4px, transparent 1.4px);
+    radial-gradient(#bfcaff 1.2px, transparent 1.2px);
   background-size: 20px 20px;
-  font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
-  color: var(--ink);
+
+  color: var(--text);
+  font-family: "Gowun Dodum", sans-serif;
 }
 
 button {
@@ -42,274 +51,372 @@ button {
   color: inherit;
 }
 
-/* 다마고치 본체 */
-.shell {
-  position: relative;
-  width: min(100%, 425px);
-  padding: 28px 19px 30px;
-  border: 4px solid #6680d0;
-  border-radius: 110px 110px 115px 115px;
-  background:
-    radial-gradient(ellipse at 25% 8%, #fff 0, transparent 35%),
-    linear-gradient(135deg, #f3eaff 0%, #dbe4ff 42%, #b8c8fa 100%);
-  box-shadow:
-    inset 6px 7px 0 #ffffff99,
-    inset -8px -12px 0 #8ba3e74d,
-    0 11px 0 #9badde,
-    0 16px 28px #657dc355;
-  isolation: isolate;
+button:focus-visible {
+  outline: 3px solid #ed8fca;
+  outline-offset: 3px;
 }
 
-.shell::before {
-  content: "✦  🫧  ✧  🐟  ✧";
-  position: absolute;
-  top: 13px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  color: #7797e5;
-  font-size: 14px;
-  pointer-events: none;
+/* =========================
+   02. 다마고치 본체
+========================= */
+
+.phone {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 410px);
+
+  padding: 28px 18px 21px;
+
+  border: 5px solid #8b83cf;
+  border-radius: 92px 92px 88px 88px;
+
+  background:
+    radial-gradient(
+      ellipse at 16% 5%,
+      #ffffff 0%,
+      transparent 38%
+    ),
+    radial-gradient(
+      ellipse at 90% 85%,
+      #bceeffa8 0%,
+      transparent 42%
+    ),
+    linear-gradient(
+      145deg,
+      #faf4ff 0%,
+      #e8ddff 35%,
+      #cfcdf9 72%,
+      #b9cdf6 100%
+    );
+
+  box-shadow:
+    inset 5px 6px 0 #ffffffc9,
+    inset -7px -10px 0 #8c85cb55,
+    0 8px 0 #9c94d5,
+    0 17px 24px #7c78ba50;
 }
+
+/* 본체 안쪽 반짝이는 테두리 */
+
+.phone::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  border: 2px solid #ffffffa8;
+  border-radius: 84px 84px 79px 79px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* 상단 장식 */
+
+.top-deco {
+  text-align: center;
+  height: 23px;
+  font-size: 15px;
+  color: #9184d3;
+  letter-spacing: 5px;
+  text-shadow: 1px 1px white;
+}
+
+/* =========================
+   03. 로고
+========================= */
 
 .brand {
   text-align: center;
-  font-size: clamp(16px, 5vw, 21px);
-  font-weight: 900;
+  margin: 7px 0 13px;
+}
+
+.brand-title {
+  font-family: "Jua", sans-serif;
+  font-size: clamp(19px, 5vw, 23px);
   letter-spacing: 1px;
-  margin: 21px 0 16px;
+  color: #7166b3;
   text-shadow: 2px 2px white;
 }
 
-.brand small {
-  display: block;
-  font-size: 9px;
-  letter-spacing: 3px;
-  margin-top: 4px;
+.brand-sub {
+  margin-top: 2px;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #9285c5;
 }
 
-/* 오른쪽 장식 */
-.charm {
-  position: absolute;
-  right: -15px;
-  top: 140px;
-  z-index: 4;
-  pointer-events: none;
-  filter: drop-shadow(2px 3px 1px #7186ca);
-}
+/* =========================
+   04. 화면 외부 테두리
+========================= */
 
-.charm span {
-  display: block;
-  text-align: center;
-  font-size: 25px;
-  line-height: 1.1;
-}
+.screen-frame {
+  padding: 9px;
+  border: 5px solid #a59cda;
+  border-radius: 30px;
 
-/* 화면 테두리 */
-.bezel {
-  border: 4px solid #607bcf;
-  border-radius: 27px;
-  padding: 10px;
-  background: linear-gradient(140deg, #f7f8ff, #a1b9f4 70%);
+  background:
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #dff5ff 25%,
+      #b9dfff 65%,
+      #a6a3dc
+    );
+
   box-shadow:
     inset 3px 3px white,
-    3px 5px #8ca1dd;
+    inset -4px -4px #7e7ab65e,
+    0 5px 0 #8884c3,
+    0 8px 12px #7974b53b;
 }
 
-.display {
-  border: 3px solid #4d68bf;
-  border-radius: 10px;
+.screen {
   overflow: hidden;
-  background: #e6efff;
+  border: 3px solid #7b85c5;
+  border-radius: 14px;
+  background: #e7f0ff;
   box-shadow: inset 0 0 0 2px white;
-  min-width: 0;
 }
 
-/* 윈도우 XP 스타일 */
+/* =========================
+   05. 윈도우 XP 상단
+========================= */
+
 .titlebar {
-  background: linear-gradient(180deg, #7895e3, #4265c0);
-  color: white;
+  min-height: 29px;
+  padding: 5px 7px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 6px;
-  font-size: 11px;
-  font-weight: 700;
   gap: 5px;
+
+  background: linear-gradient(
+    #adddff,
+    #8aa9ec 55%,
+    #8d88d6
+  );
+
+  border-bottom: 2px solid #7985c2;
+
+  color: white;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 12px;
+  text-shadow: 1px 1px #6e77b1;
 }
 
-.winbuttons {
+.titlebar-name {
+  overflow: hidden;
   white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.window-buttons {
   display: flex;
   gap: 3px;
+  flex-shrink: 0;
 }
 
-.winbuttons i {
-  display: inline-grid;
+.window-buttons span {
+  display: grid;
   place-items: center;
   width: 17px;
   height: 17px;
-  font-style: normal;
-  background: #e4eaff;
-  border: 1px solid #304e9e;
-  color: #3652a0;
-  box-shadow: inset 1px 1px white;
+  border: 1px solid #7d81b9;
+  border-radius: 3px;
+  background: linear-gradient(white, #e6dfff);
+  color: #7468a9;
+  text-shadow: none;
+  font-size: 12px;
 }
+
+.window-buttons span:last-child {
+  background: linear-gradient(#ffeaf6, #f6b7dd);
+}
+
+/* 메뉴 바 */
 
 .menubar {
   display: flex;
-  gap: 16px;
-  padding: 5px 9px;
-  background: #dce7ff;
-  border-bottom: 2px solid #8ca5e7;
-  font-size: 11px;
+  gap: 17px;
+  padding: 6px 9px;
+  border-bottom: 2px solid #aeb6dd;
+  background: #f5f3ff;
+
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 12px;
+  color: #7770ac;
 }
 
-/* 내부 화면 */
+/* =========================
+   06. 내부 데스크톱
+========================= */
+
 .desktop {
-  height: min(62vh, 485px);
-  min-height: 390px;
+  height: 365px;
   overflow-y: auto;
-  padding: 10px 9px 8px;
+  overflow-x: hidden;
+  padding: 10px;
+
   background:
-    linear-gradient(#d7eaffd9, #e9e7ffdc),
-    radial-gradient(circle at 20% 25%, #9fdfff 0, transparent 35%);
-  scrollbar-color: #9aafe8 #e8edff;
+    radial-gradient(
+      circle at 80% 12%,
+      #ffffffaa,
+      transparent 35%
+    ),
+    linear-gradient(
+      160deg,
+      #d7f1ff,
+      #e6e6ff 60%,
+      #f7eaff
+    );
+
   scrollbar-width: thin;
+  scrollbar-color: #b0a8df #eef1ff;
 }
 
 .page {
   display: none;
-  animation: appear .18s ease;
 }
 
 .page.active {
   display: block;
 }
 
-@keyframes appear {
-  from {
-    opacity: .6;
-    transform: translateY(3px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
 .hero {
+  margin: 4px 0 10px;
   text-align: center;
-  font-weight: 900;
-  font-size: 23px;
-  line-height: 1.12;
-  letter-spacing: 1px;
-  color: #486ac2;
-  text-shadow:
-    2px 2px white,
-    -1px -1px white;
-  margin: 6px 0 11px;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 25px;
+  line-height: 1.05;
+  color: #8371c3;
+  text-shadow: 2px 2px white;
 }
 
 .hero small {
   display: block;
-  font-size: 10px;
-  letter-spacing: 0;
-  font-weight: 600;
   margin-top: 7px;
+  font-family: "Gowun Dodum", sans-serif;
+  font-size: 10px;
+  font-weight: normal;
+  color: #9287b7;
 }
 
-/* 작은 프로그램 창 */
+/* =========================
+   07. 윈도우 스타일 박스
+========================= */
+
 .window {
-  border: 2px solid #6c89d5;
-  background: #f6f8ff;
-  box-shadow: 3px 4px 0 #9bade3;
-  margin-bottom: 12px;
+  margin-bottom: 11px;
+  overflow: hidden;
+  border: 2px solid #a29bd2;
+  border-radius: 8px 8px 4px 4px;
+  background: #fffaff;
+  box-shadow: 2px 3px 0 #bcb6df;
 }
 
 .window-head {
-  background: linear-gradient(#e9f0ff, #b6cafa);
-  padding: 5px 7px;
-  border-bottom: 2px solid #7892d3;
-  font-size: 11px;
-  font-weight: 800;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  padding: 5px 7px;
+  border-bottom: 2px solid #b1addb;
+  background: linear-gradient(#f7fbff, #d9e2ff);
+
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .window-content {
-  padding: 8px;
+  padding: 9px;
   font-size: 12px;
-  line-height: 1.75;
+  line-height: 1.8;
 }
 
 /* 영상 */
-video {
-  width: 100%;
-  display: block;
-  background: #8bb8db;
-  max-height: 210px;
-  object-fit: contain;
-}
 
 .video-wrap {
-  border: 2px solid #6984c8;
-  background: #b6dcf5;
+  overflow: hidden;
+  border: 2px solid #afa6d7;
+  border-radius: 5px;
+  background: #c5ddf7;
 }
 
-.hint {
-  text-align: center;
-  font-size: 11px;
-  line-height: 1.8;
-  margin: 7px 0 12px;
+video {
+  display: block;
+  width: 100%;
+  max-height: 185px;
+  object-fit: contain;
+  background: #c5ddf7;
 }
 
-/* 홈 메뉴 */
+/* =========================
+   08. 메인 메뉴
+========================= */
+
 .icon-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-  margin: 10px 0;
+  gap: 7px;
+  margin: 11px 0;
 }
 
 .icon-btn {
   min-width: 0;
-  min-height: 78px;
-  border: 2px solid #6885ce;
-  background: linear-gradient(white, #d9e6ff);
-  box-shadow: 2px 3px #a1b5e9;
+  min-height: 74px;
+  padding: 7px 2px;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   gap: 5px;
-  font-size: 10px;
-  font-weight: 800;
+
+  border: 2px solid #a29bd5;
+  border-radius: 9px;
+
+  background: linear-gradient(
+    145deg,
+    white,
+    #e8edff 65%,
+    #e5dcff
+  );
+
+  box-shadow:
+    inset 2px 2px white,
+    2px 3px 0 #b8b0dd;
+
+  color: #7669a8;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 11px;
+  font-weight: bold;
 }
 
 .icon-btn .symbol {
-  font-size: 26px;
+  font-family: sans-serif;
+  font-size: 24px;
   line-height: 1;
 }
 
 .icon-btn:hover,
-.icon-btn.selected,
-.icon-btn:focus-visible,
-.entry.selected,
-.entry:focus-visible {
-  background: #ffe0f1;
-  outline: 2px solid #5574c7;
-  outline-offset: 1px;
+.icon-btn.selected {
+  background: linear-gradient(#fff5fc, #ffd9ef);
+  border-color: #a68bcf;
 }
+
+/* =========================
+   09. 캐릭터 및 목록
+========================= */
 
 .section-title {
+  margin: 5px 0 13px;
   text-align: center;
-  font-weight: 900;
-  font-size: 15px;
-  margin: 4px 0 12px;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 19px;
+  color: #8170b8;
 }
 
-/* 캐릭터 도감 */
 .character-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -317,27 +424,28 @@ video {
 }
 
 .character-card {
-  border: 2px solid #6d87cf;
-  background: #f9faff;
-  padding: 7px;
   min-width: 0;
-  box-shadow: 2px 3px #afbfeb;
+  padding: 7px;
+  border: 2px solid #aaa0d6;
+  border-radius: 9px;
+  background: linear-gradient(white, #eee9ff);
+  box-shadow: 2px 3px #c2b9e3;
+  text-align: center;
 }
 
 .character-card.selected,
-.character-card:focus-visible {
-  background: #ffe2f1;
-  outline: 2px solid #5e7bcc;
+.character-card:hover {
+  background: #ffe5f4;
 }
 
 .portrait {
-  height: 132px;
-  background: linear-gradient(#d7e9ff, #c4ccfa);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 47px;
+  height: 125px;
+  display: grid;
+  place-items: center;
   overflow: hidden;
+  border-radius: 5px;
+  background: linear-gradient(#e0f7ff, #d9d2ff);
+  font-size: 42px;
 }
 
 .portrait img {
@@ -348,302 +456,252 @@ video {
 
 .character-card strong {
   display: block;
-  margin: 8px 0 2px;
-  font-size: 13px;
+  margin-top: 8px;
+  font-family: "Jua", sans-serif;
+  font-size: 17px;
 }
 
 .character-card small {
   font-size: 10px;
 }
 
-/* 기록 목록 */
-.entry {
-  display: block;
+.entry,
+.back {
   width: 100%;
-  border: 2px solid #7a94d4;
-  background: #f8faff;
-  text-align: left;
+  margin: 6px 0;
   padding: 10px;
-  margin: 8px 0;
-  box-shadow: 2px 3px #b1c1e8;
+  border: 2px solid #aaa0d5;
+  border-radius: 7px;
+  background: linear-gradient(white, #f0ecff);
+  box-shadow: 2px 3px #c3bbe0;
+  text-align: left;
   font-size: 12px;
+}
+
+.entry.selected,
+.entry:hover {
+  background: #ffe5f4;
+}
+
+.back {
+  width: auto;
+  padding: 6px 10px;
+  margin-bottom: 12px;
+  font-weight: bold;
 }
 
 .empty {
+  padding: 20px 5px;
   text-align: center;
-  padding: 22px 7px;
   font-size: 12px;
   line-height: 2;
-}
-
-.detail-image {
-  max-width: 100%;
-  max-height: 230px;
-  display: block;
-  margin: 7px auto;
 }
 
 .detail-text {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
-  line-height: 1.85;
-  font-size: 12px;
+  line-height: 1.9;
 }
 
-.back {
-  border: 2px solid #6b83cb;
-  background: #e5eaff;
-  padding: 6px 10px;
-  margin-bottom: 10px;
-  font-size: 11px;
-  font-weight: bold;
+.detail-image {
+  display: block;
+  max-width: 100%;
+  max-height: 250px;
+  margin: 8px auto;
 }
 
-/* 작업 표시줄 */
+/* =========================
+   10. 하단 작업 표시줄
+========================= */
+
 .taskbar {
-  background: linear-gradient(#dceaff, #adc3f0);
-  border-top: 2px solid #7896d7;
-  padding: 5px 7px;
   display: flex;
   justify-content: space-between;
+  gap: 5px;
+  padding: 6px 8px;
+
+  border-top: 2px solid #9ca8d8;
+  background: linear-gradient(#eaf7ff, #bfd8ff);
+
+  font-family: "Pixelify Sans", sans-serif;
   font-size: 10px;
-  font-weight: bold;
+  color: #7168a9;
 }
 
-/* 다마고치 버튼 */
+/* =========================
+   11. 조작 버튼
+========================= */
+
 .controls {
   display: flex;
   justify-content: center;
-  gap: clamp(12px, 5vw, 29px);
-  margin-top: 21px;
   align-items: flex-start;
+  gap: clamp(10px, 5vw, 27px);
+  margin-top: 17px;
 }
 
 .control-group {
-  width: 70px;
+  width: 66px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 7px;
-  font-size: 10px;
-  font-weight: bold;
+  gap: 5px;
+
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 11px;
+  color: #786caf;
 }
 
 .control {
-  width: 66px;
-  height: 66px;
+  width: 59px;
+  height: 59px;
+
+  border: 4px solid #9a90d0;
   border-radius: 50%;
-  border: 4px solid #5a76c7;
-  background:
-    radial-gradient(circle at 30% 20%, white, #b2c8ff 72%);
+
+  background: radial-gradient(
+    circle at 30% 20%,
+    white,
+    #f5edff 30%,
+    #d6c7fa 70%,
+    #a99cde
+  );
+
   box-shadow:
-    inset 3px 3px #ffffff99,
-    3px 5px #8099d7;
-  font-size: 25px;
-  font-weight: 900;
+    inset 3px 3px white,
+    inset -3px -4px #9085bd77,
+    2px 5px 0 #857db9;
+
+  color: #7969b3;
+  font-family: "Jua", sans-serif;
+  font-size: 24px;
+}
+
+#selectBtn {
+  background: radial-gradient(
+    circle at 30% 20%,
+    white,
+    #ffe7f5 35%,
+    #ffbce0 75%,
+    #e6a1cd
+  );
+  color: #b36e9e;
 }
 
 .control:active,
 .mini-home:active {
   transform: translateY(3px);
-  box-shadow: none;
+  box-shadow: inset 1px 2px #8e82bd66;
 }
 
-/* 작은 홈 버튼 */
 .mini-home {
-  width: 34px;
-  height: 34px;
+  width: 31px;
+  height: 31px;
+  margin-top: 1px;
+
+  border: 3px solid #ae8fca;
   border-radius: 50%;
-  border: 3px solid #6179c6;
-  background: linear-gradient(#fff2fb, #ffbfe1);
-  box-shadow: 2px 3px #8ea3dd;
-  font-size: 21px;
-  margin-top: 3px;
+
+  background: radial-gradient(
+    circle at 30% 20%,
+    white,
+    #ffd5eb 65%,
+    #f2a9d0
+  );
+
+  box-shadow: 2px 3px #9b8ac7;
+  font-size: 18px;
 }
+
+/* =========================
+   12. 본체 하단
+========================= */
 
 .footer {
+  margin-top: 12px;
   text-align: center;
-  font-size: 9px;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 10px;
   letter-spacing: 1px;
-  margin-top: 20px;
+  color: #8d81b7;
 }
 
-/* 모바일 */
-@media (max-width: 350px) {
-  .shell {
-    padding: 24px 12px;
+/* =========================
+   13. 작은 화면 대응
+========================= */
+
+@media (max-width: 380px) {
+  .phone {
+    padding: 23px 12px 18px;
+    border-radius: 76px;
   }
 
-  .bezel {
+  .phone::before {
+    border-radius: 68px;
+  }
+
+  .screen-frame {
     padding: 7px;
   }
 
   .desktop {
-    min-height: 365px;
+    height: 335px;
+    padding: 7px;
   }
 
-  .control {
-    width: 58px;
-    height: 58px;
+  .icon-btn {
+    font-size: 10px;
+  }
+
+  .controls {
+    gap: 12px;
   }
 
   .control-group {
     width: 60px;
   }
 
-  .controls {
-    gap: 13px;
-  }
-
-  .charm {
-    right: -7px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .page {
-    animation: none;
-  }
-}
-  
-/* ===== 짧고 통통한 젤리 다마고치 ===== */
-
-/* 휴대폰 본체 */
-.shell {
-  padding-top: 19px !important;
-  padding-bottom: 19px !important;
-  border-radius: 88px 88px 82px 82px !important;
-}
-
-/* 본체 안쪽 테두리 */
-.shell::after {
-  border-radius: 80px 80px 74px 74px !important;
-}
-
-/* 위쪽 장식 */
-.shell::before {
-  top: 8px !important;
-}
-
-/* HYEOKJAE ARCHIVE 제목 */
-.brand {
-  margin-top: 13px !important;
-  margin-bottom: 11px !important;
-}
-
-/* 화면을 감싸는 테두리 */
-.bezel {
-  padding: 8px !important;
-}
-
-/* 내부 윈도우 화면 */
-.desktop {
-  height: min(49vh, 375px) !important;
-  min-height: 300px !important;
-  overflow-y: auto !important;
-}
-
-/* 화면과 버튼 사이 간격 */
-.controls {
-  margin-top: 13px !important;
-  gap: clamp(12px, 5vw, 29px) !important;
-}
-
-/* PREV / SELECT / NEXT 버튼 */
-.control {
-  width: 58px !important;
-  height: 58px !important;
-  font-size: 24px !important;
-}
-
-/* 버튼 이름과 간격 */
-.control-group {
-  width: 65px !important;
-  gap: 4px !important;
-}
-
-/* 작은 HOME 버튼 */
-.mini-home {
-  width: 31px !important;
-  height: 31px !important;
-  margin-top: 1px !important;
-}
-
-/* 맨 아래 문구 */
-.footer {
-  margin-top: 10px !important;
-}
-
-/* 작은 휴대폰 화면 */
-@media (max-width: 350px) {
-  .shell {
-    padding: 18px 12px !important;
-  }
-
-  .desktop {
-    min-height: 280px !important;
-  }
-
   .control {
-    width: 54px !important;
-    height: 54px !important;
+    width: 54px;
+    height: 54px;
   }
 }
-
 </style>
 </head>
 
 <body>
 
-<main class="shell">
+<main class="phone">
 
- 
-<!-- 다마고치 픽셀 장식 -->
-<div class="pixel-decorations" aria-hidden="true">
-
-  <!-- 상단 반짝이는 별 -->
-  <img src="pixel_star.png"
-       class="deco-star" alt="">
-
-  <!-- 오른쪽 물고기 키링 -->
-  <div class="fish-keyring">
-    <img src="pink_bow.png"
-         class="deco-bow" alt="">
-
-    <div class="keyring-chain"></div>
-
-    <img src="pixel_fish.png"
-         class="deco-fish" alt="">
+  <!-- 상단 장식 -->
+  <div class="top-deco" aria-hidden="true">
+    ✦ ♡ ✧ 🐟 ✧ ♡ ✦
   </div>
 
-  <!-- 왼쪽 해파리 -->
-  <img src="pixel_jellyfish.png"
-       class="deco-jellyfish" alt="">
+  <!-- 로고 -->
+  <header class="brand">
+    <div class="brand-title">
+      ♡ HYEOKJAE ARCHIVE ♡
+    </div>
+    <div class="brand-sub">
+      OUR LITTLE AQUARIUM
+    </div>
+  </header>
 
-  <!-- 오른쪽 아래 조개 -->
-  <img src="pixel_shell.png"
-       class="deco-shell" alt="">
-
-  <!-- 아래쪽 산호 -->
-  <img src="pixel_coral.png"
-       class="deco-coral" alt="">
-
-</div>
-
-
-  <div class="brand">
-    ♡ HYEOKJAE ARCHIVE ♡
-    <small>OUR LITTLE AQUARIUM</small>
-  </div>
-
-  <div class="bezel">
-    <div class="display">
+  <!-- 화면 -->
+  <div class="screen-frame">
+    <div class="screen">
 
       <div class="titlebar">
-        <span>🐠 HYEOKJAE ARCHIVE.exe</span>
-        <span class="winbuttons">
-          <i>_</i><i>□</i><i>×</i>
+        <span class="titlebar-name">
+          🐠 HYEOKJAE ARCHIVE.exe
         </span>
+
+        <div class="window-buttons" aria-hidden="true">
+          <span>_</span>
+          <span>□</span>
+          <span>×</span>
+        </div>
       </div>
 
       <div class="menubar">
@@ -653,6 +711,7 @@ video {
         <span>Help ♡</span>
       </div>
 
+      <!-- 내부 페이지 -->
       <div class="desktop" id="desktop">
 
         <!-- HOME -->
@@ -660,13 +719,15 @@ video {
 
           <h1 class="hero">
             HYEOKJAE<br>ARCHIVE ♡
-            <small>✧ welcome to our little aquarium ✧</small>
+            <small>
+              ✧ welcome to our little aquarium ✧
+            </small>
           </h1>
 
           <div class="window">
             <div class="window-head">
               <span>📁 intro_video.mp4</span>
-              <span>_ □ ×</span>
+              <span>×</span>
             </div>
 
             <div class="window-content">
@@ -684,12 +745,13 @@ video {
                     src="intro_compressed.mp4"
                     type="video/mp4"
                   >
-                  영상 재생을 지원하지 않는 브라우저입니다.
+                  영상을 재생할 수 없습니다.
                 </video>
               </div>
             </div>
           </div>
 
+          <!-- 메인 메뉴 -->
           <div class="icon-grid">
 
             <button class="icon-btn" data-page="characters">
@@ -744,9 +806,11 @@ video {
           <div class="character-grid" id="characterGrid"></div>
         </section>
 
-        <!-- PROFILE -->
+        <!-- 캐릭터 상세 -->
         <section class="page" id="profile">
-          <button class="back" data-page="characters">◀ BACK</button>
+          <button class="back" data-page="characters">
+            ◀ BACK
+          </button>
 
           <div class="window">
             <div class="window-head" id="profileTitle">
@@ -755,8 +819,8 @@ video {
 
             <div class="window-content">
               <img
-                class="detail-image"
                 id="profileImage"
+                class="detail-image"
                 hidden
                 alt="캐릭터 이미지"
               >
@@ -772,7 +836,10 @@ video {
         </section>
 
         <section class="page" id="letterDetail">
-          <button class="back" data-page="letters">◀ BACK</button>
+          <button class="back" data-page="letters">
+            ◀ BACK
+          </button>
+
           <div class="window">
             <div class="window-head" id="letterTitle"></div>
             <div class="window-content detail-text" id="letterBody"></div>
@@ -797,9 +864,11 @@ video {
           <div id="galleryList"></div>
         </section>
 
-        <!-- 기록 상세 -->
+        <!-- 공통 상세 페이지 -->
         <section class="page" id="recordDetail">
-          <button class="back" id="recordBack">◀ BACK</button>
+          <button class="back" id="recordBack">
+            ◀ BACK
+          </button>
 
           <div class="window">
             <div class="window-head" id="recordTitle"></div>
@@ -819,13 +888,15 @@ video {
             ▶ 영상 재생 / 일시정지
           </button>
 
-          <p class="hint">
-            영상은 자동 재생을 위해 음소거 상태로 시작해요.
+          <p class="empty">
+            영상은 자동 재생을 위해<br>
+            음소거 상태로 시작해요. ♡
           </p>
         </section>
 
       </div>
 
+      <!-- 하단 작업 표시줄 -->
       <div class="taskbar">
         <span>🐠 START</span>
         <span>♡ READY · 12:06</span>
@@ -834,7 +905,7 @@ video {
     </div>
   </div>
 
-  <!-- 다마고치 조작 버튼 -->
+  <!-- 물리 버튼 -->
   <div class="controls">
 
     <div class="control-group">
@@ -872,8 +943,12 @@ video {
 </main>
 
 <script>
+/* =========================
+   14. 콘텐츠 데이터
+   여기서 내용을 추가할 수 있어요.
+========================= */
 
-/* ===== 캐릭터 정보 ===== */
+/* 캐릭터는 정혁, 홍윤재 두 명 */
 
 const characters = [
   {
@@ -894,24 +969,51 @@ const characters = [
   }
 ];
 
-/* ===== 편지, 만화, 글, 갤러리 ===== */
-
 /* 편지 예시:
-   {title:"편지 제목", text:"편지 내용"}
+{
+  title: "첫 번째 편지",
+  text: "여기에 편지 내용을 적어 주세요."
+}
 */
+
 const letters = [];
 
 /* 만화 예시:
-   {title:"첫 번째 만화", text:"설명", image:"comic1.png"}
+{
+  title: "첫 번째 만화",
+  text: "만화 설명",
+  image: "comic1.png"
+}
 */
+
 const comics = [];
 
+/* 이야기 예시:
+{
+  title: "첫 번째 이야기",
+  text: "이야기 내용"
+}
+*/
+
 const stories = [];
+
+/* 갤러리 예시:
+{
+  title: "첫 번째 그림",
+  text: "그림 설명",
+  image: "drawing1.png"
+}
+*/
+
 const gallery = [];
 
-/* ===== 화면 전환 기능 ===== */
+
+/* =========================
+   15. 페이지 이동 기능
+========================= */
 
 const $ = id => document.getElementById(id);
+
 const video = $("introVideo");
 
 let currentPage = "home";
@@ -933,39 +1035,50 @@ const validPages = new Set([
 
 function buttons() {
   return [
-    ...$(currentPage).querySelectorAll("button:not(:disabled)")
+    ...$(currentPage).querySelectorAll(
+      "button:not(:disabled)"
+    )
   ];
 }
 
 function highlight() {
-  document.querySelectorAll(".selected").forEach(b => {
-    b.classList.remove("selected");
+  document.querySelectorAll(".selected").forEach(btn => {
+    btn.classList.remove("selected");
   });
 
-  const b = buttons();
-  if (!b.length) return;
+  const list = buttons();
 
-  selected = Math.min(selected, b.length - 1);
-  b[selected].classList.add("selected");
+  if (!list.length) return;
+
+  selected = Math.min(selected, list.length - 1);
+  list[selected].classList.add("selected");
 }
 
-function showPage(page, historyUpdate = true) {
+function showPage(page, updateHistory = true) {
   if (!validPages.has(page)) {
     page = "home";
   }
 
   currentPage = page;
 
-  document.querySelectorAll(".page").forEach(p => {
-    p.classList.toggle("active", p.id === page);
+  document.querySelectorAll(".page").forEach(section => {
+    section.classList.toggle(
+      "active",
+      section.id === page
+    );
   });
 
   selected = 0;
   $("desktop").scrollTop = 0;
+
   highlight();
 
-  if (historyUpdate && location.hash !== "#" + page) {
-    history.pushState({page}, "", "#" + page);
+  if (updateHistory && location.hash !== "#" + page) {
+    history.pushState(
+      { page },
+      "",
+      "#" + page
+    );
   }
 
   if (page === "home") {
@@ -975,115 +1088,131 @@ function showPage(page, historyUpdate = true) {
   }
 }
 
-/* ===== 캐릭터 프로필 ===== */
 
-function openProfile(i) {
-  const c = characters[i];
-  if (!c) return;
+/* =========================
+   16. 캐릭터 페이지
+========================= */
+
+function openProfile(index) {
+  const character = characters[index];
+
+  if (!character) return;
 
   $("profileTitle").textContent =
-    "📁 " + c.name + " / profile.txt";
+    "📁 " + character.name + " / profile.txt";
 
   $("profileText").textContent =
-    c.intro +
+    character.intro +
     "\n\nPROFILE\n" +
-    c.details +
+    character.details +
     "\n\nSTORY\n" +
-    c.story;
+    character.story;
 
-  $("profileImage").hidden = !c.image;
+  const image = $("profileImage");
 
-  if (c.image) {
-    $("profileImage").src = c.image;
+  image.hidden = !character.image;
+
+  if (character.image) {
+    image.src = character.image;
   } else {
-    $("profileImage").removeAttribute("src");
+    image.removeAttribute("src");
   }
 
   showPage("profile");
 }
 
-characters.forEach((c, i) => {
-  const b = document.createElement("button");
-  b.className = "character-card";
+characters.forEach((character, index) => {
+  const button = document.createElement("button");
+  button.className = "character-card";
 
-  const pic = document.createElement("div");
-  pic.className = "portrait";
+  const portrait = document.createElement("div");
+  portrait.className = "portrait";
 
-  if (c.image) {
+  if (character.image) {
     const img = document.createElement("img");
-    img.src = c.image;
-    img.alt = c.name;
-    pic.append(img);
+    img.src = character.image;
+    img.alt = character.name;
+    portrait.append(img);
   } else {
-    pic.textContent = i === 0 ? "🐟" : "🐢";
+    portrait.textContent = index === 0 ? "🐟" : "🐢";
   }
 
   const name = document.createElement("strong");
-  name.textContent = c.name;
+  name.textContent = character.name;
 
   const sub = document.createElement("small");
   sub.textContent = "📁 PROFILE →";
 
-  b.append(pic, name, sub);
+  button.append(portrait, name, sub);
 
-  b.onclick = () => openProfile(i);
+  button.onclick = () => openProfile(index);
 
-  $("characterGrid").append(b);
+  $("characterGrid").append(button);
 });
 
-/* ===== 편지 / 만화 / 기록 목록 ===== */
+
+/* =========================
+   17. 편지 / 만화 / 이야기 / 갤러리
+========================= */
 
 function renderList(data, id, parent, emptyText) {
-  const wrap = $(id);
-  wrap.replaceChildren();
+  const container = $(id);
+
+  container.replaceChildren();
 
   if (!data.length) {
-    const p = document.createElement("p");
-    p.className = "empty";
-    p.textContent = emptyText;
-    wrap.append(p);
+    const empty = document.createElement("p");
+    empty.className = "empty";
+    empty.textContent = emptyText;
+    container.append(empty);
     return;
   }
 
   data.forEach(item => {
-    const b = document.createElement("button");
-    b.className = "entry";
-    b.textContent = "📁 " + item.title;
+    const button = document.createElement("button");
 
-    b.onclick = () => {
+    button.className = "entry";
+    button.textContent = "📁 " + item.title;
+
+    button.onclick = () => {
       if (parent === "letters") {
-        $("letterTitle").textContent = "💌 " + item.title;
-        $("letterBody").textContent = item.text || "";
+        $("letterTitle").textContent =
+          "💌 " + item.title;
+
+        $("letterBody").textContent =
+          item.text || "";
+
         showPage("letterDetail");
         return;
       }
 
       recordParent = parent;
 
-      $("recordTitle").textContent = "📁 " + item.title;
+      $("recordTitle").textContent =
+        "📁 " + item.title;
 
       const body = $("recordBody");
       body.replaceChildren();
 
       if (item.image) {
-        const img = document.createElement("img");
-        img.className = "detail-image";
-        img.src = item.image;
-        img.alt = item.title;
-        body.append(img);
+        const image = document.createElement("img");
+        image.className = "detail-image";
+        image.src = item.image;
+        image.alt = item.title;
+        body.append(image);
       }
 
       if (item.text) {
-        const p = document.createElement("p");
-        p.className = "detail-text";
-        p.textContent = item.text;
-        body.append(p);
+        const text = document.createElement("p");
+        text.className = "detail-text";
+        text.textContent = item.text;
+        body.append(text);
       }
 
       showPage("recordDetail");
     };
 
-    wrap.append(b);
+    container.append(button);
   });
 }
 
@@ -1115,32 +1244,40 @@ renderList(
   "아직 등록된 그림이 없어요. 🐚"
 );
 
-/* ===== 메뉴 버튼 클릭 ===== */
 
-document.addEventListener("click", e => {
-  const b = e.target.closest("[data-page]");
+/* =========================
+   18. 버튼 조작
+========================= */
 
-  if (b) {
-    showPage(b.dataset.page);
+/* 화면 속 메뉴 클릭 */
+
+document.addEventListener("click", event => {
+  const button = event.target.closest("[data-page]");
+
+  if (button) {
+    showPage(button.dataset.page);
   }
 });
+
+/* 상세 페이지 뒤로 가기 */
 
 $("recordBack").onclick = () => {
   showPage(recordParent);
 };
 
-/* ===== 다마고치 조작 버튼 ===== */
+/* PREV / NEXT */
 
 function move(step) {
-  const b = buttons();
+  const list = buttons();
 
-  if (!b.length) return;
+  if (!list.length) return;
 
-  selected = (selected + step + b.length) % b.length;
+  selected =
+    (selected + step + list.length) % list.length;
 
   highlight();
 
-  b[selected].scrollIntoView({
+  list[selected].scrollIntoView({
     block: "nearest"
   });
 }
@@ -1149,20 +1286,26 @@ $("prevBtn").onclick = () => move(-1);
 
 $("nextBtn").onclick = () => move(1);
 
-$("selectBtn").onclick = () => {
-  const b = buttons();
+/* SELECT */
 
-  if (b[selected]) {
-    b[selected].click();
+$("selectBtn").onclick = () => {
+  const list = buttons();
+
+  if (list[selected]) {
+    list[selected].click();
   }
 };
 
-/* 작은 HOME 버튼 */
+/* HOME */
+
 $("homeBtn").onclick = () => {
   showPage("home");
 };
 
-/* ===== 영상 설정 ===== */
+
+/* =========================
+   19. 영상 설정
+========================= */
 
 $("soundBtn").onclick = () => {
   video.muted = !video.muted;
@@ -1180,29 +1323,41 @@ $("playBtn").onclick = () => {
   }
 };
 
-/* ===== 키보드 조작 ===== */
 
-document.addEventListener("keydown", e => {
-  if (["ArrowLeft", "ArrowUp"].includes(e.key)) {
-    e.preventDefault();
+/* =========================
+   20. 키보드 및 브라우저
+========================= */
+
+document.addEventListener("keydown", event => {
+  if (
+    event.key === "ArrowLeft" ||
+    event.key === "ArrowUp"
+  ) {
+    event.preventDefault();
     move(-1);
   }
 
-  if (["ArrowRight", "ArrowDown"].includes(e.key)) {
-    e.preventDefault();
+  if (
+    event.key === "ArrowRight" ||
+    event.key === "ArrowDown"
+  ) {
+    event.preventDefault();
     move(1);
   }
 
-  if (e.key === "Escape") {
+  if (event.key === "Escape") {
     showPage("home");
   }
 });
 
-/* ===== 브라우저 뒤로가기 ===== */
-
 window.addEventListener("popstate", () => {
-  showPage(location.hash.slice(1) || "home", false);
+  showPage(
+    location.hash.slice(1) || "home",
+    false
+  );
 });
+
+/* 최초 실행 */
 
 showPage(
   validPages.has(location.hash.slice(1))
@@ -1212,5 +1367,6 @@ showPage(
 );
 
 </script>
+
 </body>
 </html>
