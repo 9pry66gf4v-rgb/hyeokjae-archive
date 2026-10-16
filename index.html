@@ -4,589 +4,765 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>혁재 아카이브 ♡</title>
+<meta name="theme-color" content="#dbe6ff">
+<title>HYEOKJAE ARCHIVE ♡</title>
 
 <style>
 :root {
-  --navy: #303f9c;
-  --blue: #7f9cf4;
-  --lavender: #d9dcff;
-  --light: #f8f7ff;
-  --aqua: #c6f0fa;
-  --pink: #ffd9eb;
+  --ink: #354eaa;
+  --edge: #5773c8;
+  --pale: #eaf1ff;
+  --shell: #d5dcff;
+  --pink: #ffd7f0;
+  --blue: #c4e7ff;
 }
-* { box-sizing: border-box; }
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  min-height: 100vh;
-  background: #edf0ff;
-  background-image: radial-gradient(#d2d9ff 2px, transparent 2px);
-  background-size: 22px 22px;
-  font-family: "Malgun Gothic", Arial, sans-serif;
-  color: var(--navy);
+  min-height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 28px 12px;
+  padding: 20px 9px;
+  background-color: #edf1ff;
+  background-image:
+    radial-gradient(#bfcfff 1.4px, transparent 1.4px);
+  background-size: 20px 20px;
+  font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  color: var(--ink);
 }
-button { font: inherit; cursor: pointer; }
-.device {
-  width: min(100%, 440px);
-  padding: 28px 24px 34px;
-  border: 5px solid var(--navy);
-  border-radius: 95px 95px 115px 115px;
-  background: linear-gradient(145deg,#f3eaff,#c4d2ff 70%,#b6c8ff);
-  box-shadow: inset 7px 7px #fff8,
-    inset -8px -8px #7e91e855,
-    10px 13px 0 #9ca9e4;
+
+button {
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* 다마고치 본체 */
+.shell {
   position: relative;
+  width: min(100%, 425px);
+  padding: 28px 19px 30px;
+  border: 4px solid #6680d0;
+  border-radius: 110px 110px 115px 115px;
+  background:
+    radial-gradient(ellipse at 25% 8%, #fff 0, transparent 35%),
+    linear-gradient(135deg, #f3eaff 0%, #dbe4ff 42%, #b8c8fa 100%);
+  box-shadow:
+    inset 6px 7px 0 #ffffff99,
+    inset -8px -12px 0 #8ba3e74d,
+    0 11px 0 #9badde,
+    0 16px 28px #657dc355;
+  isolation: isolate;
 }
-.device-title {
+
+.shell::before {
+  content: "✦  🫧  ✧  🐟  ✧";
+  position: absolute;
+  top: 13px;
+  left: 0;
+  right: 0;
   text-align: center;
-  font-size: 20px;
+  color: #7797e5;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.brand {
+  text-align: center;
+  font-size: clamp(16px, 5vw, 21px);
   font-weight: 900;
-  margin: 6px 0 15px;
+  letter-spacing: 1px;
+  margin: 21px 0 16px;
   text-shadow: 2px 2px white;
 }
-.device-title small {
+
+.brand small {
   display: block;
   font-size: 9px;
   letter-spacing: 3px;
   margin-top: 4px;
 }
-.screen-frame {
-  padding: 12px;
-  background: #a9b9fa;
-  border: 4px solid var(--navy);
-  border-radius: 24px;
-  box-shadow: inset 4px 4px #e7eaff;
+
+/* 오른쪽 장식 */
+.charm {
+  position: absolute;
+  right: -15px;
+  top: 140px;
+  z-index: 4;
+  pointer-events: none;
+  filter: drop-shadow(2px 3px 1px #7186ca);
 }
-.screen {
-  height: 420px;
+
+.charm span {
+  display: block;
+  text-align: center;
+  font-size: 25px;
+  line-height: 1.1;
+}
+
+/* 화면 테두리 */
+.bezel {
+  border: 4px solid #607bcf;
+  border-radius: 27px;
+  padding: 10px;
+  background: linear-gradient(140deg, #f7f8ff, #a1b9f4 70%);
+  box-shadow:
+    inset 3px 3px white,
+    3px 5px #8ca1dd;
+}
+
+.display {
+  border: 3px solid #4d68bf;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #e6efff;
+  box-shadow: inset 0 0 0 2px white;
+  min-width: 0;
+}
+
+/* 윈도우 XP 스타일 */
+.titlebar {
+  background: linear-gradient(180deg, #7895e3, #4265c0);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 6px;
+  font-size: 11px;
+  font-weight: 700;
+  gap: 5px;
+}
+
+.winbuttons {
+  white-space: nowrap;
+  display: flex;
+  gap: 3px;
+}
+
+.winbuttons i {
+  display: inline-grid;
+  place-items: center;
+  width: 17px;
+  height: 17px;
+  font-style: normal;
+  background: #e4eaff;
+  border: 1px solid #304e9e;
+  color: #3652a0;
+  box-shadow: inset 1px 1px white;
+}
+
+.menubar {
+  display: flex;
+  gap: 16px;
+  padding: 5px 9px;
+  background: #dce7ff;
+  border-bottom: 2px solid #8ca5e7;
+  font-size: 11px;
+}
+
+/* 내부 화면 */
+.desktop {
+  height: min(62vh, 485px);
+  min-height: 390px;
   overflow-y: auto;
-  background: var(--light);
-  border: 3px solid var(--navy);
-  border-radius: 9px;
+  padding: 10px 9px 8px;
+  background:
+    linear-gradient(#d7eaffd9, #e9e7ffdc),
+    radial-gradient(circle at 20% 25%, #9fdfff 0, transparent 35%);
+  scrollbar-color: #9aafe8 #e8edff;
   scrollbar-width: thin;
-  scrollbar-color: var(--blue) transparent;
 }
-.status {
-  height: 30px;
+
+.page {
+  display: none;
+  animation: appear .18s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes appear {
+  from {
+    opacity: .6;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hero {
+  text-align: center;
+  font-weight: 900;
+  font-size: 23px;
+  line-height: 1.12;
+  letter-spacing: 1px;
+  color: #486ac2;
+  text-shadow:
+    2px 2px white,
+    -1px -1px white;
+  margin: 6px 0 11px;
+}
+
+.hero small {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0;
+  font-weight: 600;
+  margin-top: 7px;
+}
+
+/* 작은 프로그램 창 */
+.window {
+  border: 2px solid #6c89d5;
+  background: #f6f8ff;
+  box-shadow: 3px 4px 0 #9bade3;
+  margin-bottom: 12px;
+}
+
+.window-head {
+  background: linear-gradient(#e9f0ff, #b6cafa);
+  padding: 5px 7px;
+  border-bottom: 2px solid #7892d3;
+  font-size: 11px;
+  font-weight: 800;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 0 9px;
-  background: #dce5ff;
-  border-bottom: 3px solid var(--navy);
-  font-size: 11px;
-  font-weight: bold;
 }
-.page { display: none; padding: 12px; }
-.page.active { display: block; }
-.page-title {
-  text-align: center;
-  font-size: 15px;
-  margin: 3px 0 13px;
-  border-bottom: 2px dashed var(--blue);
-  padding-bottom: 10px;
-}
-.aquarium {
-  position: relative;
-  background: linear-gradient(#a9e6ff,#77c6f1);
-  border: 3px solid var(--navy);
-  min-height: 80px;
-  overflow: hidden;
-}
-.aquarium::after {
-  content: "✧ ｡ 🫧 ｡ ✧";
-  position: absolute;
-  right: 8px;
-  top: 8px;
+
+.window-content {
+  padding: 8px;
   font-size: 12px;
-  pointer-events: none;
+  line-height: 1.75;
 }
+
+/* 영상 */
 video {
-  display: block;
   width: 100%;
-  max-height: 220px;
+  display: block;
+  background: #8bb8db;
+  max-height: 210px;
   object-fit: contain;
-  background: #9bd6ef;
 }
-.welcome {
-  margin: 12px 0;
-  padding: 12px;
-  border: 2px solid var(--navy);
-  background: white;
+
+.video-wrap {
+  border: 2px solid #6984c8;
+  background: #b6dcf5;
+}
+
+.hint {
   text-align: center;
-  font-size: 12px;
-  line-height: 1.9;
-}
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 8px;
-}
-.menu-item {
-  border: 2px solid var(--navy);
-  background: #e5eaff;
-  min-height: 75px;
-  padding: 8px 3px;
-  box-shadow: 3px 3px 0 #a0b1ed;
-  color: var(--navy);
-  font-weight: bold;
-  font-size: 10px;
-}
-.menu-item .emoji {
-  display: block;
-  font-size: 25px;
-  margin-bottom: 5px;
-}
-.menu-item.selected,
-.menu-item:focus-visible,
-.menu-item:hover {
-  background: var(--pink);
-  outline: 2px solid var(--navy);
-  outline-offset: 2px;
-}
-.entry {
-  display: block;
-  width: 100%;
-  margin: 9px 0;
-  padding: 12px;
-  text-align: left;
-  color: var(--navy);
-  background: white;
-  border: 2px solid var(--navy);
-  box-shadow: 3px 3px #b1b9ee;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.8;
+  margin: 7px 0 12px;
 }
-.entry.selected,
-.entry:focus-visible {
-  background: var(--pink);
-  outline: 2px solid var(--navy);
-}
-.entry strong { font-size: 14px; }
-.character-grid {
+
+/* 홈 메뉴 */
+.icon-grid {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 10px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 10px 0;
 }
-.character-tile {
-  background: #e4f3ff;
-  border: 2px solid var(--navy);
-  color: var(--navy);
-  padding: 10px 5px;
-  font-weight: bold;
-}
-.character-tile.selected,
-.character-tile:focus-visible {
-  background: var(--pink);
-  outline: 2px solid var(--navy);
-}
-.avatar {
-  width: 100%;
-  aspect-ratio: 1;
+
+.icon-btn {
+  min-width: 0;
+  min-height: 78px;
+  border: 2px solid #6885ce;
+  background: linear-gradient(white, #d9e6ff);
+  box-shadow: 2px 3px #a1b5e9;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 42px;
-  background: #c6e9fa;
-  margin-bottom: 8px;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.icon-btn .symbol {
+  font-size: 26px;
+  line-height: 1;
+}
+
+.icon-btn:hover,
+.icon-btn.selected,
+.icon-btn:focus-visible,
+.entry.selected,
+.entry:focus-visible {
+  background: #ffe0f1;
+  outline: 2px solid #5574c7;
+  outline-offset: 1px;
+}
+
+.section-title {
+  text-align: center;
+  font-weight: 900;
+  font-size: 15px;
+  margin: 4px 0 12px;
+}
+
+/* 캐릭터 도감 */
+.character-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.character-card {
+  border: 2px solid #6d87cf;
+  background: #f9faff;
+  padding: 7px;
+  min-width: 0;
+  box-shadow: 2px 3px #afbfeb;
+}
+
+.character-card.selected,
+.character-card:focus-visible {
+  background: #ffe2f1;
+  outline: 2px solid #5e7bcc;
+}
+
+.portrait {
+  height: 132px;
+  background: linear-gradient(#d7e9ff, #c4ccfa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 47px;
   overflow: hidden;
 }
-.avatar img {
+
+.portrait img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.profile-image {
+
+.character-card strong {
   display: block;
-  max-width: 100%;
-  max-height: 240px;
-  margin: 10px auto;
-  object-fit: contain;
-  border: 2px solid var(--navy);
+  margin: 8px 0 2px;
+  font-size: 13px;
 }
-.profile-text {
-  background: white;
-  border: 2px solid var(--navy);
-  padding: 12px;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
+
+.character-card small {
+  font-size: 10px;
+}
+
+/* 기록 목록 */
+.entry {
+  display: block;
+  width: 100%;
+  border: 2px solid #7a94d4;
+  background: #f8faff;
+  text-align: left;
+  padding: 10px;
+  margin: 8px 0;
+  box-shadow: 2px 3px #b1c1e8;
   font-size: 12px;
-  line-height: 1.9;
 }
+
 .empty {
   text-align: center;
-  padding: 30px 10px;
+  padding: 22px 7px;
+  font-size: 12px;
   line-height: 2;
+}
+
+.detail-image {
+  max-width: 100%;
+  max-height: 230px;
+  display: block;
+  margin: 7px auto;
+}
+
+.detail-text {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.85;
   font-size: 12px;
 }
-.controls {
-  display: flex;
-  justify-content: center;
-  gap: 22px;
-  margin-top: 22px;
-}
-.control {
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  border: 4px solid var(--navy);
-  background: linear-gradient(#f9f9ff,#94a9ff);
-  color: var(--navy);
-  font-size: 25px;
-  font-weight: 900;
-  box-shadow: 3px 5px 0 #7a8cd3;
-}
-.control:active { transform: translateY(4px); box-shadow: none; }
-.control-labels {
-  display: flex;
-  justify-content: center;
-  gap: 22px;
-  margin-top: 10px;
-  font-size: 10px;
-  font-weight: bold;
-}
-.control-labels span { width: 65px; text-align: center; }
-.bottom-text {
-  text-align: center;
-  font-size: 10px;
-  margin-top: 25px;
-  letter-spacing: 1px;
-}
-.back-link {
-  border: 2px solid var(--navy);
-  background: var(--lavender);
-  color: var(--navy);
-  padding: 8px 12px;
-  margin-bottom: 12px;
-  font-weight: bold;
-}
-.note {
+
+.back {
+  border: 2px solid #6b83cb;
+  background: #e5eaff;
+  padding: 6px 10px;
+  margin-bottom: 10px;
   font-size: 11px;
-  line-height: 1.8;
-  color: #5265ac;
+  font-weight: bold;
 }
-@media(max-width:400px) {
-  .device { padding: 23px 15px 28px; }
-  .screen { height: 390px; }
-  .controls { gap: 15px; }
+
+/* 작업 표시줄 */
+.taskbar {
+  background: linear-gradient(#dceaff, #adc3f0);
+  border-top: 2px solid #7896d7;
+  padding: 5px 7px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: bold;
 }
-@media(prefers-reduced-motion:reduce) {
-  * { scroll-behavior: auto !important; }
-}
-  
-/* 다마고치 하단 버튼 새 디자인 */
+
+/* 다마고치 버튼 */
 .controls {
   display: flex;
   justify-content: center;
+  gap: clamp(12px, 5vw, 29px);
+  margin-top: 21px;
   align-items: flex-start;
-  gap: 28px;
-  margin-top: 22px;
 }
 
 .control-group {
-  width: 65px;
+  width: 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-}
-
-.control-group span {
+  gap: 7px;
   font-size: 10px;
   font-weight: bold;
-  color: #303f9c;
 }
 
 .control {
-  width: 65px;
-  height: 65px;
-  flex-shrink: 0;
-}
-
-.mini-home {
-  width: 32px;
-  height: 32px;
-  margin-top: 7px;
+  width: 66px;
+  height: 66px;
   border-radius: 50%;
-  border: 3px solid #303f9c;
-  background: #ffd9eb;
-  color: #303f9c;
-  font-size: 21px;
-  font-weight: bold;
-  box-shadow: 2px 3px 0 #8999dc;
-  cursor: pointer;
+  border: 4px solid #5a76c7;
+  background:
+    radial-gradient(circle at 30% 20%, white, #b2c8ff 72%);
+  box-shadow:
+    inset 3px 3px #ffffff99,
+    3px 5px #8099d7;
+  font-size: 25px;
+  font-weight: 900;
 }
 
+.control:active,
 .mini-home:active {
   transform: translateY(3px);
   box-shadow: none;
 }
 
-.control-group .mini-label {
-  font-size: 9px;
+/* 작은 홈 버튼 */
+.mini-home {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid #6179c6;
+  background: linear-gradient(#fff2fb, #ffbfe1);
+  box-shadow: 2px 3px #8ea3dd;
+  font-size: 21px;
+  margin-top: 3px;
 }
 
-@media (max-width: 400px) {
+.footer {
+  text-align: center;
+  font-size: 9px;
+  letter-spacing: 1px;
+  margin-top: 20px;
+}
+
+/* 모바일 */
+@media (max-width: 350px) {
+  .shell {
+    padding: 24px 12px;
+  }
+
+  .bezel {
+    padding: 7px;
+  }
+
+  .desktop {
+    min-height: 365px;
+  }
+
+  .control {
+    width: 58px;
+    height: 58px;
+  }
+
+  .control-group {
+    width: 60px;
+  }
+
   .controls {
-    gap: 20px;
+    gap: 13px;
+  }
+
+  .charm {
+    right: -7px;
   }
 }
 
-/* ===== AQUARIUM TAMAGOTCHI DESIGN ===== */
-
-body {
-  background-color: #f0f2ff;
-  background-image:
-    radial-gradient(#cbd4ff 1.5px, transparent 1.5px);
-  background-size: 22px 22px;
+@media (prefers-reduced-motion: reduce) {
+  .page {
+    animation: none;
+  }
 }
-
-.device {
-  border-radius: 110px 110px 125px 125px;
-  border: 5px solid #354ba7;
-  background:
-    radial-gradient(ellipse at 18% 12%, #ffffffb0, transparent 30%),
-    linear-gradient(155deg, #f5edff 0%, #d9e3ff 40%, #b8cbff 100%);
-  box-shadow:
-    inset 8px 8px 12px #ffffffb8,
-    inset -8px -12px 15px #8097e455,
-    9px 13px 0 #a4b4e8;
-  padding-bottom: 42px;
-}
-
-.device::before {
-  content: "✧  🫧  ✧";
-  position: absolute;
-  top: 16px;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  font-size: 13px;
-  color: #738fe0;
-  pointer-events: none;
-}
-
-.device-title {
-  margin-top: 12px;
-  margin-bottom: 20px;
-  font-size: 21px;
-  color: #3046a3;
-  text-shadow: 2px 2px white;
-}
-
-.screen-frame {
-  background: linear-gradient(145deg, #b9caff, #899fe7);
-  border-radius: 26px;
-  border: 4px solid #354ba7;
-  box-shadow:
-    inset 4px 4px 0 #e7eeff,
-    4px 5px 0 #8799db;
-}
-
-.screen {
-  background: #f9faff;
-  border-radius: 12px;
-  border-color: #354ba7;
-}
-
-.status {
-  background: #e2ecff;
-  color: #3046a3;
-}
-
-.aquarium {
-  border-radius: 5px;
-  background: linear-gradient(#c7f3ff, #84c9ef);
-}
-
-.welcome {
-  background: #fffefe;
-  border-radius: 5px;
-  border-color: #7189db;
-  box-shadow: inset 0 0 0 3px #e6efff;
-}
-
-.menu-item {
-  border-radius: 8px;
-  border-color: #4055ae;
-  background: linear-gradient(145deg, #ffffff, #dce7ff);
-  box-shadow: 3px 4px 0 #9bafe7;
-  transition: transform .15s, background .15s;
-}
-
-.menu-item:hover,
-.menu-item.selected,
-.menu-item:focus-visible {
-  background: linear-gradient(145deg, #ffe2ef, #e7e7ff);
-  transform: translateY(-2px);
-}
-
-.menu-item .emoji {
-  font-size: 27px;
-}
-
-.control {
-  border: 4px solid #354ba7;
-  background: radial-gradient(circle at 32% 25%, #fff, #b5c7ff 75%);
-  box-shadow:
-    inset 3px 3px 0 #ffffffa8,
-    3px 5px 0 #7c92d9;
-}
-
-.mini-home {
-  background: linear-gradient(#fff0f8, #f3b9da);
-  border: 3px solid #354ba7;
-  box-shadow: 2px 3px 0 #8496d8;
-}
-
-.character-tile,
-.entry {
-  border-radius: 7px;
-  background: linear-gradient(145deg, #fff, #e3ecff);
-}
-
-.character-tile:hover,
-.entry:hover {
-  background: #ffe3f0;
-}
-
-.bottom-text {
-  color: #536bb9;
-  letter-spacing: 1.5px;
-}
-
 </style>
 </head>
 
 <body>
-<div class="device">
-  <div class="device-title">
-    ♥ 혁재 아카이브 ♥
-    <small>HYEOKJAE ARCHIVE</small>
+
+<main class="shell">
+
+  <div class="charm" aria-hidden="true">
+    <span>🫧</span>
+    <span>🎀</span>
+    <span>🐟</span>
+    <span>⭐</span>
   </div>
 
-  <div class="screen-frame">
-    <div class="screen" id="screen">
-      <div class="status">
-        <span>◈ AQUARIUM</span>
-        <span>♡ ♡ ♡ ▰</span>
+  <div class="brand">
+    ♡ HYEOKJAE ARCHIVE ♡
+    <small>OUR LITTLE AQUARIUM</small>
+  </div>
+
+  <div class="bezel">
+    <div class="display">
+
+      <div class="titlebar">
+        <span>🐠 HYEOKJAE ARCHIVE.exe</span>
+        <span class="winbuttons">
+          <i>_</i><i>□</i><i>×</i>
+        </span>
       </div>
 
-      <section class="page active" id="home">
-        <h2 class="page-title">♡ HOME ♡</h2>
-        <div class="aquarium">
-          <video id="introVideo" autoplay muted loop playsinline controls>
-            <source src="intro_compressed.mp4" type="video/mp4">
-            동영상을 재생할 수 없습니다.
-          </video>
-        </div>
-        <div class="welcome">
-          작은 수족관에 어서 와! 🫧<br>
-          이곳에는 정혁과 홍윤재의 이야기가<br>
-          천천히 쌓여 가고 있어.
-        </div>
-        <div class="menu-grid" id="homeMenu">
-          <button class="menu-item" data-page="characters">
-            <span class="emoji">🐟</span>CHARACTER
+      <div class="menubar">
+        <span>File</span>
+        <span>Edit</span>
+        <span>View</span>
+        <span>Help ♡</span>
+      </div>
+
+      <div class="desktop" id="desktop">
+
+        <!-- HOME -->
+        <section class="page active" id="home">
+
+          <h1 class="hero">
+            HYEOKJAE<br>ARCHIVE ♡
+            <small>✧ welcome to our little aquarium ✧</small>
+          </h1>
+
+          <div class="window">
+            <div class="window-head">
+              <span>📁 intro_video.mp4</span>
+              <span>_ □ ×</span>
+            </div>
+
+            <div class="window-content">
+              <div class="video-wrap">
+                <video
+                  id="introVideo"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  controls
+                  preload="metadata"
+                >
+                  <source
+                    src="intro_compressed.mp4"
+                    type="video/mp4"
+                  >
+                  영상 재생을 지원하지 않는 브라우저입니다.
+                </video>
+              </div>
+            </div>
+          </div>
+
+          <div class="icon-grid">
+
+            <button class="icon-btn" data-page="characters">
+              <span class="symbol">🐟</span>
+              CHARACTER
+            </button>
+
+            <button class="icon-btn" data-page="letters">
+              <span class="symbol">💌</span>
+              LETTER
+            </button>
+
+            <button class="icon-btn" data-page="comics">
+              <span class="symbol">📖</span>
+              COMIC
+            </button>
+
+            <button class="icon-btn" data-page="stories">
+              <span class="symbol">🫧</span>
+              STORY
+            </button>
+
+            <button class="icon-btn" data-page="gallery">
+              <span class="symbol">🐚</span>
+              GALLERY
+            </button>
+
+            <button class="icon-btn" data-page="settings">
+              <span class="symbol">⚙️</span>
+              SETTING
+            </button>
+
+          </div>
+
+          <div class="window">
+            <div class="window-head">
+              <span>📁 about.txt</span>
+              <span>×</span>
+            </div>
+            <div class="window-content">
+              작은 수족관에 어서 와!<br>
+              이곳에는 정혁과 홍윤재의 이야기가
+              천천히 쌓여 가고 있어. ♡
+            </div>
+          </div>
+
+        </section>
+
+        <!-- CHARACTER -->
+        <section class="page" id="characters">
+          <h2 class="section-title">📁 character.exe</h2>
+          <div class="character-grid" id="characterGrid"></div>
+        </section>
+
+        <!-- PROFILE -->
+        <section class="page" id="profile">
+          <button class="back" data-page="characters">◀ BACK</button>
+
+          <div class="window">
+            <div class="window-head" id="profileTitle">
+              profile.txt
+            </div>
+
+            <div class="window-content">
+              <img
+                class="detail-image"
+                id="profileImage"
+                hidden
+                alt="캐릭터 이미지"
+              >
+              <div class="detail-text" id="profileText"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- LETTER -->
+        <section class="page" id="letters">
+          <h2 class="section-title">💌 letter.exe</h2>
+          <div id="letterList"></div>
+        </section>
+
+        <section class="page" id="letterDetail">
+          <button class="back" data-page="letters">◀ BACK</button>
+          <div class="window">
+            <div class="window-head" id="letterTitle"></div>
+            <div class="window-content detail-text" id="letterBody"></div>
+          </div>
+        </section>
+
+        <!-- COMIC -->
+        <section class="page" id="comics">
+          <h2 class="section-title">📖 comic.exe</h2>
+          <div id="comicList"></div>
+        </section>
+
+        <!-- STORY -->
+        <section class="page" id="stories">
+          <h2 class="section-title">🫧 story.exe</h2>
+          <div id="storyList"></div>
+        </section>
+
+        <!-- GALLERY -->
+        <section class="page" id="gallery">
+          <h2 class="section-title">🐚 gallery.exe</h2>
+          <div id="galleryList"></div>
+        </section>
+
+        <!-- 기록 상세 -->
+        <section class="page" id="recordDetail">
+          <button class="back" id="recordBack">◀ BACK</button>
+
+          <div class="window">
+            <div class="window-head" id="recordTitle"></div>
+            <div class="window-content" id="recordBody"></div>
+          </div>
+        </section>
+
+        <!-- SETTING -->
+        <section class="page" id="settings">
+          <h2 class="section-title">⚙️ setting.exe</h2>
+
+          <button class="entry" id="soundBtn">
+            🔇 영상 소리 켜기
           </button>
-          <button class="menu-item" data-page="letters">
-            <span class="emoji">💌</span>LETTER
+
+          <button class="entry" id="playBtn">
+            ▶ 영상 재생 / 일시정지
           </button>
-          <button class="menu-item" data-page="comics">
-            <span class="emoji">📖</span>COMIC
-          </button>
-          <button class="menu-item" data-page="stories">
-            <span class="emoji">🫧</span>STORY
-          </button>
-          <button class="menu-item" data-page="gallery">
-            <span class="emoji">🐚</span>GALLERY
-          </button>
-          <button class="menu-item" data-page="settings">
-            <span class="emoji">⚙️</span>SETTING
-          </button>
-        </div>
-      </section>
 
-      <section class="page" id="characters">
-        <h2 class="page-title">🐟 CHARACTER</h2>
-        <div class="character-grid" id="characterGrid"></div>
-      </section>
+          <p class="hint">
+            영상은 자동 재생을 위해 음소거 상태로 시작해요.
+          </p>
+        </section>
 
-      <section class="page" id="profile">
-        <button class="back-link" data-page="characters">◀ BACK</button>
-        <h2 class="page-title" id="profileName"></h2>
-        <img id="profileImage" class="profile-image" alt="캐릭터 이미지" hidden>
-        <div class="profile-text" id="profileText"></div>
-      </section>
+      </div>
 
-      <section class="page" id="letters">
-        <h2 class="page-title">💌 LETTER BOX</h2>
-        <div id="letterList"></div>
-      </section>
+      <div class="taskbar">
+        <span>🐠 START</span>
+        <span>♡ READY · 12:06</span>
+      </div>
 
-      <section class="page" id="letterDetail">
-        <button class="back-link" data-page="letters">◀ BACK</button>
-        <h2 class="page-title" id="letterTitle"></h2>
-        <div class="profile-text" id="letterBody"></div>
-      </section>
-
-      <section class="page" id="comics">
-        <h2 class="page-title">📖 COMIC COLLECTION</h2>
-        <div id="comicList"></div>
-      </section>
-
-      <section class="page" id="stories">
-        <h2 class="page-title">🫧 STORY & LOG</h2>
-        <div id="storyList"></div>
-      </section>
-
-      <section class="page" id="gallery">
-        <h2 class="page-title">🐚 GALLERY</h2>
-        <div id="galleryList"></div>
-      </section>
-
-      <section class="page" id="recordDetail">
-        <button class="back-link" id="recordBack">◀ BACK</button>
-        <h2 class="page-title" id="recordTitle"></h2>
-        <div class="profile-text" id="recordBody"></div>
-      </section>
-
-      <section class="page" id="settings">
-        <h2 class="page-title">⚙️ SETTING</h2>
-        <button class="entry" id="soundButton">🔇 영상 소리 켜기</button>
-        <button class="entry" id="pauseButton">⏸ 영상 일시정지</button>
-        <p class="note">브라우저 자동 재생 정책에 따라 영상은 음소거 상태로 시작합니다.</p>
-      </section>
     </div>
   </div>
 
- 
-<div class="controls">
-  <div class="control-group">
-    <button class="control" id="prevBtn" aria-label="이전 항목">◀</button>
-    <span>PREV</span>
+  <!-- 다마고치 조작 버튼 -->
+  <div class="controls">
+
+    <div class="control-group">
+      <button class="control" id="prevBtn" aria-label="이전">
+        ◀
+      </button>
+      <span>PREV</span>
+    </div>
+
+    <div class="control-group">
+      <button class="control" id="selectBtn" aria-label="선택">
+        ♡
+      </button>
+      <span>SELECT</span>
+
+      <button class="mini-home" id="homeBtn" aria-label="홈">
+        ⌂
+      </button>
+      <span>HOME</span>
+    </div>
+
+    <div class="control-group">
+      <button class="control" id="nextBtn" aria-label="다음">
+        ▶
+      </button>
+      <span>NEXT</span>
+    </div>
+
   </div>
 
-  <div class="control-group">
-    <button class="control" id="selectBtn" aria-label="선택">♡</button>
-    <span>SELECT</span>
-    <button class="mini-home" id="homeBtn" aria-label="홈으로 이동">⌂</button>
-    <span class="mini-label">HOME</span>
+  <div class="footer">
+    ✧ A LITTLE WORLD UNDER THE BLUE ✧
   </div>
 
-  <div class="control-group">
-    <button class="control" id="nextBtn" aria-label="다음 항목">▶</button>
-    <span>NEXT</span>
-  </div>
-</div>
-
+</main>
 
 <script>
+
 /* ===== 캐릭터 정보 ===== */
+
 const characters = [
   {
     name: "정혁",
@@ -606,227 +782,323 @@ const characters = [
   }
 ];
 
-/* ===== 기록 데이터 =====
-   아래 배열에 나중에 편지와 만화를 추가할 수 있어요.
+/* ===== 편지, 만화, 글, 갤러리 ===== */
+
+/* 편지 예시:
+   {title:"편지 제목", text:"편지 내용"}
 */
 const letters = [];
+
+/* 만화 예시:
+   {title:"첫 번째 만화", text:"설명", image:"comic1.png"}
+*/
 const comics = [];
+
 const stories = [];
 const gallery = [];
 
-const screen = document.getElementById("screen");
-const video = document.getElementById("introVideo");
-const pages = [...document.querySelectorAll(".page")];
+/* ===== 화면 전환 기능 ===== */
+
+const $ = id => document.getElementById(id);
+const video = $("introVideo");
+
 let currentPage = "home";
-let previousRecordPage = "home";
-let selectedIndex = 0;
+let selected = 0;
+let recordParent = "home";
 
-function pageButtons() {
-  return [...document.querySelectorAll(
-    "#" + currentPage + " button:not([disabled])"
-  )];
+const validPages = new Set([
+  "home",
+  "characters",
+  "profile",
+  "letters",
+  "letterDetail",
+  "comics",
+  "stories",
+  "gallery",
+  "recordDetail",
+  "settings"
+]);
+
+function buttons() {
+  return [
+    ...$(currentPage).querySelectorAll("button:not(:disabled)")
+  ];
 }
 
-function updateSelection() {
-  const buttons = pageButtons();
-  if (buttons.length === 0) return;
-  selectedIndex = Math.max(0, Math.min(selectedIndex, buttons.length - 1));
-  document.querySelectorAll(".selected").forEach(el => {
-    el.classList.remove("selected");
+function highlight() {
+  document.querySelectorAll(".selected").forEach(b => {
+    b.classList.remove("selected");
   });
-  buttons[selectedIndex].classList.add("selected");
+
+  const b = buttons();
+  if (!b.length) return;
+
+  selected = Math.min(selected, b.length - 1);
+  b[selected].classList.add("selected");
 }
 
-function showPage(id, push = true) {
-  if (!document.getElementById(id)) return;
-  currentPage = id;
-  pages.forEach(page => {
-    page.classList.toggle("active", page.id === id);
+function showPage(page, historyUpdate = true) {
+  if (!validPages.has(page)) {
+    page = "home";
+  }
+
+  currentPage = page;
+
+  document.querySelectorAll(".page").forEach(p => {
+    p.classList.toggle("active", p.id === page);
   });
-  selectedIndex = 0;
-  screen.scrollTop = 0;
-  updateSelection();
 
-  if (push) history.pushState({page:id}, "", "#" + id);
+  selected = 0;
+  $("desktop").scrollTop = 0;
+  highlight();
 
-  if (id !== "home") video.pause();
-  else video.play().catch(() => {});
+  if (historyUpdate && location.hash !== "#" + page) {
+    history.pushState({page}, "", "#" + page);
+  }
+
+  if (page === "home") {
+    video.play().catch(() => {});
+  } else {
+    video.pause();
+  }
 }
 
-function openProfile(index) {
-  const c = characters[index];
+/* ===== 캐릭터 프로필 ===== */
+
+function openProfile(i) {
+  const c = characters[i];
   if (!c) return;
 
-  document.getElementById("profileName").textContent = c.name;
-  document.getElementById("profileText").textContent =
-    c.intro + "\n\nPROFILE\n" + c.details +
-    "\n\nSTORY / BACKGROUND\n" + c.story;
+  $("profileTitle").textContent =
+    "📁 " + c.name + " / profile.txt";
 
-  const img = document.getElementById("profileImage");
+  $("profileText").textContent =
+    c.intro +
+    "\n\nPROFILE\n" +
+    c.details +
+    "\n\nSTORY\n" +
+    c.story;
+
+  $("profileImage").hidden = !c.image;
+
   if (c.image) {
-    img.src = c.image;
-    img.hidden = false;
+    $("profileImage").src = c.image;
   } else {
-    img.removeAttribute("src");
-    img.hidden = true;
+    $("profileImage").removeAttribute("src");
   }
+
   showPage("profile");
 }
 
-const characterGrid = document.getElementById("characterGrid");
-
 characters.forEach((c, i) => {
-  const button = document.createElement("button");
-  button.className = "character-tile";
-  const avatar = document.createElement("div");
-  avatar.className = "avatar";
+  const b = document.createElement("button");
+  b.className = "character-card";
+
+  const pic = document.createElement("div");
+  pic.className = "portrait";
 
   if (c.image) {
     const img = document.createElement("img");
     img.src = c.image;
     img.alt = c.name;
-    avatar.appendChild(img);
+    pic.append(img);
   } else {
-    avatar.textContent = i === 0 ? "🐟" : "🐢";
+    pic.textContent = i === 0 ? "🐟" : "🐢";
   }
 
-  const name = document.createElement("span");
+  const name = document.createElement("strong");
   name.textContent = c.name;
-  button.append(avatar, name);
-  button.addEventListener("click", () => openProfile(i));
-  characterGrid.appendChild(button);
+
+  const sub = document.createElement("small");
+  sub.textContent = "📁 PROFILE →";
+
+  b.append(pic, name, sub);
+
+  b.onclick = () => openProfile(i);
+
+  $("characterGrid").append(b);
 });
 
-function renderRecords(items, containerId, parentPage) {
-  const container = document.getElementById(containerId);
-  container.replaceChildren();
+/* ===== 편지 / 만화 / 기록 목록 ===== */
 
-  if (!items.length) {
-    const empty = document.createElement("p");
-    empty.className = "empty";
-    empty.textContent = "아직 등록된 기록이 없어요. ♡";
-    container.appendChild(empty);
+function renderList(data, id, parent, emptyText) {
+  const wrap = $(id);
+  wrap.replaceChildren();
+
+  if (!data.length) {
+    const p = document.createElement("p");
+    p.className = "empty";
+    p.textContent = emptyText;
+    wrap.append(p);
     return;
   }
 
-  items.forEach(item => {
-    const button = document.createElement("button");
-    button.className = "entry";
-    button.textContent = "✧ " + item.title;
-    button.addEventListener("click", () => {
-      previousRecordPage = parentPage;
-      document.getElementById("recordTitle").textContent = item.title;
-      document.getElementById("recordBody").replaceChildren();
+  data.forEach(item => {
+    const b = document.createElement("button");
+    b.className = "entry";
+    b.textContent = "📁 " + item.title;
 
-      const body = document.getElementById("recordBody");
+    b.onclick = () => {
+      if (parent === "letters") {
+        $("letterTitle").textContent = "💌 " + item.title;
+        $("letterBody").textContent = item.text || "";
+        showPage("letterDetail");
+        return;
+      }
+
+      recordParent = parent;
+
+      $("recordTitle").textContent = "📁 " + item.title;
+
+      const body = $("recordBody");
+      body.replaceChildren();
+
       if (item.image) {
         const img = document.createElement("img");
+        img.className = "detail-image";
         img.src = item.image;
         img.alt = item.title;
-        img.style.maxWidth = "100%";
-        body.appendChild(img);
+        body.append(img);
       }
+
       if (item.text) {
         const p = document.createElement("p");
+        p.className = "detail-text";
         p.textContent = item.text;
-        body.appendChild(p);
+        body.append(p);
       }
+
       showPage("recordDetail");
-    });
-    container.appendChild(button);
+    };
+
+    wrap.append(b);
   });
 }
 
-renderRecords(comics, "comicList", "comics");
-renderRecords(stories, "storyList", "stories");
-renderRecords(gallery, "galleryList", "gallery");
+renderList(
+  letters,
+  "letterList",
+  "letters",
+  "아직 도착한 편지가 없어요. 💌"
+);
 
-const letterList = document.getElementById("letterList");
-if (!letters.length) {
-  letterList.innerHTML = '<p class="empty">아직 도착한 편지가 없어요. 💌</p>';
-}
-letters.forEach(letter => {
-  const button = document.createElement("button");
-  button.className = "entry";
-  button.textContent = "💌 " + letter.title;
-  button.addEventListener("click", () => {
-    document.getElementById("letterTitle").textContent = letter.title;
-    document.getElementById("letterBody").textContent = letter.text;
-    showPage("letterDetail");
-  });
-  letterList.appendChild(button);
+renderList(
+  comics,
+  "comicList",
+  "comics",
+  "아직 등록된 만화가 없어요. 📖"
+);
+
+renderList(
+  stories,
+  "storyList",
+  "stories",
+  "아직 등록된 글이 없어요. 🫧"
+);
+
+renderList(
+  gallery,
+  "galleryList",
+  "gallery",
+  "아직 등록된 그림이 없어요. 🐚"
+);
+
+/* ===== 메뉴 버튼 클릭 ===== */
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-page]");
+
+  if (b) {
+    showPage(b.dataset.page);
+  }
 });
 
-document.addEventListener("click", event => {
-  const target = event.target.closest("[data-page]");
-  if (target) showPage(target.dataset.page);
-});
-
-document.getElementById("recordBack").addEventListener("click", () => {
-  showPage(previousRecordPage);
-});
-
-function moveSelection(step) {
-  const buttons = pageButtons();
-  if (!buttons.length) return;
-  selectedIndex = (selectedIndex + step + buttons.length) % buttons.length;
-  updateSelection();
-  buttons[selectedIndex].scrollIntoView({block:"nearest"});
-}
-
-document.getElementById("prevBtn").onclick = () => moveSelection(-1);
-document.getElementById("nextBtn").onclick = () => moveSelection(1);
-document.getElementById("selectBtn").onclick = () => {
-  const buttons = pageButtons();
-  if (buttons[selectedIndex]) buttons[selectedIndex].click();
+$("recordBack").onclick = () => {
+  showPage(recordParent);
 };
-document.getElementById("homeBtn").addEventListener("click", () => {
-  showPage("home");
-});
-document.addEventListener("keydown", event => {
-  if (["ArrowLeft","ArrowUp"].includes(event.key)) {
-    event.preventDefault();
-    moveSelection(-1);
-  }
-  if (["ArrowRight","ArrowDown"].includes(event.key)) {
-    event.preventDefault();
-    moveSelection(1);
-  }
-  if (event.key === "Enter" && event.target.tagName !== "BUTTON") {
-    const buttons = pageButtons();
-    if (buttons[selectedIndex]) buttons[selectedIndex].click();
-  }
-  if (event.key === "Escape") {
-    showPage("home");
-  }
-});
 
-const soundButton = document.getElementById("soundButton");
-soundButton.onclick = () => {
+/* ===== 다마고치 조작 버튼 ===== */
+
+function move(step) {
+  const b = buttons();
+
+  if (!b.length) return;
+
+  selected = (selected + step + b.length) % b.length;
+
+  highlight();
+
+  b[selected].scrollIntoView({
+    block: "nearest"
+  });
+}
+
+$("prevBtn").onclick = () => move(-1);
+
+$("nextBtn").onclick = () => move(1);
+
+$("selectBtn").onclick = () => {
+  const b = buttons();
+
+  if (b[selected]) {
+    b[selected].click();
+  }
+};
+
+/* 작은 HOME 버튼 */
+$("homeBtn").onclick = () => {
+  showPage("home");
+};
+
+/* ===== 영상 설정 ===== */
+
+$("soundBtn").onclick = () => {
   video.muted = !video.muted;
-  soundButton.textContent = video.muted
+
+  $("soundBtn").textContent = video.muted
     ? "🔇 영상 소리 켜기"
     : "🔊 영상 소리 끄기";
 };
 
-const pauseButton = document.getElementById("pauseButton");
-pauseButton.onclick = () => {
+$("playBtn").onclick = () => {
   if (video.paused) {
     video.play().catch(() => {});
-    pauseButton.textContent = "⏸ 영상 일시정지";
   } else {
     video.pause();
-    pauseButton.textContent = "▶ 영상 재생";
   }
 };
 
-window.addEventListener("popstate", () => {
-  const id = location.hash.slice(1);
-  showPage(document.getElementById(id) ? id : "home", false);
+/* ===== 키보드 조작 ===== */
+
+document.addEventListener("keydown", e => {
+  if (["ArrowLeft", "ArrowUp"].includes(e.key)) {
+    e.preventDefault();
+    move(-1);
+  }
+
+  if (["ArrowRight", "ArrowDown"].includes(e.key)) {
+    e.preventDefault();
+    move(1);
+  }
+
+  if (e.key === "Escape") {
+    showPage("home");
+  }
 });
 
-const startPage = location.hash.slice(1);
-showPage(document.getElementById(startPage) ? startPage : "home", false);
+/* ===== 브라우저 뒤로가기 ===== */
+
+window.addEventListener("popstate", () => {
+  showPage(location.hash.slice(1) || "home", false);
+});
+
+showPage(
+  validPages.has(location.hash.slice(1))
+    ? location.hash.slice(1)
+    : "home",
+  false
+);
+
 </script>
 </body>
 </html>
