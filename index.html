@@ -4,1102 +4,635 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>HYEOKJAE ARCHIVE</title>
+<title>혁재 아카이브 ♡</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
-
 :root {
-  --bg: #F7F1E5;
-  --panel: #EEE8DC;
-  --text: #35475B;
-  --muted: #7C8F91;
-  --accent: #303F67;
-  --line: #D5DFD7;
-  --water: #DCE8E8;
-  --white: #FFFCF5;
+  --navy: #303f9c;
+  --blue: #7f9cf4;
+  --lavender: #d9dcff;
+  --light: #f8f7ff;
+  --aqua: #c6f0fa;
+  --pink: #ffd9eb;
 }
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 85px;
-}
-
+* { box-sizing: border-box; }
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: Arial, "Malgun Gothic", sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  font: inherit;
-  cursor: pointer;
-}
-
-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: rgba(247, 241, 229, 0.96);
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(10px);
-}
-
-.header-inner {
-  width: min(1040px, 100%);
-  margin: auto;
-  padding: 18px 24px;
+  min-height: 100vh;
+  background: #edf0ff;
+  background-image: radial-gradient(#d2d9ff 2px, transparent 2px);
+  background-size: 22px 22px;
+  font-family: "Malgun Gothic", Arial, sans-serif;
+  color: var(--navy);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-}
-
-.logo {
-  color: var(--accent);
-  font-size: 13px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  white-space: nowrap;
-}
-
-nav {
-  display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
-}
-
-nav a {
-  color: var(--muted);
-  font-size: 11px;
-  transition: color .2s;
-}
-
-nav a:hover {
-  color: var(--accent);
-}
-
-main {
-  width: min(1040px, 100%);
-  margin: auto;
-  padding: 0 24px;
-}
-
-/* 메인 소개 */
-
-.hero {
-  min-height: 440px;
-  padding: 78px 0 42px;
-  display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  padding: 28px 12px;
+}
+button { font: inherit; cursor: pointer; }
+.device {
+  width: min(100%, 440px);
+  padding: 28px 24px 34px;
+  border: 5px solid var(--navy);
+  border-radius: 95px 95px 115px 115px;
+  background: linear-gradient(145deg,#f3eaff,#c4d2ff 70%,#b6c8ff);
+  box-shadow: inset 7px 7px #fff8,
+    inset -8px -8px #7e91e855,
+    10px 13px 0 #9ca9e4;
   position: relative;
+}
+.device-title {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 900;
+  margin: 6px 0 15px;
+  text-shadow: 2px 2px white;
+}
+.device-title small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 3px;
+  margin-top: 4px;
+}
+.screen-frame {
+  padding: 12px;
+  background: #a9b9fa;
+  border: 4px solid var(--navy);
+  border-radius: 24px;
+  box-shadow: inset 4px 4px #e7eaff;
+}
+.screen {
+  height: 420px;
+  overflow-y: auto;
+  background: var(--light);
+  border: 3px solid var(--navy);
+  border-radius: 9px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue) transparent;
+}
+.status {
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 9px;
+  background: #dce5ff;
+  border-bottom: 3px solid var(--navy);
+  font-size: 11px;
+  font-weight: bold;
+}
+.page { display: none; padding: 12px; }
+.page.active { display: block; }
+.page-title {
+  text-align: center;
+  font-size: 15px;
+  margin: 3px 0 13px;
+  border-bottom: 2px dashed var(--blue);
+  padding-bottom: 10px;
+}
+.aquarium {
+  position: relative;
+  background: linear-gradient(#a9e6ff,#77c6f1);
+  border: 3px solid var(--navy);
+  min-height: 80px;
   overflow: hidden;
 }
-
-.eyebrow {
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 3px;
-  line-height: 1.8;
-}
-
-h1 {
-  color: var(--accent);
-  font-size: clamp(43px, 8vw, 82px);
-  line-height: 1.02;
-  letter-spacing: -3px;
-  margin: 18px 0;
-}
-
-.intro {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 2;
-}
-
-.primary-link {
-  display: inline-block;
-  background: var(--accent);
-  color: var(--white);
-  padding: 13px 20px;
-  margin-top: 18px;
-  border-radius: 3px;
-  font-size: 10px;
-  letter-spacing: 1px;
-}
-
-.bubble {
+.aquarium::after {
+  content: "✧ ｡ 🫧 ｡ ✧";
   position: absolute;
-  border: 1px solid #C9D8D5;
-  border-radius: 50%;
+  right: 8px;
+  top: 8px;
+  font-size: 12px;
   pointer-events: none;
 }
-
-.bubble-one {
-  width: 100px;
-  height: 100px;
-  right: 12%;
-  top: 90px;
+video {
+  display: block;
+  width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  background: #9bd6ef;
 }
-
-.bubble-two {
-  width: 35px;
-  height: 35px;
-  right: 8%;
-  top: 220px;
-}
-
-.bubble-three {
-  width: 18px;
-  height: 18px;
-  right: 28%;
-  top: 65px;
-}
-
-/* 영상 자리 */
-
-.video-placeholder {
-  min-height: 230px;
-  border: 1px solid var(--line);
-  background:
-    radial-gradient(ellipse at 75% 20%, #E5EAE1 0%, transparent 38%),
-    linear-gradient(140deg, #E8E6D9, #DCE8E8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 12px;
+.welcome {
+  margin: 12px 0;
+  padding: 12px;
+  border: 2px solid var(--navy);
+  background: white;
   text-align: center;
-  padding: 30px;
-  position: relative;
-  overflow: hidden;
+  font-size: 12px;
+  line-height: 1.9;
 }
-
-.video-placeholder::before,
-.video-placeholder::after {
-  content: "";
-  position: absolute;
-  width: 240px;
-  height: 100px;
-  border: 1px solid rgba(48, 63, 103, .10);
-  border-radius: 50%;
-  transform: rotate(-18deg);
-}
-
-.video-placeholder::before {
-  right: -70px;
-  bottom: -30px;
-}
-
-.video-placeholder::after {
-  left: -100px;
-  top: -60px;
-}
-
-.placeholder-symbol {
-  font-size: 28px;
-  color: var(--accent);
-}
-
-.placeholder-label {
-  color: var(--accent);
-  font-size: 11px;
-  letter-spacing: 2px;
-}
-
-.placeholder-note {
-  color: var(--muted);
-  font-size: 11px;
-}
-
-/* 공통 섹션 */
-
-.section {
-  padding: 78px 0 12px;
-}
-
-.section-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 15px;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 16px;
-  margin-bottom: 24px;
-}
-
-.section-number {
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 2px;
-}
-
-.section-title {
-  color: var(--accent);
-  font-size: 21px;
-  font-weight: normal;
-  letter-spacing: -0.5px;
-  margin: 8px 0 0;
-}
-
-.section-caption {
-  color: var(--muted);
-  font-size: 11px;
-}
-
-/* 만화와 글 */
-
-.content-grid {
+.menu-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(3,1fr);
+  gap: 8px;
 }
-
-.content-card {
-  min-height: 180px;
-  border: 1px solid var(--line);
-  padding: 22px;
-  background: var(--white);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform .2s, background .2s;
-}
-
-.content-card:hover {
-  transform: translateY(-3px);
-  background: var(--water);
-}
-
-.content-label {
-  color: var(--muted);
+.menu-item {
+  border: 2px solid var(--navy);
+  background: #e5eaff;
+  min-height: 75px;
+  padding: 8px 3px;
+  box-shadow: 3px 3px 0 #a0b1ed;
+  color: var(--navy);
+  font-weight: bold;
   font-size: 10px;
-  letter-spacing: 2px;
 }
-
-.content-card h3 {
-  color: var(--accent);
-  font-size: 18px;
-  font-weight: normal;
-  margin: 20px 0 8px;
+.menu-item .emoji {
+  display: block;
+  font-size: 25px;
+  margin-bottom: 5px;
 }
-
-.content-card p {
-  color: var(--muted);
+.menu-item.selected,
+.menu-item:focus-visible,
+.menu-item:hover {
+  background: var(--pink);
+  outline: 2px solid var(--navy);
+  outline-offset: 2px;
+}
+.entry {
+  display: block;
+  width: 100%;
+  margin: 9px 0;
+  padding: 12px;
+  text-align: left;
+  color: var(--navy);
+  background: white;
+  border: 2px solid var(--navy);
+  box-shadow: 3px 3px #b1b9ee;
   font-size: 12px;
   line-height: 1.8;
-  margin: 0;
 }
-
-.content-link {
-  color: var(--accent);
-  font-size: 11px;
-  margin-top: 22px;
+.entry.selected,
+.entry:focus-visible {
+  background: var(--pink);
+  outline: 2px solid var(--navy);
 }
-
-/* 캐릭터 목록 */
-
-.character-list {
+.entry strong { font-size: 14px; }
+.character-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(2,1fr);
+  gap: 10px;
 }
-
-.character {
-  min-width: 0;
-  border: 1px solid var(--line);
-  background: var(--white);
-  overflow: hidden;
-  transition: transform .2s;
+.character-tile {
+  background: #e4f3ff;
+  border: 2px solid var(--navy);
+  color: var(--navy);
+  padding: 10px 5px;
+  font-weight: bold;
 }
-
-.character:hover {
-  transform: translateY(-4px);
+.character-tile.selected,
+.character-tile:focus-visible {
+  background: var(--pink);
+  outline: 2px solid var(--navy);
 }
-
-.art {
-  aspect-ratio: 4 / 5;
-  background: var(--water);
+.avatar {
+  width: 100%;
+  aspect-ratio: 1;
   display: flex;
-  align-items: center;
   justify-content: center;
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-align: center;
-  padding: 10px;
+  align-items: center;
+  font-size: 42px;
+  background: #c6e9fa;
+  margin-bottom: 8px;
   overflow: hidden;
 }
-
-.art img {
+.avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
-.character-info {
-  padding: 17px;
+.profile-image {
+  display: block;
+  max-width: 100%;
+  max-height: 240px;
+  margin: 10px auto;
+  object-fit: contain;
+  border: 2px solid var(--navy);
 }
-
-.number {
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 1px;
-}
-
-.character h3 {
-  color: var(--accent);
-  font-size: 16px;
-  font-weight: normal;
-  margin: 12px 0 8px;
-  overflow-wrap: anywhere;
-}
-
-.character p {
-  color: var(--muted);
-  font-size: 10px;
-  line-height: 1.7;
-  min-height: 17px;
-}
-
-.action-button {
-  width: 100%;
+.profile-text {
+  background: white;
+  border: 2px solid var(--navy);
   padding: 12px;
-  margin-top: 10px;
-  border: 1px solid var(--accent);
-  background: transparent;
-  color: var(--accent);
-  font-size: 10px;
-  letter-spacing: 1px;
-  transition: background .2s, color .2s;
-}
-
-.action-button:hover {
-  background: var(--accent);
-  color: var(--white);
-}
-
-/* 캐릭터 상세 화면 */
-
-#profile {
-  display: none;
-  padding: 38px 0 80px;
-  min-height: 70vh;
-}
-
-.back {
-  width: auto;
-  margin-bottom: 35px;
-  padding: 11px 15px;
-}
-
-.profile-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: 35px;
-  align-items: start;
-}
-
-.profile-art {
-  width: 100%;
-  max-height: 650px;
-  aspect-ratio: 4 / 5;
-  background: var(--water);
-  object-fit: contain;
-}
-
-.profile-name {
-  color: var(--accent);
-  font-size: clamp(30px, 5vw, 46px);
-  font-weight: normal;
-  line-height: 1.2;
-  margin: 15px 0;
-  overflow-wrap: anywhere;
-}
-
-.profile-type {
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 2px;
-}
-
-.profile-description {
-  color: var(--text);
-  line-height: 2;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
-  font-size: 13px;
-}
-
-.detail {
-  margin-top: 30px;
-  border-top: 1px solid var(--line);
-  padding-top: 18px;
-}
-
-.detail h3 {
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 2px;
-}
-
-.detail p {
-  color: var(--text);
+  font-size: 12px;
   line-height: 1.9;
-  font-size: 13px;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
 }
-
-/* 하단 */
-
-footer {
-  width: min(1040px, 100%);
-  margin: 80px auto 0;
-  border-top: 1px solid var(--line);
-  padding: 28px 24px;
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: 1px;
+.empty {
   text-align: center;
+  padding: 30px 10px;
+  line-height: 2;
+  font-size: 12px;
 }
-
-@media (max-width: 650px) {
-  .header-inner {
-    padding: 16px;
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  nav {
-    gap: 15px;
-  }
-
-  main {
-    padding: 0 16px;
-  }
-
-  .hero {
-    min-height: 390px;
-    padding-top: 65px;
-  }
-
-  .bubble-one {
-    right: 5%;
-    top: 45px;
-    width: 65px;
-    height: 65px;
-  }
-
-  .bubble-two {
-    right: 4%;
-    top: 150px;
-  }
-
-  .video-placeholder {
-    min-height: 180px;
-  }
-
-  .section {
-    padding-top: 60px;
-  }
-
-  .character-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  .character-info {
-    padding: 12px;
-  }
-
-  .character h3 {
-    font-size: 14px;
-  }
-
-  .content-grid {
-    gap: 10px;
-  }
-
-  .content-card {
-    padding: 15px;
-    min-height: 170px;
-  }
-
-  .profile-layout {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-
-  .profile-art {
-    max-height: 500px;
-  }
-}
-
-@media (max-width: 360px) {
-  .logo {
-    font-size: 12px;
-  }
-
-  nav {
-    gap: 10px;
-  }
-
-  nav a {
-    font-size: 10px;
-  }
-
-  .character-list {
-    gap: 8px;
-  }
-}
-  
-.video-container {
-  overflow: hidden;
-  border: 1px solid var(--line);
-  background: var(--water);
-}
-
-.intro-video {
-  display: block;
-  width: 100%;
-  max-height: 520px;
-  object-fit: contain;
-}
-  
-/* ===== RETRO PIXEL AQUARIUM ===== */
-:root {
-  --bg: #dcdcff;
-  --panel: #eeeeff;
-  --text: #172d9b;
-  --muted: #5365b8;
-  --accent: #2338b8;
-  --line: #6478e8;
-  --water: #b9eaff;
-  --white: #ffffff;
-}
-
-body {
-  background-color: var(--bg);
-  background-image: radial-gradient(#ffffff 1px, transparent 1px);
-  background-size: 8px 8px;
-  color: var(--text);
-  font-family: "Courier New", "Malgun Gothic", monospace;
-}
-
-header {
-  background: #c9caff;
-  border-bottom: 4px solid var(--accent);
-  box-shadow: 0 4px 0 #a3a6f4;
-}
-
-.header-inner {
-  width: 100%;
-  min-height: 76px;
-  padding: 18px 14px;
+.controls {
+  display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.logo {
-  color: var(--accent);
-  font-size: 23px;
-  font-weight: 900;
-  letter-spacing: 1px;
-  text-align: center;
-  text-shadow: 2px 2px #ffffff;
-}
-
-nav {
-  justify-content: center;
-  gap: 8px;
-}
-
-nav a {
-  background: #aebcff;
-  color: #172d9b;
-  border: 2px solid #2338b8;
-  box-shadow: 3px 3px 0 #2338b8;
-  padding: 8px 10px;
-  font-size: 11px;
-  font-weight: bold;
-}
-
-main {
-  padding: 0 16px;
-}
-
-.hero {
-  align-items: center;
-  text-align: center;
-  background: #eeeeff;
-  border: 3px solid var(--accent);
-  box-shadow: 5px 5px 0 #8791ed;
+  gap: 22px;
   margin-top: 22px;
-  padding: 38px 18px;
-  min-height: 320px;
 }
-
-h1 {
-  font-size: clamp(30px, 7vw, 54px);
-  letter-spacing: 0;
-  line-height: 1.3;
-  text-shadow: 3px 3px #b9eaff;
+.control {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  border: 4px solid var(--navy);
+  background: linear-gradient(#f9f9ff,#94a9ff);
+  color: var(--navy);
+  font-size: 25px;
+  font-weight: 900;
+  box-shadow: 3px 5px 0 #7a8cd3;
 }
-
-.eyebrow,
-.section-number,
-.content-label {
-  color: #5365b8;
+.control:active { transform: translateY(4px); box-shadow: none; }
+.control-labels {
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  margin-top: 10px;
+  font-size: 10px;
   font-weight: bold;
+}
+.control-labels span { width: 65px; text-align: center; }
+.bottom-text {
+  text-align: center;
+  font-size: 10px;
+  margin-top: 25px;
   letter-spacing: 1px;
 }
-
-.primary-link,
-.action-button {
-  background: linear-gradient(#e4e8ff 0%, #a6b5ff 48%, #8588ed 100%);
-  color: #172d9b;
-  border: 3px solid #2338b8;
-  border-radius: 0;
-  box-shadow: 4px 4px 0 #2338b8;
+.back-link {
+  border: 2px solid var(--navy);
+  background: var(--lavender);
+  color: var(--navy);
+  padding: 8px 12px;
+  margin-bottom: 12px;
   font-weight: bold;
-  padding: 12px 16px;
 }
-
-.primary-link:hover,
-.action-button:hover {
-  background: #b9eaff;
-  color: #172d9b;
-  transform: translate(-1px, -1px);
+.note {
+  font-size: 11px;
+  line-height: 1.8;
+  color: #5265ac;
 }
-
-.video-container {
-  margin-top: 18px;
-  padding: 8px;
-  border: 4px solid #2338b8;
-  background: #b9eaff;
-  box-shadow: 5px 5px 0 #8791ed;
+@media(max-width:400px) {
+  .device { padding: 23px 15px 28px; }
+  .screen { height: 390px; }
+  .controls { gap: 15px; }
 }
-
-.intro-video {
-  display: block;
-  width: 100%;
-  max-height: 520px;
-  object-fit: contain;
-  background: #b9eaff;
+@media(prefers-reduced-motion:reduce) {
+  * { scroll-behavior: auto !important; }
 }
-
-.section-heading {
-  border-bottom: 3px solid #6478e8;
-}
-
-.section-title {
-  font-weight: bold;
-  letter-spacing: 0;
-}
-
-.content-card,
-.character {
-  background: #eeeeff;
-  border: 3px solid #6478e8;
-  border-radius: 0;
-  box-shadow: 4px 4px 0 #8791ed;
-}
-
-.content-card:hover,
-.character:hover {
-  background: #d4f2ff;
-}
-
-.art {
-  background-color: #b9eaff;
-  border-bottom: 3px solid #6478e8;
-}
-
-footer {
-  border-top: 3px solid #6478e8;
-  background: #c9caff;
-  color: #2338b8;
-}
-
-@media (max-width: 650px) {
-  .header-inner {
-    align-items: center;
-    flex-direction: column;
-  }
-
-  .logo {
-    font-size: 21px;
-  }
-
-  nav {
-    width: 100%;
-    gap: 6px;
-  }
-
-  nav a {
-    font-size: 10px;
-    padding: 7px 8px;
-  }
-
-  .hero {
-    padding: 32px 12px;
-  }
-}
-
 </style>
 </head>
 
 <body>
-
-<header>
-  <div class="header-inner">
-<a class="logo" href="#top" id="homeLogo">♥ 혁재 아카이브 ♥</a>
-    <nav>
-      <a href="#about" class="nav-home">ABOUT</a>
-      <a href="#stories" class="nav-home">STORIES</a>
-      <a href="#characters" class="nav-home">CHARACTERS</a>
-    </nav>
+<div class="device">
+  <div class="device-title">
+    ♥ 혁재 아카이브 ♥
+    <small>HYEOKJAE ARCHIVE</small>
   </div>
-</header>
 
-<main>
-  <div id="home">
-    <section class="hero" id="top">
-      <span class="bubble bubble-one"></span>
-      <span class="bubble bubble-two"></span>
-      <span class="bubble bubble-three"></span>
+  <div class="screen-frame">
+    <div class="screen" id="screen">
+      <div class="status">
+        <span>◈ AQUARIUM</span>
+        <span>♡ ♡ ♡ ▰</span>
+      </div>
 
-      <p class="eyebrow">PERSONAL CHARACTER ARCHIVE</p>
-      <h1>A LITTLE WORLD,<br>UNDER THE BLUE.</h1>
-      <p class="intro">
-        내가 만든 인물과 그들의 이야기.<br>
-        천천히 모아 두는 작은 아카이브입니다.
-      </p>
-      <a class="primary-link" href="#characters">EXPLORE ARCHIVE ↓</a>
-    </section>
+      <section class="page active" id="home">
+        <h2 class="page-title">♡ HOME ♡</h2>
+        <div class="aquarium">
+          <video id="introVideo" autoplay muted loop playsinline controls>
+            <source src="intro_compressed.mp4" type="video/mp4">
+            동영상을 재생할 수 없습니다.
+          </video>
+        </div>
+        <div class="welcome">
+          작은 수족관에 어서 와! 🫧<br>
+          이곳에는 정혁과 홍윤재의 이야기가<br>
+          천천히 쌓여 가고 있어.
+        </div>
+        <div class="menu-grid" id="homeMenu">
+          <button class="menu-item" data-page="characters">
+            <span class="emoji">🐟</span>CHARACTER
+          </button>
+          <button class="menu-item" data-page="letters">
+            <span class="emoji">💌</span>LETTER
+          </button>
+          <button class="menu-item" data-page="comics">
+            <span class="emoji">📖</span>COMIC
+          </button>
+          <button class="menu-item" data-page="stories">
+            <span class="emoji">🫧</span>STORY
+          </button>
+          <button class="menu-item" data-page="gallery">
+            <span class="emoji">🐚</span>GALLERY
+          </button>
+          <button class="menu-item" data-page="settings">
+            <span class="emoji">⚙️</span>SETTING
+          </button>
+        </div>
+      </section>
 
-    <section id="about">
-     
-<div class="video-container">
-  <video class="intro-video" autoplay muted loop playsinline controls>
-    <source src="intro_compressed.mp4" type="video/mp4">
-    브라우저가 동영상을 지원하지 않습니다.
-  </video>
+      <section class="page" id="characters">
+        <h2 class="page-title">🐟 CHARACTER</h2>
+        <div class="character-grid" id="characterGrid"></div>
+      </section>
+
+      <section class="page" id="profile">
+        <button class="back-link" data-page="characters">◀ BACK</button>
+        <h2 class="page-title" id="profileName"></h2>
+        <img id="profileImage" class="profile-image" alt="캐릭터 이미지" hidden>
+        <div class="profile-text" id="profileText"></div>
+      </section>
+
+      <section class="page" id="letters">
+        <h2 class="page-title">💌 LETTER BOX</h2>
+        <div id="letterList"></div>
+      </section>
+
+      <section class="page" id="letterDetail">
+        <button class="back-link" data-page="letters">◀ BACK</button>
+        <h2 class="page-title" id="letterTitle"></h2>
+        <div class="profile-text" id="letterBody"></div>
+      </section>
+
+      <section class="page" id="comics">
+        <h2 class="page-title">📖 COMIC COLLECTION</h2>
+        <div id="comicList"></div>
+      </section>
+
+      <section class="page" id="stories">
+        <h2 class="page-title">🫧 STORY & LOG</h2>
+        <div id="storyList"></div>
+      </section>
+
+      <section class="page" id="gallery">
+        <h2 class="page-title">🐚 GALLERY</h2>
+        <div id="galleryList"></div>
+      </section>
+
+      <section class="page" id="recordDetail">
+        <button class="back-link" id="recordBack">◀ BACK</button>
+        <h2 class="page-title" id="recordTitle"></h2>
+        <div class="profile-text" id="recordBody"></div>
+      </section>
+
+      <section class="page" id="settings">
+        <h2 class="page-title">⚙️ SETTING</h2>
+        <button class="entry" id="soundButton">🔇 영상 소리 켜기</button>
+        <button class="entry" id="pauseButton">⏸ 영상 일시정지</button>
+        <p class="note">브라우저 자동 재생 정책에 따라 영상은 음소거 상태로 시작합니다.</p>
+      </section>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="control" id="prevBtn" aria-label="이전 항목">◀</button>
+    <button class="control" id="selectBtn" aria-label="선택">♡</button>
+    <button class="control" id="nextBtn" aria-label="다음 항목">▶</button>
+  </div>
+  <div class="control-labels">
+    <span>PREV</span><span>SELECT</span><span>NEXT</span>
+  </div>
+  <div class="bottom-text">✧ A LITTLE WORLD UNDER THE BLUE ✧</div>
 </div>
 
-    </section>
-
-    <section class="section" id="stories">
-      <div class="section-heading">
-        <div>
-          <span class="section-number">01 — COLLECTION</span>
-          <h2 class="section-title">Stories & Records</h2>
-        </div>
-        <span class="section-caption">기록 보관소</span>
-      </div>
-
-      <div class="content-grid">
-        <a class="content-card" href="#comics" id="comicCard">
-          <div>
-            <span class="content-label">01 / VISUAL</span>
-            <h3>Comics</h3>
-            <p>캐릭터 만화와 그림 기록을 모으는 공간.</p>
-          </div>
-          <span class="content-link">VIEW COLLECTION ↗</span>
-        </a>
-
-        <a class="content-card" href="#texts" id="textCard">
-          <div>
-            <span class="content-label">02 / WRITING</span>
-            <h3>Texts & Logs</h3>
-            <p>이야기와 독백, 각종 기록을 모으는 공간.</p>
-          </div>
-          <span class="content-link">VIEW COLLECTION ↗</span>
-        </a>
-      </div>
-
-      <div class="section" id="comics">
-        <div class="section-heading">
-          <div>
-            <span class="section-number">01-A — VISUAL ARCHIVE</span>
-            <h2 class="section-title">Comic Collection</h2>
-          </div>
-        </div>
-        <p class="intro">아직 등록된 만화가 없습니다.</p>
-      </div>
-
-      <div class="section" id="texts">
-        <div class="section-heading">
-          <div>
-            <span class="section-number">01-B — TEXT ARCHIVE</span>
-            <h2 class="section-title">Text Collection</h2>
-          </div>
-        </div>
-        <p class="intro">아직 등록된 글이 없습니다.</p>
-      </div>
-    </section>
-
-    <section class="section" id="characters">
-      <div class="section-heading">
-        <div>
-          <span class="section-number">02 — CHARACTER DATABASE</span>
-          <h2 class="section-title">Character Index</h2>
-        </div>
-        <span class="section-caption">인물 목록</span>
-      </div>
-
-      <div class="character-list" id="characterList"></div>
-    </section>
-  </div>
-
-  <section id="profile">
-    <button class="action-button back" id="backButton">
-      ← BACK TO ARCHIVE
-    </button>
-
-    <div class="profile-layout">
-      <div>
-        <img class="profile-art" id="profileArt" alt="캐릭터 그림" hidden>
-      </div>
-
-      <div>
-        <p class="eyebrow" id="profileNumber"></p>
-        <h2 class="profile-name" id="profileName"></h2>
-        <p class="profile-type" id="profileType"></p>
-        <p class="profile-description" id="profileIntro"></p>
-
-        <div class="detail">
-          <h3>PROFILE</h3>
-          <p id="profileDetails"></p>
-        </div>
-
-        <div class="detail">
-          <h3>STORY / BACKGROUND</h3>
-          <p id="profileStory"></p>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  HYEOKJAE ARCHIVE · ALL CHARACTERS ARE ORIGINAL
-</footer>
-
 <script>
-/* 캐릭터 정보는 이곳에서 수정하세요. */
-
+/* ===== 캐릭터 정보 ===== */
 const characters = [
   {
-    name: "CHARACTER 001",
-    type: "GOTHIC / HUMAN",
-    intro: "첫 번째 캐릭터의 짧은 소개를 적어 주세요.",
-    details: "이름: 미정\n나이: 미정\n성격: 미정\n소속: 미정",
-    story: "이곳에 캐릭터의 과거와 세계관을 적어 주세요.",
-    image: ""
-  },
-  {
-    name: "CHARACTER 002",
-    type: "DARK FANTASY",
-    intro: "두 번째 캐릭터의 짧은 소개를 적어 주세요.",
-    details: "이름: 미정\n나이: 미정\n성격: 미정\n소속: 미정",
-    story: "이곳에 캐릭터의 과거와 세계관을 적어 주세요.",
-    image: ""
-  },
-  {
-    name: "CHARACTER 003",
+    name: "정혁",
     type: "ORIGINAL CHARACTER",
-    intro: "세 번째 캐릭터의 짧은 소개를 적어 주세요.",
-    details: "이름: 미정\n나이: 미정\n성격: 미정\n소속: 미정",
-    story: "이곳에 캐릭터의 과거와 세계관을 적어 주세요.",
-    image: ""
+    image: "",
+    intro: "정혁의 소개를 입력해 주세요.",
+    details: "나이: 미정\n성격: 미정\n기타 설정: 미정",
+    story: "정혁의 이야기를 입력해 주세요."
+  },
+  {
+    name: "홍윤재",
+    type: "ORIGINAL CHARACTER",
+    image: "",
+    intro: "홍윤재의 소개를 입력해 주세요.",
+    details: "나이: 미정\n성격: 미정\n기타 설정: 미정",
+    story: "홍윤재의 이야기를 입력해 주세요."
   }
 ];
 
-const home = document.getElementById("home");
-const profile = document.getElementById("profile");
-const list = document.getElementById("characterList");
+/* ===== 기록 데이터 =====
+   아래 배열에 나중에 편지와 만화를 추가할 수 있어요.
+*/
+const letters = [];
+const comics = [];
+const stories = [];
+const gallery = [];
 
-function openCharacter(index) {
+const screen = document.getElementById("screen");
+const video = document.getElementById("introVideo");
+const pages = [...document.querySelectorAll(".page")];
+let currentPage = "home";
+let previousRecordPage = "home";
+let selectedIndex = 0;
+
+function pageButtons() {
+  return [...document.querySelectorAll(
+    "#" + currentPage + " button:not([disabled])"
+  )];
+}
+
+function updateSelection() {
+  const buttons = pageButtons();
+  if (buttons.length === 0) return;
+  selectedIndex = Math.max(0, Math.min(selectedIndex, buttons.length - 1));
+  document.querySelectorAll(".selected").forEach(el => {
+    el.classList.remove("selected");
+  });
+  buttons[selectedIndex].classList.add("selected");
+}
+
+function showPage(id, push = true) {
+  if (!document.getElementById(id)) return;
+  currentPage = id;
+  pages.forEach(page => {
+    page.classList.toggle("active", page.id === id);
+  });
+  selectedIndex = 0;
+  screen.scrollTop = 0;
+  updateSelection();
+
+  if (push) history.pushState({page:id}, "", "#" + id);
+
+  if (id !== "home") video.pause();
+  else video.play().catch(() => {});
+}
+
+function openProfile(index) {
   const c = characters[index];
-
   if (!c) return;
 
-  document.getElementById("profileNumber").textContent =
-    "ARCHIVE / " + String(index + 1).padStart(3, "0");
-
   document.getElementById("profileName").textContent = c.name;
-  document.getElementById("profileType").textContent = c.type;
-  document.getElementById("profileIntro").textContent = c.intro;
-  document.getElementById("profileDetails").textContent = c.details;
-  document.getElementById("profileStory").textContent = c.story;
+  document.getElementById("profileText").textContent =
+    c.intro + "\n\nPROFILE\n" + c.details +
+    "\n\nSTORY / BACKGROUND\n" + c.story;
 
-  const art = document.getElementById("profileArt");
-
+  const img = document.getElementById("profileImage");
   if (c.image) {
-    art.src = c.image;
-    art.hidden = false;
+    img.src = c.image;
+    img.hidden = false;
   } else {
-    art.removeAttribute("src");
-    art.hidden = true;
+    img.removeAttribute("src");
+    img.hidden = true;
   }
-
-  home.style.display = "none";
-  profile.style.display = "block";
-
-  history.pushState(null, "", "#character-" + (index + 1));
-  window.scrollTo(0, 0);
+  showPage("profile");
 }
 
-function showHome(updateHistory = true) {
-  profile.style.display = "none";
-  home.style.display = "block";
+const characterGrid = document.getElementById("characterGrid");
 
-  if (updateHistory) {
-    history.pushState(null, "", location.pathname + location.search);
-  }
-
-  window.scrollTo(0, 0);
-}
-
-characters.forEach((c, index) => {
-  const card = document.createElement("article");
-  card.className = "character";
-
-  const art = document.createElement("div");
-  art.className = "art";
+characters.forEach((c, i) => {
+  const button = document.createElement("button");
+  button.className = "character-tile";
+  const avatar = document.createElement("div");
+  avatar.className = "avatar";
 
   if (c.image) {
     const img = document.createElement("img");
     img.src = c.image;
     img.alt = c.name;
-    art.appendChild(img);
+    avatar.appendChild(img);
   } else {
-    art.textContent = "CHARACTER ART";
+    avatar.textContent = i === 0 ? "🐟" : "🐢";
   }
 
-  const info = document.createElement("div");
-  info.className = "character-info";
-
-  const number = document.createElement("span");
-  number.className = "number";
-  number.textContent = "NO. " + String(index + 1).padStart(3, "0");
-
-  const title = document.createElement("h3");
-  title.textContent = c.name;
-
-  const description = document.createElement("p");
-  description.textContent = c.type;
-
-  const button = document.createElement("button");
-  button.className = "action-button";
-  button.textContent = "VIEW PROFILE ↗";
-  button.addEventListener("click", () => openCharacter(index));
-
-  info.append(number, title, description, button);
-  card.append(art, info);
-  list.appendChild(card);
+  const name = document.createElement("span");
+  name.textContent = c.name;
+  button.append(avatar, name);
+  button.addEventListener("click", () => openProfile(i));
+  characterGrid.appendChild(button);
 });
 
-document.getElementById("backButton").addEventListener("click", () => {
-  showHome();
-});
+function renderRecords(items, containerId, parentPage) {
+  const container = document.getElementById(containerId);
+  container.replaceChildren();
 
-document.getElementById("homeLogo").addEventListener("click", (event) => {
-  if (profile.style.display === "block") {
-    event.preventDefault();
-    showHome();
+  if (!items.length) {
+    const empty = document.createElement("p");
+    empty.className = "empty";
+    empty.textContent = "아직 등록된 기록이 없어요. ♡";
+    container.appendChild(empty);
+    return;
   }
-});
 
-document.querySelectorAll(".nav-home").forEach(link => {
-  link.addEventListener("click", event => {
-    if (profile.style.display === "block") {
-      event.preventDefault();
-      showHome();
-      const target = document.querySelector(link.getAttribute("href"));
-      if (target) target.scrollIntoView();
-    }
+  items.forEach(item => {
+    const button = document.createElement("button");
+    button.className = "entry";
+    button.textContent = "✧ " + item.title;
+    button.addEventListener("click", () => {
+      previousRecordPage = parentPage;
+      document.getElementById("recordTitle").textContent = item.title;
+      document.getElementById("recordBody").replaceChildren();
+
+      const body = document.getElementById("recordBody");
+      if (item.image) {
+        const img = document.createElement("img");
+        img.src = item.image;
+        img.alt = item.title;
+        img.style.maxWidth = "100%";
+        body.appendChild(img);
+      }
+      if (item.text) {
+        const p = document.createElement("p");
+        p.textContent = item.text;
+        body.appendChild(p);
+      }
+      showPage("recordDetail");
+    });
+    container.appendChild(button);
   });
-});
-
-document.getElementById("comicCard").addEventListener("click", event => {
-  event.preventDefault();
-  document.getElementById("comics").scrollIntoView({ behavior: "smooth" });
-});
-
-document.getElementById("textCard").addEventListener("click", event => {
-  event.preventDefault();
-  document.getElementById("texts").scrollIntoView({ behavior: "smooth" });
-});
-
-function syncPageFromHash() {
-  const match = location.hash.match(/^#character-(\d+)$/);
-
-  if (match) {
-    const index = Number(match[1]) - 1;
-
-    if (index >= 0 && index < characters.length) {
-      openCharacterFromHistory(index);
-      return;
-    }
-  }
-
-  profile.style.display = "none";
-  home.style.display = "block";
 }
 
-function openCharacterFromHistory(index) {
-  const c = characters[index];
-  if (!c) return;
+renderRecords(comics, "comicList", "comics");
+renderRecords(stories, "storyList", "stories");
+renderRecords(gallery, "galleryList", "gallery");
 
-  document.getElementById("profileNumber").textContent =
-    "ARCHIVE / " + String(index + 1).padStart(3, "0");
-  document.getElementById("profileName").textContent = c.name;
-  document.getElementById("profileType").textContent = c.type;
-  document.getElementById("profileIntro").textContent = c.intro;
-  document.getElementById("profileDetails").textContent = c.details;
-  document.getElementById("profileStory").textContent = c.story;
+const letterList = document.getElementById("letterList");
+if (!letters.length) {
+  letterList.innerHTML = '<p class="empty">아직 도착한 편지가 없어요. 💌</p>';
+}
+letters.forEach(letter => {
+  const button = document.createElement("button");
+  button.className = "entry";
+  button.textContent = "💌 " + letter.title;
+  button.addEventListener("click", () => {
+    document.getElementById("letterTitle").textContent = letter.title;
+    document.getElementById("letterBody").textContent = letter.text;
+    showPage("letterDetail");
+  });
+  letterList.appendChild(button);
+});
 
-  const art = document.getElementById("profileArt");
+document.addEventListener("click", event => {
+  const target = event.target.closest("[data-page]");
+  if (target) showPage(target.dataset.page);
+});
 
-  if (c.image) {
-    art.src = c.image;
-    art.hidden = false;
+document.getElementById("recordBack").addEventListener("click", () => {
+  showPage(previousRecordPage);
+});
+
+function moveSelection(step) {
+  const buttons = pageButtons();
+  if (!buttons.length) return;
+  selectedIndex = (selectedIndex + step + buttons.length) % buttons.length;
+  updateSelection();
+  buttons[selectedIndex].scrollIntoView({block:"nearest"});
+}
+
+document.getElementById("prevBtn").onclick = () => moveSelection(-1);
+document.getElementById("nextBtn").onclick = () => moveSelection(1);
+document.getElementById("selectBtn").onclick = () => {
+  const buttons = pageButtons();
+  if (buttons[selectedIndex]) buttons[selectedIndex].click();
+};
+
+document.addEventListener("keydown", event => {
+  if (["ArrowLeft","ArrowUp"].includes(event.key)) {
+    event.preventDefault();
+    moveSelection(-1);
+  }
+  if (["ArrowRight","ArrowDown"].includes(event.key)) {
+    event.preventDefault();
+    moveSelection(1);
+  }
+  if (event.key === "Enter" && event.target.tagName !== "BUTTON") {
+    const buttons = pageButtons();
+    if (buttons[selectedIndex]) buttons[selectedIndex].click();
+  }
+  if (event.key === "Escape") {
+    showPage("home");
+  }
+});
+
+const soundButton = document.getElementById("soundButton");
+soundButton.onclick = () => {
+  video.muted = !video.muted;
+  soundButton.textContent = video.muted
+    ? "🔇 영상 소리 켜기"
+    : "🔊 영상 소리 끄기";
+};
+
+const pauseButton = document.getElementById("pauseButton");
+pauseButton.onclick = () => {
+  if (video.paused) {
+    video.play().catch(() => {});
+    pauseButton.textContent = "⏸ 영상 일시정지";
   } else {
-    art.removeAttribute("src");
-    art.hidden = true;
+    video.pause();
+    pauseButton.textContent = "▶ 영상 재생";
   }
+};
 
-  home.style.display = "none";
-  profile.style.display = "block";
-  window.scrollTo(0, 0);
-}
+window.addEventListener("popstate", () => {
+  const id = location.hash.slice(1);
+  showPage(document.getElementById(id) ? id : "home", false);
+});
 
-window.addEventListener("popstate", syncPageFromHash);
-
-const initialMatch = location.hash.match(/^#character-(\d+)$/);
-
-if (initialMatch) {
-  const index = Number(initialMatch[1]) - 1;
-  if (index >= 0 && index < characters.length) {
-    openCharacterFromHistory(index);
-  }
-}
+const startPage = location.hash.slice(1);
+showPage(document.getElementById(startPage) ? startPage : "home", false);
 </script>
-
 </body>
 </html>
