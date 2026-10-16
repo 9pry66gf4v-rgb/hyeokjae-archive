@@ -505,6 +505,91 @@ video {
     animation: none;
   }
 }
+  
+/* ===== 짧고 통통한 젤리 다마고치 ===== */
+
+/* 휴대폰 본체 */
+.shell {
+  padding-top: 19px !important;
+  padding-bottom: 19px !important;
+  border-radius: 88px 88px 82px 82px !important;
+}
+
+/* 본체 안쪽 테두리 */
+.shell::after {
+  border-radius: 80px 80px 74px 74px !important;
+}
+
+/* 위쪽 장식 */
+.shell::before {
+  top: 8px !important;
+}
+
+/* HYEOKJAE ARCHIVE 제목 */
+.brand {
+  margin-top: 13px !important;
+  margin-bottom: 11px !important;
+}
+
+/* 화면을 감싸는 테두리 */
+.bezel {
+  padding: 8px !important;
+}
+
+/* 내부 윈도우 화면 */
+.desktop {
+  height: min(49vh, 375px) !important;
+  min-height: 300px !important;
+  overflow-y: auto !important;
+}
+
+/* 화면과 버튼 사이 간격 */
+.controls {
+  margin-top: 13px !important;
+  gap: clamp(12px, 5vw, 29px) !important;
+}
+
+/* PREV / SELECT / NEXT 버튼 */
+.control {
+  width: 58px !important;
+  height: 58px !important;
+  font-size: 24px !important;
+}
+
+/* 버튼 이름과 간격 */
+.control-group {
+  width: 65px !important;
+  gap: 4px !important;
+}
+
+/* 작은 HOME 버튼 */
+.mini-home {
+  width: 31px !important;
+  height: 31px !important;
+  margin-top: 1px !important;
+}
+
+/* 맨 아래 문구 */
+.footer {
+  margin-top: 10px !important;
+}
+
+/* 작은 휴대폰 화면 */
+@media (max-width: 350px) {
+  .shell {
+    padding: 18px 12px !important;
+  }
+
+  .desktop {
+    min-height: 280px !important;
+  }
+
+  .control {
+    width: 54px !important;
+    height: 54px !important;
+  }
+}
+
 </style>
 </head>
 
