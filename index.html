@@ -8035,118 +8035,61 @@ body {
 })();
 </script>
 
-<!-- AQUARIUM SWIMMING DIRECTION FIX -->
+<!-- AQUARIUM CORRECT SWIMMING -->
 <style>
-
-/* 물고기들이 오른쪽에서 왼쪽으로 헤엄치기 */
-@keyframes aquaSwimLeft {
-  0% {
-    left: calc(100% + 15px);
-    transform: translateY(0);
-  }
-
-  25% {
-    transform: translateY(-10px);
-  }
-
-  50% {
-    transform: translateY(5px);
-  }
-
-  75% {
-    transform: translateY(-8px);
-  }
-
-  100% {
-    left: -50px;
-    transform: translateY(0);
-  }
-}
-
-/* 기존 움직임을 왼쪽 방향으로 변경 */
-#hyeokMiniAqua .aqua-swimmer {
-  animation-name: aquaSwimLeft !important;
-}
-
-/* 물고기와 거북이 모두 왼쪽을 바라보게 */
-#hyeokMiniAqua .aqua-animal {
-  transform: scaleX(-1);
-}
-
-/* 움직임 최소화 설정 유지 */
-@media (prefers-reduced-motion: reduce) {
-  #hyeokMiniAqua .aqua-swimmer {
-    animation: none !important;
-    left: var(--still-left);
-  }
-}
-
-</style>
-
-<!-- AQUARIUM NATURAL SWIMMING FIX -->
-<style>
-
-/* 오른쪽으로 헤엄치기 */
-@keyframes swimRight {
-  0% {
-    left: -50px;
-    transform: translateY(0);
-  }
-  25% { transform: translateY(-8px); }
-  50% { transform: translateY(5px); }
-  75% { transform: translateY(-6px); }
-  100% {
-    left: calc(100% + 15px);
-    transform: translateY(0);
-  }
-}
 
 /* 왼쪽으로 헤엄치기 */
-@keyframes swimLeft {
+@keyframes fishMoveLeft {
   0% {
     left: calc(100% + 15px);
     transform: translateY(0);
   }
   25% { transform: translateY(-8px); }
   50% { transform: translateY(5px); }
-  75% { transform: translateY(-6px); }
+  75% { transform: translateY(-8px); }
   100% {
     left: -50px;
     transform: translateY(0);
   }
 }
 
-/* 첫 번째 물고기: 오른쪽으로 */
-#hyeokMiniAqua .aqua-swimmer[data-character="hyeok"] {
-  animation-name: swimRight !important;
+/* 오른쪽으로 헤엄치기 */
+@keyframes fishMoveRight {
+  0% {
+    left: -50px;
+    transform: translateY(0);
+  }
+  25% { transform: translateY(-8px); }
+  50% { transform: translateY(5px); }
+  75% { transform: translateY(-8px); }
+  100% {
+    left: calc(100% + 15px);
+    transform: translateY(0);
+  }
 }
 
+/* 🐠 주황색: 왼쪽으로 */
 #hyeokMiniAqua
-.aqua-swimmer[data-character="hyeok"]
-.aqua-animal {
-  transform: scaleX(1) !important;
+.aqua-swimmer[data-character="hyeok"] {
+  animation-name: fishMoveLeft !important;
 }
 
-/* 두 번째 물고기: 왼쪽으로 */
-#hyeokMiniAqua .aqua-swimmer[data-character="yunjae"] {
-  animation-name: swimLeft !important;
-}
-
+/* 🐟 파란색: 오른쪽으로 */
 #hyeokMiniAqua
-.aqua-swimmer[data-character="yunjae"]
-.aqua-animal {
-  transform: scaleX(-1) !important;
+.aqua-swimmer[data-character="yunjae"] {
+  animation-name: fishMoveRight !important;
 }
 
-/* 거북이: 왼쪽으로 */
-#hyeokMiniAqua .aqua-swimmer[data-character="turtle"] {
-  animation-name: swimLeft !important;
-}
-
+/* 🐢 거북이: 오른쪽으로 */
 #hyeokMiniAqua
-.aqua-swimmer[data-character="turtle"]
-.aqua-animal {
-  transform: scaleX(-1) !important;
+.aqua-swimmer[data-character="turtle"] {
+  animation-name: fishMoveRight !important;
+}
+
+/* 이모지 방향은 사진에 보이는 그대로 유지 */
+#hyeokMiniAqua
+.aqua-swimmer .aqua-animal {
+  transform: none !important;
 }
 
 /* 움직임 최소화 설정 유지 */
@@ -8158,112 +8101,6 @@ body {
 }
 
 </style>
-
-<!-- AQUARIUM FINAL DIRECTION FIX -->
-<style>
-
-/* 오른쪽으로 이동 */
-@keyframes aquaGoRight {
-  0% {
-    left: -50px;
-    transform: translateY(0);
-  }
-  25% { transform: translateY(-8px); }
-  50% { transform: translateY(5px); }
-  75% { transform: translateY(-8px); }
-  100% {
-    left: calc(100% + 15px);
-    transform: translateY(0);
-  }
-}
-
-/* 왼쪽으로 이동 */
-@keyframes aquaGoLeft {
-  0% {
-    left: calc(100% + 15px);
-    transform: translateY(0);
-  }
-  25% { transform: translateY(-8px); }
-  50% { transform: translateY(5px); }
-  75% { transform: translateY(-8px); }
-  100% {
-    left: -50px;
-    transform: translateY(0);
-  }
-}
-
-/* 모든 물고기의 기본 애니메이션 초기화 */
-#hyeokMiniAqua .aqua-swimmer {
-  animation-name: aquaGoRight !important;
-}
-
-/* 🐠 오른쪽으로 이동 */
-#hyeokMiniAqua [data-character="hyeok"] {
-  animation-name: aquaGoRight !important;
-}
-
-/* 🐟 왼쪽으로 이동 */
-#hyeokMiniAqua [data-character="yunjae"] {
-  animation-name: aquaGoLeft !important;
-}
-
-/* 🐢 오른쪽으로 이동 */
-#hyeokMiniAqua [data-character="turtle"] {
-  animation-name: aquaGoRight !important;
-}
-
-/* 이모지 방향은 CSS 변수로 통일 */
-#hyeokMiniAqua .aqua-swimmer .aqua-animal {
-  display: block !important;
-  transform: scaleX(var(--face-direction, 1)) !important;
-}
-
-/* 움직임 줄이기 설정 */
-@media (prefers-reduced-motion: reduce) {
-  #hyeokMiniAqua .aqua-swimmer {
-    animation: none !important;
-    left: var(--still-left);
-  }
-}
-
-</style>
-
-<script>
-(function () {
-  const aquarium = document.getElementById("hyeokMiniAqua");
-  if (!aquarium) return;
-
-  /*
-    이모지의 기본 얼굴 방향 설정
-
-    1  = 원래 모습
-    -1 = 좌우 반전
-
-    일반적인 이모지 기준으로
-    🐠 🐟 는 왼쪽을 바라보는 경우가 많고
-    🐢 는 오른쪽을 바라보는 경우가 많음
-  */
-
-  const directions = {
-    hyeok: -1,   // 🐠 오른쪽 이동 → 오른쪽 보기
-    yunjae: 1,   // 🐟 왼쪽 이동 → 왼쪽 보기
-    turtle: 1    // 🐢 오른쪽 이동 → 오른쪽 보기
-  };
-
-  Object.entries(directions).forEach(([name, direction]) => {
-    const animal = aquarium.querySelector(
-      '[data-character="' + name + '"]'
-    );
-
-    if (!animal) return;
-
-    animal.style.setProperty(
-      "--face-direction",
-      direction
-    );
-  });
-})();
-</script>
 
 </body>
 </html>
