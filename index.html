@@ -8342,9 +8342,78 @@ body {
     }
 
     /* 물고기들이 먹이를 향해 이동 */
-    const swimmers = Array.from(
-      tank.querySelectorAll(".aqua-swimmer")
+  
+/* 물고기와 거북이 구분 */
+const swimmers = Array.from(
+  tank.querySelectorAll(".aqua-swimmer")
+);
+
+swimmers.forEach(function(fish, index) {
+
+  const isTurtle =
+    fish.dataset.character === "turtle";
+
+  const tankRect = tank.getBoundingClientRect();
+  const fishRect = fish.getBoundingClientRect();
+
+  const currentX = fishRect.left - tankRect.left;
+  const currentY = fishRect.top - tankRect.top;
+
+  /* 현재 위치에서 기존 애니메이션 멈추기 */
+  fish.style.left = currentX + "px";
+  fish.style.top = currentY + "px";
+
+  fish.classList.add("aqua-eating");
+
+  let targetX;
+  let targetY;
+
+  if (isTurtle) {
+
+    /* 🐢 거북이는 수조 바닥에서만 이동 */
+    targetX = Math.max(
+      0,
+      Math.min(tankWidth - 40, foodX - 15)
     );
+
+    targetY = tankHeight - 52;
+
+    /* 거북이는 천천히 기어가기 */
+    fish.style.transition =
+      "left 2s ease-in-out, top 0.5s ease-out";
+
+  } else {
+
+    /* 🐠🐟 물고기는 먹이를 향해 헤엄치기 */
+    targetX = Math.max(
+      0,
+      Math.min(
+        tankWidth - 40,
+        foodX - 20 + (index - 1) * 32
+      )
+    );
+
+    targetY = Math.max(
+      0,
+      Math.min(
+        tankHeight - 45,
+        foodY - 10 + index * 5
+      )
+    );
+
+    fish.style.transition =
+      "left 1s ease-in-out, top 1s ease-in-out";
+  }
+
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      fish.style.left = targetX + "px";
+      fish.style.top = targetY + "px";
+    });
+  });
+
+});
+
 
     swimmers.forEach(function(fish, index) {
 
@@ -8422,11 +8491,30 @@ body {
     /* 원래 헤엄치던 상태로 복귀 */
     setTimeout(function() {
 
-      swimmers.forEach(function(fish) {
-        fish.classList.remove("aqua-eating");
-        fish.style.removeProperty("left");
-        fish.style.removeProperty("top");
-      });
+     
+<!-- TURTLE WALKING FIX -->
+<style>
+
+/* 먹이 먹는 동안 거북이의 바닥 이동 */
+#hyeokMiniAqua
+.aqua-swimmer[data-character="turtle"].aqua-eating {
+  z-index: 4;
+  animation: none !important;
+  transition:
+    left 2s ease-in-out,
+    top 0.5s ease-out !important;
+}
+
+/* 물고기는 기존 속도 유지 */
+#hyeokMiniAqua
+.aqua-swimmer:not([data-character="turtle"]).aqua-eating {
+  transition:
+    left 1s ease-in-out,
+    top 1s ease-in-out !important;
+}
+
+</style>
+<!-- TURTLE WALKING FIX END -->
 
       feeding = false;
       feedBtn.disabled = false;
