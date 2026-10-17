@@ -7628,5 +7628,412 @@ body {
 
 </style>
 
+<!-- ===== HYEOKJAE MINI AQUARIUM START ===== -->
+
+<style>
+/* 수족관 전체 창 */
+#hyeokMiniAqua {
+  width: 100%;
+  margin: 16px 0;
+  padding: 8px;
+  box-sizing: border-box;
+  background: #D6D0C7;
+  border: 1px solid #8B837A;
+  border-radius: 8px;
+  box-shadow:
+    inset 1px 1px #FFFDF9,
+    inset -2px -2px #AAA298;
+}
+
+/* 창 제목 */
+#hyeokMiniAqua .aqua-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  color: #253A5B;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 12px;
+}
+
+#hyeokMiniAqua .aqua-title span {
+  white-space: nowrap;
+}
+
+/* 수조 */
+#hyeokMiniAqua .aqua-tank {
+  position: relative;
+  width: 100%;
+  height: 195px;
+  overflow: hidden;
+  isolation: isolate;
+  border: 2px solid #253A5B;
+  border-radius: 5px;
+  background: linear-gradient(
+    180deg,
+    #385B75 0%,
+    #2D4C68 50%,
+    #1C314C 100%
+  );
+}
+
+/* 물속 빛 */
+#hyeokMiniAqua .aqua-tank::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    110deg,
+    transparent 0 35px,
+    rgba(255,255,255,.035) 35px 55px,
+    transparent 55px 90px
+  );
+}
+
+/* 모래 */
+#hyeokMiniAqua .aqua-sand {
+  position: absolute;
+  left: -5%;
+  bottom: -7px;
+  width: 110%;
+  height: 27px;
+  z-index: 1;
+  background: #B8A995;
+  border-radius: 50% 50% 0 0;
+}
+
+/* 해초 */
+#hyeokMiniAqua .aqua-plant {
+  position: absolute;
+  bottom: 13px;
+  z-index: 2;
+  font-size: 34px;
+  opacity: .85;
+  pointer-events: none;
+  transform-origin: bottom center;
+  animation: aquaSway 3s ease-in-out infinite alternate;
+}
+
+#hyeokMiniAqua .aqua-plant.left {
+  left: 8%;
+}
+
+#hyeokMiniAqua .aqua-plant.right {
+  right: 8%;
+  animation-delay: -1s;
+}
+
+@keyframes aquaSway {
+  from { transform: rotate(-7deg); }
+  to { transform: rotate(7deg); }
+}
+
+/* 물방울 */
+#hyeokMiniAqua .aqua-bubble {
+  position: absolute;
+  bottom: -15px;
+  z-index: 1;
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid rgba(201,229,235,.7);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: aquaBubble 5s linear infinite;
+}
+
+@keyframes aquaBubble {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% { opacity: .7; }
+  85% { opacity: .7; }
+  100% {
+    transform: translateY(-210px);
+    opacity: 0;
+  }
+}
+
+/* 헤엄치는 캐릭터 */
+#hyeokMiniAqua .aqua-swimmer {
+  position: absolute;
+  z-index: 3;
+  left: -50px;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  animation: aquaSwim var(--swim-time) linear infinite;
+  animation-delay: var(--swim-delay);
+}
+
+/* 방향과 움직임 */
+@keyframes aquaSwim {
+  0% {
+    left: -50px;
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  75% {
+    transform: translateY(-8px);
+  }
+  100% {
+    left: calc(100% + 15px);
+    transform: translateY(0);
+  }
+}
+
+/* 캐릭터 아이콘 */
+#hyeokMiniAqua .aqua-swimmer .aqua-animal {
+  display: block;
+  font-size: 29px;
+  line-height: 38px;
+  text-align: center;
+  filter: drop-shadow(1px 2px 1px rgba(0,0,0,.2));
+  transition: scale .15s ease;
+}
+
+#hyeokMiniAqua .aqua-swimmer:hover .aqua-animal {
+  scale: 1.2;
+}
+
+#hyeokMiniAqua .aqua-swimmer:focus-visible {
+  outline: 2px solid #FFF8EA;
+  border-radius: 6px;
+}
+
+/* 수족관 안의 제목 */
+#hyeokMiniAqua .aqua-watermark {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  text-align: center;
+  color: rgba(244,238,231,.7);
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 10px;
+  letter-spacing: 1px;
+  pointer-events: none;
+}
+
+/* 대사 말풍선 */
+#hyeokMiniAqua .aqua-dialog {
+  position: absolute;
+  left: 50%;
+  bottom: 35px;
+  z-index: 10;
+  width: max-content;
+  max-width: 85%;
+  padding: 9px 12px;
+  box-sizing: border-box;
+  border: 1px solid #8B837A;
+  border-radius: 8px;
+  background: #F4EEE7;
+  color: #253A5B;
+  font-size: 12px;
+  line-height: 1.6;
+  text-align: center;
+  box-shadow: 2px 3px 0 rgba(0,0,0,.2);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+#hyeokMiniAqua .aqua-dialog[hidden] {
+  display: none;
+}
+
+/* 아래 안내 문구 */
+#hyeokMiniAqua .aqua-footer {
+  padding-top: 8px;
+  color: #253A5B;
+  text-align: center;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 11px;
+}
+
+@media (max-width: 390px) {
+  #hyeokMiniAqua .aqua-tank {
+    height: 175px;
+  }
+
+  #hyeokMiniAqua .aqua-title {
+    font-size: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #hyeokMiniAqua .aqua-swimmer,
+  #hyeokMiniAqua .aqua-bubble,
+  #hyeokMiniAqua .aqua-plant {
+    animation: none !important;
+  }
+
+  #hyeokMiniAqua .aqua-swimmer {
+    left: var(--still-left);
+  }
+}
+</style>
+
+<script>
+(function () {
+  /* 홈 화면 찾기 */
+  const home = document.getElementById("home");
+
+  if (!home) return;
+
+  /* 중복 생성 방지 */
+  if (document.getElementById("hyeokMiniAqua")) return;
+
+  /* 수족관 생성 */
+  const aquarium = document.createElement("div");
+  aquarium.id = "hyeokMiniAqua";
+
+  aquarium.innerHTML = `
+    <div class="aqua-title">
+      <span>🐠 LITTLE_AQUARIUM.exe</span>
+      <span>♡</span>
+    </div>
+
+    <div class="aqua-tank">
+
+      <div class="aqua-watermark">
+        OUR LITTLE AQUARIUM ♡
+      </div>
+
+      <div class="aqua-sand"></div>
+
+      <div class="aqua-plant left">🌿</div>
+      <div class="aqua-plant right">🌿</div>
+
+      <div class="aqua-bubble"
+           style="left:12%;animation-delay:-1s"></div>
+      <div class="aqua-bubble"
+           style="left:17%;animation-delay:-3s"></div>
+      <div class="aqua-bubble"
+           style="left:72%;animation-delay:-2s"></div>
+      <div class="aqua-bubble"
+           style="left:80%;animation-delay:-4s"></div>
+
+      <button type="button"
+              class="aqua-swimmer"
+              aria-label="첫 번째 물고기"
+              data-character="hyeok"
+              style="
+                top:30%;
+                --swim-time:13s;
+                --swim-delay:-3s;
+                --still-left:20%;
+              ">
+        <span class="aqua-animal">🐠</span>
+      </button>
+
+      <button type="button"
+              class="aqua-swimmer"
+              aria-label="두 번째 물고기"
+              data-character="yunjae"
+              style="
+                top:53%;
+                --swim-time:17s;
+                --swim-delay:-10s;
+                --still-left:55%;
+              ">
+        <span class="aqua-animal">🐟</span>
+      </button>
+
+      <button type="button"
+              class="aqua-swimmer"
+              aria-label="거북이"
+              data-character="turtle"
+              style="
+                top:69%;
+                --swim-time:24s;
+                --swim-delay:-14s;
+                --still-left:75%;
+              ">
+        <span class="aqua-animal">🐢</span>
+      </button>
+
+      <div class="aqua-dialog"
+           role="status"
+           aria-live="polite"
+           hidden></div>
+
+    </div>
+
+    <div class="aqua-footer">
+      CLICK THE FISH TO TALK ♡
+    </div>
+  `;
+
+  /* 홈 화면 마지막에 수족관 추가 */
+  home.appendChild(aquarium);
+
+  /* 대사 설정 - 자유롭게 수정 가능 */
+  const messages = {
+    hyeok: [
+      "정혁: 윤재야, 저 물고기 봐.",
+      "정혁: 우리도 저렇게 둥둥 떠다닐까?",
+      "정혁: 오늘도 같이 있어줘.",
+      "정혁: 여기 되게 예쁘다. 그치?"
+    ],
+
+    yunjae: [
+      "윤재: 또 물고기 보고 있어?",
+      "윤재: 너는 금방 심심해할 것 같은데.",
+      "윤재: 그래, 조금 더 보고 가자.",
+      "윤재: 응. 나도 좋아."
+    ],
+
+    turtle: [
+      "🐢 느릿느릿... ♡",
+      "🐢 오늘도 평화로운 수족관!",
+      "🐢 둘이 오래오래 행복하길."
+    ]
+  };
+
+  const dialog =
+    aquarium.querySelector(".aqua-dialog");
+
+  let dialogTimer;
+
+  /* 동물 클릭 시 랜덤 대사 */
+  aquarium.addEventListener("click", function(event) {
+    const animal = event.target.closest(".aqua-swimmer");
+
+    if (!animal || !aquarium.contains(animal)) return;
+
+    const character = animal.dataset.character;
+    const lines = messages[character];
+
+    if (!lines || !lines.length) return;
+
+    const randomIndex =
+      Math.floor(Math.random() * lines.length);
+
+    dialog.textContent = lines[randomIndex];
+    dialog.hidden = false;
+
+    clearTimeout(dialogTimer);
+
+    dialogTimer = setTimeout(function() {
+      dialog.hidden = true;
+    }, 3500);
+  });
+
+})();
+</script>
+
 </body>
 </html>
