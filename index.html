@@ -6308,5 +6308,49 @@ body {
 }
 </style>
 
+<!-- CHARACTER PROFILE HEIGHT UPDATE -->
+<style>
+
+/* 캐릭터 카드 2열 유지 */
+#home .character-grid,
+#home .characters-grid,
+#home .profile-grid,
+#home .character-cards,
+#home .couple-grid,
+#home .couple-cards {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+}
+
+/* 프로필 카드 높이 늘리기 */
+#home .character-card,
+#home .profile-card,
+#home .couple-card {
+  height: auto !important;
+  min-height: 350px !important;
+}
+
+/* 캐릭터 사진 영역 길게 */
+#home .character-card img,
+#home .profile-card img,
+#home .couple-card img {
+  width: 100% !important;
+  height: 300px !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+/* 작은 아이폰에서도 충분한 높이 확보 */
+@media (max-width: 390px) {
+  #home .character-card img,
+  #home .profile-card img,
+  #home .couple-card img {
+    height: 270px !important;
+  }
+}
+
+</style>
+
 </body>
 </html>
