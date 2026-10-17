@@ -1527,6 +1527,243 @@ showPage(
   overflow-wrap: anywhere;
 }
 
+/* ========================================
+   HYEOKJAE ARCHIVE
+   MIDNIGHT AQUARIUM COLOR THEME
+
+   기존 디자인과 기능 유지
+   색상만 변경하는 테마
+======================================== */
+
+:root {
+  --bg: #111C25;
+  --panel: #263B45;
+  --text: #E9E1D6;
+  --muted: #AAB6B7;
+  --accent: #A49BAE;
+  --line: #667765;
+
+  --midnight: #182631;
+  --ocean: #344C57;
+  --olive: #667765;
+  --lavender: #A49BAE;
+  --sand: #D8CDBE;
+  --cream: #F4EEE7;
+}
+
+/* 전체 배경 */
+body {
+  background-color: #111C25;
+  color: #E9E1D6;
+}
+
+/* 다마고치 본체 */
+.phone {
+  background: linear-gradient(
+    145deg,
+    #506977 0%,
+    #344C57 40%,
+    #263A46 75%,
+    #182631 100%
+  ) !important;
+
+  border-color: #71817D !important;
+
+  box-shadow:
+    inset 5px 5px 12px rgba(255,255,255,0.12),
+    inset -8px -10px 18px rgba(0,0,0,0.35),
+    0 20px 55px rgba(0,0,0,0.45) !important;
+}
+
+/* 다마고치 외부 글씨 */
+.phone > h1,
+.phone > h2,
+.phone > p,
+.phone .brand,
+.phone .logo {
+  color: #D8CDBE;
+}
+
+/* 화면 테두리 */
+.screen-frame {
+  background: #182631 !important;
+  border-color: #A49BAE !important;
+
+  box-shadow:
+    inset 0 3px 10px rgba(0,0,0,0.4),
+    0 2px 5px rgba(255,255,255,0.08) !important;
+}
+
+/* 화면 내부 */
+.desktop {
+  background-color: #263B45 !important;
+  color: #E9E1D6;
+}
+
+/* 윈도우 XP 제목 표시줄 */
+.titlebar,
+.title-bar,
+.window-titlebar {
+  background: linear-gradient(
+    90deg,
+    #344C57,
+    #667765
+  ) !important;
+
+  color: #F4EEE7 !important;
+}
+
+/* 내부 윈도우 / 패널 */
+.window,
+.panel,
+.content-panel,
+.profile-card,
+.menu-panel {
+  background-color: #263B45;
+  border-color: #667765;
+  color: #E9E1D6;
+}
+
+/* 제목과 본문 */
+.desktop h1,
+.desktop h2,
+.desktop h3,
+.desktop h4,
+.desktop p,
+.desktop label,
+.desktop strong {
+  color: #E9E1D6;
+}
+
+/* 보조 설명 */
+.desktop small,
+.desktop .muted,
+.desktop .subtitle {
+  color: #B6C1C1;
+}
+
+/* 메뉴 버튼 */
+.desktop button,
+.desktop .menu-btn,
+.desktop .menu-button,
+.desktop .nav-btn {
+  background: linear-gradient(
+    180deg,
+    #425A65,
+    #344C57
+  );
+
+  color: #F4EEE7;
+  border-color: #81908A;
+}
+
+/* 메뉴 버튼 터치 효과 */
+.desktop button:hover,
+.desktop .menu-btn:hover,
+.desktop .menu-button:hover {
+  background: #667765;
+}
+
+/* 선택된 메뉴 */
+.desktop button.active,
+.desktop button.selected,
+.desktop .active {
+  background-color: #667765;
+  color: #F4EEE7;
+}
+
+/* 하단 조작 버튼 */
+.controls button,
+.control-buttons button,
+.phone-controls button {
+  background: linear-gradient(
+    145deg,
+    #B2A9BC,
+    #82788F
+  ) !important;
+
+  color: #182631 !important;
+  border-color: #C8BDCB !important;
+
+  box-shadow:
+    inset 2px 2px 4px rgba(255,255,255,0.25),
+    inset -3px -4px 6px rgba(0,0,0,0.22),
+    0 4px 8px rgba(0,0,0,0.28) !important;
+}
+
+/* 작은 HOME 버튼 */
+.home-button,
+.home-btn,
+#homeBtn {
+  background: #667765 !important;
+  color: #F4EEE7 !important;
+  border-color: #9CAA9A !important;
+}
+
+/* 프로필 */
+#profile {
+  color: #E9E1D6;
+}
+
+#profile img {
+  border-color: #667765;
+  background-color: #182631;
+}
+
+/* 리스트 항목 */
+#letterList > *,
+#comicList > *,
+#storyList > *,
+#galleryList > * {
+  border-color: #667765;
+  color: #E9E1D6;
+}
+
+/* 편지 및 이야기 상세 */
+#letterDetail,
+#recordDetail {
+  color: #E9E1D6;
+}
+
+/* 일반 링크 */
+.desktop a {
+  color: #D8CDBE;
+}
+
+/* 입력창 */
+.desktop input,
+.desktop textarea,
+.desktop select {
+  background: #182631;
+  color: #F4EEE7;
+  border-color: #667765;
+}
+
+/* 구분선 */
+.desktop hr {
+  border-color: #667765;
+}
+
+/* 스크롤바 */
+.desktop::-webkit-scrollbar {
+  width: 6px;
+}
+
+.desktop::-webkit-scrollbar-track {
+  background: #182631;
+}
+
+.desktop::-webkit-scrollbar-thumb {
+  background: #667765;
+  border-radius: 10px;
+}
+
+/* 선택된 텍스트 */
+::selection {
+  background: #A49BAE;
+  color: #182631;
+}
+
 </style>
 
 <script>
