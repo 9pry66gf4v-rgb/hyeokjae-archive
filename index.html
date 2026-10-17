@@ -6417,5 +6417,64 @@ body {
 }
 
 </style>
+   
+<!-- CHARACTER CARD 1:1 IMAGE FIX -->
+<style>
+
+/* 캐릭터 2명 가로 배치 */
+#characters .character-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 9px !important;
+}
+
+/* 프로필 카드 */
+#characters .character-card {
+  width: 100% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 7px !important;
+  box-sizing: border-box !important;
+}
+
+/* 사진 액자: 정확히 1:1 */
+#characters .character-card .portrait {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: 1 / 1 !important;
+
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  background: #E8E9E2 !important;
+}
+
+/* 정사각형 사진 전체 표시 */
+#characters .character-card .portrait img {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+/* 이름과 PROFILE */
+#characters .character-card strong {
+  display: block !important;
+  margin-top: 8px !important;
+}
+
+#characters .character-card small {
+  display: block !important;
+  margin-top: 4px !important;
+}
+
+</style>
+
 </body>
 </html>
