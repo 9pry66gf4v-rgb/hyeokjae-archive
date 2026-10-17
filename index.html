@@ -666,6 +666,43 @@ video {
     height: 54px;
   }
 }
+   
+/* D-DAY 디자인 */
+.couple-dday {
+  margin: 12px 0;
+  padding: 12px 10px;
+  text-align: center;
+  background: #FAF6EE;
+  border: 2px solid #A4B0B6;
+  border-radius: 12px;
+  box-shadow: 0 3px 0 #C8C5BE;
+  color: #283B55;
+}
+
+.dday-label {
+  font-size: 10px;
+  font-weight: bold;
+  color: #687985;
+}
+
+.dday-number {
+  margin: 5px 0;
+  font-size: 28px;
+  font-weight: 900;
+  color: #283B55;
+}
+
+.dday-since {
+  font-size: 10px;
+  color: #929B80;
+}
+
+.dday-names {
+  margin-top: 7px;
+  font-size: 11px;
+  color: #283B55;
+}
+
 </style>
 </head>
 
@@ -747,6 +784,14 @@ video {
                   >
                   영상을 재생할 수 없습니다.
                 </video>
+                 
+<div class="couple-dday">
+  <div class="dday-label">♡ OUR DAYS TOGETHER</div>
+  <div class="dday-number" id="coupleDday">D+1</div>
+  <div class="dday-since">SINCE 2026.05.09</div>
+  <div class="dday-names">🐠 정혁 × 홍윤재 🪼</div>
+</div>
+
               </div>
             </div>
           </div>
@@ -2276,6 +2321,42 @@ body {
 </script>
 
 <!-- ===== LETTER 채팅 기록 기능 끝 ===== -->
+
+<script>
+(function () {
+  const startDate = new Date(2026, 4, 9);
+  const ddayElement = document.getElementById("coupleDday");
+
+  function updateCoupleDday() {
+    if (!ddayElement) return;
+
+    const now = new Date();
+
+    const todayUTC = Date.UTC(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate()
+    );
+
+    const startUTC = Date.UTC(
+      startDate.getFullYear(),
+      startDate.getMonth(),
+      startDate.getDate()
+    );
+
+    const days = Math.round(
+      (todayUTC - startUTC) / 86400000
+    ) + 1;
+
+    ddayElement.textContent =
+      days > 0 ? "D+" + days :
+      days === 0 ? "D-DAY" : "D" + days;
+  }
+
+  updateCoupleDday();
+  setInterval(updateCoupleDday, 60000);
+})();
+</script>
 
 </body>
 </html>
