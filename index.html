@@ -955,35 +955,54 @@ video {
   </div>
 
   <!-- 물리 버튼 -->
-  <div class="controls">
+ <!-- RETRO CONTROL PANEL -->
+<div class="controls retro-controls">
 
-    <div class="control-group">
-      <button class="control" id="prevBtn" aria-label="이전">
-        ◀
-      </button>
-      <span>PREV</span>
-    </div>
+  <div class="retro-control-panel">
 
-    <div class="control-group">
-      <button class="control" id="selectBtn" aria-label="선택">
-        ♡
-      </button>
-      <span>SELECT</span>
+    <!-- PREV -->
+    <button
+      class="retro-key retro-prev"
+      id="prevBtn"
+      aria-label="이전"
+      type="button"
+    >
+      <span>◀</span>
+    </button>
 
-      <button class="mini-home" id="homeBtn" aria-label="홈">
-        ⌂
-      </button>
-      <span>HOME</span>
-    </div>
+    <!-- HOME -->
+    <button
+      class="retro-key retro-home"
+      id="homeBtn"
+      aria-label="홈"
+      type="button"
+    >
+      <span>⌂</span>
+    </button>
 
-    <div class="control-group">
-      <button class="control" id="nextBtn" aria-label="다음">
-        ▶
-      </button>
-      <span>NEXT</span>
-    </div>
+    <!-- SELECT -->
+    <button
+      class="retro-key retro-select"
+      id="selectBtn"
+      aria-label="선택"
+      type="button"
+    >
+      <span>♡</span>
+    </button>
+
+    <!-- NEXT -->
+    <button
+      class="retro-key retro-next"
+      id="nextBtn"
+      aria-label="다음"
+      type="button"
+    >
+      <span>▶</span>
+    </button>
 
   </div>
+
+</div>
 
   <div class="footer">
     ✧ A LITTLE WORLD UNDER THE BLUE ✧
@@ -3296,6 +3315,214 @@ body {
   .footer {
     margin-top: 5px !important;
     font-size: 9px !important;
+  }
+}
+</style>
+   <style>
+/* =========================================
+   HYEOKJAE ARCHIVE
+   RETRO CONNECTED CONTROL PANEL
+========================================= */
+
+/* 기존 버튼 레이아웃 대신 패널 사용 */
+
+.phone > .controls.retro-controls {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+
+  margin: 16px auto 0 !important;
+  padding: 0 !important;
+
+  overflow: visible !important;
+}
+
+/* 버튼을 감싸는 하나의 패널 */
+
+.retro-control-panel {
+  display: grid;
+
+  grid-template-columns: 1fr 1.45fr 1fr;
+  grid-template-rows: 46px 54px;
+
+  grid-template-areas:
+    "prev home next"
+    "prev select next";
+
+  gap: 5px;
+
+  width: min(100%, 270px);
+  padding: 9px;
+
+  border: 4px solid #68745D;
+  border-radius: 29px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #DDE5DF 0%,
+      #B4C1BE 35%,
+      #849895 100%
+    );
+
+  box-shadow:
+    inset 3px 3px 0 #FFFFFF99,
+    inset -3px -4px 0 #52665F55,
+    0 4px 0 #65715B,
+    0 7px 12px #283B5529;
+}
+
+/* 공통 버튼 디자인 */
+
+.retro-control-panel .retro-key {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  position: relative;
+
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: 2px solid #647C87 !important;
+  border-radius: 11px !important;
+
+  background:
+    linear-gradient(
+      160deg,
+      #FFFFFF 0%,
+      #E8EEEE 35%,
+      #BDCDD2 100%
+    ) !important;
+
+  box-shadow:
+    inset 2px 2px 0 #FFFFFFCC,
+    inset -2px -3px 0 #8FA6AF66,
+    0 2px 0 #526A75 !important;
+
+  color: #283B55 !important;
+
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 23px !important;
+  font-weight: bold;
+
+  line-height: 1;
+
+  cursor: pointer;
+  pointer-events: auto !important;
+
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease,
+    background 0.1s ease;
+}
+
+/* PREV */
+
+.retro-control-panel .retro-prev {
+  grid-area: prev;
+  border-radius: 17px 9px 9px 17px !important;
+}
+
+/* HOME */
+
+.retro-control-panel .retro-home {
+  grid-area: home;
+  font-size: 26px !important;
+}
+
+/* SELECT */
+
+.retro-control-panel .retro-select {
+  grid-area: select;
+  font-size: 24px !important;
+}
+
+/* NEXT */
+
+.retro-control-panel .retro-next {
+  grid-area: next;
+  border-radius: 9px 17px 17px 9px !important;
+}
+
+/* 버튼 위에 마우스를 올렸을 때 */
+
+.retro-control-panel .retro-key:hover {
+  background:
+    linear-gradient(
+      #FFFFFF,
+      #CDE3E9
+    ) !important;
+}
+
+/* 버튼을 누르는 순간 */
+
+.retro-control-panel .retro-key:active {
+  transform: translateY(2px) !important;
+
+  box-shadow:
+    inset 2px 3px 5px #526A7555 !important;
+
+  background:
+    linear-gradient(
+      #B3C8CF,
+      #DDE9EA
+    ) !important;
+}
+
+/* 키보드 접근성 */
+
+.retro-control-panel .retro-key:focus-visible {
+  outline: 3px solid #283B55;
+  outline-offset: 2px;
+}
+
+/* 모바일 크기 */
+
+@media (max-width: 600px) {
+
+  .phone > .controls.retro-controls {
+    margin-top: 11px !important;
+  }
+
+  .retro-control-panel {
+    width: min(100%, 245px);
+
+    grid-template-rows: 39px 46px;
+
+    gap: 4px;
+    padding: 7px;
+
+    border-width: 3px;
+    border-radius: 25px;
+  }
+
+  .retro-control-panel .retro-key {
+    border-width: 2px !important;
+    font-size: 20px !important;
+  }
+
+  .retro-control-panel .retro-home {
+    font-size: 23px !important;
+  }
+
+  .retro-control-panel .retro-select {
+    font-size: 21px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .retro-control-panel .retro-key {
+    transition: none;
   }
 }
 </style>
