@@ -3146,5 +3146,158 @@ body {
   }
 }
 </style>
+   <style>
+/* ====================================
+   MOBILE MINI TAMAGOTCHI
+   휴대폰에서만 작고 귀엽게
+==================================== */
+
+@media (max-width: 600px) {
+
+  /* 바깥 여백 */
+  body {
+    padding: 12px 8px 24px !important;
+    align-items: flex-start !important;
+  }
+
+  /* 본체: 가로는 살짝 넓고 세로는 짧게 */
+  .phone {
+    width: min(100%, 365px) !important;
+
+    padding:
+      17px 13px 14px !important;
+
+    border-radius:
+      76px 76px 68px 68px !important;
+
+    border-width: 4px !important;
+  }
+
+  .phone::before {
+    inset: 7px !important;
+    border-radius:
+      69px 69px 61px 61px !important;
+  }
+
+  /* 상단 장식 */
+  .top-deco {
+    height: 15px !important;
+    font-size: 11px !important;
+    letter-spacing: 2px !important;
+  }
+
+  /* 로고 영역 압축 */
+  .brand {
+    margin: 3px 0 9px !important;
+  }
+
+  .brand-title {
+    font-size: 19px !important;
+    line-height: 1.1 !important;
+  }
+
+  .brand-sub {
+    margin-top: 2px !important;
+    font-size: 8px !important;
+  }
+
+  /* LCD 프레임 */
+  .screen-frame {
+    padding: 6px !important;
+    border-width: 4px !important;
+    border-radius: 23px !important;
+  }
+
+  .screen {
+    border-width: 2px !important;
+    border-radius: 10px !important;
+  }
+
+  /* 화면 안쪽 높이 축소 */
+  .desktop {
+    height: 290px !important;
+    padding: 8px !important;
+  }
+
+  /* 타이틀바와 메뉴바 */
+  .titlebar {
+    min-height: 25px !important;
+    padding: 4px 7px !important;
+  }
+
+  .menubar {
+    padding: 4px 7px !important;
+  }
+
+  /* HOME 수족관 배너 */
+  #home .hero {
+    min-height: 105px !important;
+    padding: 23px 7px 10px !important;
+    margin-bottom: 9px !important;
+    font-size: 20px !important;
+  }
+
+  #home .hero::before {
+    font-size: 15px !important;
+  }
+
+  #home .hero small {
+    margin-top: 5px !important;
+    font-size: 9px !important;
+  }
+
+  /* 폴더 메뉴 */
+  #home .icon-grid {
+    gap: 6px !important;
+    margin: 8px 0 !important;
+  }
+
+  #home .icon-btn {
+    min-height: 69px !important;
+    padding: 7px 2px 5px !important;
+    gap: 6px !important;
+    font-size: 10px !important;
+  }
+
+  #home .icon-btn .symbol {
+    width: 36px !important;
+    height: 29px !important;
+    font-size: 17px !important;
+  }
+
+  /* 하단 물리 버튼 */
+  .phone > .controls {
+    margin-top: 12px !important;
+    min-height: 82px !important;
+    gap: 13px !important;
+  }
+
+  .phone .control-group {
+    width: 60px !important;
+    gap: 3px !important;
+    font-size: 10px !important;
+  }
+
+  .phone .control {
+    width: 48px !important;
+    height: 48px !important;
+    border-width: 3px !important;
+    font-size: 20px !important;
+  }
+
+  .phone #homeBtn,
+  .phone .mini-home {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 15px !important;
+  }
+
+  /* 하단 장식 문구 */
+  .footer {
+    margin-top: 5px !important;
+    font-size: 9px !important;
+  }
+}
+</style>
 </body>
 </html>
