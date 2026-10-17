@@ -3570,5 +3570,86 @@ body {
   }
 }
 </style>
+   <style>
+/* HOME 버튼 크기 강제 수정 */
+
+/* 버튼 패널 배치 */
+.phone .retro-control-panel {
+  display: grid !important;
+
+  grid-template-columns: 1fr 1.45fr 1fr !important;
+  grid-template-rows: 43px 49px !important;
+
+  grid-template-areas:
+    "prev home next"
+    "prev select next" !important;
+
+  gap: 4px !important;
+}
+
+/* HOME - 기존 작은 원형 버튼 설정 제거 */
+.phone .retro-control-panel #homeBtn {
+  grid-area: home !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: none !important;
+  max-height: none !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: 2px solid #647C87 !important;
+  border-radius: 10px !important;
+
+  background: linear-gradient(
+    160deg,
+    #FFFFFF,
+    #E8EEEE 35%,
+    #BDCDD2
+  ) !important;
+
+  box-shadow:
+    inset 2px 2px 0 #FFFFFFCC,
+    inset -2px -3px 0 #8FA6AF66,
+    0 2px 0 #526A75 !important;
+
+  font-size: 26px !important;
+  line-height: 1 !important;
+  transform: none;
+}
+
+/* HOME 아이콘 */
+.phone .retro-control-panel #homeBtn span {
+  font-size: 26px !important;
+  line-height: 1 !important;
+  transform: none !important;
+}
+
+/* SELECT - 하트 유지 */
+.phone .retro-control-panel #selectBtn {
+  grid-area: select !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 10px !important;
+}
+
+.phone .retro-control-panel #selectBtn span {
+  font-size: 29px !important;
+}
+
+/* 눌렀을 때 */
+.phone .retro-control-panel #homeBtn:active {
+  transform: translateY(2px) !important;
+  box-shadow: inset 2px 3px 5px #526A7555 !important;
+}
+</style>
 </body>
 </html>
