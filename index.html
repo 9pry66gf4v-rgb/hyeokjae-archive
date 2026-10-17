@@ -4926,5 +4926,173 @@ grid-template-areas:
 }
 </style>
 
+<!-- ===== GALLERY 자동 사진 불러오기 시작 ===== -->
+<style>
+  #galleryList.auto-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  #galleryList .gallery-photo {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 5px;
+    border: 2px solid #a4b0b6;
+    border-radius: 8px;
+    background: #faf6ee;
+    box-shadow: 2px 3px 0 #c8c5be;
+    cursor: pointer;
+  }
+
+  #galleryList .gallery-photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  #galleryList .gallery-photo.selected {
+    outline: 3px solid #929b80;
+    outline-offset: 1px;
+  }
+
+  #galleryList .gallery-photo:active {
+    transform: translateY(2px);
+  }
+
+  #gallery .gallery-count {
+    margin: 0 0 10px;
+    font-size: 11px;
+    text-align: center;
+    color: #687985;
+  }
+
+  #recordDetail .gallery-full-image {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    max-height: none;
+    height: auto;
+    object-fit: contain;
+    border-radius: 5px;
+  }
+</style>
+
+<script>
+(function () {
+  const owner = "9pry66gf4v-rgb";
+  const repo = "hyeokjae-archive";
+  const folder = "gallery";
+
+  const list = document.getElementById("galleryList");
+  const galleryPage = document.getElementById("gallery");
+
+  if (!list || !galleryPage) return;
+
+  const count = document.createElement("p");
+  count.className = "gallery-count";
+  galleryPage.insertBefore(count, list);
+
+  list.classList.add("auto-gallery");
+  list.innerHTML = "";
+  count.textContent = "♡ 사진을 불러오는 중...";
+
+  async function loadGallery() {
+    try {
+      const api =
+        "https://api.github.com/repos/" +
+        owner + "/" + repo +
+        "/contents/" + folder +
+        "?per_page=1000";
+
+      const response = await fetch(api);
+
+      if (!response.ok) {
+        throw new Error("GitHub API 오류: " + response.status);
+      }
+
+      const files = await response.json();
+
+      if (!Array.isArray(files)) {
+        throw new Error("사진 목록을 읽을 수 없습니다.");
+      }
+
+      const photos = files
+        .filter(file =>
+          file.type === "file" &&
+          /\.(jpg|jpeg|png|gif|webp|avif)$/i.test(file.name)
+        )
+        .sort((a, b) =>
+          a.name.localeCompare(b.name, "ko", {
+            numeric: true
+          })
+        );
+
+      count.textContent = "♡ TOTAL " + photos.length + " PHOTOS";
+
+      if (!photos.length) {
+        count.textContent = "아직 등록된 사진이 없어요. ♡";
+        return;
+      }
+
+      photos.forEach((file, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "gallery-photo";
+        button.setAttribute(
+          "aria-label",
+          (index + 1) + "번째 사진 열기"
+        );
+
+        const img = document.createElement("img");
+        img.src = file.download_url;
+        img.alt = file.name;
+        img.loading = "lazy";
+        img.decoding = "async";
+
+        button.appendChild(img);
+
+        button.addEventListener("click", () => {
+          const title = document.getElementById("recordTitle");
+          const body = document.getElementById("recordBody");
+
+          title.textContent =
+            "🐚 PHOTO " + (index + 1) + " / " + photos.length;
+
+          body.replaceChildren();
+
+          const fullImage = document.createElement("img");
+          fullImage.className = "gallery-full-image";
+          fullImage.src = file.download_url;
+          fullImage.alt = file.name;
+
+          body.appendChild(fullImage);
+
+          recordParent = "gallery";
+          showPage("recordDetail");
+        });
+
+        list.appendChild(button);
+      });
+
+      if (typeof highlight === "function" &&
+          currentPage === "gallery") {
+        highlight();
+      }
+
+    } catch (error) {
+      console.error("GALLERY 오류:", error);
+      count.textContent =
+        "사진을 불러오지 못했어요. 잠시 후 새로고침해 주세요.";
+    }
+  }
+
+  loadGallery();
+})();
+</script>
+
 </body>
 </html>
