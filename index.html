@@ -8104,5 +8104,340 @@ body {
 
 </style>
 
+<!-- ===== HYEOKJAE AQUARIUM FEEDING START ===== -->
+
+<style>
+/* 먹이 주기 하단 패널 */
+#hyeokMiniAqua .aqua-feed-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 9px;
+}
+
+/* FEED 버튼 */
+#hyeokMiniAqua .aqua-feed-btn {
+  min-width: 110px;
+  height: 36px;
+  padding: 0 12px;
+
+  border: 1px solid #8B837A;
+  border-radius: 7px;
+  background: linear-gradient(
+    180deg,
+    #EEEAE4,
+    #D7D0C7
+  );
+
+  box-shadow:
+    inset 1px 1px 0 #FFFFFF,
+    inset -2px -2px 0 #B2AAA0,
+    0 2px 0 #999087;
+
+  color: #253A5B;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+#hyeokMiniAqua .aqua-feed-btn:active {
+  transform: translateY(2px);
+  box-shadow: inset 2px 2px 3px #A59B91;
+}
+
+#hyeokMiniAqua .aqua-feed-btn:disabled {
+  opacity: .65;
+  cursor: wait;
+}
+
+/* 오늘 먹이 준 횟수 */
+#hyeokMiniAqua .aqua-feed-count {
+  color: #253A5B;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 12px;
+  text-align: right;
+}
+
+/* 먹이 알갱이 */
+#hyeokMiniAqua .aqua-food {
+  position: absolute;
+  z-index: 5;
+  width: 7px;
+  height: 7px;
+  border: 1px solid #7D5B3D;
+  border-radius: 50%;
+  background: #D5A875;
+  box-shadow: inset 1px 1px #F3D4A7;
+  pointer-events: none;
+  animation: aquaFoodFall 1.5s ease-in forwards;
+}
+
+@keyframes aquaFoodFall {
+  from {
+    transform: translateY(-15px);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(105px);
+    opacity: 1;
+  }
+}
+
+/* 먹이 먹는 동안 물고기 잠시 이동 */
+#hyeokMiniAqua .aqua-swimmer.aqua-eating {
+  animation: none !important;
+  transition:
+    left 1s ease-in-out,
+    top 1s ease-in-out !important;
+}
+
+/* 하트 이펙트 */
+#hyeokMiniAqua .aqua-yummy {
+  position: absolute;
+  z-index: 12;
+  padding: 5px 9px;
+  border: 1px solid #8B837A;
+  border-radius: 7px;
+  background: #F4EEE7;
+  color: #253A5B;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: aquaYummyFloat 1.2s ease-out forwards;
+}
+
+@keyframes aquaYummyFloat {
+  from {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  to {
+    transform: translate(-50%, -30px);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 390px) {
+  #hyeokMiniAqua .aqua-feed-btn {
+    min-width: 95px;
+    font-size: 12px;
+  }
+
+  #hyeokMiniAqua .aqua-feed-count {
+    font-size: 11px;
+  }
+}
+</style>
+
+<script>
+(function () {
+
+  const aquarium =
+    document.getElementById("hyeokMiniAqua");
+
+  if (!aquarium) return;
+
+  /* 중복 추가 방지 */
+  if (aquarium.querySelector(".aqua-feed-panel")) return;
+
+  const tank = aquarium.querySelector(".aqua-tank");
+  if (!tank) return;
+
+  /* 먹이 주기 패널 생성 */
+  const panel = document.createElement("div");
+  panel.className = "aqua-feed-panel";
+
+  panel.innerHTML = `
+    <button type="button"
+            class="aqua-feed-btn">
+      🍪 FEED ♡
+    </button>
+
+    <span class="aqua-feed-count">
+      TODAY: 0 ♡
+    </span>
+  `;
+
+  aquarium.appendChild(panel);
+
+  const feedBtn =
+    panel.querySelector(".aqua-feed-btn");
+
+  const countText =
+    panel.querySelector(".aqua-feed-count");
+
+  /* 오늘 날짜 기준 횟수 저장 */
+  const today = new Date().toLocaleDateString("sv-SE");
+  const storageKey = "hyeok_aqua_feed_" + today;
+
+  let feedCount = 0;
+
+  try {
+    feedCount = Number(
+      localStorage.getItem(storageKey)
+    ) || 0;
+  } catch (error) {
+    feedCount = 0;
+  }
+
+  function updateCount() {
+    countText.textContent =
+      "TODAY: " + feedCount + " ♡";
+  }
+
+  updateCount();
+
+  let feeding = false;
+
+  /* 먹이 주기 */
+  function feedFish() {
+    if (feeding) return;
+
+    feeding = true;
+    feedBtn.disabled = true;
+
+    feedCount++;
+    updateCount();
+
+    try {
+      localStorage.setItem(
+        storageKey,
+        String(feedCount)
+      );
+    } catch (error) {
+      /* 저장이 막혀 있어도 기능은 작동 */
+    }
+
+    const tankWidth = tank.clientWidth;
+    const tankHeight = tank.clientHeight;
+
+    /* 먹이가 떨어질 위치 */
+    const foodX =
+      tankWidth * (0.3 + Math.random() * 0.4);
+
+    const foodY =
+      Math.min(115, tankHeight - 45);
+
+    /* 먹이 3개 생성 */
+    for (let i = 0; i < 3; i++) {
+      const food = document.createElement("div");
+      food.className = "aqua-food";
+
+      food.style.left =
+        (foodX + (i - 1) * 12) + "px";
+
+      food.style.top =
+        (foodY - 105) + "px";
+
+      food.style.animationDelay =
+        (i * 0.15) + "s";
+
+      tank.appendChild(food);
+
+      setTimeout(function() {
+        food.remove();
+      }, 2200);
+    }
+
+    /* 물고기들이 먹이를 향해 이동 */
+    const swimmers = Array.from(
+      tank.querySelectorAll(".aqua-swimmer")
+    );
+
+    swimmers.forEach(function(fish, index) {
+
+      /* 현재 화면 위치 저장 */
+      const tankRect =
+        tank.getBoundingClientRect();
+
+      const fishRect =
+        fish.getBoundingClientRect();
+
+      const currentX =
+        fishRect.left - tankRect.left;
+
+      const currentY =
+        fishRect.top - tankRect.top;
+
+      /* 애니메이션 정지 전 위치 고정 */
+      fish.style.left = currentX + "px";
+      fish.style.top = currentY + "px";
+
+      fish.classList.add("aqua-eating");
+
+      /* 먹이 주변으로 이동 */
+      const targetX =
+        Math.max(0, Math.min(
+          tankWidth - 40,
+          foodX - 20 + (index - 1) * 32
+        ));
+
+      const targetY =
+        Math.max(0, Math.min(
+          tankHeight - 45,
+          foodY - 10 + index * 5
+        ));
+
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          fish.style.left = targetX + "px";
+          fish.style.top = targetY + "px";
+        });
+      });
+    });
+
+    /* 먹이를 먹고 하트 표시 */
+    setTimeout(function() {
+
+      swimmers.forEach(function(fish) {
+
+        const fishRect =
+          fish.getBoundingClientRect();
+
+        const tankRect =
+          tank.getBoundingClientRect();
+
+        const heart = document.createElement("div");
+        heart.className = "aqua-yummy";
+        heart.textContent = "♡ YUMMY!";
+
+        heart.style.left =
+          (fishRect.left - tankRect.left + 20) + "px";
+
+        heart.style.top =
+          Math.max(8, fishRect.top - tankRect.top - 15)
+          + "px";
+
+        tank.appendChild(heart);
+
+        setTimeout(function() {
+          heart.remove();
+        }, 1300);
+      });
+
+    }, 1200);
+
+    /* 원래 헤엄치던 상태로 복귀 */
+    setTimeout(function() {
+
+      swimmers.forEach(function(fish) {
+        fish.classList.remove("aqua-eating");
+        fish.style.removeProperty("left");
+        fish.style.removeProperty("top");
+      });
+
+      feeding = false;
+      feedBtn.disabled = false;
+
+    }, 2700);
+  }
+
+  feedBtn.addEventListener("click", feedFish);
+
+})();
+</script>
+
 </body>
 </html>
