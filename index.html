@@ -6810,5 +6810,369 @@ body {
 
 </style>
 
+<!-- ===== HYEOKJAE GALLERY PHOTO VIEWER ===== -->
+
+<style>
+/* 전체 화면 배경 */
+#hyeokGalleryViewer {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background: rgba(20, 30, 43, 0.88);
+  box-sizing: border-box;
+}
+
+#hyeokGalleryViewer.is-open {
+  display: flex;
+}
+
+/* 뷰어 창 */
+#hyeokGalleryViewer .gv-window {
+  width: 100%;
+  max-width: 520px;
+  max-height: 95dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  background: #F4EEE7;
+  border: 2px solid #253A5B;
+  border-radius: 9px;
+
+  box-shadow: 4px 5px 0 rgba(0,0,0,0.35);
+}
+
+/* 상단 제목줄 */
+#hyeokGalleryViewer .gv-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-shrink: 0;
+
+  padding: 8px 10px;
+  background: #253A5B;
+  color: #FFF8EA;
+
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 13px;
+}
+
+/* 닫기 버튼 */
+#hyeokGalleryViewer .gv-close {
+  width: 28px;
+  height: 25px;
+  border: 1px solid #8B837A;
+  border-radius: 4px;
+  background: #D6D0C7;
+  color: #253A5B;
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* 사진 영역 */
+#hyeokGalleryViewer .gv-image-area {
+  min-height: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px;
+  background: #E3DDD3;
+  overflow: hidden;
+}
+
+#hyeokGalleryViewer .gv-image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 70dvh;
+  object-fit: contain;
+  border-radius: 3px;
+}
+
+/* 하단 영역 */
+#hyeokGalleryViewer .gv-bottom {
+  flex-shrink: 0;
+  padding: 10px;
+  background: #F4EEE7;
+  border-top: 1px solid #B9B0A6;
+}
+
+#hyeokGalleryViewer .gv-counter {
+  margin-bottom: 9px;
+  text-align: center;
+  color: #253A5B;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 12px;
+}
+
+/* 버튼 3개 */
+#hyeokGalleryViewer .gv-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+}
+
+#hyeokGalleryViewer .gv-btn {
+  min-width: 0;
+  height: 40px;
+  padding: 0 4px;
+
+  border: 1px solid #8B837A;
+  border-radius: 7px;
+
+  background: linear-gradient(
+    180deg,
+    #EEEAE4,
+    #D7D0C7
+  );
+
+  color: #253A5B;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 12px;
+
+  box-shadow:
+    inset 1px 1px 0 #FFFFFF,
+    inset -2px -2px 0 #B2AAA0;
+
+  cursor: pointer;
+}
+
+#hyeokGalleryViewer .gv-btn:active {
+  background: #C6BEB5;
+  transform: translateY(1px);
+}
+
+/* 작은 화면 */
+@media (max-width: 390px) {
+  #hyeokGalleryViewer {
+    padding: 8px;
+  }
+
+  #hyeokGalleryViewer .gv-image {
+    max-height: 65dvh;
+  }
+
+  #hyeokGalleryViewer .gv-btn {
+    font-size: 11px;
+  }
+}
+</style>
+
+<script>
+(function () {
+
+  const galleryList =
+    document.getElementById("galleryList");
+
+  if (!galleryList) return;
+
+  /* 뷰어 HTML 생성 */
+  const viewer = document.createElement("div");
+  viewer.id = "hyeokGalleryViewer";
+  viewer.setAttribute("role", "dialog");
+  viewer.setAttribute("aria-modal", "true");
+  viewer.setAttribute("aria-label", "갤러리 사진 뷰어");
+
+  viewer.innerHTML = `
+    <div class="gv-window">
+
+      <div class="gv-titlebar">
+        <span>🐚 PHOTO_VIEWER.exe</span>
+        <button class="gv-close"
+                type="button"
+                aria-label="사진 뷰어 닫기">×</button>
+      </div>
+
+      <div class="gv-image-area">
+        <img class="gv-image"
+             alt="갤러리 사진">
+      </div>
+
+      <div class="gv-bottom">
+
+        <div class="gv-counter"></div>
+
+        <div class="gv-buttons">
+          <button class="gv-btn gv-prev"
+                  type="button">◀ PREV</button>
+
+          <button class="gv-btn gv-exit"
+                  type="button">CLOSE</button>
+
+          <button class="gv-btn gv-next"
+                  type="button">NEXT ▶</button>
+        </div>
+
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(viewer);
+
+  const image = viewer.querySelector(".gv-image");
+  const counter = viewer.querySelector(".gv-counter");
+  const closeBtn = viewer.querySelector(".gv-close");
+
+  let currentIndex = 0;
+  let photos = [];
+  let previousFocus = null;
+  let previousOverflow = "";
+
+  /* 갤러리 사진 목록 가져오기 */
+  function getPhotos() {
+    return Array.from(
+      galleryList.querySelectorAll(".gallery-photo")
+    ).filter(button => button.querySelector("img"));
+  }
+
+  /* 사진 표시 */
+  function showPhoto(index) {
+    if (!photos.length) return;
+
+    currentIndex =
+      (index + photos.length) % photos.length;
+
+    const thumbnail =
+      photos[currentIndex].querySelector("img");
+
+    image.src = thumbnail.src;
+    image.alt = thumbnail.alt || "갤러리 사진";
+
+    counter.textContent =
+      "♡ PHOTO " +
+      String(currentIndex + 1).padStart(3, "0") +
+      " / " +
+      String(photos.length).padStart(3, "0");
+  }
+
+  /* 뷰어 열기 */
+  function openViewer(index) {
+    photos = getPhotos();
+
+    if (!photos.length) return;
+
+    previousFocus = document.activeElement;
+    previousOverflow = document.body.style.overflow;
+
+    showPhoto(index);
+
+    viewer.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+
+    closeBtn.focus();
+  }
+
+  /* 뷰어 닫기 */
+  function closeViewer() {
+    if (!viewer.classList.contains("is-open")) return;
+
+    viewer.classList.remove("is-open");
+    document.body.style.overflow = previousOverflow;
+
+    image.removeAttribute("src");
+
+    if (previousFocus &&
+        typeof previousFocus.focus === "function") {
+      previousFocus.focus();
+    }
+  }
+
+  /* 이전 / 다음 */
+  function movePhoto(step) {
+    showPhoto(currentIndex + step);
+  }
+
+  /* 기존 갤러리 버튼 클릭을 뷰어로 연결 */
+  galleryList.addEventListener("click", function(event) {
+    const button = event.target.closest(".gallery-photo");
+
+    if (!button || !galleryList.contains(button)) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    const allPhotos = getPhotos();
+    const index = allPhotos.indexOf(button);
+
+    if (index >= 0) {
+      openViewer(index);
+    }
+
+  }, true);
+
+  /* 뷰어 버튼 */
+  viewer.querySelector(".gv-prev").onclick = () => {
+    movePhoto(-1);
+  };
+
+  viewer.querySelector(".gv-next").onclick = () => {
+    movePhoto(1);
+  };
+
+  viewer.querySelector(".gv-exit").onclick = closeViewer;
+  closeBtn.onclick = closeViewer;
+
+  /* 어두운 바깥 배경 클릭 시 닫기 */
+  viewer.addEventListener("click", function(event) {
+    if (event.target === viewer) {
+      closeViewer();
+    }
+  });
+
+  /* 키보드 조작 */
+  window.addEventListener("keydown", function(event) {
+    if (!viewer.classList.contains("is-open")) return;
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      movePhoto(-1);
+    }
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      movePhoto(1);
+    }
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      closeViewer();
+    }
+
+    if (event.key === "Tab") {
+      const focusable = Array.from(
+        viewer.querySelectorAll("button")
+      );
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey &&
+          document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey &&
+                 document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+  }, true);
+
+})();
+</script>
+
 </body>
 </html>
