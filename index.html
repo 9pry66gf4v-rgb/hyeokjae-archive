@@ -8440,5 +8440,48 @@ body {
 })();
 </script>
 
+<!-- ===== TURTLE ALWAYS ON GROUND ===== -->
+<style>
+
+/* 거북이는 평소에 수조 바닥에서만 이동 */
+#hyeokMiniAqua
+.aqua-swimmer[data-character="turtle"]:not(.aqua-eating) {
+  top: auto !important;
+  bottom: 12px !important;
+
+  animation-name: turtleGroundWalk !important;
+  animation-timing-function: linear !important;
+}
+
+/* 바닥을 따라 왼쪽으로 천천히 기어가기 */
+@keyframes turtleGroundWalk {
+  0% {
+    left: calc(100% + 15px);
+    transform: none;
+  }
+
+  100% {
+    left: -50px;
+    transform: none;
+  }
+}
+
+/* 먹이 먹으러 갈 때는 바닥 고정 */
+#hyeokMiniAqua
+.aqua-swimmer[data-character="turtle"].aqua-eating {
+  bottom: 12px !important;
+  top: auto !important;
+  animation: none !important;
+  transition: left 2s ease-in-out !important;
+}
+
+/* 거북이 이모지 방향 유지 */
+#hyeokMiniAqua
+.aqua-swimmer[data-character="turtle"] .aqua-animal {
+  transform: none !important;
+}
+
+</style>
+
 </body>
 </html>
