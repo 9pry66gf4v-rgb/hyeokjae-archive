@@ -2383,6 +2383,768 @@ body {
   setInterval(updateRealClock, 1000);
 })();
 </script>
+<style>
+/* =========================================
+   HYEOKJAE ARCHIVE
+   RETRO AQUARIUM DESKTOP DESIGN
+   ORIGINAL CODE COMPATIBLE
+========================================= */
 
+/* 기본 팔레트 */
+
+:root {
+  --bg: #F1E9DC;
+  --olive: #929B80;
+  --olive-dark: #68745D;
+  --navy: #283B55;
+  --sky: #B8D4E0;
+  --bluegray: #A4B0B6;
+  --ivory: #FAF6EE;
+  --pearl: #E0E1DE;
+}
+
+/* =========================================
+   01. 전체 배경
+========================================= */
+
+html,
+body {
+  background-color: #F1E9DC !important;
+  color: #283B55;
+}
+
+body {
+  background-image:
+    radial-gradient(
+      #A4B0B655 1px,
+      transparent 1px
+    ) !important;
+
+  background-size: 21px 21px !important;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  height: auto !important;
+
+  align-items: flex-start !important;
+  overflow-y: auto !important;
+
+  padding-bottom: 45px !important;
+}
+
+/* =========================================
+   02. 다마고치 본체
+========================================= */
+
+.phone {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+
+  overflow: visible !important;
+
+  padding-bottom: 22px !important;
+
+  border-color: #68745D !important;
+
+  background:
+    radial-gradient(
+      ellipse at 15% 5%,
+      #FFFFFF99,
+      transparent 40%
+    ),
+    linear-gradient(
+      145deg,
+      #B7BEAA 0%,
+      #A3AC94 30%,
+      #929B80 60%,
+      #75816A 100%
+    ) !important;
+
+  box-shadow:
+    inset 5px 6px #FFFFFF55,
+    inset -7px -9px #44533D33,
+    0 7px 0 #65715B,
+    0 20px 35px #283B5533 !important;
+}
+
+.phone::before {
+  border-color: #FFFFFF66 !important;
+}
+
+/* =========================================
+   03. 상단 로고
+========================================= */
+
+.top-deco {
+  color: #283B55 !important;
+}
+
+.brand-title {
+  color: #283B55 !important;
+
+  text-shadow:
+    2px 2px #FFFFFF99 !important;
+}
+
+.brand-sub {
+  color: #344C58 !important;
+}
+
+/* =========================================
+   04. LCD 화면 테두리
+========================================= */
+
+.screen-frame {
+  border-color: #82939A !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      #D9E5E3,
+      #A4B0B6 50%,
+      #536C7A
+    ) !important;
+
+  box-shadow:
+    inset 3px 3px #FFFFFF99,
+    inset -4px -4px #283B5544,
+    0 5px 0 #66797D,
+    0 9px 15px #283B5533 !important;
+}
+
+.screen {
+  border-color: #283B55 !important;
+  background: #FAF6EE !important;
+}
+
+/* =========================================
+   05. Windows XP 상단
+========================================= */
+
+.titlebar {
+  background:
+    linear-gradient(
+      #496584,
+      #283B55 80%
+    ) !important;
+
+  border-bottom-color: #1E3046 !important;
+  color: #FAF6EE !important;
+}
+
+.window-buttons span {
+  border-color: #8496A2 !important;
+
+  background:
+    linear-gradient(
+      #FFFFFF,
+      #DCE6EB
+    ) !important;
+
+  color: #283B55 !important;
+}
+
+.window-buttons span:last-child {
+  background: #E7D3D3 !important;
+}
+
+.menubar {
+  background: #E6EAE7 !important;
+  border-bottom-color: #B4C2C6 !important;
+  color: #283B55 !important;
+}
+
+/* =========================================
+   06. 레트로 데스크톱
+========================================= */
+
+.desktop {
+  height: 365px !important;
+
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+
+  background:
+    radial-gradient(
+      circle at 85% 12%,
+      #FFFFFF99,
+      transparent 38%
+    ),
+    linear-gradient(
+      160deg,
+      #E5F0EE,
+      #DDE7E7 55%,
+      #F3EEE5
+    ) !important;
+
+  scrollbar-color:
+    #929B80 #E0E1DE;
+}
+
+.desktop::-webkit-scrollbar {
+  width: 6px;
+}
+
+.desktop::-webkit-scrollbar-thumb {
+  background: #929B80;
+  border-radius: 10px;
+}
+
+/* =========================================
+   07. HOME 아쿠아리움 배너
+========================================= */
+
+#home .hero {
+  position: relative;
+  overflow: hidden;
+
+  min-height: 126px;
+
+  margin: 0 0 13px !important;
+  padding: 25px 10px 17px !important;
+
+  border: 2px solid #718F9D !important;
+  border-radius: 9px !important;
+
+  background:
+    radial-gradient(
+      circle at 85% 18%,
+      #FFFFFFAA,
+      transparent 32%
+    ),
+    linear-gradient(
+      180deg,
+      #D6EBEE,
+      #AFCFD9 65%,
+      #91B5C2
+    ) !important;
+
+  box-shadow:
+    2px 3px 0 #9EAEB0 !important;
+
+  color: #283B55 !important;
+
+  font-family:
+    "Pixelify Sans",
+    sans-serif !important;
+
+  font-size: 24px !important;
+  line-height: 1.1 !important;
+  text-align: center !important;
+
+  text-shadow:
+    2px 2px #FFFFFF99 !important;
+}
+
+/* 배너 안 물고기 장식 */
+
+#home .hero::before {
+  content: "🐟  ◦  🫧";
+
+  position: absolute;
+  top: 6px;
+  left: 0;
+  right: 0;
+
+  font-size: 19px;
+  line-height: 1;
+
+  animation:
+    aquariumFloat 4s ease-in-out infinite;
+}
+
+/* 배너 오른쪽 물방울 */
+
+#home .hero::after {
+  content: "○  ◦";
+
+  position: absolute;
+  right: 12px;
+  bottom: 8px;
+
+  font-size: 15px;
+  color: #FFFFFFAA;
+}
+
+/* 배너 설명 */
+
+#home .hero small {
+  display: block !important;
+
+  margin-top: 9px !important;
+
+  color: #405D70 !important;
+
+  font-family:
+    "Gowun Dodum",
+    sans-serif !important;
+
+  font-size: 10px !important;
+  font-weight: normal !important;
+  line-height: 1.5 !important;
+
+  text-shadow: none !important;
+}
+
+@keyframes aquariumFloat {
+  0%, 100% {
+    transform: translateX(-7px);
+  }
+
+  50% {
+    transform: translateX(7px);
+  }
+}
+
+/* =========================================
+   08. 폴더형 메뉴
+========================================= */
+
+#home .icon-grid {
+  display: grid !important;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr)) !important;
+
+  gap: 8px !important;
+
+  margin: 14px 0 !important;
+}
+
+/* 메뉴 카드 */
+
+#home .icon-btn {
+  position: relative;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+
+  gap: 9px !important;
+
+  min-width: 0 !important;
+  min-height: 88px !important;
+
+  padding: 10px 3px 7px !important;
+
+  border: 1px solid transparent !important;
+  border-radius: 8px !important;
+
+  background: #FFFFFF66 !important;
+
+  box-shadow: none !important;
+
+  color: #283B55 !important;
+
+  font-family:
+    "Pixelify Sans",
+    sans-serif !important;
+
+  font-size: 11px !important;
+  font-weight: bold !important;
+
+  text-align: center !important;
+
+  transition:
+    background 0.15s,
+    transform 0.15s,
+    border-color 0.15s;
+}
+
+/* 폴더 모양 */
+
+#home .icon-btn .symbol {
+  position: relative;
+
+  display: grid !important;
+  place-items: center !important;
+
+  width: 43px !important;
+  height: 34px !important;
+
+  margin: 0 !important;
+
+  border: 2px solid #6F8794 !important;
+  border-radius: 4px 5px 5px 5px !important;
+
+  background:
+    linear-gradient(
+      #E7F2F3,
+      #B8D4E0
+    ) !important;
+
+  box-shadow:
+    2px 3px 0 #92ABB4 !important;
+
+  font-size: 20px !important;
+  line-height: 1 !important;
+}
+
+/* 폴더 윗부분 */
+
+#home .icon-btn .symbol::before {
+  content: "";
+
+  position: absolute;
+
+  top: -8px;
+  left: -2px;
+
+  width: 18px;
+  height: 7px;
+
+  border: 2px solid #6F8794;
+  border-bottom: none;
+
+  border-radius: 4px 4px 0 0;
+
+  background: #D5E8EA;
+}
+
+/* 폴더 선택 효과 */
+
+#home .icon-btn:hover,
+#home .icon-btn.selected {
+  border-color: #8DAFBE !important;
+  background: #C7E0E7AA !important;
+}
+
+#home .icon-btn:active {
+  transform: scale(0.95);
+}
+
+/* =========================================
+   09. 내부 윈도우
+========================================= */
+
+.window {
+  border-color: #9FB0B7 !important;
+
+  background: #FAF6EE !important;
+
+  box-shadow:
+    2px 3px 0 #B5BFBE !important;
+}
+
+.window-head {
+  border-bottom-color:
+    #A4B0B6 !important;
+
+  background:
+    linear-gradient(
+      #F9FCFA,
+      #D6E5E9
+    ) !important;
+
+  color: #283B55 !important;
+}
+
+.window-content {
+  color: #283B55 !important;
+}
+
+.video-wrap {
+  border-color: #A0B4BC !important;
+  background: #D6E7EA !important;
+}
+
+/* =========================================
+   10. CHARACTER
+========================================= */
+
+.section-title {
+  color: #283B55 !important;
+}
+
+.character-card {
+  border-color: #A4B0B6 !important;
+
+  background: #FAF6EE !important;
+
+  box-shadow:
+    2px 3px 0 #B7C1C0 !important;
+}
+
+.character-card:hover,
+.character-card.selected {
+  border-color: #789EAF !important;
+  background: #DDEBF0 !important;
+}
+
+.portrait {
+  background: #DCE8E6 !important;
+}
+
+/* D-DAY */
+
+.couple-dday {
+  border-color: #A4B0B6 !important;
+
+  background:
+    linear-gradient(
+      #FFFFFF,
+      #FAF6EE
+    ) !important;
+
+  box-shadow:
+    2px 3px 0 #C8C5BE !important;
+}
+
+.dday-number {
+  color: #283B55 !important;
+}
+
+/* =========================================
+   11. LETTER / COMIC / STORY
+========================================= */
+
+.entry,
+.back,
+.chat-day {
+  border-color: #A4B0B6 !important;
+
+  background: #FAF6EE !important;
+
+  box-shadow:
+    2px 2px 0 #B7C1C0 !important;
+
+  color: #283B55 !important;
+}
+
+.entry:hover,
+.entry.selected,
+.back:hover,
+.back.selected,
+.chat-day:hover,
+.chat-day.selected {
+  background: #D8E9EE !important;
+}
+
+/* LETTER 입력창 */
+
+.chat-search {
+  border-color: #A4B0B6 !important;
+  background: #FAF6EE !important;
+  color: #283B55 !important;
+}
+
+/* 채팅 말풍선 */
+
+.chat-message.yj .chat-bubble {
+  background: #DCEBF1 !important;
+  border-color: #A9C5D3 !important;
+}
+
+.chat-message.jh .chat-bubble {
+  background: #F4E1E6 !important;
+  border-color: #D7BBC7 !important;
+}
+
+.chat-date {
+  background: #DCE6E5 !important;
+  color: #283B55 !important;
+}
+
+/* =========================================
+   12. 작업 표시줄
+========================================= */
+
+.taskbar {
+  border-top-color: #91A7B2 !important;
+
+  background:
+    linear-gradient(
+      #E2EEF1,
+      #B8D4E0
+    ) !important;
+
+  color: #283B55 !important;
+}
+
+/* =========================================
+   13. 물리 버튼 복구 및 디자인
+========================================= */
+
+/* 하단 버튼 영역을 반드시 표시 */
+
+.phone > .controls {
+  position: relative !important;
+
+  display: flex !important;
+  visibility: visible !important;
+
+  justify-content: center !important;
+  align-items: flex-start !important;
+
+  gap: clamp(10px, 5vw, 27px) !important;
+
+  margin-top: 18px !important;
+
+  height: auto !important;
+  min-height: 100px !important;
+
+  opacity: 1 !important;
+  overflow: visible !important;
+
+  z-index: 5 !important;
+}
+
+.phone .control-group {
+  display: flex !important;
+
+  flex-direction: column !important;
+  align-items: center !important;
+
+  width: 66px !important;
+
+  gap: 5px !important;
+
+  color: #283B55 !important;
+}
+
+/* PREV / NEXT */
+
+.phone .control {
+  display: grid !important;
+  place-items: center !important;
+
+  width: 59px !important;
+  height: 59px !important;
+
+  padding: 0 !important;
+
+  border: 4px solid #667A91 !important;
+  border-radius: 50% !important;
+
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      #6C8198,
+      #435A76 38%,
+      #283B55 80%
+    ) !important;
+
+  box-shadow:
+    inset 3px 3px #FFFFFF42,
+    inset -3px -4px #0C1B2C88,
+    2px 5px 0 #1E3048 !important;
+
+  color: #FAF6EE !important;
+
+  font-size: 24px !important;
+  cursor: pointer !important;
+
+  pointer-events: auto !important;
+}
+
+/* SELECT */
+
+.phone #selectBtn {
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      #FFFFFF,
+      #D7EAF0 36%,
+      #B8D4E0 78%,
+      #8FAFBE
+    ) !important;
+
+  border-color: #8EAEBE !important;
+  color: #283B55 !important;
+}
+
+/* HOME */
+
+.phone #homeBtn {
+  display: grid !important;
+  place-items: center !important;
+
+  width: 31px !important;
+  height: 31px !important;
+
+  padding: 0 !important;
+
+  border: 3px solid #9AA3A0 !important;
+  border-radius: 50% !important;
+
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      #FFFFFF,
+      #E5E3DC 35%,
+      #C8C5BE 80%
+    ) !important;
+
+  box-shadow:
+    2px 3px 0 #8B9690 !important;
+
+  color: #283B55 !important;
+  font-size: 18px !important;
+
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+/* 버튼 눌림 */
+
+.phone .control:active,
+.phone #homeBtn:active {
+  transform: translateY(3px) !important;
+
+  box-shadow:
+    inset 1px 2px 4px #17283B66 !important;
+}
+
+/* 하단 문구 */
+
+.footer {
+  display: block !important;
+
+  margin-top: 12px !important;
+
+  color: #344C58 !important;
+}
+
+/* =========================================
+   14. 작은 화면
+========================================= */
+
+@media (max-width: 380px) {
+  .phone {
+    padding-bottom: 20px !important;
+  }
+
+  .desktop {
+    height: 345px !important;
+  }
+
+  .phone > .controls {
+    gap: 12px !important;
+  }
+
+  .phone .control {
+    width: 54px !important;
+    height: 54px !important;
+  }
+
+  #home .icon-grid {
+    gap: 5px !important;
+  }
+}
+
+/* =========================================
+   15. 움직임 최소화
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  #home .hero::before {
+    animation: none !important;
+  }
+}
+</style>
 </body>
 </html>
