@@ -8035,5 +8035,53 @@ body {
 })();
 </script>
 
+<!-- AQUARIUM SWIMMING DIRECTION FIX -->
+<style>
+
+/* 물고기들이 오른쪽에서 왼쪽으로 헤엄치기 */
+@keyframes aquaSwimLeft {
+  0% {
+    left: calc(100% + 15px);
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(-10px);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
+
+  75% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    left: -50px;
+    transform: translateY(0);
+  }
+}
+
+/* 기존 움직임을 왼쪽 방향으로 변경 */
+#hyeokMiniAqua .aqua-swimmer {
+  animation-name: aquaSwimLeft !important;
+}
+
+/* 물고기와 거북이 모두 왼쪽을 바라보게 */
+#hyeokMiniAqua .aqua-animal {
+  transform: scaleX(-1);
+}
+
+/* 움직임 최소화 설정 유지 */
+@media (prefers-reduced-motion: reduce) {
+  #hyeokMiniAqua .aqua-swimmer {
+    animation: none !important;
+    left: var(--still-left);
+  }
+}
+
+</style>
+
 </body>
 </html>
