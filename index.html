@@ -6352,5 +6352,70 @@ body {
 
 </style>
 
+<!-- CHARACTER CARD FINAL HEIGHT FIX -->
+<style>
+
+/* 정혁 / 홍윤재 가로 2칸 유지 */
+#characters .character-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+  align-items: stretch !important;
+}
+
+/* 프로필 카드 */
+#characters .character-card {
+  width: 100% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+
+  padding: 8px !important;
+  box-sizing: border-box !important;
+}
+
+/* 실제 사진 액자 높이 변경 */
+#characters .character-card .portrait {
+  width: 100% !important;
+  height: 290px !important;
+  min-height: 290px !important;
+  max-height: none !important;
+
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* 이미지 전체가 잘리지 않게 */
+#characters .character-card .portrait img {
+  display: block !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+
+/* 이름과 프로필 글씨 유지 */
+#characters .character-card strong {
+  margin-top: 10px !important;
+}
+
+#characters .character-card small {
+  display: block !important;
+  margin-top: 5px !important;
+}
+
+/* 작은 아이폰에서도 사진 높이 유지 */
+@media (max-width: 390px) {
+  #characters .character-card .portrait {
+    height: 260px !important;
+    min-height: 260px !important;
+  }
+}
+
+</style>
 </body>
 </html>
