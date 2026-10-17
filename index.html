@@ -6237,5 +6237,67 @@ body {
 
 </style>
 
+<!-- CHARACTER 2 COLUMN FIX -->
+<style>
+
+/* 캐릭터 카드 가로 2칸 유지 */
+#home .character-grid,
+#home .characters-grid,
+#home .profile-grid,
+#home .character-cards,
+#home .couple-grid,
+#home .couple-cards {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 8px !important;
+}
+
+/* 카드 자체는 세로로 길게 */
+#home .character-card,
+#home .profile-card,
+#home .couple-card {
+  width: 100% !important;
+  min-width: 0 !important;
+  height: auto !important;
+  padding: 8px 6px !important;
+  box-sizing: border-box !important;
+}
+
+/* 사진 전체가 보이도록 */
+#home .character-card img,
+#home .profile-card img,
+#home .couple-card img {
+  display: block !important;
+  width: 100% !important;
+  height: 240px !important;
+  max-height: none !important;
+
+  object-fit: contain !important;
+  object-position: center !important;
+
+  background: #e8e9e2 !important;
+  border-radius: 4px !important;
+}
+
+/* 캐릭터 이름과 프로필 버튼 */
+#home .character-card h3,
+#home .profile-card h3,
+#home .couple-card h3 {
+  margin: 9px 0 5px !important;
+  font-size: 14px !important;
+  text-align: center !important;
+}
+
+/* 작은 아이폰 */
+@media (max-width: 390px) {
+  #home .character-card img,
+  #home .profile-card img,
+  #home .couple-card img {
+    height: 205px !important;
+  }
+}
+
+</style>
+
 </body>
 </html>
