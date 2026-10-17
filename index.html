@@ -6508,5 +6508,120 @@ body {
 
 </style>
 
+<!-- WINDOWS 98 ROUNDED BUTTON DESIGN -->
+<style>
+
+/* 하단 버튼 전체 영역 */
+.phone .retro-control-panel {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  grid-template-areas: "prev select home next" !important;
+
+  gap: 7px !important;
+  padding: 10px 8px !important;
+
+  background: #D5DCCF !important;
+  border-top: 2px solid #253A5B !important;
+}
+
+/* 버튼 공통 디자인 */
+.phone .retro-control-panel .retro-key {
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 48px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  border: 1px solid #253A5B !important;
+  border-radius: 9px !important;
+
+  background: linear-gradient(
+    180deg,
+    #F8F7F0 0%,
+    #E6E9E0 48%,
+    #D5DBD1 100%
+  ) !important;
+
+  color: #253A5B !important;
+
+  box-shadow:
+    inset 2px 2px 0 #FFFFFF,
+    inset -2px -2px 0 #A7B0A5,
+    1px 2px 0 #718077 !important;
+
+  font-family: "Pixelify Sans", sans-serif !important;
+  font-size: 21px !important;
+  font-weight: 600 !important;
+
+  text-shadow: none !important;
+  transition: background 0.12s, transform 0.12s !important;
+}
+
+/* 아이콘 */
+.phone .retro-control-panel .retro-key span {
+  color: #253A5B !important;
+  font-size: 21px !important;
+  line-height: 1 !important;
+  text-shadow: none !important;
+}
+
+/* SELECT 하트 버튼만 크림색 */
+.phone .retro-control-panel #selectBtn {
+  background: linear-gradient(
+    180deg,
+    #FFF9F0 0%,
+    #F1E4D6 100%
+  ) !important;
+}
+
+/* HOME 버튼 */
+.phone .retro-control-panel #homeBtn {
+  background: linear-gradient(
+    180deg,
+    #F8F7F0 0%,
+    #E6E9E0 48%,
+    #D5DBD1 100%
+  ) !important;
+
+  color: #253A5B !important;
+}
+
+/* 눌렀을 때 */
+.phone .retro-control-panel .retro-key:active {
+  transform: translateY(2px) !important;
+
+  box-shadow:
+    inset 2px 2px 3px #A7B0A5,
+    inset -1px -1px 0 #FFFFFF !important;
+
+  background: #CDD6CA !important;
+}
+
+/* 터치가 아닌 기기에서 마우스를 올렸을 때 */
+@media (hover: hover) {
+  .phone .retro-control-panel .retro-key:hover {
+    background: #F5F1E8 !important;
+  }
+}
+
+/* 아이폰 작은 화면 */
+@media (max-width: 390px) {
+  .phone .retro-control-panel {
+    gap: 5px !important;
+    padding: 8px 6px !important;
+  }
+
+  .phone .retro-control-panel .retro-key {
+    height: 44px !important;
+  }
+}
+
+</style>
+
 </body>
 </html>
