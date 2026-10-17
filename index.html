@@ -5564,5 +5564,513 @@ body {
 
 </style>
 
+<!-- HYEOKJAE ARCHIVE : FULL SCREEN RETRO PHONE UI -->
+<style>
+
+/* 01. 기본 색상 */
+:root {
+  --retro-navy: #253a5b;
+  --retro-navy-dark: #172943;
+  --retro-olive: #929b80;
+  --retro-olive-light: #b7c0a4;
+  --retro-cream: #f4eee2;
+  --retro-ivory: #fffaf0;
+  --retro-line: #64778c;
+}
+
+/* 02. 전체 페이지 */
+html,
+body {
+  margin: 0 !important;
+  min-height: 100% !important;
+  background: #f4eee2 !important;
+}
+
+body {
+  background-image: none !important;
+}
+
+/* 03. 다마고치 외형 제거 */
+.phone {
+  box-sizing: border-box !important;
+
+  width: 100% !important;
+  max-width: 520px !important;
+  min-height: 100dvh !important;
+
+  margin: 0 auto !important;
+  padding: 0 !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+
+  background: #e8e9dc !important;
+
+  box-shadow:
+    0 0 0 2px #253a5b,
+    0 0 25px #253a5b18 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* 기존 본체 장식 제거 */
+.phone::before,
+.phone::after {
+  display: none !important;
+}
+
+/* 04. 본체 위쪽 장식 숨기기 */
+.phone > .top-deco,
+.phone > .brand,
+.phone > .footer {
+  display: none !important;
+}
+
+/* 05. 화면 프레임을 전체 영역으로 */
+.phone .screen-frame {
+  box-sizing: border-box !important;
+
+  width: 100% !important;
+  max-width: none !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+
+  background: transparent !important;
+  box-shadow: none !important;
+
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* 06. 실제 액정 */
+.phone .screen {
+  box-sizing: border-box !important;
+
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+
+  margin: 0 !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+
+  background: #f0f0e7 !important;
+  box-shadow: none !important;
+
+  flex: 1 1 auto !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  overflow: hidden !important;
+}
+
+/* 07. 상단 휴대폰 상태바 느낌 */
+.phone .titlebar {
+  flex-shrink: 0 !important;
+
+  min-height: 54px !important;
+  padding: 9px 13px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+
+  border: 0 !important;
+  border-bottom: 4px solid #253a5b !important;
+  border-radius: 0 !important;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #cbd2b8 0%,
+      #aab79a 44%,
+      #879779 85%,
+      #65765d 100%
+    ) !important;
+
+  color: #253a5b !important;
+
+  font-size: 15px !important;
+  font-weight: 900 !important;
+  letter-spacing: 1px !important;
+
+  text-shadow:
+    1px 1px 0 #f9f9ec !important;
+
+  box-shadow:
+    inset 0 2px #fffbed,
+    inset 0 -2px #586b57 !important;
+}
+
+/* 08. 윈도우 조작 아이콘 */
+.phone .window-buttons {
+  display: flex !important;
+  gap: 4px !important;
+}
+
+.phone .window-buttons span {
+  width: 17px !important;
+  height: 17px !important;
+
+  border: 2px solid #253a5b !important;
+  border-radius: 0 !important;
+
+  background:
+    linear-gradient(#fffaf0, #aab6a7) !important;
+
+  color: #253a5b !important;
+
+  box-shadow:
+    inset 1px 1px #ffffff,
+    1px 1px #172943 !important;
+}
+
+/* 09. 상단 메뉴바 */
+.phone .menubar {
+  flex-shrink: 0 !important;
+
+  min-height: 29px !important;
+  padding: 7px 12px !important;
+
+  background: #d8dece !important;
+
+  border: 0 !important;
+  border-bottom: 3px solid #8e9e8b !important;
+
+  color: #253a5b !important;
+
+  font-size: 11px !important;
+  font-weight: 700 !important;
+}
+
+/* 10. 콘텐츠 화면 */
+.phone .desktop {
+  box-sizing: border-box !important;
+
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+
+  padding: 14px 13px 22px !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #f0f0e7 0%,
+      #e8ebdf 100%
+    ) !important;
+
+  color: #253a5b !important;
+
+  scrollbar-width: thin !important;
+  scrollbar-color: #8d9b8c #e4e6dc !important;
+}
+
+/* 11. 내부 윈도우 창 */
+.phone .window {
+  border: 3px solid #253a5b !important;
+  border-radius: 0 !important;
+
+  background: #fffaf0 !important;
+
+  box-shadow:
+    inset 2px 2px #ffffff,
+    3px 4px 0 #a5b09c !important;
+}
+
+/* 12. 내부 제목바 */
+.phone .window-head {
+  min-height: 27px !important;
+  padding: 6px 9px !important;
+
+  border: 0 !important;
+  border-bottom: 3px solid #253a5b !important;
+  border-radius: 0 !important;
+
+  background:
+    linear-gradient(
+      #c2cdbd 0%,
+      #98aa99 48%,
+      #718873 100%
+    ) !important;
+
+  color: #253a5b !important;
+
+  font-weight: 800 !important;
+  text-shadow: 1px 1px #f7f8ed !important;
+}
+
+/* 13. 본문 패널 */
+.phone .window-content {
+  background: #fffaf0 !important;
+  color: #253a5b !important;
+}
+
+/* 14. 페이지 제목 */
+.phone .section-title {
+  margin: 8px 0 14px !important;
+  padding: 9px 10px !important;
+
+  border: 2px solid #253a5b !important;
+
+  background:
+    linear-gradient(
+      #f9f8ed,
+      #d9e1d5
+    ) !important;
+
+  color: #253a5b !important;
+
+  font-size: 17px !important;
+  font-weight: 900 !important;
+
+  box-shadow:
+    3px 3px 0 #9da99a !important;
+}
+
+/* 15. 홈 메뉴 */
+#home .icon-grid {
+  gap: 9px !important;
+  margin: 12px 0 !important;
+}
+
+#home .icon-grid .icon-btn {
+  min-height: 76px !important;
+  padding: 9px 4px !important;
+
+  border: 2px solid #253a5b !important;
+  border-radius: 0 !important;
+
+  background:
+    linear-gradient(
+      #fffdf5,
+      #dfe6d9
+    ) !important;
+
+  color: #253a5b !important;
+
+  box-shadow:
+    inset 2px 2px #ffffff,
+    3px 3px 0 #a1ad9f !important;
+}
+
+/* 16. 선택된 메뉴 */
+#home .icon-grid .icon-btn.selected,
+#home .icon-grid .icon-btn:hover {
+  background:
+    linear-gradient(
+      #d8e3d3,
+      #9cab99
+    ) !important;
+
+  border-color: #172943 !important;
+
+  box-shadow:
+    inset 2px 2px #fff,
+    3px 3px 0 #253a5b !important;
+}
+
+/* 17. 갤러리 */
+#galleryList.auto-gallery {
+  display: grid !important;
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr)) !important;
+  gap: 5px !important;
+}
+
+#galleryList .gallery-photo {
+  min-width: 0 !important;
+  padding: 3px !important;
+
+  border: 2px solid #253a5b !important;
+  border-radius: 0 !important;
+
+  background: #fffaf0 !important;
+
+  box-shadow:
+    2px 2px 0 #a5b09c !important;
+}
+
+#galleryList .gallery-photo img {
+  display: block !important;
+  width: 100% !important;
+  aspect-ratio: 1 !important;
+  object-fit: cover !important;
+  border-radius: 0 !important;
+}
+
+/* 18. 기존 하단 작업표시줄 */
+.phone .taskbar {
+  flex-shrink: 0 !important;
+
+  border-top: 2px solid #253a5b !important;
+
+  background:
+    linear-gradient(
+      #e5e9da,
+      #b9c5b5
+    ) !important;
+
+  color: #253a5b !important;
+}
+
+/* 19. 조작 버튼을 화면 하단으로 */
+.phone .retro-control-panel {
+  box-sizing: border-box !important;
+
+  position: relative !important;
+
+  width: 100% !important;
+  max-width: none !important;
+
+  margin: 0 !important;
+  padding: 8px !important;
+
+  flex-shrink: 0 !important;
+
+  display: grid !important;
+
+  grid-template-columns:
+    1fr 1fr 1fr 1fr !important;
+
+  grid-template-rows:
+    52px !important;
+
+  grid-template-areas:
+    "prev select home next" !important;
+
+  gap: 6px !important;
+
+  border: 0 !important;
+  border-top: 4px solid #253a5b !important;
+  border-radius: 0 !important;
+
+  background:
+    linear-gradient(
+      #cbd5c3 0%,
+      #a5b49f 48%,
+      #879b88 100%
+    ) !important;
+
+  box-shadow:
+    inset 0 2px #fffef0 !important;
+}
+
+/* 20. 하단 버튼 */
+.phone .retro-control-panel .retro-key {
+  position: relative !important;
+
+  box-sizing: border-box !important;
+
+  width: 100% !important;
+  min-width: 0 !important;
+  height: 52px !important;
+  min-height: 0 !important;
+
+  margin: 0 !important;
+  padding: 5px 2px !important;
+
+  border: 2px solid #253a5b !important;
+  border-radius: 4px !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #fffdf4 0%,
+      #dce5d9 36%,
+      #a9bba8 100%
+    ) !important;
+
+  color: #253a5b !important;
+
+  box-shadow:
+    inset 2px 2px 0 #fffdf3,
+    inset -2px -2px 0 #758b80,
+    2px 2px 0 #172943 !important;
+
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  text-shadow: 1px 1px #fff !important;
+
+  cursor: pointer !important;
+}
+
+/* 21. 버튼 배치 */
+.phone #prevBtn {
+  grid-area: prev !important;
+}
+
+.phone #selectBtn {
+  grid-area: select !important;
+}
+
+.phone #homeBtn {
+  grid-area: home !important;
+}
+
+.phone #nextBtn {
+  grid-area: next !important;
+}
+
+/* 22. 버튼 눌림 효과 */
+.phone .retro-control-panel .retro-key:active {
+  transform: translate(2px, 2px) !important;
+
+  box-shadow:
+    inset 2px 2px 4px #647a6e !important;
+}
+
+/* 23. 작은 화면 */
+@media (max-width: 380px) {
+  .phone .desktop {
+    padding: 11px 9px 17px !important;
+  }
+
+  .phone .retro-control-panel {
+    gap: 4px !important;
+    padding: 6px !important;
+  }
+
+  .phone .retro-control-panel .retro-key {
+    font-size: 9px !important;
+  }
+}
+
+/* 24. PC에서 보기 */
+@media (min-width: 700px) {
+  body {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+  }
+
+  .phone {
+    min-height: 100dvh !important;
+    border-left: 3px solid #253a5b !important;
+    border-right: 3px solid #253a5b !important;
+  }
+}
+
+</style>
+
 </body>
 </html>
