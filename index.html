@@ -1764,6 +1764,261 @@ body {
   color: #182631;
 }
 
+/* =========================================
+   HYEOKJAE ARCHIVE
+   VINTAGE MIST AQUARIUM THEME
+   Beige / Olive / Navy / Sky / Gray
+========================================= */
+
+/* 기본 색상 */
+:root {
+  --bg: #F1E9DC;
+  --panel: #E0E1DE;
+  --text: #283B55;
+  --muted: #687985;
+  --accent: #929B80;
+  --line: #A4B0B6;
+
+  --beige: #F1E9DC;
+  --olive: #929B80;
+  --navy: #283B55;
+  --sky: #B8D4E0;
+  --bluegray: #A4B0B6;
+  --warmgray: #C8C5BE;
+  --pearlgray: #E0E1DE;
+  --ivory: #FAF6EE;
+}
+
+/* 전체 배경 */
+html,
+body {
+  background-color: #F1E9DC !important;
+  color: #283B55;
+}
+
+/* 다마고치 본체 */
+.phone {
+  background: linear-gradient(
+    145deg,
+    #B4BCA5 0%,
+    #A1AA91 25%,
+    #929B80 55%,
+    #7D886D 85%,
+    #68745D 100%
+  ) !important;
+
+  border-color: #68745D !important;
+
+  box-shadow:
+    inset 5px 5px 12px rgba(255,255,255,0.30),
+    inset -8px -10px 18px rgba(46,59,44,0.22),
+    0 18px 45px rgba(40,59,85,0.20) !important;
+}
+
+/* 본체 글씨 */
+.phone > h1,
+.phone > h2,
+.phone > p,
+.phone .brand,
+.phone .logo {
+  color: #283B55 !important;
+}
+
+/* 화면 외곽 */
+.screen-frame {
+  background: #283B55 !important;
+  border-color: #A4B0B6 !important;
+
+  box-shadow:
+    inset 0 3px 9px rgba(0,0,0,0.18),
+    0 2px 5px rgba(255,255,255,0.30) !important;
+}
+
+/* 화면 내부 */
+.desktop {
+  background-color: #FAF6EE !important;
+  color: #283B55 !important;
+}
+
+/* 윈도우 XP 제목 표시줄 */
+.titlebar,
+.title-bar,
+.window-titlebar {
+  background: linear-gradient(
+    90deg,
+    #283B55,
+    #425B77
+  ) !important;
+
+  color: #FAF6EE !important;
+}
+
+/* 윈도우와 내부 패널 */
+.window,
+.panel,
+.content-panel,
+.profile-card,
+.menu-panel {
+  background-color: #E0E1DE;
+  border-color: #A4B0B6;
+  color: #283B55;
+}
+
+/* 화면 내부 제목과 글씨 */
+.desktop h1,
+.desktop h2,
+.desktop h3,
+.desktop h4,
+.desktop p,
+.desktop label,
+.desktop strong {
+  color: #283B55;
+}
+
+/* 보조 글씨 */
+.desktop small,
+.desktop .muted,
+.desktop .subtitle {
+  color: #687985;
+}
+
+/* 메뉴 버튼 */
+.desktop button,
+.desktop .menu-btn,
+.desktop .menu-button,
+.desktop .nav-btn {
+  background: linear-gradient(
+    180deg,
+    #E9F1F3,
+    #B8D4E0
+  );
+
+  color: #283B55;
+  border-color: #A4B0B6;
+}
+
+/* 메뉴 버튼 마우스 효과 */
+.desktop button:hover,
+.desktop .menu-btn:hover,
+.desktop .menu-button:hover {
+  background: #A4C4D4;
+  color: #283B55;
+}
+
+/* 선택된 메뉴 */
+.desktop button.active,
+.desktop button.selected,
+.desktop .active {
+  background-color: #929B80;
+  color: #283B55;
+}
+
+/* 하단 조작 버튼 */
+.controls button,
+.control-buttons button,
+.phone-controls button {
+  background: linear-gradient(
+    145deg,
+    #435A76,
+    #283B55
+  ) !important;
+
+  color: #FAF6EE !important;
+  border-color: #667A91 !important;
+
+  box-shadow:
+    inset 2px 2px 4px rgba(255,255,255,0.18),
+    inset -3px -4px 6px rgba(0,0,0,0.20),
+    0 4px 8px rgba(40,59,85,0.22) !important;
+}
+
+/* 가운데 SELECT 버튼 */
+#selectBtn,
+.select-btn,
+.btn-select {
+  background: linear-gradient(
+    145deg,
+    #D7EAF0,
+    #B8D4E0
+  ) !important;
+
+  color: #283B55 !important;
+  border-color: #8EAEBE !important;
+}
+
+/* 작은 HOME 버튼 */
+.home-button,
+.home-btn,
+#homeBtn {
+  background: #C8C5BE !important;
+  color: #283B55 !important;
+  border-color: #A4B0B6 !important;
+}
+
+/* 캐릭터 프로필 */
+#profile {
+  color: #283B55;
+}
+
+#profile img {
+  border-color: #A4B0B6;
+  background-color: #FAF6EE;
+}
+
+/* 리스트 */
+#letterList > *,
+#comicList > *,
+#storyList > *,
+#galleryList > * {
+  border-color: #A4B0B6;
+  color: #283B55;
+}
+
+/* 편지 / 기록 상세 */
+#letterDetail,
+#recordDetail {
+  color: #283B55;
+}
+
+/* 링크 */
+.desktop a {
+  color: #283B55;
+}
+
+/* 입력창 */
+.desktop input,
+.desktop textarea,
+.desktop select {
+  background: #FAF6EE;
+  color: #283B55;
+  border-color: #A4B0B6;
+}
+
+/* 구분선 */
+.desktop hr {
+  border-color: #A4B0B6;
+}
+
+/* 스크롤바 */
+.desktop::-webkit-scrollbar {
+  width: 6px;
+}
+
+.desktop::-webkit-scrollbar-track {
+  background: #E0E1DE;
+}
+
+.desktop::-webkit-scrollbar-thumb {
+  background: #929B80;
+  border-radius: 10px;
+}
+
+/* 선택 텍스트 */
+::selection {
+  background: #B8D4E0;
+  color: #283B55;
+}
+
 </style>
 
 <script>
