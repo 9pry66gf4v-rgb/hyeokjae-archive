@@ -7462,5 +7462,65 @@ body {
 })();
 </script>
 
+<!-- UNIFIED BUTTON PRESS EFFECT -->
+<style>
+
+/* 모든 버튼에 같은 움직임 적용 */
+.phone .retro-control-panel .retro-key {
+  position: relative !important;
+  transform: translateY(0) !important;
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease,
+    background 0.08s ease !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 마우스나 손가락으로 누르고 있을 때 */
+.phone .retro-control-panel .retro-key:active,
+.phone .retro-control-panel .retro-key.is-pressed {
+  transform: translateY(2px) !important;
+
+  background: #C6BEB5 !important;
+
+  box-shadow:
+    inset 2px 2px 4px #928980,
+    inset -1px -1px 0 #F8F5F0 !important;
+}
+
+/* 안쪽 아이콘도 살짝 내려가게 */
+.phone .retro-control-panel .retro-key:active span,
+.phone .retro-control-panel .retro-key.is-pressed span {
+  transform: translate(1px, 1px) !important;
+}
+
+</style>
+
+<script>
+(function () {
+  const buttons = document.querySelectorAll(
+    ".phone .retro-control-panel .retro-key"
+  );
+
+  buttons.forEach(function(button) {
+    let timer;
+
+    button.addEventListener("click", function() {
+      clearTimeout(timer);
+
+      button.classList.remove("is-pressed");
+
+      void button.offsetWidth;
+
+      button.classList.add("is-pressed");
+
+      timer = setTimeout(function() {
+        button.classList.remove("is-pressed");
+      }, 160);
+    });
+  });
+})();
+</script>
+
 </body>
 </html>
