@@ -3673,5 +3673,523 @@ grid-template-areas:
   grid-area: home !important;
 }
 </style>
+   <!-- =====================================
+     HYEOKJAE ARCHIVE
+     AQUARIUM DETAIL RENEWAL
+     HOME + BUBBLES + CHARACTER
+===================================== -->
+
+<style>
+
+/* =====================================
+   01. HOME 폴더 디자인
+===================================== */
+
+/* 폴더 메뉴 전체 */
+
+#home .icon-grid {
+  gap: 9px !important;
+}
+
+/* 폴더 카드 */
+
+#home .icon-grid .icon-btn {
+  position: relative !important;
+
+  overflow: visible !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      #FFFFFFCC,
+      #E7F0EECC
+    ) !important;
+
+  border: 1px solid #D0DDDB !important;
+  border-radius: 10px !important;
+
+  box-shadow:
+    inset 1px 1px 0 #FFFFFF,
+    0 2px 0 #C6D5D5 !important;
+
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease !important;
+}
+
+/* 폴더 오른쪽 위 작은 장식 */
+
+#home .icon-grid .icon-btn::after {
+  content: "✧";
+
+  position: absolute;
+  top: 4px;
+  right: 7px;
+
+  color: #8AA8B5;
+  font-size: 10px;
+
+  opacity: 0.75;
+}
+
+/* 폴더마다 다른 작은 기호 */
+
+#home .icon-grid .icon-btn:nth-child(2)::after {
+  content: "♡";
+  color: #B78F9B;
+}
+
+#home .icon-grid .icon-btn:nth-child(3)::after {
+  content: "✦";
+}
+
+#home .icon-grid .icon-btn:nth-child(4)::after {
+  content: "◌";
+}
+
+#home .icon-grid .icon-btn:nth-child(5)::after {
+  content: "✿";
+  color: #A2A98D;
+}
+
+#home .icon-grid .icon-btn:nth-child(6)::after {
+  content: "⚙";
+}
+
+/* 폴더 본체 */
+
+#home .icon-grid .icon-btn .symbol {
+  background:
+    linear-gradient(
+      160deg,
+      #F2FAF9,
+      #C4DEE5 70%,
+      #A8C6D0
+    ) !important;
+
+  border-color: #728F9E !important;
+
+  box-shadow:
+    inset 1px 1px #FFFFFFCC,
+    2px 3px 0 #91A9B2 !important;
+
+  transition: transform 0.15s ease;
+}
+
+/* 선택된 폴더 */
+
+#home .icon-grid .icon-btn:hover,
+#home .icon-grid .icon-btn.selected,
+#home .icon-grid .icon-btn:focus-visible {
+  background: #D3E7ED !important;
+
+  border-color: #8AADB9 !important;
+
+  box-shadow:
+    inset 1px 1px #FFFFFF,
+    0 3px 0 #A2BBC3 !important;
+}
+
+#home .icon-grid .icon-btn:hover .symbol,
+#home .icon-grid .icon-btn.selected .symbol {
+  transform: translateY(-2px);
+}
+
+/* 클릭할 때 */
+
+#home .icon-grid .icon-btn:active {
+  transform: translateY(2px) !important;
+}
+
+/* =====================================
+   02. 수족관 HOME 배너
+===================================== */
+
+#home .hero {
+  position: relative !important;
+  isolation: isolate;
+
+  overflow: hidden !important;
+
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      #FFFFFFAA,
+      transparent 38%
+    ),
+    linear-gradient(
+      180deg,
+      #D9EEF0 0%,
+      #B9D9E1 55%,
+      #95BBC8 100%
+    ) !important;
+
+  border-color: #7999A6 !important;
+
+  box-shadow:
+    inset 0 3px 9px #FFFFFF77,
+    inset 0 -7px 14px #688F9D33,
+    2px 3px 0 #9AAEB5 !important;
+}
+
+/* 헤엄치는 작은 물고기 */
+
+#home .hero::before {
+  content: "🐟" !important;
+
+  position: absolute !important;
+
+  top: 9px !important;
+  left: 16px !important;
+  right: auto !important;
+  bottom: auto !important;
+
+  width: auto !important;
+
+  font-size: 20px !important;
+  line-height: 1 !important;
+
+  pointer-events: none !important;
+
+  animation:
+    aquariumFish 6s ease-in-out infinite !important;
+}
+
+/* 오른쪽 물방울 */
+
+#home .hero::after {
+  content: "○  ◦  ○" !important;
+
+  position: absolute !important;
+
+  top: 13px !important;
+  right: 12px !important;
+  bottom: auto !important;
+  left: auto !important;
+
+  color: #FFFFFFCC !important;
+
+  font-family: sans-serif !important;
+  font-size: 15px !important;
+
+  letter-spacing: 4px;
+
+  pointer-events: none !important;
+
+  animation:
+    aquariumBubbles 4s ease-in-out infinite !important;
+}
+
+/* 물고기 움직임 */
+
+@keyframes aquariumFish {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+
+  50% {
+    transform: translateX(17px) translateY(3px);
+  }
+
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+/* 물방울 움직임 */
+
+@keyframes aquariumBubbles {
+  0% {
+    transform: translateY(5px);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(5px);
+    opacity: 0.45;
+  }
+}
+
+/* 배너 글씨 */
+
+#home .hero {
+  color: #283B55 !important;
+
+  text-shadow:
+    1px 2px 0 #FFFFFF99 !important;
+}
+
+#home .hero small {
+  color: #4B6C7A !important;
+  text-shadow: none !important;
+}
+
+/* =====================================
+   03. CHARACTER 선택 카드
+===================================== */
+
+/* 캐릭터 카드 목록 */
+
+#characters .character-grid {
+  gap: 10px !important;
+}
+
+/* 개별 카드 */
+
+#characters .character-card {
+  position: relative !important;
+
+  overflow: hidden !important;
+
+  padding: 8px !important;
+
+  border: 2px solid #A5BBC2 !important;
+  border-radius: 10px !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      #FFFFFF,
+      #E9F1EF
+    ) !important;
+
+  box-shadow:
+    inset 1px 1px #FFFFFF,
+    2px 3px 0 #B0C0C2 !important;
+
+  color: #283B55 !important;
+}
+
+/* 카드 위쪽 파일 번호 */
+
+#characters .character-card::before {
+  content: "FILE 01  ♡";
+
+  display: block;
+
+  margin: -2px -2px 7px;
+  padding: 3px 5px;
+
+  border-bottom: 1px solid #C7D8DA;
+
+  color: #678593;
+
+  font-family:
+    "Pixelify Sans",
+    monospace;
+
+  font-size: 9px;
+  letter-spacing: 0.5px;
+
+  text-align: left;
+}
+
+#characters .character-card:nth-child(2)::before {
+  content: "FILE 02  ♡";
+}
+
+/* 캐릭터 사진 액자 */
+
+#characters .character-card .portrait {
+  height: 125px !important;
+
+  border: 3px solid #D5E6E9 !important;
+  border-radius: 6px !important;
+
+  outline: 1px solid #8FAAB5;
+
+  background:
+    linear-gradient(
+      #DCECF0,
+      #B7D4DD
+    ) !important;
+
+  box-shadow:
+    inset 0 0 8px #567D8B33 !important;
+}
+
+/* 사진 */
+
+#characters .character-card .portrait img {
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: cover !important;
+}
+
+/* 캐릭터 이름 */
+
+#characters .character-card strong {
+  margin-top: 9px !important;
+
+  color: #283B55 !important;
+
+  font-size: 17px !important;
+}
+
+/* PROFILE 글씨 */
+
+#characters .character-card small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #6A8794 !important;
+
+  font-family:
+    "Pixelify Sans",
+    sans-serif;
+
+  font-size: 10px !important;
+}
+
+/* 선택 효과 */
+
+#characters .character-card:hover,
+#characters .character-card.selected,
+#characters .character-card:focus-visible {
+  border-color: #789EAD !important;
+
+  background:
+    linear-gradient(
+      #FFFFFF,
+      #D6E9EE
+    ) !important;
+
+  box-shadow:
+    2px 3px 0 #91ADB6 !important;
+}
+
+/* =====================================
+   04. CHARACTER 프로필 정보창
+===================================== */
+
+/* 프로필 페이지 전체 */
+
+#profile {
+  color: #283B55 !important;
+}
+
+/* 프로필 페이지 제목 */
+
+#profile .section-title {
+  color: #283B55 !important;
+
+  padding-bottom: 7px;
+
+  border-bottom: 1px dashed #A7BDC3;
+}
+
+/* 프로필 이미지 */
+
+#profile img {
+  border-radius: 8px;
+
+  border: 3px solid #D2E3E8;
+
+  box-shadow:
+    0 0 0 1px #8DA9B5,
+    2px 3px 0 #B2C5C9;
+}
+
+/* 프로필 안의 정보창 */
+
+#profile .window {
+  border-color: #91AAB4 !important;
+
+  background: #FAF8F1 !important;
+
+  box-shadow:
+    2px 3px 0 #B5C7C8 !important;
+}
+
+#profile .window-head {
+  background:
+    linear-gradient(
+      #EAF4F5,
+      #C8DDE3
+    ) !important;
+
+  border-bottom-color: #9BB6BF !important;
+
+  color: #283B55 !important;
+}
+
+/* 프로필 글씨 가독성 */
+
+#profile .window-content {
+  color: #344B5B !important;
+
+  line-height: 1.75 !important;
+
+  overflow-wrap: anywhere;
+}
+
+/* =====================================
+   05. 모바일 최적화
+===================================== */
+
+@media (max-width: 600px) {
+
+  #home .icon-grid {
+    gap: 6px !important;
+  }
+
+  #home .icon-grid .icon-btn::after {
+    top: 3px;
+    right: 5px;
+
+    font-size: 9px;
+  }
+
+  #home .hero::before {
+    font-size: 17px !important;
+  }
+
+  #home .hero::after {
+    font-size: 12px !important;
+  }
+
+  #characters .character-grid {
+    gap: 7px !important;
+  }
+
+  #characters .character-card {
+    padding: 6px !important;
+  }
+
+  #characters .character-card .portrait {
+    height: 112px !important;
+  }
+
+  #characters .character-card strong {
+    font-size: 15px !important;
+  }
+}
+
+/* =====================================
+   06. 애니메이션 접근성
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  #home .hero::before,
+  #home .hero::after {
+    animation: none !important;
+  }
+
+  #home .icon-grid .icon-btn,
+  #home .icon-grid .icon-btn .symbol {
+    transition: none !important;
+  }
+}
+
+</style>
 </body>
 </html>
