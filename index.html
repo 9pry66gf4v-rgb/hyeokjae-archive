@@ -7522,5 +7522,111 @@ body {
 })();
 </script>
 
+<!-- FOUR BUTTONS EXACT SAME DESIGN -->
+<style>
+
+/* 모든 버튼 상태의 외형 통일 */
+.phone .retro-control-panel :is(
+  #prevBtn,
+  #selectBtn,
+  #homeBtn,
+  #nextBtn
+),
+.phone .retro-control-panel :is(
+  #prevBtn,
+  #selectBtn,
+  #homeBtn,
+  #nextBtn
+):is(:hover, :focus, :focus-visible),
+.phone .retro-control-panel :is(
+  #prevBtn,
+  #selectBtn,
+  #homeBtn,
+  #nextBtn
+).active,
+.phone .retro-control-panel :is(
+  #prevBtn,
+  #selectBtn,
+  #homeBtn,
+  #nextBtn
+).selected,
+.phone .retro-control-panel :is(
+  #prevBtn,
+  #selectBtn,
+  #homeBtn,
+  #nextBtn
+)[aria-pressed="true"] {
+
+  width: 100% !important;
+  height: 48px !important;
+  min-height: 48px !important;
+  min-width: 0 !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  background: linear-gradient(
+    180deg,
+    #EEEAE4 0%,
+    #E1DBD3 45%,
+    #CFC8BF 100%
+  ) !important;
+
+  border: 1px solid #8B837A !important;
+  border-radius: 8px !important;
+
+  box-shadow:
+    inset 1px 1px 0 #FFFFFF,
+    inset -2px -2px 0 #B2AAA0,
+    0 2px 0 #999087 !important;
+
+  outline: none !important;
+  transform: none !important;
+
+  color: #253A5B !important;
+  font-size: 21px !important;
+  font-weight: 400 !important;
+  text-shadow: none !important;
+
+  box-sizing: border-box !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+/* 아이콘 스타일 통일 */
+.phone .retro-control-panel .retro-key span {
+  color: #253A5B !important;
+  font-size: 21px !important;
+  font-weight: 400 !important;
+  text-shadow: none !important;
+}
+
+/* 네 버튼 모두 같은 눌림 효과 */
+.phone .retro-control-panel :is(
+  #prevBtn,
+  #selectBtn,
+  #homeBtn,
+  #nextBtn
+):active {
+  transform: translateY(2px) !important;
+  background: #C6BEB5 !important;
+
+  box-shadow:
+    inset 2px 2px 3px #928980,
+    inset -1px -1px 0 #F8F5F0 !important;
+}
+
+/* 키보드 접근성 표시 */
+.phone .retro-control-panel .retro-key:focus-visible {
+  outline: 2px solid #8B837A !important;
+  outline-offset: 2px !important;
+}
+
+</style>
+
 </body>
 </html>
