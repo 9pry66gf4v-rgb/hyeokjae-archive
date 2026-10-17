@@ -4401,5 +4401,173 @@ grid-template-areas:
   updatePlayer();
 })();
 </script>
+   <style>
+/* =====================================
+   WINDOWS XP MEDIA PLAYER
+   COMPACT DESIGN
+===================================== */
+
+/* 플레이어 전체를 얇게 */
+
+#home .archive-player {
+  margin-top: 0 !important;
+  padding: 5px 8px 6px !important;
+
+  border: 1px solid #7199C5 !important;
+  border-top: 1px solid #4D7EB9 !important;
+
+  border-radius: 0 0 7px 7px !important;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #D9EBFF 0%,
+      #A8C8F2 35%,
+      #6396D9 75%,
+      #1755B4 100%
+    ) !important;
+
+  box-shadow:
+    inset 0 1px 0 #FFFFFF,
+    inset 0 -2px 0 #154C9B !important;
+}
+
+/* 위쪽 NOW PLAYING 문구 숨기기 */
+
+#home .archive-player-title {
+  display: none !important;
+}
+
+/* 재생바 영역 */
+
+#home .archive-player-progress {
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 5px !important;
+
+  font-size: 9px !important;
+  color: #183F7D !important;
+
+  margin: 0 0 4px !important;
+  padding: 0 !important;
+}
+
+/* 재생바 */
+
+#home #playerSeek {
+  flex: 1 !important;
+  min-width: 0 !important;
+
+  height: 4px !important;
+  margin: 0 !important;
+
+  accent-color: #235FAF !important;
+}
+
+/* 버튼들을 한 줄에 */
+
+#home .archive-player-buttons {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+
+  gap: 5px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 작은 버튼 */
+
+#home .archive-player-buttons button {
+  width: 24px !important;
+  height: 21px !important;
+
+  padding: 0 !important;
+
+  border: 1px solid #3D6FAB !important;
+  border-radius: 6px !important;
+
+  background:
+    linear-gradient(
+      #FFFFFF,
+      #B8D6F9 55%,
+      #6B9FDF
+    ) !important;
+
+  box-shadow:
+    inset 0 1px #FFFFFF,
+    0 1px 0 #1D5AA6 !important;
+
+  color: #174B8E !important;
+  font-size: 13px !important;
+}
+
+/* 동그란 메인 재생 버튼 */
+
+#home .archive-player-buttons #playerPlay {
+  order: -1;
+
+  width: 31px !important;
+  height: 31px !important;
+
+  border-radius: 50% !important;
+
+  background:
+    linear-gradient(
+      #FFFFFF 0%,
+      #D4E9FF 35%,
+      #76ACEB 75%,
+      #3777C8 100%
+    ) !important;
+
+  font-size: 16px !important;
+}
+
+/* 음소거 버튼 */
+
+#home #playerMute {
+  margin-left: auto !important;
+}
+
+/* 눌렀을 때 */
+
+#home .archive-player-buttons button:active {
+  transform: translateY(1px) !important;
+  box-shadow: none !important;
+}
+
+/* 영상과 플레이어가 이어진 느낌 */
+
+#home .video-wrap {
+  margin-bottom: 0 !important;
+  border-radius: 7px 7px 0 0 !important;
+}
+
+/* 모바일에서 더 작게 */
+
+@media (max-width: 600px) {
+
+  #home .archive-player {
+    padding: 4px 7px 5px !important;
+  }
+
+  #home .archive-player-progress {
+    font-size: 8px !important;
+    margin-bottom: 3px !important;
+  }
+
+  #home .archive-player-buttons #playerPlay {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  #home .archive-player-buttons button {
+    width: 23px !important;
+    height: 20px !important;
+  }
+}
+</style>
 </body>
 </html>
