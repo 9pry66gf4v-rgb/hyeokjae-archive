@@ -3526,5 +3526,49 @@ body {
   }
 }
 </style>
+   <style>
+/* HOME 버튼 크기 및 위치 수정 */
+
+/* 위아래 버튼 높이 조정 */
+.retro-control-panel {
+  grid-template-rows: 46px 54px !important;
+}
+
+/* HOME 버튼 */
+.retro-control-panel .retro-home {
+  grid-area: home !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  min-width: 0 !important;
+  min-height: 0 !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border-radius: 10px !important;
+
+  font-size: 27px !important;
+}
+
+/* HOME 아이콘 */
+.retro-control-panel .retro-home span {
+  font-size: 27px !important;
+  line-height: 1 !important;
+  transform: none !important;
+}
+
+/* 휴대폰 */
+@media (max-width: 600px) {
+  .retro-control-panel {
+    grid-template-rows: 43px 49px !important;
+  }
+
+  .retro-control-panel .retro-home {
+    font-size: 25px !important;
+  }
+}
+</style>
 </body>
 </html>
