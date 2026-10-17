@@ -1,27 +1,30 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#e8dcff">
+<meta name="theme-color" content="#929B80">
 <title>HYEOKJAE ARCHIVE ♡</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Jua&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* =========================
-   01. 기본 설정
-========================= */
+/* ========================================
+   01. COLOR SYSTEM
+======================================== */
 
 :root {
-  --lavender: #e8dcff;
-  --purple: #9384d4;
-  --deep: #6b69b4;
-  --blue: #c5edff;
-  --pink: #ffd6ee;
-  --white: #fffaff;
-  --text: #68629b;
+  --beige: #F1E9DC;
+  --olive: #929B80;
+  --olive-dark: #68745D;
+  --navy: #283B55;
+  --navy-light: #425B77;
+  --sky: #B8D4E0;
+  --bluegray: #A4B0B6;
+  --pearl: #E0E1DE;
+  --ivory: #FAF6EE;
+  --warmgray: #C8C5BE;
+  --text: #283B55;
 }
 
 * {
@@ -31,177 +34,179 @@
 body {
   margin: 0;
   min-height: 100dvh;
-  padding: 24px 12px 42px;
+  padding: 22px 12px 45px;
+
   display: flex;
   justify-content: center;
   align-items: flex-start;
 
-  background-color: #edf2ff;
+  background-color: var(--beige);
   background-image:
-    radial-gradient(#bfcaff 1.2px, transparent 1.2px);
-  background-size: 20px 20px;
+    radial-gradient(#A4B0B655 1px, transparent 1px);
+  background-size: 21px 21px;
 
   color: var(--text);
   font-family: "Gowun Dodum", sans-serif;
 }
 
-button {
+button, input {
   font: inherit;
+}
+
+button {
   cursor: pointer;
   color: inherit;
+  -webkit-tap-highlight-color: transparent;
 }
 
-button:focus-visible {
-  outline: 3px solid #ed8fca;
-  outline-offset: 3px;
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #6C98B3;
+  outline-offset: 2px;
 }
 
-/* =========================
-   02. 다마고치 본체
-========================= */
+[hidden] {
+  display: none !important;
+}
+
+/* ========================================
+   02. TAMAGOTCHI SHELL
+======================================== */
 
 .phone {
   position: relative;
   isolation: isolate;
+
   width: min(100%, 410px);
+  padding: 27px 17px 21px;
 
-  padding: 28px 18px 21px;
-
-  border: 5px solid #8b83cf;
-  border-radius: 92px 92px 88px 88px;
+  border: 5px solid #68745D;
+  border-radius: 90px 90px 83px 83px;
 
   background:
     radial-gradient(
-      ellipse at 16% 5%,
-      #ffffff 0%,
-      transparent 38%
-    ),
-    radial-gradient(
-      ellipse at 90% 85%,
-      #bceeffa8 0%,
-      transparent 42%
+      ellipse at 15% 5%,
+      #FFFFFF99,
+      transparent 40%
     ),
     linear-gradient(
       145deg,
-      #faf4ff 0%,
-      #e8ddff 35%,
-      #cfcdf9 72%,
-      #b9cdf6 100%
+      #B7BEAA 0%,
+      #A3AC94 30%,
+      #929B80 60%,
+      #75816A 100%
     );
 
   box-shadow:
-    inset 5px 6px 0 #ffffffc9,
-    inset -7px -10px 0 #8c85cb55,
-    0 8px 0 #9c94d5,
-    0 17px 24px #7c78ba50;
+    inset 5px 6px #FFFFFF55,
+    inset -7px -9px #44533D33,
+    0 7px 0 #65715B,
+    0 20px 35px #283B5533;
 }
-
-/* 본체 안쪽 반짝이는 테두리 */
 
 .phone::before {
   content: "";
   position: absolute;
   inset: 9px;
-  border: 2px solid #ffffffa8;
-  border-radius: 84px 84px 79px 79px;
+
+  border: 2px solid #FFFFFF66;
+  border-radius: 82px 82px 76px 76px;
+
   pointer-events: none;
   z-index: -1;
 }
 
-/* 상단 장식 */
-
 .top-deco {
-  text-align: center;
   height: 23px;
-  font-size: 15px;
-  color: #9184d3;
-  letter-spacing: 5px;
-  text-shadow: 1px 1px white;
-}
+  text-align: center;
 
-/* =========================
-   03. 로고
-========================= */
+  font-size: 14px;
+  letter-spacing: 4px;
+  color: var(--navy);
+}
 
 .brand {
   text-align: center;
-  margin: 7px 0 13px;
+  margin: 7px 0 15px;
 }
 
 .brand-title {
   font-family: "Jua", sans-serif;
-  font-size: clamp(19px, 5vw, 23px);
+  font-size: clamp(20px, 5vw, 24px);
   letter-spacing: 1px;
-  color: #7166b3;
-  text-shadow: 2px 2px white;
+
+  color: var(--navy);
+  text-shadow: 2px 2px #FFFFFF88;
 }
 
 .brand-sub {
-  margin-top: 2px;
+  margin-top: 3px;
+
   font-family: "Pixelify Sans", sans-serif;
   font-size: 10px;
   letter-spacing: 2px;
-  color: #9285c5;
+
+  color: #344C58;
 }
 
-/* =========================
-   04. 화면 외부 테두리
-========================= */
+/* ========================================
+   03. SCREEN FRAME
+======================================== */
 
 .screen-frame {
   padding: 9px;
-  border: 5px solid #a59cda;
-  border-radius: 30px;
+
+  border: 5px solid #82939A;
+  border-radius: 29px;
 
   background:
     linear-gradient(
       145deg,
-      #ffffff,
-      #dff5ff 25%,
-      #b9dfff 65%,
-      #a6a3dc
+      #D9E5E3,
+      #A4B0B6 50%,
+      #536C7A
     );
 
   box-shadow:
-    inset 3px 3px white,
-    inset -4px -4px #7e7ab65e,
-    0 5px 0 #8884c3,
-    0 8px 12px #7974b53b;
+    inset 3px 3px #FFFFFF99,
+    inset -4px -4px #283B5544,
+    0 5px 0 #66797D,
+    0 9px 15px #283B5533;
 }
 
 .screen {
   overflow: hidden;
-  border: 3px solid #7b85c5;
-  border-radius: 14px;
-  background: #e7f0ff;
-  box-shadow: inset 0 0 0 2px white;
+
+  border: 3px solid var(--navy);
+  border-radius: 13px;
+
+  background: var(--ivory);
 }
 
-/* =========================
-   05. 윈도우 XP 상단
-========================= */
+/* ========================================
+   04. RETRO COMPUTER TOP BAR
+======================================== */
 
 .titlebar {
-  min-height: 29px;
-  padding: 5px 7px;
+  min-height: 30px;
+  padding: 5px 8px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 5px;
 
-  background: linear-gradient(
-    #adddff,
-    #8aa9ec 55%,
-    #8d88d6
-  );
+  background:
+    linear-gradient(
+      #496584,
+      #283B55 80%
+    );
 
-  border-bottom: 2px solid #7985c2;
+  border-bottom: 2px solid #1E3046;
 
-  color: white;
+  color: var(--ivory);
   font-family: "Pixelify Sans", sans-serif;
   font-size: 12px;
-  text-shadow: 1px 1px #6e77b1;
 }
 
 .titlebar-name {
@@ -213,105 +218,256 @@ button:focus-visible {
 .window-buttons {
   display: flex;
   gap: 3px;
-  flex-shrink: 0;
 }
 
 .window-buttons span {
-  display: grid;
-  place-items: center;
   width: 17px;
   height: 17px;
-  border: 1px solid #7d81b9;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid #8496A2;
   border-radius: 3px;
-  background: linear-gradient(white, #e6dfff);
-  color: #7468a9;
-  text-shadow: none;
-  font-size: 12px;
+
+  background: linear-gradient(#FFFFFF, #DCE6EB);
+
+  color: var(--navy);
+  font-size: 11px;
 }
 
 .window-buttons span:last-child {
-  background: linear-gradient(#ffeaf6, #f6b7dd);
+  background: #E7D3D3;
 }
 
-/* 메뉴 바 */
+/* ========================================
+   05. COMPUTER TOOLBAR
+======================================== */
 
 .menubar {
   display: flex;
-  gap: 17px;
+  align-items: center;
+  justify-content: space-between;
+
   padding: 6px 9px;
-  border-bottom: 2px solid #aeb6dd;
-  background: #f5f3ff;
+
+  border-bottom: 1px solid #B4C2C6;
+  background: #E6EAE7;
 
   font-family: "Pixelify Sans", sans-serif;
-  font-size: 12px;
-  color: #7770ac;
+  font-size: 11px;
 }
 
-/* =========================
-   06. 내부 데스크톱
-========================= */
+.menu-left {
+  display: flex;
+  gap: 13px;
+}
+
+.menu-right {
+  color: #738A80;
+  font-size: 10px;
+}
+
+/* ========================================
+   06. MAIN DESKTOP
+======================================== */
 
 .desktop {
-  height: 365px;
+  position: relative;
+
+  height: 375px;
   overflow-y: auto;
   overflow-x: hidden;
+
   padding: 10px;
 
   background:
     radial-gradient(
-      circle at 80% 12%,
-      #ffffffaa,
-      transparent 35%
+      circle at 85% 12%,
+      #FFFFFF99,
+      transparent 38%
     ),
     linear-gradient(
       160deg,
-      #d7f1ff,
-      #e6e6ff 60%,
-      #f7eaff
+      #E5F0EE,
+      #DDE7E7 55%,
+      #F3EEE5
     );
 
   scrollbar-width: thin;
-  scrollbar-color: #b0a8df #eef1ff;
+  scrollbar-color: var(--olive) var(--pearl);
+}
+
+.desktop::-webkit-scrollbar {
+  width: 6px;
+}
+
+.desktop::-webkit-scrollbar-thumb {
+  background: var(--olive);
+  border-radius: 10px;
 }
 
 .page {
   display: none;
+  animation: pageAppear 0.2s ease;
 }
 
 .page.active {
   display: block;
 }
 
-.hero {
-  margin: 4px 0 10px;
+@keyframes pageAppear {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   07. HOME AQUARIUM HEADER
+======================================== */
+
+.aquarium-hero {
+  position: relative;
+  overflow: hidden;
+
+  min-height: 112px;
+  padding: 15px 10px 12px;
+
+  border: 2px solid #718F9D;
+  border-radius: 8px;
+
+  background:
+    radial-gradient(
+      circle at 85% 18%,
+      #FFFFFFAA,
+      transparent 32%
+    ),
+    linear-gradient(
+      180deg,
+      #D6EBEE,
+      #AFCFD9 65%,
+      #91B5C2
+    );
+
   text-align: center;
-  font-family: "Pixelify Sans", sans-serif;
-  font-size: 25px;
-  line-height: 1.05;
-  color: #8371c3;
-  text-shadow: 2px 2px white;
+  box-shadow: 2px 3px 0 #9EAEB0;
 }
 
-.hero small {
+.aquarium-hero::before {
+  content: "○  ◦  ○";
+  position: absolute;
+  top: 8px;
+  left: 9px;
+
+  font-size: 15px;
+  color: #FFFFFFAA;
+
+  animation: bubbleFloat 5s ease-in-out infinite;
+}
+
+.aquarium-hero::after {
+  content: "◦  ○";
+  position: absolute;
+  right: 11px;
+  bottom: 10px;
+
+  font-size: 14px;
+  color: #FFFFFFAA;
+
+  animation: bubbleFloat 6s ease-in-out infinite reverse;
+}
+
+@keyframes bubbleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+.aquarium-fish {
   display: block;
-  margin-top: 7px;
-  font-family: "Gowun Dodum", sans-serif;
-  font-size: 10px;
-  font-weight: normal;
-  color: #9287b7;
+  margin-bottom: 4px;
+
+  font-size: 25px;
+  animation: fishFloat 4s ease-in-out infinite;
 }
 
-/* =========================
-   07. 윈도우 스타일 박스
-========================= */
+@keyframes fishFloat {
+  0%, 100% {
+    transform: translateX(-7px);
+  }
+  50% {
+    transform: translateX(7px);
+  }
+}
+
+.hero-title {
+  position: relative;
+  z-index: 1;
+
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 23px;
+  line-height: 1;
+
+  color: var(--navy);
+  text-shadow: 2px 2px #FFFFFF99;
+}
+
+.hero-subtitle {
+  position: relative;
+  z-index: 1;
+
+  margin-top: 8px;
+
+  font-size: 10px;
+  color: #405D70;
+}
+
+/* ========================================
+   08. RETRO SECTION LABEL
+======================================== */
+
+.desktop-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 12px 1px 7px;
+
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+
+  color: var(--navy);
+}
+
+.desktop-label small {
+  color: #738A80;
+  font-size: 10px;
+}
+
+/* ========================================
+   09. WINDOWS
+======================================== */
 
 .window {
-  margin-bottom: 11px;
   overflow: hidden;
-  border: 2px solid #a29bd2;
-  border-radius: 8px 8px 4px 4px;
-  background: #fffaff;
-  box-shadow: 2px 3px 0 #bcb6df;
+
+  margin-bottom: 11px;
+
+  border: 2px solid #9FB0B7;
+  border-radius: 7px;
+
+  background: var(--ivory);
+
+  box-shadow: 2px 3px 0 #B5BFBE;
 }
 
 .window-head {
@@ -319,103 +475,196 @@ button:focus-visible {
   justify-content: space-between;
   align-items: center;
 
-  padding: 5px 7px;
-  border-bottom: 2px solid #b1addb;
-  background: linear-gradient(#f7fbff, #d9e2ff);
+  padding: 6px 8px;
+
+  border-bottom: 1px solid #A4B0B6;
+
+  background:
+    linear-gradient(
+      #F9FCFA,
+      #D6E5E9
+    );
 
   font-family: "Pixelify Sans", sans-serif;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
+
+  color: var(--navy);
+}
+
+.window-head span:last-child {
+  color: #788C96;
 }
 
 .window-content {
   padding: 9px;
+
   font-size: 12px;
   line-height: 1.8;
 }
 
-/* 영상 */
-
 .video-wrap {
   overflow: hidden;
-  border: 2px solid #afa6d7;
+
+  border: 2px solid #A0B4BC;
   border-radius: 5px;
-  background: #c5ddf7;
+
+  background: #D6E7EA;
 }
 
 video {
   display: block;
+
   width: 100%;
-  max-height: 185px;
+  max-height: 180px;
+
   object-fit: contain;
-  background: #c5ddf7;
+  background: #D6E7EA;
 }
 
-/* =========================
-   08. 메인 메뉴
-========================= */
+/* ========================================
+   10. HOME FOLDER MENU
+======================================== */
 
 .icon-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 7px;
-  margin: 11px 0;
+  gap: 9px;
+
+  margin-bottom: 12px;
 }
 
 .icon-btn {
   min-width: 0;
-  min-height: 74px;
-  padding: 7px 2px;
+  min-height: 85px;
+  padding: 9px 3px 7px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 4px;
 
-  border: 2px solid #a29bd5;
-  border-radius: 9px;
+  border: 1px solid transparent;
+  border-radius: 7px;
 
-  background: linear-gradient(
-    145deg,
-    white,
-    #e8edff 65%,
-    #e5dcff
-  );
+  background: #FFFFFF45;
 
-  box-shadow:
-    inset 2px 2px white,
-    2px 3px 0 #b8b0dd;
-
-  color: #7669a8;
   font-family: "Pixelify Sans", sans-serif;
   font-size: 11px;
   font-weight: bold;
-}
 
-.icon-btn .symbol {
-  font-family: sans-serif;
-  font-size: 24px;
-  line-height: 1;
+  color: var(--navy);
+
+  transition:
+    background 0.15s,
+    transform 0.15s,
+    border-color 0.15s;
 }
 
 .icon-btn:hover,
 .icon-btn.selected {
-  background: linear-gradient(#fff5fc, #ffd9ef);
-  border-color: #a68bcf;
+  border-color: #8DAFBE;
+  background: #C7E0E7AA;
 }
 
-/* =========================
-   09. 캐릭터 및 목록
-========================= */
+.icon-btn:active {
+  transform: scale(0.95);
+}
 
-.section-title {
-  margin: 5px 0 13px;
-  text-align: center;
+.folder-icon {
+  position: relative;
+
+  width: 43px;
+  height: 33px;
+
+  display: grid;
+  place-items: center;
+
+  border: 2px solid #6F8794;
+  border-radius: 4px 5px 5px 5px;
+
+  background:
+    linear-gradient(
+      #E7F2F3,
+      #B8D4E0
+    );
+
+  box-shadow: 2px 3px 0 #92ABB4;
+}
+
+.folder-icon::before {
+  content: "";
+  position: absolute;
+
+  width: 18px;
+  height: 7px;
+
+  top: -8px;
+  left: -2px;
+
+  border: 2px solid #6F8794;
+  border-bottom: none;
+
+  border-radius: 4px 4px 0 0;
+  background: #D5E8EA;
+}
+
+.folder-icon .symbol {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* ========================================
+   11. PAGE HEADERS
+======================================== */
+
+.page-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 12px;
+  padding: 8px;
+
+  border: 1px solid #A4B0B6;
+  border-radius: 6px;
+
+  background: #FAF6EECC;
+}
+
+.page-heading-icon {
+  width: 35px;
+  height: 35px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 5px;
+  background: #D7E6E9;
+
+  font-size: 21px;
+}
+
+.page-heading h2 {
+  margin: 0;
+
   font-family: "Pixelify Sans", sans-serif;
-  font-size: 19px;
-  color: #8170b8;
+  font-size: 17px;
+
+  color: var(--navy);
 }
+
+.page-heading p {
+  margin: 2px 0 0;
+
+  font-size: 10px;
+  color: #71848C;
+}
+
+/* ========================================
+   12. CHARACTER FILE EXPLORER
+======================================== */
 
 .character-grid {
   display: grid;
@@ -426,26 +675,41 @@ video {
 .character-card {
   min-width: 0;
   padding: 7px;
-  border: 2px solid #aaa0d6;
-  border-radius: 9px;
-  background: linear-gradient(white, #eee9ff);
-  box-shadow: 2px 3px #c2b9e3;
+
+  border: 2px solid #A4B0B6;
+  border-radius: 7px;
+
+  background: var(--ivory);
+
+  box-shadow: 2px 3px 0 #B7C1C0;
+
   text-align: center;
+  transition: transform 0.15s;
 }
 
-.character-card.selected,
-.character-card:hover {
-  background: #ffe5f4;
+.character-card:hover,
+.character-card.selected {
+  background: #DDEBF0;
+  border-color: #789EAF;
+}
+
+.character-card:active {
+  transform: translateY(2px);
 }
 
 .portrait {
-  height: 125px;
+  height: 126px;
+  overflow: hidden;
+
+  border: 1px solid #A4B0B6;
+  border-radius: 4px;
+
+  background: #DCE8E6;
+
   display: grid;
   place-items: center;
-  overflow: hidden;
-  border-radius: 5px;
-  background: linear-gradient(#e0f7ff, #d9d2ff);
-  font-size: 42px;
+
+  font-size: 35px;
 }
 
 .portrait img {
@@ -456,46 +720,110 @@ video {
 
 .character-card strong {
   display: block;
-  margin-top: 8px;
+  margin-top: 7px;
+
   font-family: "Jua", sans-serif;
   font-size: 17px;
 }
 
 .character-card small {
+  font-family: "Pixelify Sans", sans-serif;
   font-size: 10px;
+  color: #738A80;
 }
+
+/* ========================================
+   13. COUPLE D-DAY
+======================================== */
+
+.couple-dday {
+  margin: 14px 0 4px;
+  padding: 13px 10px;
+
+  border: 2px solid #A4B0B6;
+  border-radius: 8px;
+
+  background:
+    linear-gradient(
+      #FFFFFF,
+      #FAF6EE
+    );
+
+  box-shadow: 2px 3px 0 #C8C5BE;
+
+  text-align: center;
+}
+
+.dday-label {
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+
+  color: #687985;
+}
+
+.dday-number {
+  margin: 5px 0;
+
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+
+  color: var(--navy);
+}
+
+.dday-since {
+  font-size: 10px;
+  color: var(--olive);
+}
+
+.dday-names {
+  margin-top: 7px;
+  font-size: 11px;
+}
+
+/* ========================================
+   14. LIST / FILE ENTRIES
+======================================== */
 
 .entry,
 .back {
   width: 100%;
   margin: 6px 0;
   padding: 10px;
-  border: 2px solid #aaa0d5;
-  border-radius: 7px;
-  background: linear-gradient(white, #f0ecff);
-  box-shadow: 2px 3px #c3bbe0;
+
+  border: 1px solid #A4B0B6;
+  border-radius: 6px;
+
+  background: var(--ivory);
+
+  box-shadow: 2px 2px 0 #B7C1C0;
+
   text-align: left;
   font-size: 12px;
+
+  transition: background 0.15s;
 }
 
+.entry:hover,
 .entry.selected,
-.entry:hover {
-  background: #ffe5f4;
+.back:hover,
+.back.selected {
+  background: #D8E9EE;
 }
 
 .back {
   width: auto;
-  padding: 6px 10px;
   margin-bottom: 12px;
+  padding: 7px 12px;
+
+  font-family: "Pixelify Sans", sans-serif;
   font-weight: bold;
 }
 
-.empty {
-  padding: 20px 5px;
-  text-align: center;
-  font-size: 12px;
-  line-height: 2;
-}
+/* ========================================
+   15. DETAIL VIEWER
+======================================== */
 
 .detail-text {
   white-space: pre-wrap;
@@ -505,43 +833,256 @@ video {
 
 .detail-image {
   display: block;
+
   max-width: 100%;
   max-height: 250px;
+
   margin: 8px auto;
+
+  border: 2px solid #A4B0B6;
+  border-radius: 5px;
 }
 
-/* =========================
-   10. 하단 작업 표시줄
-========================= */
+.empty {
+  padding: 20px 6px;
+
+  text-align: center;
+  font-size: 12px;
+  line-height: 2;
+}
+
+/* ========================================
+   16. LETTER MESSENGER
+======================================== */
+
+.chat-search {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+
+  border: 1px solid #A4B0B6;
+  border-radius: 6px;
+
+  background: var(--ivory);
+
+  font-size: 12px;
+  color: var(--navy);
+}
+
+.chat-day {
+  display: block;
+
+  width: 100%;
+  margin: 7px 0;
+  padding: 11px;
+
+  border: 1px solid #A4B0B6;
+  border-radius: 6px;
+
+  background: var(--ivory);
+  box-shadow: 2px 2px 0 #B7C1C0;
+
+  text-align: left;
+  font-size: 12px;
+}
+
+.chat-day:hover,
+.chat-day.selected {
+  background: #DCECF0;
+}
+
+.chat-area {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  padding: 8px 2px;
+}
+
+.chat-message {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+
+  max-width: 85%;
+}
+
+.chat-message.jh {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.chat-message.yj {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.chat-name {
+  font-size: 10px;
+  color: #687985;
+}
+
+.chat-bubble {
+  padding: 9px 11px;
+
+  border: 1px solid #A9C5D3;
+  border-radius: 12px;
+
+  background: #DCEBF1;
+
+  font-size: 12px;
+  line-height: 1.7;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.chat-message.jh .chat-bubble {
+  border-color: #D7BBC7;
+  background: #F4E1E6;
+  color: #795869;
+}
+
+.chat-message.yj .chat-bubble {
+  color: var(--navy);
+}
+
+.chat-time {
+  font-size: 9px;
+  color: #87939A;
+}
+
+.chat-date {
+  align-self: center;
+
+  margin: 5px 0 10px;
+  padding: 5px 12px;
+
+  border-radius: 20px;
+  background: #DCE6E5;
+
+  font-size: 11px;
+}
+
+/* ========================================
+   17. GALLERY ALBUM
+======================================== */
+
+.gallery-intro {
+  margin-bottom: 12px;
+  padding: 12px;
+
+  border: 1px dashed #91A8AE;
+  border-radius: 7px;
+
+  background: #FAF6EE99;
+
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.gallery-intro strong {
+  display: block;
+
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 15px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.gallery-card {
+  min-width: 0;
+  padding: 6px;
+
+  border: 1px solid #A4B0B6;
+  border-radius: 5px;
+
+  background: var(--ivory);
+
+  box-shadow: 2px 3px 0 #B7C1C0;
+  text-align: left;
+}
+
+.gallery-card img {
+  display: block;
+
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.gallery-card span {
+  display: block;
+
+  margin-top: 6px;
+
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 10px;
+  text-align: center;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.gallery-card:hover,
+.gallery-card.selected {
+  background: #DCECF0;
+}
+
+/* ========================================
+   18. TASKBAR
+======================================== */
 
 .taskbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
   gap: 5px;
   padding: 6px 8px;
 
-  border-top: 2px solid #9ca8d8;
-  background: linear-gradient(#eaf7ff, #bfd8ff);
+  border-top: 2px solid #91A7B2;
+
+  background:
+    linear-gradient(
+      #E2EEF1,
+      #B8D4E0
+    );
 
   font-family: "Pixelify Sans", sans-serif;
   font-size: 10px;
-  color: #7168a9;
+
+  color: var(--navy);
 }
 
-/* =========================
-   11. 조작 버튼
-========================= */
+.taskbar-start {
+  font-weight: bold;
+}
+
+/* ========================================
+   19. PHYSICAL BUTTONS
+======================================== */
 
 .controls {
   display: flex;
   justify-content: center;
   align-items: flex-start;
+
   gap: clamp(10px, 5vw, 27px);
-  margin-top: 17px;
+  margin-top: 18px;
 }
 
 .control-group {
   width: 66px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -549,86 +1090,98 @@ video {
 
   font-family: "Pixelify Sans", sans-serif;
   font-size: 11px;
-  color: #786caf;
+
+  color: var(--navy);
 }
 
 .control {
   width: 59px;
   height: 59px;
 
-  border: 4px solid #9a90d0;
+  border: 4px solid #667A91;
   border-radius: 50%;
 
-  background: radial-gradient(
-    circle at 30% 20%,
-    white,
-    #f5edff 30%,
-    #d6c7fa 70%,
-    #a99cde
-  );
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      #6C8198,
+      #435A76 38%,
+      #283B55 80%
+    );
 
   box-shadow:
-    inset 3px 3px white,
-    inset -3px -4px #9085bd77,
-    2px 5px 0 #857db9;
+    inset 3px 3px #FFFFFF42,
+    inset -3px -4px #0C1B2C88,
+    2px 5px 0 #1E3048;
 
-  color: #7969b3;
+  color: var(--ivory);
   font-family: "Jua", sans-serif;
   font-size: 24px;
+
+  transition:
+    transform 0.12s,
+    box-shadow 0.12s;
 }
 
 #selectBtn {
-  background: radial-gradient(
-    circle at 30% 20%,
-    white,
-    #ffe7f5 35%,
-    #ffbce0 75%,
-    #e6a1cd
-  );
-  color: #b36e9e;
-}
+  border-color: #8EAEBE;
 
-.control:active,
-.mini-home:active {
-  transform: translateY(3px);
-  box-shadow: inset 1px 2px #8e82bd66;
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      #FFFFFF,
+      #D7EAF0 36%,
+      #B8D4E0 78%,
+      #8FAFBE
+    );
+
+  color: var(--navy);
 }
 
 .mini-home {
   width: 31px;
   height: 31px;
+
   margin-top: 1px;
 
-  border: 3px solid #ae8fca;
+  border: 3px solid #9AA3A0;
   border-radius: 50%;
 
-  background: radial-gradient(
-    circle at 30% 20%,
-    white,
-    #ffd5eb 65%,
-    #f2a9d0
-  );
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      #FFFFFF,
+      #E5E3DC 35%,
+      #C8C5BE 80%
+    );
 
-  box-shadow: 2px 3px #9b8ac7;
+  box-shadow: 2px 3px 0 #8B9690;
+
+  color: var(--navy);
   font-size: 18px;
 }
 
-/* =========================
-   12. 본체 하단
-========================= */
+.control:active,
+.mini-home:active {
+  transform: translateY(3px);
+  box-shadow: inset 1px 2px 4px #17283B66;
+}
 
 .footer {
-  margin-top: 12px;
+  margin-top: 13px;
+
   text-align: center;
+
   font-family: "Pixelify Sans", sans-serif;
   font-size: 10px;
   letter-spacing: 1px;
-  color: #8d81b7;
+
+  color: #344C58;
 }
 
-/* =========================
-   13. 작은 화면 대응
-========================= */
+/* ========================================
+   20. MOBILE
+======================================== */
 
 @media (max-width: 380px) {
   .phone {
@@ -645,12 +1198,8 @@ video {
   }
 
   .desktop {
-    height: 335px;
-    padding: 7px;
-  }
-
-  .icon-btn {
-    font-size: 10px;
+    height: 345px;
+    padding: 8px;
   }
 
   .controls {
@@ -665,44 +1214,20 @@ video {
     width: 54px;
     height: 54px;
   }
-}
-   
-/* D-DAY 디자인 */
-.couple-dday {
-  margin: 12px 0;
-  padding: 12px 10px;
-  text-align: center;
-  background: #FAF6EE;
-  border: 2px solid #A4B0B6;
-  border-radius: 12px;
-  box-shadow: 0 3px 0 #C8C5BE;
-  color: #283B55;
+
+  .icon-grid {
+    gap: 5px;
+  }
 }
 
-.dday-label {
-  font-size: 10px;
-  font-weight: bold;
-  color: #687985;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
-
-.dday-number {
-  margin: 5px 0;
-  font-size: 28px;
-  font-weight: 900;
-  color: #283B55;
-}
-
-.dday-since {
-  font-size: 10px;
-  color: #929B80;
-}
-
-.dday-names {
-  margin-top: 7px;
-  font-size: 11px;
-  color: #283B55;
-}
-
 </style>
 </head>
 
@@ -710,25 +1235,27 @@ video {
 
 <main class="phone">
 
-  <!-- 상단 장식 -->
+  <!-- TOP DECORATION -->
   <div class="top-deco" aria-hidden="true">
     ✦ ♡ ✧ 🐟 ✧ ♡ ✦
   </div>
 
-  <!-- 로고 -->
+  <!-- LOGO -->
   <header class="brand">
     <div class="brand-title">
       ♡ HYEOKJAE ARCHIVE ♡
     </div>
+
     <div class="brand-sub">
       OUR LITTLE AQUARIUM
     </div>
   </header>
 
-  <!-- 화면 -->
+  <!-- SCREEN -->
   <div class="screen-frame">
     <div class="screen">
 
+      <!-- XP TITLEBAR -->
       <div class="titlebar">
         <span class="titlebar-name">
           🐠 HYEOKJAE ARCHIVE.exe
@@ -741,30 +1268,96 @@ video {
         </div>
       </div>
 
+      <!-- MENU BAR -->
       <div class="menubar">
-        <span>File</span>
-        <span>Edit</span>
-        <span>View</span>
-        <span>Help ♡</span>
+        <div class="menu-left">
+          <span>File</span>
+          <span>Edit</span>
+          <span>View</span>
+          <span>Help ♡</span>
+        </div>
+
+        <span class="menu-right">● ONLINE</span>
       </div>
 
-      <!-- 내부 페이지 -->
+      <!-- DESKTOP -->
       <div class="desktop" id="desktop">
 
-        <!-- HOME -->
+        <!-- ======================
+             HOME
+        ======================= -->
         <section class="page active" id="home">
 
-          <h1 class="hero">
-            HYEOKJAE<br>ARCHIVE ♡
-            <small>
-              ✧ welcome to our little aquarium ✧
-            </small>
-          </h1>
+          <div class="aquarium-hero">
+            <span class="aquarium-fish">🐟 🫧 🪼</span>
 
+            <div class="hero-title">
+              HYEOKJAE<br>
+              ARCHIVE ♡
+            </div>
+
+            <div class="hero-subtitle">
+              ✧ welcome to our little aquarium ✧
+            </div>
+          </div>
+
+          <div class="desktop-label">
+            <span>▣ MY DESKTOP</span>
+            <small>6 ITEMS</small>
+          </div>
+
+          <!-- FOLDER MENU -->
+          <div class="icon-grid">
+
+            <button class="icon-btn" data-page="characters">
+              <span class="folder-icon">
+                <span class="symbol">🐟</span>
+              </span>
+              CHARACTER
+            </button>
+
+            <button class="icon-btn" data-page="letters">
+              <span class="folder-icon">
+                <span class="symbol">💌</span>
+              </span>
+              LETTER
+            </button>
+
+            <button class="icon-btn" data-page="comics">
+              <span class="folder-icon">
+                <span class="symbol">📖</span>
+              </span>
+              COMIC
+            </button>
+
+            <button class="icon-btn" data-page="stories">
+              <span class="folder-icon">
+                <span class="symbol">🫧</span>
+              </span>
+              STORY
+            </button>
+
+            <button class="icon-btn" data-page="gallery">
+              <span class="folder-icon">
+                <span class="symbol">🐚</span>
+              </span>
+              GALLERY
+            </button>
+
+            <button class="icon-btn" data-page="settings">
+              <span class="folder-icon">
+                <span class="symbol">⚙️</span>
+              </span>
+              SETTING
+            </button>
+
+          </div>
+
+          <!-- VIDEO WINDOW -->
           <div class="window">
             <div class="window-head">
-              <span>📁 intro_video.mp4</span>
-              <span>×</span>
+              <span>▣ intro_video.mp4</span>
+              <span>□ ×</span>
             </div>
 
             <div class="window-content">
@@ -784,79 +1377,64 @@ video {
                   >
                   영상을 재생할 수 없습니다.
                 </video>
-                 
-
-
               </div>
             </div>
           </div>
 
-          <!-- 메인 메뉴 -->
-          <div class="icon-grid">
-
-            <button class="icon-btn" data-page="characters">
-              <span class="symbol">🐟</span>
-              CHARACTER
-            </button>
-
-            <button class="icon-btn" data-page="letters">
-              <span class="symbol">💌</span>
-              LETTER
-            </button>
-
-            <button class="icon-btn" data-page="comics">
-              <span class="symbol">📖</span>
-              COMIC
-            </button>
-
-            <button class="icon-btn" data-page="stories">
-              <span class="symbol">🫧</span>
-              STORY
-            </button>
-
-            <button class="icon-btn" data-page="gallery">
-              <span class="symbol">🐚</span>
-              GALLERY
-            </button>
-
-            <button class="icon-btn" data-page="settings">
-              <span class="symbol">⚙️</span>
-              SETTING
-            </button>
-
-          </div>
-
+          <!-- ABOUT -->
           <div class="window">
             <div class="window-head">
               <span>📁 about.txt</span>
               <span>×</span>
             </div>
+
             <div class="window-content">
               작은 수족관에 어서 와!<br>
-              이곳에는 정혁과 홍윤재의 이야기가
+              이곳에는 정혁과 홍윤재의 이야기가<br>
               천천히 쌓여 가고 있어. ♡
             </div>
           </div>
 
         </section>
 
-       
-<!-- CHARACTER -->
-<section class="page" id="characters">
-  <h2 class="section-title">📁 character.exe</h2>
-  <div class="character-grid" id="characterGrid"></div>
+        <!-- ======================
+             CHARACTER
+        ======================= -->
+        <section class="page" id="characters">
 
-  <!-- 정혁 × 홍윤재 D-DAY -->
-  <div class="couple-dday">
-    <div class="dday-label">♡ OUR DAYS TOGETHER</div>
-    <div class="dday-number" id="coupleDday">D+1</div>
-    <div class="dday-since">SINCE 2026.05.09</div>
-   <div class="dday-names">♡ 정혁 × 홍윤재 ♡</div>
-  </div>
-</section>
+          <div class="page-heading">
+            <div class="page-heading-icon">🐟</div>
+            <div>
+              <h2>character.exe</h2>
+              <p>MY CHARACTERS / 2 FILES</p>
+            </div>
+          </div>
 
-        <!-- 캐릭터 상세 -->
+          <div class="character-grid" id="characterGrid"></div>
+
+          <div class="couple-dday">
+            <div class="dday-label">
+              ♡ OUR DAYS TOGETHER
+            </div>
+
+            <div class="dday-number" id="coupleDday">
+              D+1
+            </div>
+
+            <div class="dday-since">
+              SINCE 2026.05.09
+            </div>
+
+            <div class="dday-names">
+              ♡ 정혁 × 홍윤재 ♡
+            </div>
+          </div>
+
+        </section>
+
+        <!-- CHARACTER PROFILE -->
         <section class="page" id="profile">
+
           <button class="back" data-page="characters">
             ◀ BACK
           </button>
@@ -873,1516 +1451,92 @@ video {
                 hidden
                 alt="캐릭터 이미지"
               >
+
               <div class="detail-text" id="profileText"></div>
             </div>
           </div>
+
         </section>
 
-        <!-- LETTER -->
+        <!-- ======================
+             LETTER
+        ======================= -->
         <section class="page" id="letters">
-          <h2 class="section-title">💌 letter.exe</h2>
+
+          <div class="page-heading">
+            <div class="page-heading-icon">💌</div>
+            <div>
+              <h2>letter.exe</h2>
+              <p>OUR MESSAGE ARCHIVE</p>
+            </div>
+          </div>
+
           <div id="letterList"></div>
+
         </section>
 
+        <!-- LETTER DETAIL -->
         <section class="page" id="letterDetail">
+
           <button class="back" data-page="letters">
             ◀ BACK
           </button>
 
           <div class="window">
             <div class="window-head" id="letterTitle"></div>
-            <div class="window-content detail-text" id="letterBody"></div>
+
+            <div class="window-content" id="letterBody"></div>
           </div>
+
         </section>
 
-        <!-- COMIC -->
+        <!-- ======================
+             COMIC
+        ======================= -->
         <section class="page" id="comics">
-          <h2 class="section-title">📖 comic.exe</h2>
-          <div id="comicList"></div>
-        </section>
 
-        <!-- STORY -->
-        <section class="page" id="stories">
-          <h2 class="section-title">🫧 story.exe</h2>
-          <div id="storyList"></div>
-        </section>
-
-        <!-- GALLERY -->
-        <section class="page" id="gallery">
-          <h2 class="section-title">🐚 gallery.exe</h2>
-          <div id="galleryList"></div>
-        </section>
-
-        <!-- 공통 상세 페이지 -->
-        <section class="page" id="recordDetail">
-          <button class="back" id="recordBack">
-            ◀ BACK
-          </button>
-
-          <div class="window">
-            <div class="window-head" id="recordTitle"></div>
-            <div class="window-content" id="recordBody"></div>
+          <div class="page-heading">
+            <div class="page-heading-icon">📖</div>
+            <div>
+              <h2>comic.exe</h2>
+              <p>COMIC COLLECTION</p>
+            </div>
           </div>
+
+          <div id="comicList"></div>
+
         </section>
 
-        <!-- SETTING -->
-        <section class="page" id="settings">
-          <h2 class="section-title">⚙️ setting.exe</h2>
+        <!-- ======================
+             STORY
+        ======================= -->
+        <section class="page" id="stories">
 
-          <button class="entry" id="soundBtn">
-            🔇 영상 소리 켜기
-          </button>
+          <div class="page-heading">
+            <div class="page-heading-icon">🫧</div>
+            <div>
+              <h2>story.exe</h2>
+              <p>STORY COLLECTION</p>
+            </div>
+          </div>
 
-          <button class="entry" id="playBtn">
-            ▶ 영상 재생 / 일시정지
-          </button>
+          <div id="storyList"></div>
 
-          <p class="empty">
-            영상은 자동 재생을 위해<br>
-            음소거 상태로 시작해요. ♡
-          </p>
         </section>
 
-      </div>
-
-      <!-- 하단 작업 표시줄 -->
-      <div class="taskbar">
-        <span>🐠 START</span>
-       <span id="realClock">♡ READY · 12:06</span>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- 물리 버튼 -->
-  <div class="controls">
-
-    <div class="control-group">
-      <button class="control" id="prevBtn" aria-label="이전">
-        ◀
-      </button>
-      <span>PREV</span>
-    </div>
-
-    <div class="control-group">
-      <button class="control" id="selectBtn" aria-label="선택">
-        ♡
-      </button>
-      <span>SELECT</span>
-
-      <button class="mini-home" id="homeBtn" aria-label="홈">
-        ⌂
-      </button>
-      <span>HOME</span>
-    </div>
-
-    <div class="control-group">
-      <button class="control" id="nextBtn" aria-label="다음">
-        ▶
-      </button>
-      <span>NEXT</span>
-    </div>
-
-  </div>
-
-  <div class="footer">
-    ✧ A LITTLE WORLD UNDER THE BLUE ✧
-  </div>
-
-</main>
-
-<script>
-/* =========================
-   14. 콘텐츠 데이터
-   여기서 내용을 추가할 수 있어요.
-========================= */
-
-/* 캐릭터는 정혁, 홍윤재 두 명 */
-
-
-
-const characters = [
-  {
-    name: "정혁",
-    type: "ORIGINAL CHARACTER",
-    image: "junghyeok.jpg.jpg",
-
-    intro: "25세 · 188cm\n장난스럽지만 누구보다 솔직한 애정 표현가.",
-
-    details:
-      "이름: 정혁 (JUNG HYEOK)\n" +
-      "나이: 25세\n" +
-      "키: 188cm\n\n" +
-      "성격 키워드\n" +
-      "장난기 · 솔직함 · 적극적 · 섬세함 · 다정함\n\n" +
-      "좋아하는 것\n" +
-      "홍윤재 · 물고기 · 공룡\n\n" +
-      "CHARACTER NOTE\n" +
-      "좋아하는 사람에게 애정 표현을 거리낌 없이 한다.\n" +
-      "장난을 치다가도 상대가 힘들어하면 금세 진지해진다.\n" +
-      "자신의 감정에 솔직하며 상대를 세심하게 챙긴다.",
-
-    story:
-      "평소 장난스럽고 능청맞은 태도로 상대를 놀리지만, " +
-      "자신의 감정만큼은 숨기지 않고 솔직하게 표현한다. " +
-      "좋아하는 사람에게는 적극적으로 애정을 표현하며, " +
-      "가벼워 보이는 말투와 달리 상대의 작은 변화에도 " +
-      "민감하게 반응하는 섬세한 면을 지녔다.\n\n" +
-      "누군가를 챙기는 일에는 적극적이지만, " +
-      "정작 자신이 배려받는 상황에서는 쉽게 미안함을 느끼기도 한다. " +
-      "장난스러운 태도 뒤에는 상대를 진심으로 아끼는 마음이 자리하고 있으며, " +
-      "때로는 투정이나 짓궂은 농담으로 애정을 드러내기도 한다."
-  },
-
-  {
-    name: "홍윤재",
-    type: "ORIGINAL CHARACTER",
-    image: "hongyoonjae.png.png",
-
-    intro: "28세 · 190cm\n차분한 말투 뒤에 다정함을 숨긴 능청스러운 현실주의자.",
-
-    details:
-      "이름: 홍윤재 (HONG YOONJAE)\n" +
-      "나이: 28세\n" +
-      "키: 190cm\n\n" +
-      "성격 키워드\n" +
-      "침착함 · 능청스러움 · 배려심 · 다정함 · 허당미\n\n" +
-      "좋아하는 것\n" +
-      "정혁 · 물고기 · 해파리\n\n" +
-      "CHARACTER NOTE\n" +
-      "침착한 말투와 달리 은근히 짓궂은 농담을 즐긴다.\n" +
-      "상대의 건강과 식사를 세심하게 챙긴다.\n" +
-      "공포게임에는 의외로 약하고 허술한 모습을 보이기도 한다.",
-
-    story:
-      "차분하고 여유로운 태도를 유지하며, " +
-      "특유의 능청스러운 말투로 상대의 장난을 받아친다. " +
-      "자신의 감정을 요란하게 드러내지는 않지만, " +
-      "좋아하는 사람을 세심하게 챙기고 아낌없이 애정을 베푼다.\n\n" +
-      "상대의 선택을 존중하면서도 자신의 생각은 분명하게 표현하며, " +
-      "말보다는 행동으로 마음을 전하는 경우가 많다. " +
-      "어른스럽고 침착한 모습과 달리 예상치 못한 순간에는 " +
-      "허술하거나 겁 많은 면모를 드러내기도 한다. " +
-      "이러한 의외성이 평소의 차분한 분위기와 대비되어 독특한 매력을 만든다."
-  }
-];
-
-
-
-/* 편지 예시:
-{
-  title: "첫 번째 편지",
-  text: "여기에 편지 내용을 적어 주세요."
-}
-*/
-
-const letters = [];
-
-/* 만화 예시:
-{
-  title: "첫 번째 만화",
-  text: "만화 설명",
-  image: "comic1.png"
-}
-*/
-
-const comics = [];
-
-/* 이야기 예시:
-{
-  title: "첫 번째 이야기",
-  text: "이야기 내용"
-}
-*/
-
-const stories = [];
-
-/* 갤러리 예시:
-{
-  title: "첫 번째 그림",
-  text: "그림 설명",
-  image: "drawing1.png"
-}
-*/
-
-const gallery = [];
-
-
-/* =========================
-   15. 페이지 이동 기능
-========================= */
-
-const $ = id => document.getElementById(id);
-
-const video = $("introVideo");
-
-let currentPage = "home";
-let selected = 0;
-let recordParent = "home";
-
-const validPages = new Set([
-  "home",
-  "characters",
-  "profile",
-  "letters",
-  "letterDetail",
-  "comics",
-  "stories",
-  "gallery",
-  "recordDetail",
-  "settings"
-]);
-
-function buttons() {
-  return [
-    ...$(currentPage).querySelectorAll(
-      "button:not(:disabled)"
-    )
-  ];
-}
-
-function highlight() {
-  document.querySelectorAll(".selected").forEach(btn => {
-    btn.classList.remove("selected");
-  });
-
-  const list = buttons();
-
-  if (!list.length) return;
-
-  selected = Math.min(selected, list.length - 1);
-  list[selected].classList.add("selected");
-}
-
-function showPage(page, updateHistory = true) {
-  if (!validPages.has(page)) {
-    page = "home";
-  }
-
-  currentPage = page;
-
-  document.querySelectorAll(".page").forEach(section => {
-    section.classList.toggle(
-      "active",
-      section.id === page
-    );
-  });
-
-  selected = 0;
-  $("desktop").scrollTop = 0;
-
-  highlight();
-
-  if (updateHistory && location.hash !== "#" + page) {
-    history.pushState(
-      { page },
-      "",
-      "#" + page
-    );
-  }
-
-  if (page === "home") {
-    video.play().catch(() => {});
-  } else {
-    video.pause();
-  }
-}
-
-
-/* =========================
-   16. 캐릭터 페이지
-========================= */
-
-function openProfile(index) {
-  const character = characters[index];
-
-  if (!character) return;
-
-  $("profileTitle").textContent =
-    "📁 " + character.name + " / profile.txt";
-
-  $("profileText").textContent =
-    character.intro +
-    "\n\nPROFILE\n" +
-    character.details +
-    "\n\nSTORY\n" +
-    character.story;
-
-  const image = $("profileImage");
-
-  image.hidden = !character.image;
-
-  if (character.image) {
-    image.src = character.image;
-  } else {
-    image.removeAttribute("src");
-  }
-
-  showPage("profile");
-}
-
-characters.forEach((character, index) => {
-  const button = document.createElement("button");
-  button.className = "character-card";
-
-  const portrait = document.createElement("div");
-  portrait.className = "portrait";
-
-  if (character.image) {
-    const img = document.createElement("img");
-    img.src = character.image;
-    img.alt = character.name;
-    portrait.append(img);
-  } else {
-    portrait.textContent = index === 0 ? "🐟" : "🐢";
-  }
-
-  const name = document.createElement("strong");
-  name.textContent = character.name;
-
-  const sub = document.createElement("small");
-  sub.textContent = "📁 PROFILE →";
-
-  button.append(portrait, name, sub);
-
-  button.onclick = () => openProfile(index);
-
-  $("characterGrid").append(button);
-});
-
-
-/* =========================
-   17. 편지 / 만화 / 이야기 / 갤러리
-========================= */
-
-function renderList(data, id, parent, emptyText) {
-  const container = $(id);
-
-  container.replaceChildren();
-
-  if (!data.length) {
-    const empty = document.createElement("p");
-    empty.className = "empty";
-    empty.textContent = emptyText;
-    container.append(empty);
-    return;
-  }
-
-  data.forEach(item => {
-    const button = document.createElement("button");
-
-    button.className = "entry";
-    button.textContent = "📁 " + item.title;
-
-    button.onclick = () => {
-      if (parent === "letters") {
-        $("letterTitle").textContent =
-          "💌 " + item.title;
-
-        $("letterBody").textContent =
-          item.text || "";
-
-        showPage("letterDetail");
-        return;
-      }
-
-      recordParent = parent;
-
-      $("recordTitle").textContent =
-        "📁 " + item.title;
-
-      const body = $("recordBody");
-      body.replaceChildren();
-
-      if (item.image) {
-        const image = document.createElement("img");
-        image.className = "detail-image";
-        image.src = item.image;
-        image.alt = item.title;
-        body.append(image);
-      }
-
-      if (item.text) {
-        const text = document.createElement("p");
-        text.className = "detail-text";
-        text.textContent = item.text;
-        body.append(text);
-      }
-
-      showPage("recordDetail");
-    };
-
-    container.append(button);
-  });
-}
-
-renderList(
-  letters,
-  "letterList",
-  "letters",
-  "아직 도착한 편지가 없어요. 💌"
-);
-
-renderList(
-  comics,
-  "comicList",
-  "comics",
-  "아직 등록된 만화가 없어요. 📖"
-);
-
-renderList(
-  stories,
-  "storyList",
-  "stories",
-  "아직 등록된 글이 없어요. 🫧"
-);
-
-renderList(
-  gallery,
-  "galleryList",
-  "gallery",
-  "아직 등록된 그림이 없어요. 🐚"
-);
-
-
-/* =========================
-   18. 버튼 조작
-========================= */
-
-/* 화면 속 메뉴 클릭 */
-
-document.addEventListener("click", event => {
-  const button = event.target.closest("[data-page]");
-
-  if (button) {
-    showPage(button.dataset.page);
-  }
-});
-
-/* 상세 페이지 뒤로 가기 */
-
-$("recordBack").onclick = () => {
-  showPage(recordParent);
-};
-
-/* PREV / NEXT */
-
-function move(step) {
-  const list = buttons();
-
-  if (!list.length) return;
-
-  selected =
-    (selected + step + list.length) % list.length;
-
-  highlight();
-
-  list[selected].scrollIntoView({
-    block: "nearest"
-  });
-}
-
-$("prevBtn").onclick = () => move(-1);
-
-$("nextBtn").onclick = () => move(1);
-
-/* SELECT */
-
-$("selectBtn").onclick = () => {
-  const list = buttons();
-
-  if (list[selected]) {
-    list[selected].click();
-  }
-};
-
-/* HOME */
-
-$("homeBtn").onclick = () => {
-  showPage("home");
-};
-
-
-/* =========================
-   19. 영상 설정
-========================= */
-
-$("soundBtn").onclick = () => {
-  video.muted = !video.muted;
-
-  $("soundBtn").textContent = video.muted
-    ? "🔇 영상 소리 켜기"
-    : "🔊 영상 소리 끄기";
-};
-
-$("playBtn").onclick = () => {
-  if (video.paused) {
-    video.play().catch(() => {});
-  } else {
-    video.pause();
-  }
-};
-
-
-/* =========================
-   20. 키보드 및 브라우저
-========================= */
-
-document.addEventListener("keydown", event => {
-  if (
-    event.key === "ArrowLeft" ||
-    event.key === "ArrowUp"
-  ) {
-    event.preventDefault();
-    move(-1);
-  }
-
-  if (
-    event.key === "ArrowRight" ||
-    event.key === "ArrowDown"
-  ) {
-    event.preventDefault();
-    move(1);
-  }
-
-  if (event.key === "Escape") {
-    showPage("home");
-  }
-});
-
-window.addEventListener("popstate", () => {
-  showPage(
-    location.hash.slice(1) || "home",
-    false
-  );
-});
-
-/* 최초 실행 */
-
-showPage(
-  validPages.has(location.hash.slice(1))
-    ? location.hash.slice(1)
-    : "home",
-  false
-);
-
-</script>
-
-<!-- ===== LETTER 채팅 기록 기능 시작 ===== -->
-
-<style>
-/* LETTER 날짜 목록 */
-
-#letters .chat-day {
-  display: block;
-  width: 100%;
-  margin: 7px 0;
-  padding: 12px;
-  border: 2px solid #aaa0d6;
-  border-radius: 9px;
-  background: linear-gradient(#fffaff, #e9e5ff);
-  box-shadow: 2px 3px #c2b9e3;
-  text-align: left;
-  font-size: 12px;
-}
-
-#letters .chat-day:hover {
-  background: #ffe5f4;
-}
-
-#letters .chat-search {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 2px solid #aaa0d6;
-  border-radius: 8px;
-  background: white;
-  font: inherit;
-  font-size: 12px;
-}
-
-/* 채팅창 */
-
-#letterDetail .chat-area {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 8px 2px;
-}
-
-#letterDetail .chat-message {
-  display: flex;
-  flex-direction: column;
-  max-width: 85%;
-  gap: 3px;
-}
-
-#letterDetail .chat-message.jh {
-  align-self: flex-end;
-  align-items: flex-end;
-}
-
-#letterDetail .chat-message.yj {
-  align-self: flex-start;
-  align-items: flex-start;
-}
-
-#letterDetail .chat-name {
-  font-size: 10px;
-  color: #8077a8;
-}
-
-#letterDetail .chat-bubble {
-  padding: 9px 11px;
-  border: 1px solid #c9bfe2;
-  border-radius: 13px;
-  background: #dff1ff;
-  color: #5c6891;
-  font-size: 12px;
-  line-height: 1.7;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-}
-
-#letterDetail .jh .chat-bubble {
-  background: #ffe0f0;
-  color: #966b8d;
-}
-
-#letterDetail .chat-time {
-  font-size: 9px;
-  color: #9690ac;
-}
-
-#letterDetail .chat-date {
-  align-self: center;
-  margin: 5px 0 10px;
-  padding: 5px 12px;
-  border-radius: 20px;
-  background: #e1dcfa;
-  font-size: 11px;
-  color: #756ca5;
-}
-   
-/* CHARACTER 프로필 텍스트 줄바꿈 */
-#profile {
-  line-height: 1.7;
-}
-
-#profile .profile-details,
-#profile .profile-story,
-#profile .profile-intro {
-  white-space: pre-line;
-  overflow-wrap: anywhere;
-}
-
-/* ========================================
-   HYEOKJAE ARCHIVE
-   MIDNIGHT AQUARIUM COLOR THEME
-
-   기존 디자인과 기능 유지
-   색상만 변경하는 테마
-======================================== */
-
-:root {
-  --bg: #111C25;
-  --panel: #263B45;
-  --text: #E9E1D6;
-  --muted: #AAB6B7;
-  --accent: #A49BAE;
-  --line: #667765;
-
-  --midnight: #182631;
-  --ocean: #344C57;
-  --olive: #667765;
-  --lavender: #A49BAE;
-  --sand: #D8CDBE;
-  --cream: #F4EEE7;
-}
-
-/* 전체 배경 */
-body {
-  background-color: #111C25;
-  color: #E9E1D6;
-}
-
-/* 다마고치 본체 */
-.phone {
-  background: linear-gradient(
-    145deg,
-    #506977 0%,
-    #344C57 40%,
-    #263A46 75%,
-    #182631 100%
-  ) !important;
-
-  border-color: #71817D !important;
-
-  box-shadow:
-    inset 5px 5px 12px rgba(255,255,255,0.12),
-    inset -8px -10px 18px rgba(0,0,0,0.35),
-    0 20px 55px rgba(0,0,0,0.45) !important;
-}
-
-/* 다마고치 외부 글씨 */
-.phone > h1,
-.phone > h2,
-.phone > p,
-.phone .brand,
-.phone .logo {
-  color: #D8CDBE;
-}
-
-/* 화면 테두리 */
-.screen-frame {
-  background: #182631 !important;
-  border-color: #A49BAE !important;
-
-  box-shadow:
-    inset 0 3px 10px rgba(0,0,0,0.4),
-    0 2px 5px rgba(255,255,255,0.08) !important;
-}
-
-/* 화면 내부 */
-.desktop {
-  background-color: #263B45 !important;
-  color: #E9E1D6;
-}
-
-/* 윈도우 XP 제목 표시줄 */
-.titlebar,
-.title-bar,
-.window-titlebar {
-  background: linear-gradient(
-    90deg,
-    #344C57,
-    #667765
-  ) !important;
-
-  color: #F4EEE7 !important;
-}
-
-/* 내부 윈도우 / 패널 */
-.window,
-.panel,
-.content-panel,
-.profile-card,
-.menu-panel {
-  background-color: #263B45;
-  border-color: #667765;
-  color: #E9E1D6;
-}
-
-/* 제목과 본문 */
-.desktop h1,
-.desktop h2,
-.desktop h3,
-.desktop h4,
-.desktop p,
-.desktop label,
-.desktop strong {
-  color: #E9E1D6;
-}
-
-/* 보조 설명 */
-.desktop small,
-.desktop .muted,
-.desktop .subtitle {
-  color: #B6C1C1;
-}
-
-/* 메뉴 버튼 */
-.desktop button,
-.desktop .menu-btn,
-.desktop .menu-button,
-.desktop .nav-btn {
-  background: linear-gradient(
-    180deg,
-    #425A65,
-    #344C57
-  );
-
-  color: #F4EEE7;
-  border-color: #81908A;
-}
-
-/* 메뉴 버튼 터치 효과 */
-.desktop button:hover,
-.desktop .menu-btn:hover,
-.desktop .menu-button:hover {
-  background: #667765;
-}
-
-/* 선택된 메뉴 */
-.desktop button.active,
-.desktop button.selected,
-.desktop .active {
-  background-color: #667765;
-  color: #F4EEE7;
-}
-
-/* 하단 조작 버튼 */
-.controls button,
-.control-buttons button,
-.phone-controls button {
-  background: linear-gradient(
-    145deg,
-    #B2A9BC,
-    #82788F
-  ) !important;
-
-  color: #182631 !important;
-  border-color: #C8BDCB !important;
-
-  box-shadow:
-    inset 2px 2px 4px rgba(255,255,255,0.25),
-    inset -3px -4px 6px rgba(0,0,0,0.22),
-    0 4px 8px rgba(0,0,0,0.28) !important;
-}
-
-/* 작은 HOME 버튼 */
-.home-button,
-.home-btn,
-#homeBtn {
-  background: #667765 !important;
-  color: #F4EEE7 !important;
-  border-color: #9CAA9A !important;
-}
-
-/* 프로필 */
-#profile {
-  color: #E9E1D6;
-}
-
-#profile img {
-  border-color: #667765;
-  background-color: #182631;
-}
-
-/* 리스트 항목 */
-#letterList > *,
-#comicList > *,
-#storyList > *,
-#galleryList > * {
-  border-color: #667765;
-  color: #E9E1D6;
-}
-
-/* 편지 및 이야기 상세 */
-#letterDetail,
-#recordDetail {
-  color: #E9E1D6;
-}
-
-/* 일반 링크 */
-.desktop a {
-  color: #D8CDBE;
-}
-
-/* 입력창 */
-.desktop input,
-.desktop textarea,
-.desktop select {
-  background: #182631;
-  color: #F4EEE7;
-  border-color: #667765;
-}
-
-/* 구분선 */
-.desktop hr {
-  border-color: #667765;
-}
-
-/* 스크롤바 */
-.desktop::-webkit-scrollbar {
-  width: 6px;
-}
-
-.desktop::-webkit-scrollbar-track {
-  background: #182631;
-}
-
-.desktop::-webkit-scrollbar-thumb {
-  background: #667765;
-  border-radius: 10px;
-}
-
-/* 선택된 텍스트 */
-::selection {
-  background: #A49BAE;
-  color: #182631;
-}
-
-/* =========================================
-   HYEOKJAE ARCHIVE
-   VINTAGE MIST AQUARIUM THEME
-   Beige / Olive / Navy / Sky / Gray
-========================================= */
-
-/* 기본 색상 */
-:root {
-  --bg: #F1E9DC;
-  --panel: #E0E1DE;
-  --text: #283B55;
-  --muted: #687985;
-  --accent: #929B80;
-  --line: #A4B0B6;
-
-  --beige: #F1E9DC;
-  --olive: #929B80;
-  --navy: #283B55;
-  --sky: #B8D4E0;
-  --bluegray: #A4B0B6;
-  --warmgray: #C8C5BE;
-  --pearlgray: #E0E1DE;
-  --ivory: #FAF6EE;
-}
-
-/* 전체 배경 */
-html,
-body {
-  background-color: #F1E9DC !important;
-  color: #283B55;
-}
-
-/* 다마고치 본체 */
-.phone {
-  background: linear-gradient(
-    145deg,
-    #B4BCA5 0%,
-    #A1AA91 25%,
-    #929B80 55%,
-    #7D886D 85%,
-    #68745D 100%
-  ) !important;
-
-  border-color: #68745D !important;
-
-  box-shadow:
-    inset 5px 5px 12px rgba(255,255,255,0.30),
-    inset -8px -10px 18px rgba(46,59,44,0.22),
-    0 18px 45px rgba(40,59,85,0.20) !important;
-}
-
-/* 본체 글씨 */
-.phone > h1,
-.phone > h2,
-.phone > p,
-.phone .brand,
-.phone .logo {
-  color: #283B55 !important;
-}
-
-/* 화면 외곽 */
-.screen-frame {
-  background: #283B55 !important;
-  border-color: #A4B0B6 !important;
-
-  box-shadow:
-    inset 0 3px 9px rgba(0,0,0,0.18),
-    0 2px 5px rgba(255,255,255,0.30) !important;
-}
-
-/* 화면 내부 */
-.desktop {
-  background-color: #FAF6EE !important;
-  color: #283B55 !important;
-}
-
-/* 윈도우 XP 제목 표시줄 */
-.titlebar,
-.title-bar,
-.window-titlebar {
-  background: linear-gradient(
-    90deg,
-    #283B55,
-    #425B77
-  ) !important;
-
-  color: #FAF6EE !important;
-}
-
-/* 윈도우와 내부 패널 */
-.window,
-.panel,
-.content-panel,
-.profile-card,
-.menu-panel {
-  background-color: #E0E1DE;
-  border-color: #A4B0B6;
-  color: #283B55;
-}
-
-/* 화면 내부 제목과 글씨 */
-.desktop h1,
-.desktop h2,
-.desktop h3,
-.desktop h4,
-.desktop p,
-.desktop label,
-.desktop strong {
-  color: #283B55;
-}
-
-/* 보조 글씨 */
-.desktop small,
-.desktop .muted,
-.desktop .subtitle {
-  color: #687985;
-}
-
-/* 메뉴 버튼 */
-.desktop button,
-.desktop .menu-btn,
-.desktop .menu-button,
-.desktop .nav-btn {
-  background: linear-gradient(
-    180deg,
-    #E9F1F3,
-    #B8D4E0
-  );
-
-  color: #283B55;
-  border-color: #A4B0B6;
-}
-
-/* 메뉴 버튼 마우스 효과 */
-.desktop button:hover,
-.desktop .menu-btn:hover,
-.desktop .menu-button:hover {
-  background: #A4C4D4;
-  color: #283B55;
-}
-
-/* 선택된 메뉴 */
-.desktop button.active,
-.desktop button.selected,
-.desktop .active {
-  background-color: #929B80;
-  color: #283B55;
-}
-
-/* 하단 조작 버튼 */
-.controls button,
-.control-buttons button,
-.phone-controls button {
-  background: linear-gradient(
-    145deg,
-    #435A76,
-    #283B55
-  ) !important;
-
-  color: #FAF6EE !important;
-  border-color: #667A91 !important;
-
-  box-shadow:
-    inset 2px 2px 4px rgba(255,255,255,0.18),
-    inset -3px -4px 6px rgba(0,0,0,0.20),
-    0 4px 8px rgba(40,59,85,0.22) !important;
-}
-
-/* 가운데 SELECT 버튼 */
-#selectBtn,
-.select-btn,
-.btn-select {
-  background: linear-gradient(
-    145deg,
-    #D7EAF0,
-    #B8D4E0
-  ) !important;
-
-  color: #283B55 !important;
-  border-color: #8EAEBE !important;
-}
-
-/* 작은 HOME 버튼 */
-.home-button,
-.home-btn,
-#homeBtn {
-  background: #C8C5BE !important;
-  color: #283B55 !important;
-  border-color: #A4B0B6 !important;
-}
-
-/* 캐릭터 프로필 */
-#profile {
-  color: #283B55;
-}
-
-#profile img {
-  border-color: #A4B0B6;
-  background-color: #FAF6EE;
-}
-
-/* 리스트 */
-#letterList > *,
-#comicList > *,
-#storyList > *,
-#galleryList > * {
-  border-color: #A4B0B6;
-  color: #283B55;
-}
-
-/* 편지 / 기록 상세 */
-#letterDetail,
-#recordDetail {
-  color: #283B55;
-}
-
-/* 링크 */
-.desktop a {
-  color: #283B55;
-}
-
-/* 입력창 */
-.desktop input,
-.desktop textarea,
-.desktop select {
-  background: #FAF6EE;
-  color: #283B55;
-  border-color: #A4B0B6;
-}
-
-/* 구분선 */
-.desktop hr {
-  border-color: #A4B0B6;
-}
-
-/* 스크롤바 */
-.desktop::-webkit-scrollbar {
-  width: 6px;
-}
-
-.desktop::-webkit-scrollbar-track {
-  background: #E0E1DE;
-}
-
-.desktop::-webkit-scrollbar-thumb {
-  background: #929B80;
-  border-radius: 10px;
-}
-
-/* 선택 텍스트 */
-::selection {
-  background: #B8D4E0;
-  color: #283B55;
-}
-
-</style>
-
-<script>
-(function () {
-  "use strict";
-
-  const FILE_NAME = "letter_chat.txt";
-
-  const list = document.getElementById("letterList");
-  const title = document.getElementById("letterTitle");
-  const body = document.getElementById("letterBody");
-
-  if (!list || !title || !body) return;
-
-  let allMessages = [];
-  let days = [];
-
-  function parseChat(text) {
-    const messages = [];
-
-    const pattern =
-      /^(\d{4})년\s+(\d{1,2})월\s+(\d{1,2})일\s+(오전|오후)\s+(\d{1,2}):(\d{2})\s+(정혁|홍윤재)\s+\d+\s*(.*)$/;
-
-    for (const line of text.split(/\r?\n/)) {
-      const match = line.match(pattern);
-
-      if (match) {
-        const [
-          ,
-          year,
-          month,
-          day,
-          period,
-          hour,
-          minute,
-          name,
-          message
-        ] = match;
-
-        const date =
-          year + "-" +
-          month.padStart(2, "0") + "-" +
-          day.padStart(2, "0");
-
-        messages.push({
-          date,
-          name,
-          time: period + " " + hour + ":" + minute,
-          text: message
-        });
-      } else if (messages.length && line.trim()) {
-        // 줄바꿈된 메시지도 이어 붙이기
-        messages[messages.length - 1].text += "\n" + line;
-      }
-    }
-
-    return messages;
-  }
-
-  function makeDays(messages) {
-    const map = new Map();
-
-    for (const message of messages) {
-      if (!map.has(message.date)) {
-        map.set(message.date, []);
-      }
-
-      map.get(message.date).push(message);
-    }
-
-    return [...map.entries()].map(([date, messages]) => ({
-      date,
-      messages
-    }));
-  }
-
-  function displayDate(date) {
-    const [year, month, day] = date.split("-");
-
-    return year + "년 " +
-      Number(month) + "월 " +
-      Number(day) + "일";
-  }
-
-  function showChat(day) {
-    title.textContent = "💌 " + displayDate(day.date);
-    body.replaceChildren();
-
-    const area = document.createElement("div");
-    area.className = "chat-area";
-
-    const date = document.createElement("div");
-    date.className = "chat-date";
-    date.textContent = displayDate(day.date);
-
-    area.appendChild(date);
-
-    // 메시지가 많을 때 화면이 멈추지 않도록 나눠서 표시
-    let index = 0;
-    const batchSize = 150;
-
-    function appendBatch() {
-      const fragment = document.createDocumentFragment();
-      const end = Math.min(
-        index + batchSize,
-        day.messages.length
-      );
-
-      for (; index < end; index++) {
-        const item = day.messages[index];
-
-        const message = document.createElement("div");
-        message.className =
-          "chat-message " +
-          (item.name === "정혁" ? "jh" : "yj");
-
-        const name = document.createElement("div");
-        name.className = "chat-name";
-        name.textContent = item.name;
-
-        const bubble = document.createElement("div");
-        bubble.className = "chat-bubble";
-        bubble.textContent = item.text;
-
-        const time = document.createElement("div");
-        time.className = "chat-time";
-        time.textContent = item.time;
-
-        message.append(name, bubble, time);
-        fragment.appendChild(message);
-      }
-
-      area.appendChild(fragment);
-
-      if (index < day.messages.length) {
-        const more = document.createElement("button");
-        more.className = "entry";
-        more.textContent = "＋ 다음 대화 더 보기";
-
-        more.onclick = () => {
-          more.remove();
-          appendBatch();
-        };
-
-        area.appendChild(more);
-      }
-    }
-
-    appendBatch();
-    body.appendChild(area);
-
-    showPage("letterDetail");
-  }
-
-  function renderDays(keyword = "") {
-    list.replaceChildren();
-
-    const filtered = days.filter(day => {
-      if (!keyword) return true;
-
-      return (
-        displayDate(day.date).includes(keyword) ||
-        day.messages.some(item =>
-          item.text.includes(keyword)
-        )
-      );
-    });
-
-    const search = document.createElement("input");
-    search.className = "chat-search";
-    search.placeholder = "날짜 또는 대화 내용 검색...";
-    search.value = keyword;
-
-    search.addEventListener("input", event => {
-      renderDays(event.target.value);
-
-      const nextSearch =
-        list.querySelector(".chat-search");
-
-      nextSearch.focus();
-      nextSearch.setSelectionRange(
-        event.target.value.length,
-        event.target.value.length
-      );
-    });
-
-    list.appendChild(search);
-
-    if (!filtered.length) {
-      const empty = document.createElement("p");
-      empty.className = "empty";
-      empty.textContent = "검색 결과가 없어요.";
-      list.appendChild(empty);
-      return;
-    }
-
-    for (const day of filtered) {
-      const button = document.createElement("button");
-      button.className = "chat-day";
-
-      button.textContent =
-        "💌 " + displayDate(day.date) +
-        "  ·  " + day.messages.length + "개 메시지";
-
-      button.onclick = () => showChat(day);
-
-      list.appendChild(button);
-    }
-  }
-
-  async function loadChat() {
-    list.innerHTML =
-      '<p class="empty">대화 기록을 불러오는 중... 🫧</p>';
-
-    try {
-      const response = await fetch(
-        FILE_NAME,
-        { cache: "no-cache" }
-      );
-
-      if (!response.ok) {
-        throw new Error("파일을 찾지 못했습니다.");
-      }
-
-      const text = await response.text();
-
-      allMessages = parseChat(text);
-      days = makeDays(allMessages);
-
-      if (!allMessages.length) {
-        throw new Error(
-          "대화 형식을 인식하지 못했습니다."
-        );
-      }
-
-      renderDays();
-
-    } catch (error) {
-      list.replaceChildren();
-
-      const notice = document.createElement("p");
-      notice.className = "empty";
-      notice.textContent =
-        "대화 파일을 불러오지 못했어요.\n" +
-        "letter_chat.txt 파일이 GitHub에 있는지 확인해 주세요.";
-
-      list.appendChild(notice);
-
-      console.error(error);
-    }
-  }
-
-  loadChat();
-})();
-</script>
-
-<!-- ===== LETTER 채팅 기록 기능 끝 ===== -->
-
-<script>
-(function () {
-  const startDate = new Date(2026, 4, 9);
-  const ddayElement = document.getElementById("coupleDday");
-
-  function updateCoupleDday() {
-    if (!ddayElement) return;
-
-    const now = new Date();
-
-    const todayUTC = Date.UTC(
-      now.getFullYear(),
-      now.getMonth(),
-      now.getDate()
-    );
-
-    const startUTC = Date.UTC(
-      startDate.getFullYear(),
-      startDate.getMonth(),
-      startDate.getDate()
-    );
-
-    const days = Math.round(
-      (todayUTC - startUTC) / 86400000
-    ) + 1;
-
-    ddayElement.textContent =
-      days > 0 ? "D+" + days :
-      days === 0 ? "D-DAY" : "D" + days;
-  }
-
-  updateCoupleDday();
-  setInterval(updateCoupleDday, 60000);
-})();
-</script>
-
-<!-- 실시간 시계 -->
-<script>
-(function () {
-  function updateRealClock() {
-    const clock = document.getElementById("realClock");
-    if (!clock) return;
-
-    const time = new Date().toLocaleTimeString("ko-KR", {
-      timeZone: "Asia/Seoul",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false
-    });
-
-    clock.textContent = "♡ READY · " + time;
-  }
-
-  updateRealClock();
-  setInterval(updateRealClock, 1000);
-})();
-</script>
-
-</body>
-</html>
+        <!-- ======================
+             GALLERY
+        ======================= -->
+        <section class="page" id="gallery">
+
+          <div class="page-heading">
+            <div class="page-heading-icon">🐚</div>
+            <div>
+              <h2>gallery.exe</h2>
+              <p>OUR PHOTO ALBUM</p>
+            </div>
+          </div>
+
+          <div class="gallery-intro">
+            <strong>♡ LITTLE MEMORIES ♡</strong>
+            정
