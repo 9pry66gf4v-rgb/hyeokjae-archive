@@ -6623,5 +6623,59 @@ body {
 
 </style>
 
+<!-- WARM GRAY BUTTON COLOR -->
+<style>
+
+/* 버튼 영역 배경 */
+.phone .retro-control-panel {
+  background: #D6D0C6 !important;
+  border-top-color: #8D857C !important;
+}
+
+/* 버튼 전체: 따뜻한 회색 */
+.phone .retro-control-panel .retro-key,
+.phone .retro-control-panel #selectBtn,
+.phone .retro-control-panel #homeBtn {
+  background: linear-gradient(
+    180deg,
+    #F0ECE6 0%,
+    #DDD7CF 45%,
+    #C9C2B9 100%
+  ) !important;
+
+  border-color: #77716B !important;
+
+  box-shadow:
+    inset 2px 2px 0 #FFFDF9,
+    inset -2px -2px 0 #AAA298,
+    1px 2px 0 #8D857C !important;
+
+  color: #253A5B !important;
+}
+
+/* 아이콘은 딥네이비 유지 */
+.phone .retro-control-panel .retro-key span {
+  color: #253A5B !important;
+}
+
+/* 버튼 누를 때 */
+.phone .retro-control-panel .retro-key:active {
+  background: #BEB7AE !important;
+  transform: translateY(2px) !important;
+
+  box-shadow:
+    inset 2px 2px 3px #918980,
+    inset -1px -1px 0 #FFFDF9 !important;
+}
+
+/* 마우스를 올렸을 때 */
+@media (hover: hover) {
+  .phone .retro-control-panel .retro-key:hover {
+    background: #E8E1D8 !important;
+  }
+}
+
+</style>
+
 </body>
 </html>
