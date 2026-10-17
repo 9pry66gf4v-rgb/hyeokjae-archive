@@ -3668,5 +3668,26 @@ grid-template-areas:
 .phone .retro-control-panel #homeBtn {
   grid-area: home !important;
 }
+   <style>
+/* SELECT 위 / HOME 아래 */
+
+.phone .retro-control-panel {
+  grid-template-areas:
+    "prev select next"
+    "prev home next" !important;
+
+  grid-template-rows: 49px 43px !important;
+}
+
+/* 위쪽 하트 버튼 */
+.phone .retro-control-panel #selectBtn {
+  grid-area: select !important;
+}
+
+/* 아래쪽 홈 버튼 */
+.phone .retro-control-panel #homeBtn {
+  grid-area: home !important;
+}
+</style>
 </body>
 </html>
