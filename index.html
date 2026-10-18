@@ -9562,5 +9562,416 @@ body > .phone::after {
 })();
 </script>
 
+<!-- ===== HYEOKJAE KITSCH DESKTOP V1 START ===== -->
+<style>
+
+/* ========================================
+   HYEOKJAE ARCHIVE
+   KITSCH WINDOWS 98 DESKTOP
+   ======================================== */
+
+:root {
+  --hk-blue: #6687A4;
+  --hk-deep: #253A5B;
+  --hk-sky: #A8BDD0;
+  --hk-paper: #FFF9EF;
+  --hk-gray: #D6D0C7;
+  --hk-border: #718596;
+  --hk-pink: #E9C8CE;
+  --hk-olive: #929B80;
+}
+
+/* 01. 전체 배경: 블루 픽셀 도트 */
+html,
+body {
+  background-color: #86A5BF !important;
+  background-image:
+    radial-gradient(
+      rgba(255,255,255,.42) 0.8px,
+      transparent 0.8px
+    ),
+    linear-gradient(
+      135deg,
+      #7999B5,
+      #A9BFD0
+    ) !important;
+  background-size: 9px 9px, cover !important;
+}
+
+/* 02. 기존 다마고치 본체를 데스크톱 창처럼 */
+body > .phone {
+  background: #D6D0C7 !important;
+  background-image: none !important;
+  border: 3px solid #536F87 !important;
+  border-radius: 0 !important;
+  padding: 9px !important;
+  box-shadow:
+    inset 2px 2px #FFFFFF,
+    inset -2px -2px #8295A4,
+    6px 6px 0 rgba(37,58,91,.25) !important;
+}
+
+body > .phone::before,
+body > .phone::after {
+  display: none !important;
+}
+
+/* 03. 상단 로고 */
+.phone .top-deco {
+  color: #253A5B !important;
+  letter-spacing: 2px !important;
+}
+
+.phone .brand {
+  margin: 7px 0 12px !important;
+  padding: 12px 8px !important;
+  border: 2px solid #718596 !important;
+  background:
+    linear-gradient(
+      135deg,
+      #F4F1E9,
+      #DCE8EC
+    ) !important;
+  box-shadow:
+    inset 2px 2px #FFFFFF,
+    2px 2px #9EAAB0 !important;
+}
+
+.phone .brand-title {
+  color: #253A5B !important;
+  font-family: "Pixelify Sans", monospace !important;
+  font-weight: 700 !important;
+  text-shadow: 2px 2px #FFFFFF !important;
+}
+
+.phone .brand-sub {
+  color: #6687A4 !important;
+}
+
+/* 04. 모니터 외곽 */
+.phone .screen-frame {
+  padding: 5px !important;
+  border: 3px solid #718596 !important;
+  border-radius: 0 !important;
+  background: #D6D0C7 !important;
+  box-shadow:
+    inset 2px 2px #FFFFFF,
+    inset -2px -2px #8295A4 !important;
+}
+
+.phone .screen {
+  border: 2px solid #536F87 !important;
+  border-radius: 0 !important;
+  background: #F4EEE7 !important;
+}
+
+/* 05. 메인 Windows 타이틀바 */
+.phone .screen > .titlebar {
+  background:
+    linear-gradient(
+      90deg,
+      #253A5B,
+      #6687A4
+    ) !important;
+  border-bottom: 2px solid #536F87 !important;
+  color: #FFFFFF !important;
+  padding: 6px 8px !important;
+  font-family: "Pixelify Sans", monospace !important;
+  letter-spacing: .5px !important;
+}
+
+/* 창 닫기 버튼 */
+.phone .window-buttons span {
+  background: #E4E0D9 !important;
+  border: 1px solid #596A77 !important;
+  border-radius: 0 !important;
+  color: #253A5B !important;
+  box-shadow:
+    inset 1px 1px #FFFFFF,
+    inset -1px -1px #8A9295 !important;
+}
+
+/* 06. File Edit View 메뉴 */
+.phone .menubar {
+  background: #E7E2D9 !important;
+  border-bottom: 2px solid #B0B7B7 !important;
+  color: #253A5B !important;
+  padding: 8px 10px !important;
+}
+
+/* 07. 데스크톱 배경 */
+.phone .desktop {
+  background-color: #E8E8E1 !important;
+  background-image:
+    radial-gradient(
+      #C5CED0 0.8px,
+      transparent 0.8px
+    ) !important;
+  background-size: 8px 8px !important;
+  padding: 10px !important;
+  color: #253A5B !important;
+}
+
+/* 08. 모든 내부 창 */
+.phone .desktop .window {
+  position: relative;
+  margin-bottom: 12px !important;
+  border: 2px solid #718596 !important;
+  border-radius: 0 !important;
+  background: #FFF9EF !important;
+  box-shadow:
+    inset 1px 1px #FFFFFF,
+    3px 3px 0 #A0AEB6 !important;
+}
+
+/* 내부 창 제목 */
+.phone .desktop .window-head {
+  padding: 6px 9px !important;
+  border-bottom: 2px solid #718596 !important;
+  border-radius: 0 !important;
+  background:
+    linear-gradient(
+      90deg,
+      #456987,
+      #A0B8CB
+    ) !important;
+  color: #FFFFFF !important;
+  font-family: "Pixelify Sans", monospace !important;
+  font-size: 12px !important;
+  text-shadow: 1px 1px #253A5B !important;
+}
+
+/* 내부 창 콘텐츠 */
+.phone .desktop .window-content,
+.phone .desktop .window-body {
+  background: #FFF9EF !important;
+  color: #253A5B !important;
+}
+
+/* 09. 홈 타이틀 */
+.phone .desktop .hero {
+  position: relative;
+  margin: 5px 0 12px !important;
+  padding: 14px 10px !important;
+  border: 2px solid #8AA2B2 !important;
+  border-radius: 0 !important;
+  background:
+    linear-gradient(
+      135deg,
+      #F8F6EF,
+      #DCE8EA
+    ) !important;
+  color: #253A5B !important;
+  box-shadow: 2px 3px #B1C0C5 !important;
+}
+
+.phone .desktop .hero::after {
+  content: "✧  ♡  ✧";
+  position: absolute;
+  right: 10px;
+  top: 7px;
+  color: #B3C5D0;
+  font-size: 12px;
+  letter-spacing: 5px;
+  pointer-events: none;
+}
+
+.phone .desktop .hero small {
+  color: #718596 !important;
+}
+
+/* 10. 홈 아이콘 그리드 */
+.phone .icon-grid {
+  gap: 7px !important;
+  margin: 10px 0 14px !important;
+}
+
+/* 메뉴 버튼 */
+.phone .icon-btn {
+  position: relative;
+  min-width: 0;
+  padding: 9px 4px !important;
+  border: 2px solid #718596 !important;
+  border-radius: 0 !important;
+  background:
+    linear-gradient(
+      145deg,
+      #FFFCF6,
+      #DDE8E5
+    ) !important;
+  color: #253A5B !important;
+  box-shadow:
+    inset 2px 2px #FFFFFF,
+    inset -2px -2px #A2B2B5,
+    2px 2px #9CA9AB !important;
+  transition: transform .12s, box-shadow .12s;
+}
+
+.phone .icon-btn:hover {
+  background:
+    linear-gradient(
+      145deg,
+      #FDF7EC,
+      #CEDFEA
+    ) !important;
+}
+
+.phone .icon-btn:active {
+  transform: translate(2px,2px);
+  box-shadow:
+    inset 2px 2px #9CA9AB !important;
+}
+
+/* 아이콘 모서리 장식 */
+.phone .icon-btn::after {
+  content: "✧";
+  position: absolute;
+  right: 5px;
+  top: 3px;
+  color: #B1C4CC;
+  font-size: 10px;
+  pointer-events: none;
+}
+
+.phone .icon-btn:nth-child(2n)::after {
+  content: "♡";
+  color: #D7ABB7;
+}
+
+.phone .icon-btn:nth-child(3n)::after {
+  content: "✿";
+  color: #929B80;
+}
+
+/* 11. 기존 카드 */
+.phone .desktop .card {
+  border-radius: 0 !important;
+  border-color: #9DADB5 !important;
+  background: #FFF9EF !important;
+  box-shadow: 2px 2px 0 #CCD1CD !important;
+}
+
+/* 12. 일반 버튼 */
+.phone .desktop button:not(.icon-btn):not(.hj-more-btn) {
+  border-radius: 0;
+}
+
+/* 13. 스크롤바 */
+.phone .desktop::-webkit-scrollbar {
+  width: 11px;
+}
+
+.phone .desktop::-webkit-scrollbar-track {
+  background: #E7E2D9;
+  border-left: 1px solid #9DA9AE;
+}
+
+.phone .desktop::-webkit-scrollbar-thumb {
+  background: #A2B7C4;
+  border: 2px solid #E7E2D9;
+}
+
+/* 14. 상태 표시줄 */
+.phone .taskbar {
+  background: #E7E2D9 !important;
+  border-top: 2px solid #718596 !important;
+  border-radius: 0 !important;
+  color: #253A5B !important;
+  box-shadow: inset 0 1px #FFFFFF !important;
+}
+
+/* 15. 프로필 디자인과 전체 컬러 연결 */
+#profile .hj-profile-window {
+  border-color: #718596 !important;
+}
+
+#profile .hj-profile-bar {
+  background:
+    linear-gradient(
+      90deg,
+      #456987,
+      #A0B8CB
+    ) !important;
+}
+
+#profile .hj-profile-inner {
+  background-color: #F8F3EB !important;
+}
+
+/* 16. 작은 스티커 디테일 */
+#profile .hj-name-tag {
+  background: #E0E9E4 !important;
+  border-color: #A3B5B0 !important;
+}
+
+#profile .hj-profile-online {
+  background: #F3DFE3 !important;
+}
+
+/* 17. 하단 조작 버튼은 기존 기능 유지 */
+.phone .controls button,
+.phone .control-btn {
+  border-radius: 2px !important;
+  border: 2px solid #718596 !important;
+  background:
+    linear-gradient(
+      #FFFDF7,
+      #D6D0C7
+    ) !important;
+  color: #253A5B !important;
+  box-shadow:
+    inset 2px 2px #FFFFFF,
+    inset -2px -2px #A0A6A7,
+    2px 2px #9AA6A9 !important;
+}
+
+.phone .controls button:active,
+.phone .control-btn:active {
+  transform: translateY(2px);
+  box-shadow: inset 2px 2px #A0A6A7 !important;
+}
+
+/* 18. 바깥 장식 */
+.phone .footer {
+  color: #253A5B !important;
+  font-family: "Pixelify Sans", monospace !important;
+  letter-spacing: 1px !important;
+}
+
+/* 19. 모바일 */
+@media (max-width: 480px) {
+  body > .phone {
+    padding: 6px !important;
+    box-shadow:
+      inset 2px 2px #FFFFFF,
+      inset -2px -2px #8295A4 !important;
+  }
+
+  .phone .screen-frame {
+    padding: 4px !important;
+  }
+
+  .phone .desktop {
+    padding: 7px !important;
+  }
+
+  .phone .icon-grid {
+    gap: 6px !important;
+  }
+
+  .phone .icon-btn {
+    padding: 8px 3px !important;
+  }
+}
+
+/* 20. 접근성: 애니메이션 최소화 설정 */
+@media (prefers-reduced-motion: reduce) {
+  .phone .icon-btn {
+    transition: none !important;
+  }
+}
+
+</style>
+
 </body>
 </html>
