@@ -8946,13 +8946,364 @@ body > .phone::after {
 }
 </style>
 
+<!-- ===== CHARACTER PROFILE REDESIGN START ===== -->
+
+<style>
+/* ===== KITSCH CHARACTER PROFILE ===== */
+
+#profile .hj-profile-ui {
+  --hj-navy: #253A5B;
+  --hj-cream: #FFFBF3;
+  --hj-beige: #E5E0D8;
+  --hj-olive: #929B80;
+  --hj-pink: #EBC7CB;
+  color: var(--hj-navy);
+  font-family: "Gowun Dodum", sans-serif;
+}
+
+/* 전체 윈도우 */
+#profile .hj-profile-window {
+  position: relative;
+  margin: 4px 0 15px;
+  border: 2px solid #7F8582;
+  border-radius: 0;
+  background: #F4EEE7;
+  box-shadow:
+    inset 1px 1px #FFFFFF,
+    3px 3px 0 #B7B1A7;
+  overflow: hidden;
+}
+
+/* 윈도우 제목 */
+#profile .hj-profile-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 9px;
+  background: linear-gradient(90deg, #253A5B, #667F96);
+  color: #FFFDF8;
+  font: 12px "Pixelify Sans", monospace;
+}
+
+#profile .hj-profile-bar span:last-child {
+  white-space: nowrap;
+  font-family: Arial, sans-serif;
+}
+
+/* 창 안쪽 */
+#profile .hj-profile-inner {
+  padding: 15px 12px 13px;
+  background:
+    radial-gradient(#D8D0C4 0.65px, transparent 0.65px),
+    #F7F2E9;
+  background-size: 14px 14px;
+}
+
+/* 작은 상단 문구 */
+#profile .hj-profile-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  font: 10px "Pixelify Sans", monospace;
+  letter-spacing: 0.5px;
+  color: #77877B;
+}
+
+/* 사진 + 기본 정보 */
+#profile .hj-profile-top {
+  display: grid;
+  grid-template-columns: minmax(0, 44%) minmax(0, 1fr);
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 19px;
+}
+
+/* 폴라로이드 사진 */
+#profile .hj-photo-wrap {
+  position: relative;
+  padding: 7px 7px 23px;
+  background: #FFFDF8;
+  border: 1px solid #D2C8BB;
+  box-shadow:
+    2px 3px 0 #C3BDB3,
+    3px 5px 9px rgba(37,58,91,0.12);
+  transform: rotate(-2deg);
+}
+
+/* 사진 위 테이프 */
+#profile .hj-photo-wrap::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 33%;
+  width: 37%;
+  height: 17px;
+  background: rgba(215, 193, 157, 0.65);
+  transform: rotate(5deg);
+  z-index: 2;
+  border-left: 1px solid rgba(255,255,255,0.35);
+  border-right: 1px solid rgba(255,255,255,0.35);
+}
+
+#profile .hj-profile-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  background: #DDD8D0;
+}
+
+#profile .hj-photo-label {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #87918B;
+  font: 10px "Pixelify Sans", monospace;
+}
+
+/* 이름 영역 */
+#profile .hj-profile-basics {
+  min-width: 0;
+}
+
+#profile .hj-name-tag {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 3px 7px;
+  border: 1px solid #B5B8A7;
+  background: #E4E9DB;
+  color: #667960;
+  font: 10px "Pixelify Sans", monospace;
+  transform: rotate(2deg);
+}
+
+#profile .hj-profile-name {
+  margin: 0 0 3px;
+  color: #253A5B;
+  font-family: "Jua", sans-serif;
+  font-size: 26px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+#profile .hj-profile-en {
+  margin-bottom: 13px;
+  color: #8D9392;
+  font: 10px "Pixelify Sans", monospace;
+  letter-spacing: 0.4px;
+}
+
+#profile .hj-profile-fact {
+  margin: 4px 0;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+#profile .hj-profile-fact b {
+  color: #82918A;
+  font-family: "Pixelify Sans", monospace;
+  font-weight: normal;
+}
+
+#profile .hj-profile-online {
+  display: inline-block;
+  margin-top: 11px;
+  padding: 4px 7px;
+  background: #F3E2E1;
+  color: #A47880;
+  font: 10px "Pixelify Sans", monospace;
+}
+
+/* 메모 카드 공통 */
+#profile .hj-info-panel {
+  position: relative;
+  min-width: 0;
+  margin-bottom: 12px;
+  padding: 13px 12px 12px;
+  border: 1px solid #C8C0B4;
+  background: #FFFCF7;
+  box-shadow: 2px 2px 0 #D5CDC2;
+}
+
+/* 카드 상단 제목 */
+#profile .hj-info-head {
+  display: inline-block;
+  margin: -19px 0 9px -5px;
+  padding: 4px 8px;
+  border: 1px solid #C4C1B7;
+  background: #E4E9DB;
+  color: #253A5B;
+  font: 11px "Pixelify Sans", monospace;
+  transform: rotate(-1deg);
+}
+
+#profile .hj-info-body {
+  font-size: 11px;
+  line-height: 1.9;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+/* 성격 메모 */
+#profile .hj-personality {
+  margin-top: 5px;
+  background: #FFFCF5;
+}
+
+#profile .hj-personality::after {
+  content: "♡";
+  position: absolute;
+  right: 11px;
+  bottom: 5px;
+  color: #D5A5AF;
+  font-size: 18px;
+  transform: rotate(15deg);
+}
+
+/* 좋아하는 것과 키워드 */
+#profile .hj-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+#profile .hj-info-grid .hj-info-panel {
+  margin-bottom: 0;
+}
+
+#profile .hj-favorites {
+  background: #F0F1E8;
+  transform: rotate(-0.5deg);
+}
+
+#profile .hj-keywords {
+  background: #F8ECEB;
+  transform: rotate(0.5deg);
+}
+
+#profile .hj-favorites .hj-info-head {
+  background: #DDE5D4;
+}
+
+#profile .hj-keywords .hj-info-head {
+  background: #EBCDD0;
+}
+
+#profile .hj-sticker-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+#profile .hj-sticker {
+  display: inline-block;
+  max-width: 100%;
+  padding: 4px 7px;
+  border: 1px solid #B9B5AE;
+  background: #FFFDF8;
+  color: #253A5B;
+  font-size: 10px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+#profile .hj-sticker:nth-child(even) {
+  transform: rotate(2deg);
+}
+
+#profile .hj-sticker:nth-child(odd) {
+  transform: rotate(-2deg);
+}
+
+/* 아래 장식 */
+#profile .hj-profile-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px dashed #C6BFB5;
+  color: #8D9390;
+  font: 10px "Pixelify Sans", monospace;
+}
+
+/* 원래 상세 정보 열기 */
+#profile .hj-more-btn {
+  display: block;
+  width: 100%;
+  margin-top: 13px;
+  padding: 10px;
+  border: 2px solid #96948C;
+  border-radius: 0;
+  background: #E5E0D8;
+  color: #253A5B;
+  box-shadow:
+    inset 2px 2px #FFFFFF,
+    inset -2px -2px #ADA79E;
+  font: 12px "Pixelify Sans", monospace;
+  cursor: pointer;
+}
+
+#profile .hj-more-btn:active {
+  transform: translateY(1px);
+  box-shadow: inset 2px 2px #ADA79E;
+}
+
+/* 기존 상세 프로필 보관 */
+#profile .hj-original-detail {
+  display: none;
+}
+
+#profile .hj-original-detail.hj-open {
+  display: block;
+  margin-top: 12px;
+}
+
+/* 작은 휴대폰 */
+@media (max-width: 360px) {
+  #profile .hj-profile-inner {
+    padding: 12px 9px;
+  }
+
+  #profile .hj-profile-top {
+    gap: 10px;
+  }
+
+  #profile .hj-profile-name {
+    font-size: 22px;
+  }
+
+  #profile .hj-info-grid {
+    gap: 7px;
+  }
+
+  #profile .hj-info-panel {
+    padding: 11px 8px;
+  }
+
+  #profile .hj-info-body,
+  #profile .hj-sticker {
+    font-size: 10px;
+  }
+}
+</style>
+
 <script>
 (function () {
   const profilePage = document.getElementById("profile");
-  if (!profilePage || typeof openProfile !== "function") return;
 
-  /* 캐릭터별 프로필 정보
-     대표 대사는 원하는 문장으로 직접 수정해도 돼! */
+  if (
+    !profilePage ||
+    typeof openProfile !== "function" ||
+    typeof characters === "undefined"
+  ) return;
+
+  /* 여기서 캐릭터 정보를 수정하면 돼 */
   const extraProfiles = [
     {
       english: "JUNG HYEOK",
@@ -8960,11 +9311,19 @@ body > .phone::after {
       height: "188cm",
       personality:
         "장난스럽고 능청맞지만 자신의 감정에는 솔직하다. " +
-        "좋아하는 사람에게 적극적으로 애정을 표현하고, " +
-        "상대의 작은 변화도 세심하게 살핀다.",
-      favorites: "♡ 홍윤재\n🐟 물고기\n🦕 공룡",
-      keywords: "#장난기  #솔직함\n#다정함  #섬세함",
-      quote: "여기에 정혁의 대표 대사를 적어 줘."
+        "좋아하는 사람에게는 적극적으로 애정을 표현하고, " +
+        "상대의 작은 변화도 세심하게 살피는 편.",
+      favorites: [
+        "♡ 홍윤재",
+        "🐟 물고기",
+        "🦕 공룡"
+      ],
+      keywords: [
+        "장난기",
+        "솔직함",
+        "다정함",
+        "섬세함"
+      ]
     },
     {
       english: "HONG YOONJAE",
@@ -8973,17 +9332,22 @@ body > .phone::after {
       personality:
         "차분하고 여유로우며 은근히 짓궂은 농담을 즐긴다. " +
         "상대를 세심하게 챙기고, " +
-        "말보다는 행동으로 마음을 표현하는 편이다.",
-      favorites: "♡ 정혁\n🐟 물고기\n🪼 해파리",
-      keywords: "#침착함  #능청스러움\n#배려심  #다정함",
-      quote: "여기에 홍윤재의 대표 대사를 적어 줘."
+        "말보다는 행동으로 마음을 표현하는 편.",
+      favorites: [
+        "♡ 정혁",
+        "🐟 물고기",
+        "🪼 해파리"
+      ],
+      keywords: [
+        "침착함",
+        "능청스러움",
+        "배려심",
+        "다정함"
+      ]
     }
   ];
 
-  /* 기존 프로필 열기 기능을 그대로 보존 */
   const originalOpenProfile = openProfile;
-
-  /* 기존 프로필 영역을 감싸서 보관 */
   const originalWindow = profilePage.querySelector(".window");
 
   if (!originalWindow) return;
@@ -8992,7 +9356,6 @@ body > .phone::after {
 
   const newUI = document.createElement("div");
   newUI.className = "hj-profile-ui";
-
   originalWindow.before(newUI);
 
   function addText(parent, tag, className, value) {
@@ -9003,13 +9366,30 @@ body > .phone::after {
     return el;
   }
 
-  function makePanel(title, content, extraClass = "") {
+  function makePanel(title, content, className) {
     const panel = document.createElement("div");
-    panel.className = "hj-info-panel " + extraClass;
+    panel.className = "hj-info-panel " + (className || "");
 
     addText(panel, "div", "hj-info-head", title);
     addText(panel, "div", "hj-info-body", content);
 
+    return panel;
+  }
+
+  function makeStickerPanel(title, items, className) {
+    const panel = document.createElement("div");
+    panel.className = "hj-info-panel " + className;
+
+    addText(panel, "div", "hj-info-head", title);
+
+    const list = document.createElement("div");
+    list.className = "hj-sticker-list";
+
+    items.forEach(function (item) {
+      addText(list, "span", "hj-sticker", item);
+    });
+
+    panel.appendChild(list);
     return panel;
   }
 
@@ -9022,42 +9402,64 @@ body > .phone::after {
     newUI.replaceChildren();
     originalWindow.classList.remove("hj-open");
 
-    const windowBox = document.createElement("div");
-    windowBox.className = "hj-profile-window";
+    const win = document.createElement("div");
+    win.className = "hj-profile-window";
 
     const bar = document.createElement("div");
     bar.className = "hj-profile-bar";
 
-    addText(
-      bar,
-      "span",
-      "",
-      "📁 PROFILE.exe — " + character.name
-    );
+    addText(bar, "span", "", "📁 PROFILE.exe");
     addText(bar, "span", "", "_ □ ×");
-
-    windowBox.appendChild(bar);
+    win.appendChild(bar);
 
     const inner = document.createElement("div");
     inner.className = "hj-profile-inner";
 
+    const caption = document.createElement("div");
+    caption.className = "hj-profile-caption";
+
+    addText(caption, "span", "", "♡ CHARACTER FILE");
+    addText(caption, "span", "", "No. 0" + (index + 1));
+
+    inner.appendChild(caption);
+
     const top = document.createElement("div");
     top.className = "hj-profile-top";
+
+    const photoWrap = document.createElement("div");
+    photoWrap.className = "hj-photo-wrap";
 
     const photo = document.createElement("img");
     photo.className = "hj-profile-photo";
     photo.src = character.image;
     photo.alt = character.name + " 프로필 사진";
 
-    top.appendChild(photo);
+    photoWrap.appendChild(photo);
+
+    addText(
+      photoWrap,
+      "div",
+      "hj-photo-label",
+      "♡ " + info.english
+    );
+
+    top.appendChild(photoWrap);
 
     const basics = document.createElement("div");
+    basics.className = "hj-profile-basics";
+
+    addText(
+      basics,
+      "span",
+      "hj-name-tag",
+      "♡ MY FAVORITE PERSON"
+    );
 
     addText(
       basics,
       "div",
       "hj-profile-name",
-      character.name + " ♡"
+      character.name
     );
 
     addText(
@@ -9067,54 +9469,72 @@ body > .phone::after {
       info.english
     );
 
-    addText(
+    const age = addText(
       basics,
       "div",
       "hj-profile-fact",
-      "AGE : " + info.age
+      ""
     );
 
-    addText(
+    age.innerHTML =
+      "<b>AGE.</b> " + info.age;
+
+    const height = addText(
       basics,
       "div",
       "hj-profile-fact",
-      "HEIGHT : " + info.height + "cm"
+      ""
     );
+
+    height.innerHTML =
+      "<b>HEIGHT.</b> " + info.height + "cm";
 
     addText(
       basics,
       "div",
       "hj-profile-online",
-      "● PROFILE LOADED"
+      "♥ SAVED IN ARCHIVE"
     );
 
     top.appendChild(basics);
     inner.appendChild(top);
 
     inner.appendChild(
-      makePanel("PERSONALITY / 성격", info.personality)
+      makePanel(
+        "♡ PERSONALITY",
+        info.personality,
+        "hj-personality"
+      )
     );
 
     const grid = document.createElement("div");
     grid.className = "hj-info-grid";
 
     grid.appendChild(
-      makePanel("FAVORITES / 좋아하는 것", info.favorites)
+      makeStickerPanel(
+        "FAVORITES",
+        info.favorites,
+        "hj-favorites"
+      )
     );
 
     grid.appendChild(
-      makePanel("KEYWORDS / 키워드", info.keywords)
+      makeStickerPanel(
+        "KEYWORDS",
+        info.keywords,
+        "hj-keywords"
+      )
     );
 
     inner.appendChild(grid);
 
-    inner.appendChild(
-      makePanel(
-        "♡ SIGNATURE / 대표 대사",
-        "“" + info.quote + "”",
-        "hj-profile-quote"
-      )
-    );
+    const bottom = document.createElement("div");
+    bottom.className = "hj-profile-bottom";
+
+    addText(bottom, "span", "", "HYEOKJAE ARCHIVE");
+    addText(bottom, "span", "", "♡ 001");
+
+    inner.appendChild(bottom);
 
     const more = document.createElement("button");
     more.type = "button";
@@ -9122,26 +9542,19 @@ body > .phone::after {
     more.textContent = "📄 MORE INFO →";
 
     more.addEventListener("click", function () {
-      const isOpen = originalWindow.classList.toggle("hj-open");
+      const opened =
+        originalWindow.classList.toggle("hj-open");
 
-      more.textContent = isOpen
+      more.textContent = opened
         ? "▲ CLOSE INFO"
         : "📄 MORE INFO →";
-
-      if (isOpen) {
-        originalWindow.scrollIntoView({
-          block: "nearest",
-          behavior: "smooth"
-        });
-      }
     });
 
     inner.appendChild(more);
-    windowBox.appendChild(inner);
-    newUI.appendChild(windowBox);
+    win.appendChild(inner);
+    newUI.appendChild(win);
   }
 
-  /* 기존 openProfile 함수 확장 */
   openProfile = function (index) {
     originalOpenProfile(index);
     renderProfile(index);
