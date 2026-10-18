@@ -10500,90 +10500,120 @@ body > .phone::after {
 
 </style>
 
-<!-- ===== CHARACTER PROFILE CLEANUP START ===== -->
+<!-- ===== CHARACTER PROFILE DETAIL FIX START ===== -->
 <style>
-
-/* =========================================
-   CHARACTER PROFILE CLEANUP
-   중복 정보 제거 + 디자인 정돈
-========================================= */
-
-/* 1. 기존 중복 profile.txt 숨기기 */
-#profile .hj-original-detail,
-#profile .hj-original-detail.hj-open {
-  display: none !important;
+/* 상단 프로필 디자인 유지 */
+#profile .hj-profile-window {
+  box-shadow: 2px 3px 0 #B9C3C4 !important;
 }
 
-/* 2. MORE INFO / CLOSE INFO 버튼 숨기기 */
+/* MORE INFO 버튼은 필요 없으므로 숨기기 */
 #profile .hj-more-btn {
   display: none !important;
 }
 
-/* 3. 프로필 전체 창을 조금 더 가볍게 */
-#profile .hj-profile-window {
-  border: 1px solid #8A9BA3 !important;
-  box-shadow: 2px 3px 0 #B9C3C4 !important;
+/* 기존 상세 창은 항상 표시 */
+#profile .hj-original-detail,
+#profile .hj-original-detail.hj-open {
+  display: block !important;
+  margin-top: 12px !important;
 }
 
-/* 4. 안쪽 여백 정리 */
-#profile .hj-profile-inner {
-  padding: 13px 12px 15px !important;
+/* 상세 창의 중복 사진 숨기기 */
+#profile .hj-original-detail .detail-image {
+  display: none !important;
 }
 
-/* 5. 사진의 입체감은 유지하되 그림자 완화 */
-#profile .hj-photo-wrap {
-  box-shadow: 2px 3px 0 #C9C5BC !important;
+/* 상세 창 내용 */
+#profile .hj-original-detail .window-content {
+  padding: 16px !important;
+  background: #FFF9F0 !important;
 }
 
-/* 6. 성격 설명 카드 */
-#profile .hj-personality {
-  margin-top: 16px !important;
-  border: 1px solid #C4C3B9 !important;
-  box-shadow: 1px 2px 0 #DDD9D1 !important;
+/* 상세 내용 읽기 편하게 */
+#profile .hj-original-detail .detail-text {
+  white-space: pre-line !important;
+  line-height: 1.9 !important;
+  font-size: 12px !important;
+  color: #253A5B !important;
 }
 
-/* 7. 취향 / 키워드 카드 */
+/* 성격·취향 카드 정돈 */
+#profile .hj-personality,
 #profile .hj-favorites,
 #profile .hj-keywords {
-  border: 1px solid #C5C5BC !important;
   box-shadow: 1px 2px 0 #DDD9D1 !important;
 }
-
-/* 8. 카드 내부 글자 가독성 */
-#profile .hj-info-body {
-  line-height: 1.85 !important;
-}
-
-/* 9. 카드 간격 통일 */
-#profile .hj-info-grid {
-  gap: 10px !important;
-  margin-top: 11px !important;
-}
-
-/* 10. 하단 아카이브 표시 */
-#profile .hj-profile-bottom {
-  margin-top: 16px !important;
-  padding-top: 10px !important;
-  border-top: 1px solid #D2CDC4 !important;
-}
-
-/* 11. 캐릭터 목록 카드 그림자만 살짝 줄이기 */
-#characters .character-card {
-  box-shadow: 2px 3px 0 #A9B6B8 !important;
-}
-
-/* 12. 작은 화면 대응 */
-@media (max-width: 380px) {
-  #profile .hj-profile-inner {
-    padding: 11px 9px 13px !important;
-  }
-
-  #profile .hj-info-grid {
-    gap: 7px !important;
-  }
-}
-
 </style>
+
+<script>
+(function () {
+  const detail = document.getElementById("profileText");
+
+  if (!detail) return;
+
+  // 기존 프로필 함수와 데이터는 그대로 둠
+  // 프로필이 열릴 때 상세 설명만 정리
+  const observer = new MutationObserver(function () {
+    if (typeof characters === "undefined") return;
+
+    const currentTitle =
+      document.getElementById("profileTitle")?.textContent || "";
+
+    const character = characters.find(c =>
+      currentTitle.includes(c.name)
+    );
+
+    if (!character) return;
+
+    const noteMarker = "CHARACTER NOTE";
+    const noteIndex = character.details.indexOf(noteMarker);
+
+    // 기존 설정에서 고유한 CHARACTER NOTE 부분 보존
+    const note = noteIndex >= 0
+      ? character.details.slice(noteIndex + noteMarker.length).trim()
+      : character.details.trim();
+
+    const story = character.story || "";
+
+    const cleaned =
+      "CHARACTER NOTE\n" +
+      note +
+      "\n\nSTORY\n" +
+      story;
+
+    // 동일한 내용으로 반복 수정하지 않도록
+    if (detail.textContent !== cleaned) {
+      detail.textContent = cleaned;
+    }
+  });
+
+  observer.observe(detail, {
+    childList: true,
+    characterData: true,
+    subtree: true
+  });
+
+  // 이미 열린 프로필에도 적용
+  const current = detail.textContent;
+  if (current) {
+    const title = document.getElementById("profileTitle")?.textContent || "";
+    const character = characters.find(c => title.includes(c.name));
+
+    if (character) {
+      const marker = "CHARACTER NOTE";
+      const index = character.details.indexOf(marker);
+      const note = index >= 0
+        ? character.details.slice(index + marker.length).trim()
+        : character.details.trim();
+
+      detail.textContent =
+        "CHARACTER NOTE\n" + note +
+        "\n\nSTORY\n" + character.story;
+    }
+  }
+})();
+</script>
 
 </body>
 </html>
