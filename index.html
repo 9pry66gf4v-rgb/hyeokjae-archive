@@ -11182,5 +11182,209 @@ body > .phone::after {
 }
 </style>
 
+<!-- ===== AQUARIUM NATURAL MOTION START ===== -->
+
+<style>
+/* 물고기와 거북이의 자연스러운 이동 */
+#hyeokMiniAqua .aqua-swimmer {
+  will-change: left, transform;
+}
+
+/* 먹이 먹으러 이동할 때 */
+#hyeokMiniAqua .aqua-swimmer.aqua-eating {
+  animation: none !important;
+  animation-play-state: paused !important;
+
+  transition:
+    left 1.6s ease-in-out,
+    top 1.6s ease-in-out !important;
+}
+
+/* 거북이는 조금 더 느리게 */
+#hyeokMiniAqua
+.aqua-swimmer[data-character="turtle"].aqua-eating {
+  transition:
+    left 2.5s ease-in-out,
+    top .8s ease-in-out !important;
+}
+
+/* 쉬고 있는 동안에도 클릭 가능 */
+#hyeokMiniAqua .aqua-swimmer.aqua-resting {
+  animation-play-state: paused !important;
+}
+
+/* 먹이 주변의 은은한 빛 */
+#hyeokMiniAqua .aqua-tank.deep-feeding::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      rgba(168,216,227,.13),
+      transparent 48%
+    );
+
+  animation: feedingGlow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes feedingGlow {
+  from { opacity: .3; }
+  to { opacity: 1; }
+}
+</style>
+
+<script>
+(function () {
+  const aquarium =
+    document.getElementById("hyeokMiniAqua");
+
+  if (!aquarium) return;
+
+  const tank = aquarium.querySelector(".aqua-tank");
+
+  if (!tank) return;
+
+  // 중복 실행 방지
+  if (aquarium.dataset.naturalMotion === "on") return;
+  aquarium.dataset.naturalMotion = "on";
+
+  const fishHyeok = aquarium.querySelector(
+    '.aqua-swimmer[data-character="hyeok"]'
+  );
+
+  const fishYunjae = aquarium.querySelector(
+    '.aqua-swimmer[data-character="yunjae"]'
+  );
+
+  const turtle = aquarium.querySelector(
+    '.aqua-swimmer[data-character="turtle"]'
+  );
+
+  // 각 동물이 서로 다른 간격으로 휴식
+  const animals = [
+    {
+      element: fishHyeok,
+      minWait: 5000,
+      maxWait: 11000,
+      minRest: 900,
+      maxRest: 2100
+    },
+    {
+      element: fishYunjae,
+      minWait: 8000,
+      maxWait: 15000,
+      minRest: 1500,
+      maxRest: 3000
+    },
+    {
+      element: turtle,
+      minWait: 6000,
+      maxWait: 12000,
+      minRest: 2500,
+      maxRest: 5000
+    }
+  ];
+
+  const random = (min, max) =>
+    min + Math.random() * (max - min);
+
+  // 먹이를 먹는 중인지 확인
+  function isFeeding(element) {
+    return (
+      element.classList.contains("aqua-eating") ||
+      tank.classList.contains("deep-feeding")
+    );
+  }
+
+  // 먹이 주기 중에는 휴식을 취소
+  function wakeUpAll() {
+    animals.forEach(animal => {
+      if (animal.element) {
+        animal.element.classList.remove("aqua-resting");
+      }
+    });
+  }
+
+  // 자연스러운 휴식 루프
+  function startNaturalRest(animal) {
+    const element = animal.element;
+    if (!element) return;
+
+    function scheduleNext() {
+      const wait = random(
+        animal.minWait,
+        animal.maxWait
+      );
+
+      setTimeout(function () {
+        // 먹이를 먹고 있다면 쉬지 않음
+        if (isFeeding(element)) {
+          scheduleNext();
+          return;
+        }
+
+        // 현재 위치에서 잠시 멈춤
+        element.classList.add("aqua-resting");
+
+        const rest = random(
+          animal.minRest,
+          animal.maxRest
+        );
+
+        setTimeout(function () {
+          element.classList.remove("aqua-resting");
+          scheduleNext();
+        }, rest);
+
+      }, wait);
+    }
+
+    scheduleNext();
+  }
+
+  animals.forEach(startNaturalRest);
+
+  // 기존 FEED 버튼의 기능은 그대로 사용
+  const feedButton =
+    aquarium.querySelector(".aqua-feed-btn");
+
+  if (feedButton) {
+    feedButton.addEventListener(
+      "click",
+      function () {
+        wakeUpAll();
+      },
+      true
+    );
+  }
+
+  // 기존 먹이 이동이 시작되면 휴식 상태 해제
+  const observer = new MutationObserver(function () {
+    animals.forEach(animal => {
+      if (
+        animal.element &&
+        isFeeding(animal.element)
+      ) {
+        animal.element.classList.remove("aqua-resting");
+      }
+    });
+  });
+
+  animals.forEach(animal => {
+    if (!animal.element) return;
+
+    observer.observe(animal.element, {
+      attributes: true,
+      attributeFilter: ["class"]
+    });
+  });
+
+})();
+</script>
+
 </body>
 </html>
