@@ -9972,5 +9972,293 @@ body > .phone::after {
 
 </style>
 
+<!-- ===== HYEOKJAE VIDEO DESKTOP HOME START ===== -->
+
+<style>
+/* ==========================================
+   HYEOKJAE ARCHIVE
+   VIDEO FOCUS + MINI DESKTOP ICONS
+========================================== */
+
+/* 영상과 메뉴를 나란히 배치 */
+#home .hj-video-desktop {
+  display: grid !important;
+  grid-template-columns:
+    minmax(0, 3.55fr)
+    minmax(0, 1fr);
+  gap: 9px;
+  align-items: start;
+  width: 100%;
+  margin: 12px 0 15px;
+}
+
+/* 영상 영역 */
+#home .hj-video-main {
+  min-width: 0;
+}
+
+#home .hj-video-main > .window {
+  width: 100%;
+  margin: 0 !important;
+  border-radius: 2px !important;
+  border: 1px solid #8B9EAC !important;
+  box-shadow: 3px 3px 0 #BAC4C8 !important;
+  overflow: hidden;
+}
+
+#home .hj-video-main .window-head {
+  padding: 6px 7px !important;
+  font-size: 10px !important;
+  border-radius: 0 !important;
+}
+
+/* 영상 안쪽 여백 */
+#home .hj-video-main .window-content {
+  padding: 5px !important;
+}
+
+/* 영상 전체가 잘리지 않게 표시 */
+#home .hj-video-main .video-wrap {
+  width: 100%;
+  height: auto !important;
+  max-height: none !important;
+  border-radius: 1px !important;
+  overflow: hidden;
+}
+
+#home .hj-video-main video {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+}
+
+/* 기존 재생 컨트롤 유지 */
+#home .hj-video-main .archive-player {
+  width: 100%;
+  min-width: 0;
+  margin-top: 4px !important;
+  padding: 5px !important;
+  border-radius: 2px !important;
+}
+
+#home .hj-video-main .archive-player-title {
+  font-size: 9px !important;
+}
+
+#home .hj-video-main .archive-player-progress {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+
+#home .hj-video-main .archive-player-progress input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+
+#home .hj-video-main .archive-player-progress span {
+  flex-shrink: 0;
+  font-size: 9px !important;
+}
+
+/* 오른쪽 폴더 영역 */
+#home .hj-desktop-side {
+  min-width: 0;
+  padding: 1px 0;
+}
+
+/* 기존 6개 메뉴를 세로 한 줄로 */
+#home .hj-desktop-side .icon-grid {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 5px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 폴더: 기본 상태에서는 배경 없음 */
+#home .hj-desktop-side .icon-btn {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 57px !important;
+  margin: 0 !important;
+  padding: 4px 1px !important;
+  gap: 3px !important;
+
+  border: 1px solid transparent !important;
+  border-radius: 0 !important;
+  outline: none;
+
+  background: transparent !important;
+  box-shadow: none !important;
+
+  color: #283B55 !important;
+  font-family: "Pixelify Sans", monospace;
+  font-size: 8px !important;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+  letter-spacing: 0 !important;
+
+  transition:
+    background .12s ease,
+    border-color .12s ease;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 기존 픽셀 아이콘 */
+#home .hj-desktop-side .icon-btn .symbol {
+  display: grid;
+  place-items: center;
+
+  width: 28px !important;
+  height: 27px !important;
+  margin: 0 !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+
+  font-size: 22px !important;
+  line-height: 1;
+}
+
+/* 윈도우 바탕화면의 반투명 선택 표시 */
+#home .hj-desktop-side .icon-btn.selected,
+#home .hj-desktop-side .icon-btn:hover,
+#home .hj-desktop-side .icon-btn:focus-visible,
+#home .hj-desktop-side .icon-btn:active {
+  background: rgba(95, 161, 223, .28) !important;
+  border: 1px solid rgba(74, 136, 199, .75) !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.3) !important;
+}
+
+/* 클릭 시 잠깐 강조 */
+#home .hj-desktop-side .icon-btn.hj-tapped {
+  background: rgba(95, 161, 223, .40) !important;
+  border-color: #568FC4 !important;
+}
+
+/* 제목 영역은 조금 간결하게 */
+#home > .hero {
+  margin: 4px 0 10px !important;
+  padding: 8px 5px !important;
+}
+
+#home > .hero small {
+  margin-top: 5px !important;
+}
+
+/* 소개와 수족관은 기존대로 아래에 */
+#home > .window {
+  margin: 11px 0 !important;
+}
+
+/* 작은 화면에서도 메뉴가 너무 커지지 않게 */
+@media (max-width: 380px) {
+  #home .hj-video-desktop {
+    grid-template-columns:
+      minmax(0, 3.25fr)
+      minmax(0, 1fr);
+    gap: 5px;
+  }
+
+  #home .hj-desktop-side .icon-grid {
+    gap: 3px !important;
+  }
+
+  #home .hj-desktop-side .icon-btn {
+    min-height: 52px !important;
+    font-size: 7px !important;
+    padding: 3px 0 !important;
+  }
+
+  #home .hj-desktop-side .icon-btn .symbol {
+    width: 25px !important;
+    height: 24px !important;
+    font-size: 19px !important;
+  }
+
+  #home .hj-video-main .window-content {
+    padding: 3px !important;
+  }
+}
+</style>
+
+<script>
+/* ==========================================
+   HOME DESKTOP LAYOUT
+   기존 요소 이동 / 기능 유지
+========================================== */
+
+(function () {
+  const home = document.getElementById("home");
+
+  if (!home) return;
+
+  /* 중복 적용 방지 */
+  if (home.querySelector(".hj-video-desktop")) return;
+
+  /* 실제 기존 영상 창 찾기 */
+  const videoWindow = Array.from(home.children).find(
+    element =>
+      element.classList.contains("window") &&
+      element.querySelector("#introVideo")
+  );
+
+  /* 실제 기존 메뉴 찾기 */
+  const iconGrid = Array.from(home.children).find(
+    element => element.classList.contains("icon-grid")
+  );
+
+  if (!videoWindow || !iconGrid) return;
+
+  /* 2단 구조 생성 */
+  const layout = document.createElement("div");
+  layout.className = "hj-video-desktop";
+
+  const videoMain = document.createElement("div");
+  videoMain.className = "hj-video-main";
+
+  const desktopSide = document.createElement("div");
+  desktopSide.className = "hj-desktop-side";
+
+  /* 기존 영상 위치에 삽입 */
+  videoWindow.before(layout);
+
+  layout.append(videoMain, desktopSide);
+
+  /* 기존 영상과 메뉴를 그대로 이동 */
+  videoMain.append(videoWindow);
+  desktopSide.append(iconGrid);
+
+  /* 기존 data-page 클릭 이동 유지 */
+
+  /* 선택 시 파란 사각형 효과 */
+  iconGrid.querySelectorAll(".icon-btn").forEach(button => {
+    button.addEventListener("pointerdown", () => {
+      iconGrid.querySelectorAll(".hj-tapped").forEach(item => {
+        item.classList.remove("hj-tapped");
+      });
+
+      button.classList.add("hj-tapped");
+    });
+  });
+
+})();
+</script>
+
 </body>
 </html>
