@@ -10307,5 +10307,130 @@ body > .phone::after {
 })();
 </script>
 
+<!-- ===== HOME A LAYOUT REFINEMENT START ===== -->
+<style>
+
+/* 1. 영상 65% / 메뉴 35% */
+#home .hj-home-desktop-layout {
+  grid-template-columns:
+    minmax(0, 1.85fr)
+    minmax(0, 1fr) !important;
+  gap: 7px !important;
+  align-items: start !important;
+  margin-bottom: 12px !important;
+}
+
+/* 2. 영상 창 여백 최소화 */
+#home .hj-home-video-column > .window {
+  margin: 0 !important;
+}
+
+#home .hj-home-video-column .window-content {
+  padding: 4px !important;
+}
+
+/* 영상 자체 확대 */
+#home .hj-home-video-column video {
+  display: block;
+  width: 100% !important;
+  max-height: none !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+/* 영상이 세로형일 때도 전체가 보이도록 */
+#home .hj-home-video-column .video-wrap {
+  width: 100%;
+  height: auto !important;
+  max-height: none !important;
+  overflow: hidden;
+}
+
+/* 3. 플레이어 크기 정리 */
+#home .hj-home-video-column .archive-player {
+  padding: 5px 4px !important;
+  margin-top: 3px !important;
+}
+
+#home .hj-home-video-column .archive-player-title {
+  font-size: 8px !important;
+  gap: 3px !important;
+}
+
+#home .hj-home-video-column .archive-player-progress {
+  gap: 3px !important;
+}
+
+/* 4. 오른쪽 메뉴를 컴팩트하게 */
+#home .hj-home-menu-column .icon-grid {
+  gap: 5px !important;
+}
+
+#home .hj-home-menu-column .icon-btn {
+  min-height: 66px !important;
+  padding: 5px 1px !important;
+  gap: 3px !important;
+  font-size: 8px !important;
+}
+
+#home .hj-home-menu-column .icon-btn .symbol {
+  width: 30px !important;
+  height: 29px !important;
+  font-size: 19px !important;
+}
+
+/* 5. 타이틀 크기 정리 */
+#home > .hero {
+  margin-bottom: 10px !important;
+  padding: 9px 5px !important;
+  font-size: 19px !important;
+}
+
+/* 6. 소개 창 간격 */
+#home > .window {
+  margin: 10px 0 !important;
+}
+
+#home > .window .window-content {
+  padding: 9px !important;
+}
+
+/* 7. 수족관과 소개 창 간격 */
+#home > #hyeokMiniAqua {
+  margin-top: 10px !important;
+}
+
+/* 8. 홈 화면 아래 불필요한 빈 공간 축소
+   고정 높이가 다른 스타일에서 적용된 경우 대응 */
+.desktop {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+}
+
+/* 9. 작은 휴대폰 화면 */
+@media (max-width: 380px) {
+
+  #home .hj-home-desktop-layout {
+    grid-template-columns:
+      minmax(0, 1.7fr)
+      minmax(0, 1fr) !important;
+    gap: 5px !important;
+  }
+
+  #home .hj-home-menu-column .icon-btn {
+    min-height: 60px !important;
+    font-size: 7px !important;
+  }
+
+  #home .hj-home-menu-column .icon-btn .symbol {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 17px !important;
+  }
+}
+
+</style>
+
 </body>
 </html>
