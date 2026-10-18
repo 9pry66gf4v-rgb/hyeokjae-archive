@@ -8766,5 +8766,388 @@ body > .phone::after {
 }
 </style>
 
+<!-- ===== CHARACTER PROFILE REDESIGN START ===== -->
+
+<style>
+/* 기존 상세 내용은 보존하되 새 디자인 아래로 이동 */
+#profile .hj-profile-ui {
+  color: #253A5B;
+  font-family: "Gowun Dodum", sans-serif;
+}
+
+#profile .hj-profile-window {
+  border: 2px solid #777D80;
+  background: #F9F6F0;
+  box-shadow:
+    inset 1px 1px #FFFFFF,
+    3px 3px 0 #AAA69C;
+  margin-bottom: 14px;
+}
+
+#profile .hj-profile-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 6px 8px;
+  background: #253A5B;
+  color: #F4EEE7;
+  font: 12px "Pixelify Sans", monospace;
+}
+
+#profile .hj-profile-bar span:last-child {
+  white-space: nowrap;
+}
+
+#profile .hj-profile-inner {
+  padding: 12px;
+}
+
+#profile .hj-profile-top {
+  display: grid;
+  grid-template-columns: minmax(0, 43%) minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  margin-bottom: 13px;
+}
+
+#profile .hj-profile-photo {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+  border: 3px solid #FDFBF6;
+  outline: 1px solid #9B9B93;
+  background: #D9DCD5;
+}
+
+#profile .hj-profile-name {
+  font-family: "Jua", sans-serif;
+  font-size: 24px;
+  line-height: 1.2;
+  color: #253A5B;
+  margin: 3px 0;
+}
+
+#profile .hj-profile-en {
+  font: 10px "Pixelify Sans", monospace;
+  color: #71808B;
+  margin-bottom: 10px;
+}
+
+#profile .hj-profile-fact {
+  font-size: 11px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+#profile .hj-profile-online {
+  margin-top: 9px;
+  font: 10px "Pixelify Sans", monospace;
+  color: #738263;
+}
+
+#profile .hj-info-panel {
+  border: 1px solid #AAA69D;
+  background: #FFFCF7;
+  margin-bottom: 10px;
+  min-width: 0;
+}
+
+#profile .hj-info-head {
+  padding: 6px 8px;
+  border-bottom: 1px solid #B8B1A7;
+  background: #E5E0D8;
+  color: #253A5B;
+  font: 11px "Pixelify Sans", monospace;
+}
+
+#profile .hj-info-body {
+  padding: 10px;
+  font-size: 11px;
+  line-height: 1.8;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+#profile .hj-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+#profile .hj-info-grid .hj-info-panel {
+  margin-bottom: 0;
+}
+
+#profile .hj-profile-quote {
+  margin-top: 10px;
+  background: #F4EEE7;
+}
+
+#profile .hj-profile-quote .hj-info-body {
+  font-size: 12px;
+  font-style: italic;
+  text-align: center;
+}
+
+#profile .hj-more-btn {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  border: 2px solid #9D978D;
+  border-radius: 0;
+  background: #D6D0C7;
+  color: #253A5B;
+  box-shadow:
+    inset 2px 2px #FFFFFF,
+    inset -2px -2px #AAA397;
+  font: 12px "Pixelify Sans", monospace;
+}
+
+#profile .hj-more-btn:active {
+  box-shadow: inset 2px 2px #AAA397;
+  transform: translateY(1px);
+}
+
+/* 원래 프로필 내용: MORE INFO 클릭 시 표시 */
+#profile .hj-original-detail {
+  display: none;
+}
+
+#profile .hj-original-detail.hj-open {
+  display: block;
+  margin-top: 12px;
+}
+
+#profile .hj-original-detail .detail-image {
+  display: none !important;
+}
+
+/* 휴대폰 작은 화면 */
+@media (max-width: 360px) {
+  #profile .hj-profile-inner {
+    padding: 8px;
+  }
+
+  #profile .hj-profile-top {
+    gap: 9px;
+  }
+
+  #profile .hj-profile-name {
+    font-size: 21px;
+  }
+
+  #profile .hj-info-body {
+    padding: 7px;
+    font-size: 10px;
+  }
+}
+</style>
+
+<script>
+(function () {
+  const profilePage = document.getElementById("profile");
+  if (!profilePage || typeof openProfile !== "function") return;
+
+  /* 캐릭터별 프로필 정보
+     대표 대사는 원하는 문장으로 직접 수정해도 돼! */
+  const extraProfiles = [
+    {
+      english: "JUNG HYEOK",
+      age: "25",
+      height: "188cm",
+      personality:
+        "장난스럽고 능청맞지만 자신의 감정에는 솔직하다. " +
+        "좋아하는 사람에게 적극적으로 애정을 표현하고, " +
+        "상대의 작은 변화도 세심하게 살핀다.",
+      favorites: "♡ 홍윤재\n🐟 물고기\n🦕 공룡",
+      keywords: "#장난기  #솔직함\n#다정함  #섬세함",
+      quote: "여기에 정혁의 대표 대사를 적어 줘."
+    },
+    {
+      english: "HONG YOONJAE",
+      age: "28",
+      height: "190cm",
+      personality:
+        "차분하고 여유로우며 은근히 짓궂은 농담을 즐긴다. " +
+        "상대를 세심하게 챙기고, " +
+        "말보다는 행동으로 마음을 표현하는 편이다.",
+      favorites: "♡ 정혁\n🐟 물고기\n🪼 해파리",
+      keywords: "#침착함  #능청스러움\n#배려심  #다정함",
+      quote: "여기에 홍윤재의 대표 대사를 적어 줘."
+    }
+  ];
+
+  /* 기존 프로필 열기 기능을 그대로 보존 */
+  const originalOpenProfile = openProfile;
+
+  /* 기존 프로필 영역을 감싸서 보관 */
+  const originalWindow = profilePage.querySelector(".window");
+
+  if (!originalWindow) return;
+
+  originalWindow.classList.add("hj-original-detail");
+
+  const newUI = document.createElement("div");
+  newUI.className = "hj-profile-ui";
+
+  originalWindow.before(newUI);
+
+  function addText(parent, tag, className, value) {
+    const el = document.createElement(tag);
+    if (className) el.className = className;
+    el.textContent = value;
+    parent.appendChild(el);
+    return el;
+  }
+
+  function makePanel(title, content, extraClass = "") {
+    const panel = document.createElement("div");
+    panel.className = "hj-info-panel " + extraClass;
+
+    addText(panel, "div", "hj-info-head", title);
+    addText(panel, "div", "hj-info-body", content);
+
+    return panel;
+  }
+
+  function renderProfile(index) {
+    const character = characters[index];
+    const info = extraProfiles[index];
+
+    if (!character || !info) return;
+
+    newUI.replaceChildren();
+    originalWindow.classList.remove("hj-open");
+
+    const windowBox = document.createElement("div");
+    windowBox.className = "hj-profile-window";
+
+    const bar = document.createElement("div");
+    bar.className = "hj-profile-bar";
+
+    addText(
+      bar,
+      "span",
+      "",
+      "📁 PROFILE.exe — " + character.name
+    );
+    addText(bar, "span", "", "_ □ ×");
+
+    windowBox.appendChild(bar);
+
+    const inner = document.createElement("div");
+    inner.className = "hj-profile-inner";
+
+    const top = document.createElement("div");
+    top.className = "hj-profile-top";
+
+    const photo = document.createElement("img");
+    photo.className = "hj-profile-photo";
+    photo.src = character.image;
+    photo.alt = character.name + " 프로필 사진";
+
+    top.appendChild(photo);
+
+    const basics = document.createElement("div");
+
+    addText(
+      basics,
+      "div",
+      "hj-profile-name",
+      character.name + " ♡"
+    );
+
+    addText(
+      basics,
+      "div",
+      "hj-profile-en",
+      info.english
+    );
+
+    addText(
+      basics,
+      "div",
+      "hj-profile-fact",
+      "AGE : " + info.age
+    );
+
+    addText(
+      basics,
+      "div",
+      "hj-profile-fact",
+      "HEIGHT : " + info.height + "cm"
+    );
+
+    addText(
+      basics,
+      "div",
+      "hj-profile-online",
+      "● PROFILE LOADED"
+    );
+
+    top.appendChild(basics);
+    inner.appendChild(top);
+
+    inner.appendChild(
+      makePanel("PERSONALITY / 성격", info.personality)
+    );
+
+    const grid = document.createElement("div");
+    grid.className = "hj-info-grid";
+
+    grid.appendChild(
+      makePanel("FAVORITES / 좋아하는 것", info.favorites)
+    );
+
+    grid.appendChild(
+      makePanel("KEYWORDS / 키워드", info.keywords)
+    );
+
+    inner.appendChild(grid);
+
+    inner.appendChild(
+      makePanel(
+        "♡ SIGNATURE / 대표 대사",
+        "“" + info.quote + "”",
+        "hj-profile-quote"
+      )
+    );
+
+    const more = document.createElement("button");
+    more.type = "button";
+    more.className = "hj-more-btn";
+    more.textContent = "📄 MORE INFO →";
+
+    more.addEventListener("click", function () {
+      const isOpen = originalWindow.classList.toggle("hj-open");
+
+      more.textContent = isOpen
+        ? "▲ CLOSE INFO"
+        : "📄 MORE INFO →";
+
+      if (isOpen) {
+        originalWindow.scrollIntoView({
+          block: "nearest",
+          behavior: "smooth"
+        });
+      }
+    });
+
+    inner.appendChild(more);
+    windowBox.appendChild(inner);
+    newUI.appendChild(windowBox);
+  }
+
+  /* 기존 openProfile 함수 확장 */
+  openProfile = function (index) {
+    originalOpenProfile(index);
+    renderProfile(index);
+  };
+})();
+</script>
+
 </body>
 </html>
