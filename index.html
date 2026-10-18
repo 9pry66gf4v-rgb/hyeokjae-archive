@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9562,1067 +9561,416 @@ body > .phone::after {
 })();
 </script>
 
-
-<!-- ===== HYEOKJAE KITSCH DESKTOP V2 START ===== -->
+<!-- ===== HYEOKJAE KITSCH DESKTOP V1 START ===== -->
 <style>
-/* ==========================================
-   HYEOKJAE ARCHIVE — KITSCH DESKTOP V2
-   Windows 98 + Scrapbook + Tamagotchi
-   ========================================== */
+
+/* ========================================
+   HYEOKJAE ARCHIVE
+   KITSCH WINDOWS 98 DESKTOP
+   ======================================== */
 
 :root {
-  --hk-ink: #253A5B;
-  --hk-blue: #537999;
-  --hk-lightblue: #A9C1D1;
-  --hk-paper: #FFF9F0;
+  --hk-blue: #6687A4;
+  --hk-deep: #253A5B;
+  --hk-sky: #A8BDD0;
+  --hk-paper: #FFF9EF;
   --hk-gray: #D6D0C7;
-  --hk-line: #7C91A0;
-  --hk-pink: #EBCDD2;
+  --hk-border: #718596;
+  --hk-pink: #E9C8CE;
   --hk-olive: #929B80;
 }
 
-/* 바깥쪽 둥근 다마고치 케이스 제거 */
-html, body {
-  background: #91ACC2 !important;
+/* 01. 전체 배경: 블루 픽셀 도트 */
+html,
+body {
+  background-color: #86A5BF !important;
   background-image:
-    radial-gradient(#DCE8ED 0.8px, transparent 0.8px) !important;
-  background-size: 9px 9px !important;
+    radial-gradient(
+      rgba(255,255,255,.42) 0.8px,
+      transparent 0.8px
+    ),
+    linear-gradient(
+      135deg,
+      #7999B5,
+      #A9BFD0
+    ) !important;
+  background-size: 9px 9px, cover !important;
 }
 
-.phone {
-  width: min(100%, 520px) !important;
-  padding: 10px !important;
-  border: 3px solid #536D7F !important;
+/* 02. 기존 다마고치 본체를 데스크톱 창처럼 */
+body > .phone {
+  background: #D6D0C7 !important;
+  background-image: none !important;
+  border: 3px solid #536F87 !important;
+  border-radius: 0 !important;
+  padding: 9px !important;
+  box-shadow:
+    inset 2px 2px #FFFFFF,
+    inset -2px -2px #8295A4,
+    6px 6px 0 rgba(37,58,91,.25) !important;
+}
+
+body > .phone::before,
+body > .phone::after {
+  display: none !important;
+}
+
+/* 03. 상단 로고 */
+.phone .top-deco {
+  color: #253A5B !important;
+  letter-spacing: 2px !important;
+}
+
+.phone .brand {
+  margin: 7px 0 12px !important;
+  padding: 12px 8px !important;
+  border: 2px solid #718596 !important;
+  background:
+    linear-gradient(
+      135deg,
+      #F4F1E9,
+      #DCE8EC
+    ) !important;
+  box-shadow:
+    inset 2px 2px #FFFFFF,
+    2px 2px #9EAAB0 !important;
+}
+
+.phone .brand-title {
+  color: #253A5B !important;
+  font-family: "Pixelify Sans", monospace !important;
+  font-weight: 700 !important;
+  text-shadow: 2px 2px #FFFFFF !important;
+}
+
+.phone .brand-sub {
+  color: #6687A4 !important;
+}
+
+/* 04. 모니터 외곽 */
+.phone .screen-frame {
+  padding: 5px !important;
+  border: 3px solid #718596 !important;
   border-radius: 0 !important;
   background: #D6D0C7 !important;
   box-shadow:
     inset 2px 2px #FFFFFF,
-    inset -2px -2px #929A99,
-    5px 6px 0 #536D7F55 !important;
+    inset -2px -2px #8295A4 !important;
 }
 
-.phone::before,
-.phone::after {
-  display: none !important;
-}
-
-/* 기존 상단 장식은 작은 상태 라벨로 */
-.top-deco {
-  height: auto !important;
-  padding: 3px !important;
-  color: #537999 !important;
-  font-size: 11px !important;
-  letter-spacing: 3px !important;
-}
-
-.brand {
-  margin: 5px 0 9px !important;
-  padding: 10px 6px !important;
-  border: 2px solid #7C91A0 !important;
-  background: #F4F0E8 !important;
-  box-shadow: inset 2px 2px #FFFFFF !important;
-}
-
-.brand-title {
-  color: #253A5B !important;
-  font-family: "Pixelify Sans", monospace !important;
-  font-size: 20px !important;
-  text-shadow: 2px 2px #D2E1E8 !important;
-}
-
-.brand-sub {
-  color: #728D9E !important;
-  font-size: 10px !important;
-}
-
-/* 메인 윈도우 */
-.screen-frame {
-  padding: 5px !important;
-  border: 2px solid #8798A0 !important;
+.phone .screen {
+  border: 2px solid #536F87 !important;
   border-radius: 0 !important;
-  background: #E6E2DA !important;
-  box-shadow: inset 2px 2px white !important;
+  background: #F4EEE7 !important;
 }
 
-.screen {
-  border: 2px solid #536D7F !important;
-  border-radius: 0 !important;
-  background: #F5F0E8 !important;
-}
-
-.titlebar {
-  min-height: 30px !important;
-  padding: 6px 8px !important;
-  background: linear-gradient(
-    90deg, #253A5B, #7195B0
-  ) !important;
-  border-bottom: 2px solid #536D7F !important;
-  color: white !important;
-}
-
-.window-buttons span {
-  border-radius: 0 !important;
-  background: #E8E4DC !important;
-  color: #253A5B !important;
-  border: 1px solid #637585 !important;
-  box-shadow: inset 1px 1px white !important;
-}
-
-.menubar {
-  gap: 17px !important;
-  padding: 7px 10px !important;
-  background: #E5E0D8 !important;
-  border-bottom: 1px solid #9BAAB2 !important;
-  color: #253A5B !important;
-}
-
-/* 내부 화면: 촘촘한 도트 종이 */
-.desktop {
-  height: 620px !important;
-  padding: 12px !important;
-  background-color: #E9EBE8 !important;
-  background-image:
-    radial-gradient(#C4D0D3 0.7px, transparent 0.7px) !important;
-  background-size: 8px 8px !important;
-  color: #253A5B !important;
-}
-
-/* 내부 모든 창 */
-.desktop .window {
-  margin-bottom: 13px !important;
-  border: 2px solid #7C91A0 !important;
-  border-radius: 0 !important;
-  background: #FFF9F0 !important;
-  box-shadow: 3px 3px 0 #AAB9BE !important;
-}
-
-.desktop .window-head {
-  padding: 7px 9px !important;
-  border-radius: 0 !important;
-  border-bottom: 2px solid #7C91A0 !important;
-  background: linear-gradient(
-    90deg, #456987, #9CB8CA
-  ) !important;
+/* 05. 메인 Windows 타이틀바 */
+.phone .screen > .titlebar {
+  background:
+    linear-gradient(
+      90deg,
+      #253A5B,
+      #6687A4
+    ) !important;
+  border-bottom: 2px solid #536F87 !important;
   color: #FFFFFF !important;
-  font: 12px "Pixelify Sans", monospace !important;
+  padding: 6px 8px !important;
+  font-family: "Pixelify Sans", monospace !important;
+  letter-spacing: .5px !important;
+}
+
+/* 창 닫기 버튼 */
+.phone .window-buttons span {
+  background: #E4E0D9 !important;
+  border: 1px solid #596A77 !important;
+  border-radius: 0 !important;
+  color: #253A5B !important;
+  box-shadow:
+    inset 1px 1px #FFFFFF,
+    inset -1px -1px #8A9295 !important;
+}
+
+/* 06. File Edit View 메뉴 */
+.phone .menubar {
+  background: #E7E2D9 !important;
+  border-bottom: 2px solid #B0B7B7 !important;
+  color: #253A5B !important;
+  padding: 8px 10px !important;
+}
+
+/* 07. 데스크톱 배경 */
+.phone .desktop {
+  background-color: #E8E8E1 !important;
+  background-image:
+    radial-gradient(
+      #C5CED0 0.8px,
+      transparent 0.8px
+    ) !important;
+  background-size: 8px 8px !important;
+  padding: 10px !important;
+  color: #253A5B !important;
+}
+
+/* 08. 모든 내부 창 */
+.phone .desktop .window {
+  position: relative;
+  margin-bottom: 12px !important;
+  border: 2px solid #718596 !important;
+  border-radius: 0 !important;
+  background: #FFF9EF !important;
+  box-shadow:
+    inset 1px 1px #FFFFFF,
+    3px 3px 0 #A0AEB6 !important;
+}
+
+/* 내부 창 제목 */
+.phone .desktop .window-head {
+  padding: 6px 9px !important;
+  border-bottom: 2px solid #718596 !important;
+  border-radius: 0 !important;
+  background:
+    linear-gradient(
+      90deg,
+      #456987,
+      #A0B8CB
+    ) !important;
+  color: #FFFFFF !important;
+  font-family: "Pixelify Sans", monospace !important;
+  font-size: 12px !important;
   text-shadow: 1px 1px #253A5B !important;
 }
 
-.desktop .window-content {
-  padding: 11px !important;
-  background: #FFF9F0 !important;
+/* 내부 창 콘텐츠 */
+.phone .desktop .window-content,
+.phone .desktop .window-body {
+  background: #FFF9EF !important;
   color: #253A5B !important;
 }
 
-/* 홈 타이틀 */
-#home .hero {
+/* 09. 홈 타이틀 */
+.phone .desktop .hero {
   position: relative;
-  margin: 4px 0 14px !important;
-  padding: 18px 10px !important;
-  border: 2px solid #8BA4B3 !important;
+  margin: 5px 0 12px !important;
+  padding: 14px 10px !important;
+  border: 2px solid #8AA2B2 !important;
   border-radius: 0 !important;
-  background: linear-gradient(
-    140deg, #F9F6EE, #D9E8EB
-  ) !important;
+  background:
+    linear-gradient(
+      135deg,
+      #F8F6EF,
+      #DCE8EA
+    ) !important;
   color: #253A5B !important;
-  box-shadow: 3px 3px #B6C4C7 !important;
+  box-shadow: 2px 3px #B1C0C5 !important;
 }
 
-#home .hero::before {
-  content: "🐟";
-  position: absolute;
-  top: 8px;
-  left: 10px;
-  font-size: 19px;
-}
-
-#home .hero::after {
-  content: "✧ ♡ ✧";
+.phone .desktop .hero::after {
+  content: "✧  ♡  ✧";
   position: absolute;
   right: 10px;
-  top: 8px;
-  font-size: 11px;
-  color: #A3B6C1;
+  top: 7px;
+  color: #B3C5D0;
+  font-size: 12px;
+  letter-spacing: 5px;
+  pointer-events: none;
 }
 
-#home .hero small {
-  color: #7893A1 !important;
+.phone .desktop .hero small {
+  color: #718596 !important;
 }
 
-/* 메인 영상 */
-#home .video-wrap {
-  border: 2px solid #8BA4B3 !important;
-  border-radius: 0 !important;
-  background: #E3E7E5 !important;
+/* 10. 홈 아이콘 그리드 */
+.phone .icon-grid {
+  gap: 7px !important;
+  margin: 10px 0 14px !important;
 }
 
-#home video {
-  max-height: 270px;
-  background: #E3E7E5 !important;
-}
-
-/* 홈 메뉴: 작은 프로그램 바로가기 */
-#home .icon-grid {
-  gap: 8px !important;
-  margin: 14px 0 !important;
-}
-
-#home .icon-btn {
+/* 메뉴 버튼 */
+.phone .icon-btn {
   position: relative;
-  min-height: 83px;
+  min-width: 0;
   padding: 9px 4px !important;
-  border: 2px solid #7C91A0 !important;
+  border: 2px solid #718596 !important;
   border-radius: 0 !important;
-  background: #F6F5ED !important;
+  background:
+    linear-gradient(
+      145deg,
+      #FFFCF6,
+      #DDE8E5
+    ) !important;
   color: #253A5B !important;
   box-shadow:
-    inset 2px 2px white,
-    inset -2px -2px #B7C4C5,
-    2px 2px #A4B3B9 !important;
+    inset 2px 2px #FFFFFF,
+    inset -2px -2px #A2B2B5,
+    2px 2px #9CA9AB !important;
+  transition: transform .12s, box-shadow .12s;
 }
 
-#home .icon-btn:nth-child(2),
-#home .icon-btn:nth-child(5) {
-  background: #F5E9EA !important;
+.phone .icon-btn:hover {
+  background:
+    linear-gradient(
+      145deg,
+      #FDF7EC,
+      #CEDFEA
+    ) !important;
 }
 
-#home .icon-btn:nth-child(3),
-#home .icon-btn:nth-child(6) {
-  background: #E9EFE8 !important;
+.phone .icon-btn:active {
+  transform: translate(2px,2px);
+  box-shadow:
+    inset 2px 2px #9CA9AB !important;
 }
 
-#home .icon-btn::after {
+/* 아이콘 모서리 장식 */
+.phone .icon-btn::after {
   content: "✧";
   position: absolute;
-  top: 4px;
-  right: 6px;
-  color: #A6B8C2;
-  font-size: 12px;
+  right: 5px;
+  top: 3px;
+  color: #B1C4CC;
+  font-size: 10px;
+  pointer-events: none;
 }
 
-#home .icon-btn:nth-child(even)::after {
+.phone .icon-btn:nth-child(2n)::after {
   content: "♡";
-  color: #CBA2AD;
+  color: #D7ABB7;
 }
 
-#home .icon-btn .symbol {
-  font-size: 25px;
+.phone .icon-btn:nth-child(3n)::after {
+  content: "✿";
+  color: #929B80;
 }
 
-#home .icon-btn:hover,
-#home .icon-btn.selected {
-  background: #DCE8EE !important;
-  outline: 1px dashed #253A5B;
-  outline-offset: -5px;
-}
-
-/* 각 페이지의 제목을 Windows 파일 헤더처럼 */
-.desktop .section-title {
-  position: relative;
-  margin: 2px 0 13px !important;
-  padding: 10px 12px !important;
-  border: 2px solid #7C91A0 !important;
+/* 11. 기존 카드 */
+.phone .desktop .card {
   border-radius: 0 !important;
-  background: linear-gradient(
-    90deg, #E4EDF0, #FFF9F0
-  ) !important;
-  color: #253A5B !important;
-  box-shadow: 3px 3px #B6C4C7 !important;
-  font-size: 17px !important;
-  text-align: left !important;
+  border-color: #9DADB5 !important;
+  background: #FFF9EF !important;
+  box-shadow: 2px 2px 0 #CCD1CD !important;
 }
 
-.desktop .section-title::after {
-  content: "♡";
-  position: absolute;
-  right: 12px;
-  top: 9px;
-  color: #B88D9C;
+/* 12. 일반 버튼 */
+.phone .desktop button:not(.icon-btn):not(.hj-more-btn) {
+  border-radius: 0;
 }
 
-/* 캐릭터 선택: 포토 카드 */
-#characters .character-grid {
-  gap: 12px !important;
-  padding: 4px 2px 8px;
+/* 13. 스크롤바 */
+.phone .desktop::-webkit-scrollbar {
+  width: 11px;
 }
 
-#characters .character-card {
-  padding: 9px !important;
-  border: 2px solid #7C91A0 !important;
+.phone .desktop::-webkit-scrollbar-track {
+  background: #E7E2D9;
+  border-left: 1px solid #9DA9AE;
+}
+
+.phone .desktop::-webkit-scrollbar-thumb {
+  background: #A2B7C4;
+  border: 2px solid #E7E2D9;
+}
+
+/* 14. 상태 표시줄 */
+.phone .taskbar {
+  background: #E7E2D9 !important;
+  border-top: 2px solid #718596 !important;
   border-radius: 0 !important;
-  background: #FFF9F0 !important;
   color: #253A5B !important;
-  box-shadow: 3px 4px #B1C0C4 !important;
+  box-shadow: inset 0 1px #FFFFFF !important;
 }
 
-#characters .character-card:nth-child(2) {
-  transform: rotate(1deg);
-}
-
-#characters .character-card:first-child {
-  transform: rotate(-1deg);
-}
-
-#characters .portrait {
-  height: 175px !important;
-  border: 1px solid #B3C1C6 !important;
-  border-radius: 0 !important;
-  background: #E6E8E5 !important;
-}
-
-#characters .character-card strong {
-  color: #253A5B !important;
-}
-
-#characters .character-card small {
-  color: #71899B !important;
-}
-
-/* D-DAY도 다른 창과 어울리도록 */
-#characters .couple-dday {
-  border: 2px solid #7C91A0 !important;
-  border-radius: 0 !important;
-  background: #F5E9EA !important;
-  box-shadow: 3px 3px #B6C4C7 !important;
-}
-
-#characters .dday-number {
-  color: #253A5B !important;
-}
-
-/* 편지/만화/스토리/갤러리 목록 */
-#letters .chat-day,
-#letters .entry,
-#comics .entry,
-#stories .entry,
-#gallery .entry {
-  width: 100%;
-  margin: 9px 0 !important;
-  padding: 13px 12px !important;
-  border: 2px solid #8A9FAB !important;
-  border-radius: 0 !important;
-  background: #FFF9F0 !important;
-  color: #253A5B !important;
-  box-shadow: 3px 3px #B5C2C6 !important;
-  text-align: left;
-}
-
-#letters .chat-day:nth-child(even),
-#stories .entry:nth-child(even) {
-  background: #F5E9EA !important;
-}
-
-#comics .entry:nth-child(even),
-#gallery .entry:nth-child(even) {
-  background: #E8EFEA !important;
-}
-
-/* 빈 폴더도 프로그램 창처럼 */
-#letters .empty,
-#comics .empty,
-#stories .empty,
-#gallery .empty {
-  padding: 32px 12px !important;
-  border: 2px dashed #A3B4BA;
-  background: #FFF9F0 !important;
-  color: #71899B !important;
-}
-
-/* 검색창 */
-#letters .chat-search {
-  border: 2px solid #8A9FAB !important;
-  border-radius: 0 !important;
-  background: #FFFDF7 !important;
-  color: #253A5B !important;
-}
-
-/* 편지 상세 채팅: 윈도우 메신저 느낌 */
-#letterDetail .chat-bubble {
-  border: 1px solid #A7B9C0 !important;
-  border-radius: 2px !important;
-  background: #E5EFF1 !important;
-  color: #253A5B !important;
-}
-
-#letterDetail .jh .chat-bubble {
-  background: #F5E4E8 !important;
-}
-
-#letterDetail .chat-date {
-  border-radius: 0 !important;
-  background: #DDE7E7 !important;
-  color: #253A5B !important;
-}
-
-/* 상세 문서 */
-#letterDetail .detail-text,
-#recordDetail .detail-text,
-#recordDetail .window-content {
-  color: #253A5B !important;
-  line-height: 1.9;
-}
-
-#recordDetail .detail-image {
-  border: 5px solid #FFFDF7;
-  outline: 1px solid #9DAEB5;
-  box-shadow: 3px 3px #CBD1CD;
-}
-
-/* 설정 화면 */
-#settings .entry {
-  border: 2px solid #7C91A0 !important;
-  border-radius: 0 !important;
-  background: #F3F1E9 !important;
-  color: #253A5B !important;
-  box-shadow:
-    inset 2px 2px white,
-    2px 2px #B2C1C5 !important;
-}
-
-#settings .entry:nth-of-type(even) {
-  background: #E8EEF0 !important;
-}
-
-#settings .empty {
-  margin-top: 15px;
-  padding: 14px;
-  border: 1px dashed #A3B4BA;
-  background: #FFF9F0;
-  color: #72899A !important;
-}
-
-/* 뒤로 가기 */
-.desktop .back {
-  padding: 7px 12px !important;
-  border: 2px solid #7C91A0 !important;
-  border-radius: 0 !important;
-  background: #E7E5DD !important;
-  color: #253A5B !important;
-  box-shadow: 2px 2px #B6C4C7 !important;
-}
-
-/* 프로필은 기존 폴라로이드 구성 보존 */
+/* 15. 프로필 디자인과 전체 컬러 연결 */
 #profile .hj-profile-window {
-  border-color: #7C91A0 !important;
+  border-color: #718596 !important;
 }
 
 #profile .hj-profile-bar {
-  background: linear-gradient(
-    90deg, #456987, #9CB8CA
-  ) !important;
+  background:
+    linear-gradient(
+      90deg,
+      #456987,
+      #A0B8CB
+    ) !important;
 }
 
-/* 상태 표시줄 */
-.taskbar {
-  padding: 7px 9px !important;
-  border-top: 2px solid #7C91A0 !important;
-  background: #E5E0D8 !important;
+#profile .hj-profile-inner {
+  background-color: #F8F3EB !important;
+}
+
+/* 16. 작은 스티커 디테일 */
+#profile .hj-name-tag {
+  background: #E0E9E4 !important;
+  border-color: #A3B5B0 !important;
+}
+
+#profile .hj-profile-online {
+  background: #F3DFE3 !important;
+}
+
+/* 17. 하단 조작 버튼은 기존 기능 유지 */
+.phone .controls button,
+.phone .control-btn {
+  border-radius: 2px !important;
+  border: 2px solid #718596 !important;
+  background:
+    linear-gradient(
+      #FFFDF7,
+      #D6D0C7
+    ) !important;
   color: #253A5B !important;
-}
-
-/* 하단 다마고치 버튼은 사각형 유지 */
-.retro-key {
-  border-radius: 3px !important;
-  border-color: #8999A0 !important;
-  background: linear-gradient(
-    #FFFDF7, #D6D0C7
-  ) !important;
-  color: #253A5B !important;
-}
-
-/* 모바일 */
-@media (max-width: 480px) {
-  body {
-    padding: 5px !important;
-  }
-
-  .phone {
-    padding: 6px !important;
-  }
-
-  .desktop {
-    height: min(70dvh, 620px) !important;
-    min-height: 360px;
-    padding: 8px !important;
-  }
-
-  #characters .portrait {
-    height: 135px !important;
-  }
-
-  #home .icon-btn {
-    min-height: 76px;
-  }
-}
-
-</style>
-
-<!-- ===== HYEOKJAE KITSCH LAYOUT V3 START ===== -->
-
-<style>
-/* =========================================
-   HYEOKJAE ARCHIVE
-   KITSCH WINDOW COLLAGE V3
-========================================= */
-
-/* 공통 컬러 */
-:root {
-  --v3-blue: #557C9C;
-  --v3-navy: #253A5B;
-  --v3-paper: #FFF9F0;
-  --v3-pink: #F3E2E5;
-  --v3-olive: #E5EBDD;
-  --v3-line: #8298A5;
-}
-
-/* 창을 겹쳐도 잘리지 않도록
-   창 내부 콘텐츠는 기존 방식 유지 */
-#home,
-#characters,
-#letters,
-#comics,
-#stories,
-#gallery,
-#settings {
-  position: relative;
-}
-
-/* ==============================
-   01. HOME 윈도우 콜라주
-============================== */
-
-/* 영상 창을 메인 윈도우처럼 */
-#home > .window:first-of-type {
-  position: relative;
-  z-index: 2;
-  margin: 13px 5px 0 0 !important;
   box-shadow:
-    4px 4px 0 #A7BAC4,
-    6px 6px 0 #D6D0C7 !important;
+    inset 2px 2px #FFFFFF,
+    inset -2px -2px #A0A6A7,
+    2px 2px #9AA6A9 !important;
 }
 
-/* 영상 창 왼쪽 작은 픽셀 장식 */
-#home > .window:first-of-type::before {
-  content: "♫";
-  position: absolute;
-  right: 45px;
-  top: -14px;
-  z-index: 3;
-  color: #557C9C;
-  font-size: 18px;
-  transform: rotate(12deg);
-  pointer-events: none;
+.phone .controls button:active,
+.phone .control-btn:active {
+  transform: translateY(2px);
+  box-shadow: inset 2px 2px #A0A6A7 !important;
 }
 
-/* 추가되는 작은 메모 창 */
-#home .v3-note-window {
-  position: relative;
-  z-index: 3;
-  width: 79%;
-  margin: -2px 0 15px auto;
-  border: 2px solid #8298A5;
-  background: #FFF9F0;
-  box-shadow: 4px 4px 0 #B9C7CA;
-  transform: rotate(1deg);
+/* 18. 바깥 장식 */
+.phone .footer {
+  color: #253A5B !important;
+  font-family: "Pixelify Sans", monospace !important;
+  letter-spacing: 1px !important;
 }
 
-#home .v3-note-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6px 9px;
-  border-bottom: 1px solid #8298A5;
-  background: #DDE9EB;
-  color: #253A5B;
-  font: 11px "Pixelify Sans", monospace;
-}
-
-#home .v3-note-content {
-  padding: 12px 11px;
-  color: #253A5B;
-  font-size: 11px;
-  line-height: 1.8;
-}
-
-#home .v3-note-content strong {
-  display: block;
-  margin-bottom: 5px;
-  color: #557C9C;
-  font: 12px "Pixelify Sans", monospace;
-}
-
-#home .v3-note-stamp {
-  display: block;
-  margin-top: 8px;
-  color: #B68F9B;
-  font: 10px "Pixelify Sans", monospace;
-  text-align: right;
-}
-
-/* 프로그램 바로가기 작은 창 */
-#home .v3-shortcut-window {
-  position: relative;
-  z-index: 1;
-  margin: 12px 0 13px 7px;
-  border: 2px solid #8298A5;
-  background: #F5F0E8;
-  box-shadow: 4px 4px 0 #B3C3C9;
-}
-
-#home .v3-shortcut-title {
-  padding: 7px 9px;
-  background: linear-gradient(90deg, #456987, #9CB8CA);
-  color: white;
-  font: 11px "Pixelify Sans", monospace;
-}
-
-#home .v3-shortcut-body {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-  padding: 12px 9px;
-}
-
-#home .v3-shortcut {
-  min-width: 0;
-  padding: 9px 3px 7px;
-  border: 1px solid #9AADB6;
-  border-radius: 0;
-  background: #FFFDF7;
-  color: #253A5B;
-  box-shadow: 2px 2px 0 #C4CDCC;
-  font: 10px "Pixelify Sans", monospace;
-  text-align: center;
-  cursor: pointer;
-}
-
-#home .v3-shortcut span {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 23px;
-}
-
-#home .v3-shortcut:hover,
-#home .v3-shortcut.selected {
-  background: #E2EEF0;
-}
-
-/* 기존 홈 메뉴 위에 작은 파일 라벨 */
-#home .icon-grid {
-  position: relative;
-  padding-top: 16px;
-  border-top: 1px dashed #9AAEB6;
-}
-
-#home .icon-grid::before {
-  content: "♡ DESKTOP SHORTCUTS";
-  position: absolute;
-  top: -8px;
-  left: 8px;
-  padding: 0 6px;
-  background: #E9EBE8;
-  color: #698699;
-  font: 10px "Pixelify Sans", monospace;
-}
-
-/* 홈 메뉴에 더 촘촘한 픽셀 아이콘 느낌 */
-#home .icon-btn .symbol {
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 35px;
-  border: 1px solid #A0B4BA;
-  background: #FDFCF6;
-  box-shadow: 2px 2px #B8C6C7;
-}
-
-/* ==============================
-   02. CHARACTER 포토 앨범
-============================== */
-
-#characters .character-grid {
-  position: relative;
-  padding-top: 17px !important;
-}
-
-#characters .character-grid::before {
-  content: "✧ SELECT YOUR FAVORITE ✧";
-  position: absolute;
-  top: 0;
-  left: 4px;
-  color: #7D93A0;
-  font: 10px "Pixelify Sans", monospace;
-}
-
-#characters .character-card {
-  position: relative;
-  padding: 10px 9px 13px !important;
-  background: #FFFCF6 !important;
-}
-
-#characters .character-card::before {
-  content: "";
-  position: absolute;
-  top: -8px;
-  left: 35%;
-  width: 30%;
-  height: 15px;
-  background: rgba(211,190,157,.72);
-  transform: rotate(-3deg);
-  pointer-events: none;
-}
-
-#characters .character-card:nth-child(2)::before {
-  transform: rotate(5deg);
-}
-
-#characters .character-card::after {
-  content: "♡";
-  position: absolute;
-  right: 9px;
-  bottom: 9px;
-  color: #CFA3AE;
-  font-size: 15px;
-  pointer-events: none;
-}
-
-#characters .portrait {
-  border: 5px solid #FFFDF8 !important;
-  outline: 1px solid #B4C2C5;
-  box-shadow: 2px 2px #D1D2C9;
-}
-
-#characters .character-card strong {
-  margin-top: 12px !important;
-}
-
-#characters .character-card small {
-  display: inline-block;
-  margin-top: 5px;
-  padding: 3px 6px;
-  background: #E4EBE9;
-  font-family: "Pixelify Sans", monospace;
-}
-
-/* D-DAY를 작은 메모지처럼 */
-#characters .couple-dday {
-  position: relative;
-  margin: 22px 4px 12px !important;
-  background: #F5E8EA !important;
-  transform: rotate(-0.5deg);
-}
-
-#characters .couple-dday::before {
-  content: "♡";
-  position: absolute;
-  top: -15px;
-  right: 12px;
-  color: #BD8F9E;
-  font-size: 22px;
-}
-
-/* ==============================
-   03. FILE EXPLORER 디자인
-============================== */
-
-/* 페이지별 색상 포인트 */
-#letters {
-  --v3-accent: #D7AEB8;
-}
-
-#comics {
-  --v3-accent: #A8B8D1;
-}
-
-#stories {
-  --v3-accent: #B7C1A3;
-}
-
-#gallery {
-  --v3-accent: #A2BEC8;
-}
-
-#settings {
-  --v3-accent: #B7B4A6;
-}
-
-/* 각 메뉴 제목 아래 작은 정보 표시 */
-#letters .section-title,
-#comics .section-title,
-#stories .section-title,
-#gallery .section-title,
-#settings .section-title {
-  border-left: 6px solid var(--v3-accent) !important;
-  padding-bottom: 14px !important;
-}
-
-/* 폴더 창 장식 */
-#letters .section-title::before,
-#comics .section-title::before,
-#stories .section-title::before,
-#gallery .section-title::before,
-#settings .section-title::before {
-  content: "FILE / ARCHIVE";
-  position: absolute;
-  right: 10px;
-  bottom: 2px;
-  color: #91A1A7;
-  font: 8px "Pixelify Sans", monospace;
-}
-
-/* 목록 전체를 파일 탐색기처럼 */
-#letterList,
-#comicList,
-#storyList,
-#galleryList {
-  position: relative;
-  min-height: 140px;
-  padding: 14px 10px 10px;
-  border: 2px solid #8DA1AB;
-  background: #FFF9F0;
-  box-shadow: 3px 3px #B9C7CA;
-}
-
-#letterList::before,
-#comicList::before,
-#storyList::before,
-#galleryList::before {
-  content: "📁  NAME                          ♡";
-  display: block;
-  margin: -14px -10px 11px;
-  padding: 8px 10px;
-  border-bottom: 1px solid #9AAEB6;
-  background: #E5EAE8;
-  color: #55738A;
-  font: 10px "Pixelify Sans", monospace;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-/* 파일 항목 */
-#letters .chat-day,
-#letters .entry,
-#comics .entry,
-#stories .entry,
-#gallery .entry {
-  position: relative;
-  padding-left: 15px !important;
-  margin: 8px 0 !important;
-  border: 1px solid #A8B8BD !important;
-  box-shadow: 2px 2px #D2D9D7 !important;
-}
-
-/* 파일 선택 */
-#letters .chat-day:hover,
-#comics .entry:hover,
-#stories .entry:hover,
-#gallery .entry:hover {
-  outline: 1px dashed #557C9C;
-  outline-offset: -4px;
-}
-
-/* ==============================
-   04. SETTING 작은 컨트롤 패널
-============================== */
-
-#settings .entry {
-  position: relative;
-  padding: 14px 12px !important;
-  margin: 10px 0 !important;
-  text-align: left;
-}
-
-#settings .entry::after {
-  content: "▸";
-  position: absolute;
-  right: 12px;
-  color: #8098A4;
-}
-
-/* ==============================
-   05. 장식과 디테일
-============================== */
-
-/* 내부 윈도우 모서리에 작은 빛 */
-.desktop .window {
-  position: relative;
-}
-
-.desktop .window::after {
-  content: "✧";
-  position: absolute;
-  right: 30px;
-  top: 5px;
-  color: rgba(255,255,255,.75);
-  font-size: 11px;
-  pointer-events: none;
-}
-
-/* 이미지 파일 */
-.desktop .detail-image {
-  border: 4px solid #FFFDF7;
-  outline: 1px solid #9BAEB5;
-  box-shadow: 3px 3px #D3D8D4;
-}
-
-/* 본문 가독성 */
-.desktop .detail-text {
-  line-height: 1.95;
-}
-
-/* 클릭 가능한 항목에 손가락 커서 */
-.desktop button {
-  cursor: pointer;
-}
-
-/* 기존 미니 수족관 내부는 건드리지 않음 */
-
-/* ==============================
-   06. 모바일 대응
-============================== */
-
+/* 19. 모바일 */
 @media (max-width: 480px) {
-
-  #home .v3-note-window {
-    width: 88%;
-    margin-top: 0;
-    transform: rotate(.5deg);
+  body > .phone {
+    padding: 6px !important;
+    box-shadow:
+      inset 2px 2px #FFFFFF,
+      inset -2px -2px #8295A4 !important;
   }
 
-  #home .v3-shortcut-body {
-    gap: 6px;
-    padding: 9px 7px;
+  .phone .screen-frame {
+    padding: 4px !important;
   }
 
-  #home .v3-shortcut {
-    padding: 8px 2px;
-    font-size: 9px;
-  }
-
-  #home .v3-shortcut span {
-    font-size: 20px;
-  }
-
-  #characters .portrait {
-    height: 140px !important;
-  }
-
-  #characters .character-card {
+  .phone .desktop {
     padding: 7px !important;
   }
 
+  .phone .icon-grid {
+    gap: 6px !important;
+  }
+
+  .phone .icon-btn {
+    padding: 8px 3px !important;
+  }
 }
 
+/* 20. 접근성: 애니메이션 최소화 설정 */
 @media (prefers-reduced-motion: reduce) {
-  #home .v3-shortcut,
-  #characters .character-card {
+  .phone .icon-btn {
     transition: none !important;
   }
 }
 
 </style>
-
-<script>
-/* =========================================
-   HOME WINDOW COLLAGE
-   기존 페이지 이동 함수 그대로 사용
-========================================= */
-
-(function () {
-  const home = document.getElementById("home");
-
-  if (!home) return;
-
-  /* 중복 삽입 방지 */
-  if (document.getElementById("v3ShortcutWindow")) return;
-
-  const homeWindows = home.querySelectorAll(":scope > .window");
-  const videoWindow = homeWindows[0];
-  const aboutWindow = homeWindows[1];
-
-  if (!videoWindow) return;
-
-  /* 01. 영상 아래에 작은 메모 창 */
-  const note = document.createElement("div");
-  note.className = "v3-note-window";
-  note.id = "v3NoteWindow";
-
-  note.innerHTML = `
-    <div class="v3-note-title">
-      <span>📌 LITTLE_NOTE.txt</span>
-      <span>♡</span>
-    </div>
-
-    <div class="v3-note-content">
-      <strong>TO. OUR LITTLE WORLD</strong>
-
-      정혁과 홍윤재의 작은 기록들.<br>
-      이곳에 하나씩 모아둘게.
-
-      <span class="v3-note-stamp">
-        ✧ SAVED WITH LOVE ♡
-      </span>
-    </div>
-  `;
-
-  videoWindow.after(note);
-
-  /* 02. 바로가기 프로그램 창 */
-  const shortcutWindow = document.createElement("div");
-  shortcutWindow.className = "v3-shortcut-window";
-  shortcutWindow.id = "v3ShortcutWindow";
-
-  shortcutWindow.innerHTML = `
-    <div class="v3-shortcut-title">
-      📁 FAVORITE_FILES.exe
-    </div>
-
-    <div class="v3-shortcut-body">
-      <button
-        class="v3-shortcut"
-        type="button"
-        data-page="characters"
-      >
-        <span>🖼️</span>
-        PROFILE
-      </button>
-
-      <button
-        class="v3-shortcut"
-        type="button"
-        data-page="letters"
-      >
-        <span>💌</span>
-        LETTER
-      </button>
-
-      <button
-        class="v3-shortcut"
-        type="button"
-        data-page="gallery"
-      >
-        <span>📷</span>
-        ALBUM
-      </button>
-    </div>
-  `;
-
-  /* 기존 메뉴 위에 삽입 */
-  const iconGrid = home.querySelector(".icon-grid");
-
-  if (iconGrid) {
-    iconGrid.before(shortcutWindow);
-  } else {
-    note.after(shortcutWindow);
-  }
-
-  /* 기존 about 창은 그대로 유지 */
-  if (aboutWindow) {
-    aboutWindow.classList.add("v3-about-window");
-  }
-
-})();
-</script>
 
 </body>
 </html>
