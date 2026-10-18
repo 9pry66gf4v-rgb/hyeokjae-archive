@@ -8730,5 +8730,41 @@ body > .phone::before {
 
 </style>
    
+<style>
+/* ===== 바깥쪽 둥근 본체 제거 ===== */
+
+body > .phone {
+  background: transparent !important;
+  background-image: none !important;
+
+  border: none !important;
+  border-radius: 0 !important;
+
+  box-shadow: none !important;
+
+  padding: 10px 0 15px !important;
+}
+
+/* 본체 안쪽의 둥근 장식선 제거 */
+body > .phone::before,
+body > .phone::after {
+  display: none !important;
+}
+
+/* 안쪽 Windows 98 화면 테두리는 유지 */
+.phone .screen-frame {
+  border-radius: 2px !important;
+}
+
+/* 작은 화면에서도 둥근 본체가 생기지 않도록 */
+@media (max-width: 380px) {
+  body > .phone {
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 10px 0 15px !important;
+  }
+}
+</style>
+
 </body>
 </html>
