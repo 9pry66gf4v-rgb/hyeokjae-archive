@@ -9562,5 +9562,197 @@ body > .phone::after {
 })();
 </script>
 
+<!-- ===== HYEOKJAE PROFILE POLISH START ===== -->
+<style>
+
+/* 01. 프로필 전체를 하나의 스크랩북처럼 */
+#profile .hj-profile-ui {
+  --scrap-paper: #F8F3EB;
+  --scrap-line: #D3C9BC;
+  --scrap-ink: #253A5B;
+}
+
+#profile .hj-profile-window {
+  margin-bottom: 0 !important;
+  border: 2px solid #8D9188 !important;
+  border-bottom: 0 !important;
+  background: #F8F3EB !important;
+  box-shadow: none !important;
+}
+
+/* 새 프로필과 기존 상세 정보의 배경 통일 */
+#profile .hj-profile-inner {
+  padding-bottom: 16px !important;
+  background-color: #F8F3EB !important;
+}
+
+/* 사진과 메모 카드의 그림자를 조금 부드럽게 */
+#profile .hj-photo-wrap {
+  box-shadow:
+    2px 3px 0 #D1C8BC,
+    3px 5px 8px rgba(37,58,91,0.08) !important;
+}
+
+#profile .hj-info-panel {
+  border-color: #D0C7BB !important;
+  box-shadow: 2px 2px 0 #E0D8CD !important;
+}
+
+/* 02. MORE INFO 버튼을 섹션 연결부로 */
+#profile .hj-more-btn {
+  position: relative;
+  width: 100%;
+  margin: 15px 0 0 !important;
+  padding: 11px 12px !important;
+
+  border: 1px dashed #B8B0A5 !important;
+  border-radius: 0 !important;
+
+  background: #EEE8DE !important;
+  color: #253A5B !important;
+
+  box-shadow: none !important;
+  font: 12px "Pixelify Sans", monospace !important;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+}
+
+#profile .hj-more-btn:hover {
+  background: #E8E9DE !important;
+}
+
+#profile .hj-more-btn:active {
+  transform: none !important;
+}
+
+/* 03. 기존 상세 프로필을 아래쪽 메모지로 연결 */
+#profile .hj-original-detail.hj-open {
+  display: block !important;
+  position: relative;
+
+  margin: 0 !important;
+  padding: 12px 12px 16px !important;
+
+  border: 2px solid #8D9188 !important;
+  border-top: 0 !important;
+  border-radius: 0 !important;
+
+  background: #F8F3EB !important;
+  box-shadow: none !important;
+}
+
+/* 기존 윈도우의 진한 타이틀바를 연한 라벨로 */
+#profile .hj-original-detail .window-head {
+  display: flex;
+  align-items: center;
+
+  margin: 0 0 10px !important;
+  padding: 8px 10px !important;
+
+  border: 1px solid #D3C9BC !important;
+  border-radius: 0 !important;
+
+  background: #E8E9DE !important;
+  background-image: none !important;
+  color: #253A5B !important;
+
+  box-shadow: none !important;
+  text-shadow: none !important;
+
+  font-size: 11px !important;
+}
+
+/* 기존 상세 정보 본문 */
+#profile .hj-original-detail .window-content,
+#profile .hj-original-detail .window-body {
+  padding: 14px 13px !important;
+
+  border: 1px solid #D3C9BC !important;
+  border-radius: 0 !important;
+
+  background: #FFFCF6 !important;
+  background-image: none !important;
+
+  color: #253A5B !important;
+  box-shadow: 2px 2px 0 #E0D8CD !important;
+
+  font-size: 11px !important;
+  line-height: 2 !important;
+  overflow-wrap: anywhere;
+}
+
+/* 기존 텍스트의 문단 간격을 정돈 */
+#profile .hj-original-detail p {
+  margin: 0 0 10px;
+  line-height: 1.9;
+}
+
+/* 기존 프로필에 이미지가 있을 경우 자연스럽게 */
+#profile .hj-original-detail img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 04. 상세 정보를 펼쳤을 때 아래쪽 장식 */
+#profile .hj-original-detail.hj-open::after {
+  content: "♡ END OF FILE ♡";
+  display: block;
+  margin: 17px 0 2px;
+  text-align: center;
+
+  color: #A0A89A;
+  font: 10px "Pixelify Sans", monospace;
+  letter-spacing: 1px;
+}
+
+/* 작은 화면에서도 여백 유지 */
+@media (max-width: 380px) {
+  #profile .hj-original-detail.hj-open {
+    padding: 9px 9px 13px !important;
+  }
+
+  #profile .hj-original-detail .window-content,
+  #profile .hj-original-detail .window-body {
+    padding: 11px 10px !important;
+  }
+}
+
+</style>
+
+<script>
+/* 기존 MORE INFO 버튼의 문구만 변경.
+   프로필을 다시 열어도 정상 적용되도록 감시 */
+(function () {
+  const profile = document.getElementById("profile");
+  if (!profile) return;
+
+  function updateProfileButton() {
+    const button = profile.querySelector(".hj-more-btn");
+    const detail = profile.querySelector(".hj-original-detail");
+
+    if (!button || !detail) return;
+
+    const isOpen = detail.classList.contains("hj-open");
+
+    button.textContent = isOpen
+      ? "♡ CLOSE MY NOTES ▲"
+      : "♡ MORE ABOUT ME ▼";
+
+    button.setAttribute("aria-expanded", String(isOpen));
+  }
+
+  const observer = new MutationObserver(updateProfileButton);
+
+  observer.observe(profile, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ["class"]
+  });
+
+  updateProfileButton();
+})();
+</script>
+
 </body>
 </html>
