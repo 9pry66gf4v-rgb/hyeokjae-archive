@@ -9972,5 +9972,340 @@ body > .phone::after {
 
 </style>
 
+<!-- ===== HYEOKJAE HOME DESKTOP A START ===== -->
+
+<style>
+/* ======================================
+   HYEOKJAE HOME — DESKTOP TYPE A
+   기존 콘텐츠 재배치 전용
+====================================== */
+
+/* 홈 전체 */
+#home {
+  --home-ink: #253A5B;
+  --home-line: #8298A5;
+  --home-paper: #FFF9F0;
+  --home-blue: #6687A4;
+}
+
+/* 홈 상단 타이틀 */
+#home > .hero {
+  margin: 5px 0 14px !important;
+  padding: 11px 5px !important;
+  border: 1px dashed #9DAFB7;
+  background: #F6F2E9 !important;
+  color: #253A5B !important;
+  font-size: 21px !important;
+  line-height: 1.15 !important;
+  text-shadow: 1px 1px white !important;
+}
+
+#home > .hero small {
+  margin-top: 5px !important;
+  color: #718596 !important;
+  font-size: 10px !important;
+}
+
+/* 영상 + 메뉴의 2단 구성 */
+#home .hj-home-desktop-layout {
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.35fr)
+    minmax(0, 1fr);
+  align-items: start;
+  gap: 8px;
+  margin: 0 0 14px;
+}
+
+/* 왼쪽 영상 영역 */
+#home .hj-home-video-column {
+  min-width: 0;
+}
+
+#home .hj-home-video-column > .window {
+  width: 100%;
+  margin: 0 !important;
+  border: 2px solid #8298A5 !important;
+  border-radius: 0 !important;
+  background: #FFF9F0 !important;
+  box-shadow: 3px 3px #B5C3C6 !important;
+}
+
+/* 영상 창 타이틀 */
+#home .hj-home-video-column .window-head {
+  gap: 4px;
+  padding: 7px 6px !important;
+  background: linear-gradient(
+    90deg,
+    #456987,
+    #9CB8CA
+  ) !important;
+  color: white !important;
+  border-bottom: 1px solid #718596 !important;
+  border-radius: 0 !important;
+  font-size: 10px !important;
+}
+
+#home .hj-home-video-column .window-head span:first-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 영상 콘텐츠 */
+#home .hj-home-video-column .window-content {
+  padding: 6px !important;
+  background: #FFF9F0 !important;
+}
+
+/* 영상 플레이어 */
+#home .hj-home-video-column .video-wrap {
+  overflow: hidden;
+  border: 1px solid #9BAEB6 !important;
+  border-radius: 0 !important;
+  background: #DCE7EA !important;
+}
+
+#home .hj-home-video-column video {
+  width: 100% !important;
+  max-height: 185px !important;
+  object-fit: contain;
+}
+
+/* 기존 플레이어를 작은 공간에 맞게 */
+#home .hj-home-video-column .archive-player {
+  min-width: 0;
+  width: 100%;
+  margin-top: 6px;
+  padding: 5px !important;
+  border-radius: 0 !important;
+}
+
+#home .hj-home-video-column .archive-player-title {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 6px;
+  font-size: 9px !important;
+}
+
+#home .hj-home-video-column .archive-player-progress {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  gap: 3px;
+}
+
+#home .hj-home-video-column .archive-player-progress input {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
+
+#home .hj-home-video-column
+.archive-player-progress span {
+  font-size: 9px !important;
+  white-space: nowrap;
+}
+
+#home .hj-home-video-column .archive-player-buttons {
+  gap: 5px;
+}
+
+/* 오른쪽 메뉴 영역 */
+#home .hj-home-menu-column {
+  min-width: 0;
+}
+
+/* 기존 6개 메뉴를 2열 × 3행으로 */
+#home .hj-home-menu-column .icon-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 6px !important;
+  margin: 0 !important;
+}
+
+/* 작은 데스크톱 아이콘 */
+#home .hj-home-menu-column .icon-btn {
+  position: relative;
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px !important;
+
+  min-width: 0;
+  min-height: 75px;
+  padding: 8px 2px !important;
+
+  border: 1px solid #8C9FAA !important;
+  border-radius: 0 !important;
+
+  background: #FFF9F0 !important;
+  color: #253A5B !important;
+
+  box-shadow:
+    inset 1px 1px white,
+    2px 2px #B5C3C6 !important;
+
+  font-family: "Pixelify Sans", monospace;
+  font-size: 9px !important;
+  letter-spacing: 0 !important;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+/* 아이콘 자체 */
+#home .hj-home-menu-column .icon-btn .symbol {
+  display: grid;
+  place-items: center;
+  width: 37px;
+  height: 33px;
+  border: 1px solid #D2DDDE;
+  background: #F2F6F2;
+  font-size: 22px !important;
+  line-height: 1;
+}
+
+/* 메뉴별 은은한 색 차이 */
+#home .hj-home-menu-column
+.icon-btn:nth-child(2) .symbol,
+#home .hj-home-menu-column
+.icon-btn:nth-child(5) .symbol {
+  background: #F7E8EC;
+}
+
+#home .hj-home-menu-column
+.icon-btn:nth-child(3) .symbol,
+#home .hj-home-menu-column
+.icon-btn:nth-child(6) .symbol {
+  background: #E6EDF2;
+}
+
+/* 선택된 메뉴 */
+#home .hj-home-menu-column .icon-btn:hover,
+#home .hj-home-menu-column .icon-btn.selected {
+  background: #DDE9ED !important;
+  outline: 1px dashed #6687A4;
+  outline-offset: -4px;
+}
+
+/* about.txt는 기존 내용을 그대로 유지 */
+#home > .window {
+  margin: 11px 0 !important;
+  border: 2px solid #8298A5 !important;
+  border-radius: 0 !important;
+  background: #FFF9F0 !important;
+  box-shadow: 3px 3px #B5C3C6 !important;
+}
+
+#home > .window .window-head {
+  background: #DDE8E8 !important;
+  color: #253A5B !important;
+  border-radius: 0 !important;
+  font-size: 11px !important;
+}
+
+#home > .window .window-content {
+  background: #FFF9F0 !important;
+  color: #253A5B !important;
+  padding: 11px !important;
+  line-height: 1.8;
+}
+
+/* 수족관은 기존 기능·배치 유지 */
+#home > #hyeokMiniAqua {
+  margin-top: 13px;
+}
+
+/* 작은 휴대폰에서도 2열 유지 */
+@media (max-width: 380px) {
+  #home .hj-home-desktop-layout {
+    grid-template-columns:
+      minmax(0, 1.2fr)
+      minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  #home .hj-home-menu-column .icon-grid {
+    gap: 5px !important;
+  }
+
+  #home .hj-home-menu-column .icon-btn {
+    min-height: 68px;
+    padding: 5px 1px !important;
+    font-size: 8px !important;
+  }
+
+  #home .hj-home-menu-column .icon-btn .symbol {
+    width: 31px;
+    height: 30px;
+    font-size: 19px !important;
+  }
+
+  #home .hj-home-video-column .window-content {
+    padding: 4px !important;
+  }
+}
+
+</style>
+
+<script>
+/* ======================================
+   HOME A형 구조 적용
+   기존 영상·메뉴를 복제하지 않고 이동
+====================================== */
+
+(function () {
+  const home = document.getElementById("home");
+
+  if (!home) return;
+
+  // 이미 적용됐다면 중복 실행하지 않음
+  if (home.querySelector(".hj-home-desktop-layout")) {
+    return;
+  }
+
+  // 현재 홈의 실제 영상 창과 메뉴 찾기
+  const videoWindow = Array.from(home.children)
+    .find(element =>
+      element.classList.contains("window") &&
+      element.querySelector("#introVideo")
+    );
+
+  const iconGrid = Array.from(home.children)
+    .find(element =>
+      element.classList.contains("icon-grid")
+    );
+
+  // 기존 구조가 다르면 아무것도 변경하지 않음
+  if (!videoWindow || !iconGrid) return;
+
+  // 2단 레이아웃 생성
+  const layout = document.createElement("div");
+  layout.className = "hj-home-desktop-layout";
+
+  const videoColumn = document.createElement("div");
+  videoColumn.className = "hj-home-video-column";
+
+  const menuColumn = document.createElement("div");
+  menuColumn.className = "hj-home-menu-column";
+
+  // 기존 영상 창이 있던 위치에 레이아웃 삽입
+  videoWindow.before(layout);
+
+  layout.append(videoColumn, menuColumn);
+
+  // 실제 기존 요소를 이동
+  // 새 영상이나 새 메뉴를 만들지 않음
+  videoColumn.appendChild(videoWindow);
+  menuColumn.appendChild(iconGrid);
+
+  // 기존 클릭 이벤트는 그대로 유지됨
+  // 기존 video id 및 메뉴 data-page도 유지됨
+
+})();
+</script>
+
 </body>
 </html>
