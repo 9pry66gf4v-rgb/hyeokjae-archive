@@ -9562,412 +9562,496 @@ body > .phone::after {
 })();
 </script>
 
-<!-- ===== HYEOKJAE KITSCH DESKTOP V1 START ===== -->
-<style>
 
-/* ========================================
-   HYEOKJAE ARCHIVE
-   KITSCH WINDOWS 98 DESKTOP
-   ======================================== */
+<!-- ===== HYEOKJAE KITSCH DESKTOP V2 START ===== -->
+<style>
+/* ==========================================
+   HYEOKJAE ARCHIVE — KITSCH DESKTOP V2
+   Windows 98 + Scrapbook + Tamagotchi
+   ========================================== */
 
 :root {
-  --hk-blue: #6687A4;
-  --hk-deep: #253A5B;
-  --hk-sky: #A8BDD0;
-  --hk-paper: #FFF9EF;
+  --hk-ink: #253A5B;
+  --hk-blue: #537999;
+  --hk-lightblue: #A9C1D1;
+  --hk-paper: #FFF9F0;
   --hk-gray: #D6D0C7;
-  --hk-border: #718596;
-  --hk-pink: #E9C8CE;
+  --hk-line: #7C91A0;
+  --hk-pink: #EBCDD2;
   --hk-olive: #929B80;
 }
 
-/* 01. 전체 배경: 블루 픽셀 도트 */
-html,
-body {
-  background-color: #86A5BF !important;
+/* 바깥쪽 둥근 다마고치 케이스 제거 */
+html, body {
+  background: #91ACC2 !important;
   background-image:
-    radial-gradient(
-      rgba(255,255,255,.42) 0.8px,
-      transparent 0.8px
-    ),
-    linear-gradient(
-      135deg,
-      #7999B5,
-      #A9BFD0
-    ) !important;
-  background-size: 9px 9px, cover !important;
+    radial-gradient(#DCE8ED 0.8px, transparent 0.8px) !important;
+  background-size: 9px 9px !important;
 }
 
-/* 02. 기존 다마고치 본체를 데스크톱 창처럼 */
-body > .phone {
-  background: #D6D0C7 !important;
-  background-image: none !important;
-  border: 3px solid #536F87 !important;
+.phone {
+  width: min(100%, 520px) !important;
+  padding: 10px !important;
+  border: 3px solid #536D7F !important;
   border-radius: 0 !important;
-  padding: 9px !important;
+  background: #D6D0C7 !important;
   box-shadow:
     inset 2px 2px #FFFFFF,
-    inset -2px -2px #8295A4,
-    6px 6px 0 rgba(37,58,91,.25) !important;
+    inset -2px -2px #929A99,
+    5px 6px 0 #536D7F55 !important;
 }
 
-body > .phone::before,
-body > .phone::after {
+.phone::before,
+.phone::after {
   display: none !important;
 }
 
-/* 03. 상단 로고 */
-.phone .top-deco {
-  color: #253A5B !important;
-  letter-spacing: 2px !important;
+/* 기존 상단 장식은 작은 상태 라벨로 */
+.top-deco {
+  height: auto !important;
+  padding: 3px !important;
+  color: #537999 !important;
+  font-size: 11px !important;
+  letter-spacing: 3px !important;
 }
 
-.phone .brand {
-  margin: 7px 0 12px !important;
-  padding: 12px 8px !important;
-  border: 2px solid #718596 !important;
-  background:
-    linear-gradient(
-      135deg,
-      #F4F1E9,
-      #DCE8EC
-    ) !important;
-  box-shadow:
-    inset 2px 2px #FFFFFF,
-    2px 2px #9EAAB0 !important;
+.brand {
+  margin: 5px 0 9px !important;
+  padding: 10px 6px !important;
+  border: 2px solid #7C91A0 !important;
+  background: #F4F0E8 !important;
+  box-shadow: inset 2px 2px #FFFFFF !important;
 }
 
-.phone .brand-title {
+.brand-title {
   color: #253A5B !important;
   font-family: "Pixelify Sans", monospace !important;
-  font-weight: 700 !important;
-  text-shadow: 2px 2px #FFFFFF !important;
+  font-size: 20px !important;
+  text-shadow: 2px 2px #D2E1E8 !important;
 }
 
-.phone .brand-sub {
-  color: #6687A4 !important;
+.brand-sub {
+  color: #728D9E !important;
+  font-size: 10px !important;
 }
 
-/* 04. 모니터 외곽 */
-.phone .screen-frame {
+/* 메인 윈도우 */
+.screen-frame {
   padding: 5px !important;
-  border: 3px solid #718596 !important;
+  border: 2px solid #8798A0 !important;
   border-radius: 0 !important;
-  background: #D6D0C7 !important;
-  box-shadow:
-    inset 2px 2px #FFFFFF,
-    inset -2px -2px #8295A4 !important;
+  background: #E6E2DA !important;
+  box-shadow: inset 2px 2px white !important;
 }
 
-.phone .screen {
-  border: 2px solid #536F87 !important;
+.screen {
+  border: 2px solid #536D7F !important;
   border-radius: 0 !important;
-  background: #F4EEE7 !important;
+  background: #F5F0E8 !important;
 }
 
-/* 05. 메인 Windows 타이틀바 */
-.phone .screen > .titlebar {
-  background:
-    linear-gradient(
-      90deg,
-      #253A5B,
-      #6687A4
-    ) !important;
-  border-bottom: 2px solid #536F87 !important;
-  color: #FFFFFF !important;
+.titlebar {
+  min-height: 30px !important;
   padding: 6px 8px !important;
-  font-family: "Pixelify Sans", monospace !important;
-  letter-spacing: .5px !important;
+  background: linear-gradient(
+    90deg, #253A5B, #7195B0
+  ) !important;
+  border-bottom: 2px solid #536D7F !important;
+  color: white !important;
 }
 
-/* 창 닫기 버튼 */
-.phone .window-buttons span {
-  background: #E4E0D9 !important;
-  border: 1px solid #596A77 !important;
+.window-buttons span {
   border-radius: 0 !important;
+  background: #E8E4DC !important;
   color: #253A5B !important;
-  box-shadow:
-    inset 1px 1px #FFFFFF,
-    inset -1px -1px #8A9295 !important;
+  border: 1px solid #637585 !important;
+  box-shadow: inset 1px 1px white !important;
 }
 
-/* 06. File Edit View 메뉴 */
-.phone .menubar {
-  background: #E7E2D9 !important;
-  border-bottom: 2px solid #B0B7B7 !important;
+.menubar {
+  gap: 17px !important;
+  padding: 7px 10px !important;
+  background: #E5E0D8 !important;
+  border-bottom: 1px solid #9BAAB2 !important;
   color: #253A5B !important;
-  padding: 8px 10px !important;
 }
 
-/* 07. 데스크톱 배경 */
-.phone .desktop {
-  background-color: #E8E8E1 !important;
+/* 내부 화면: 촘촘한 도트 종이 */
+.desktop {
+  height: 620px !important;
+  padding: 12px !important;
+  background-color: #E9EBE8 !important;
   background-image:
-    radial-gradient(
-      #C5CED0 0.8px,
-      transparent 0.8px
-    ) !important;
+    radial-gradient(#C4D0D3 0.7px, transparent 0.7px) !important;
   background-size: 8px 8px !important;
-  padding: 10px !important;
   color: #253A5B !important;
 }
 
-/* 08. 모든 내부 창 */
-.phone .desktop .window {
-  position: relative;
-  margin-bottom: 12px !important;
-  border: 2px solid #718596 !important;
+/* 내부 모든 창 */
+.desktop .window {
+  margin-bottom: 13px !important;
+  border: 2px solid #7C91A0 !important;
   border-radius: 0 !important;
-  background: #FFF9EF !important;
-  box-shadow:
-    inset 1px 1px #FFFFFF,
-    3px 3px 0 #A0AEB6 !important;
+  background: #FFF9F0 !important;
+  box-shadow: 3px 3px 0 #AAB9BE !important;
 }
 
-/* 내부 창 제목 */
-.phone .desktop .window-head {
-  padding: 6px 9px !important;
-  border-bottom: 2px solid #718596 !important;
+.desktop .window-head {
+  padding: 7px 9px !important;
   border-radius: 0 !important;
-  background:
-    linear-gradient(
-      90deg,
-      #456987,
-      #A0B8CB
-    ) !important;
+  border-bottom: 2px solid #7C91A0 !important;
+  background: linear-gradient(
+    90deg, #456987, #9CB8CA
+  ) !important;
   color: #FFFFFF !important;
-  font-family: "Pixelify Sans", monospace !important;
-  font-size: 12px !important;
+  font: 12px "Pixelify Sans", monospace !important;
   text-shadow: 1px 1px #253A5B !important;
 }
 
-/* 내부 창 콘텐츠 */
-.phone .desktop .window-content,
-.phone .desktop .window-body {
-  background: #FFF9EF !important;
+.desktop .window-content {
+  padding: 11px !important;
+  background: #FFF9F0 !important;
   color: #253A5B !important;
 }
 
-/* 09. 홈 타이틀 */
-.phone .desktop .hero {
+/* 홈 타이틀 */
+#home .hero {
   position: relative;
-  margin: 5px 0 12px !important;
-  padding: 14px 10px !important;
-  border: 2px solid #8AA2B2 !important;
+  margin: 4px 0 14px !important;
+  padding: 18px 10px !important;
+  border: 2px solid #8BA4B3 !important;
   border-radius: 0 !important;
-  background:
-    linear-gradient(
-      135deg,
-      #F8F6EF,
-      #DCE8EA
-    ) !important;
+  background: linear-gradient(
+    140deg, #F9F6EE, #D9E8EB
+  ) !important;
   color: #253A5B !important;
-  box-shadow: 2px 3px #B1C0C5 !important;
+  box-shadow: 3px 3px #B6C4C7 !important;
 }
 
-.phone .desktop .hero::after {
-  content: "✧  ♡  ✧";
+#home .hero::before {
+  content: "🐟";
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  font-size: 19px;
+}
+
+#home .hero::after {
+  content: "✧ ♡ ✧";
   position: absolute;
   right: 10px;
-  top: 7px;
-  color: #B3C5D0;
-  font-size: 12px;
-  letter-spacing: 5px;
-  pointer-events: none;
+  top: 8px;
+  font-size: 11px;
+  color: #A3B6C1;
 }
 
-.phone .desktop .hero small {
-  color: #718596 !important;
+#home .hero small {
+  color: #7893A1 !important;
 }
 
-/* 10. 홈 아이콘 그리드 */
-.phone .icon-grid {
-  gap: 7px !important;
-  margin: 10px 0 14px !important;
-}
-
-/* 메뉴 버튼 */
-.phone .icon-btn {
-  position: relative;
-  min-width: 0;
-  padding: 9px 4px !important;
-  border: 2px solid #718596 !important;
+/* 메인 영상 */
+#home .video-wrap {
+  border: 2px solid #8BA4B3 !important;
   border-radius: 0 !important;
-  background:
-    linear-gradient(
-      145deg,
-      #FFFCF6,
-      #DDE8E5
-    ) !important;
+  background: #E3E7E5 !important;
+}
+
+#home video {
+  max-height: 270px;
+  background: #E3E7E5 !important;
+}
+
+/* 홈 메뉴: 작은 프로그램 바로가기 */
+#home .icon-grid {
+  gap: 8px !important;
+  margin: 14px 0 !important;
+}
+
+#home .icon-btn {
+  position: relative;
+  min-height: 83px;
+  padding: 9px 4px !important;
+  border: 2px solid #7C91A0 !important;
+  border-radius: 0 !important;
+  background: #F6F5ED !important;
   color: #253A5B !important;
   box-shadow:
-    inset 2px 2px #FFFFFF,
-    inset -2px -2px #A2B2B5,
-    2px 2px #9CA9AB !important;
-  transition: transform .12s, box-shadow .12s;
+    inset 2px 2px white,
+    inset -2px -2px #B7C4C5,
+    2px 2px #A4B3B9 !important;
 }
 
-.phone .icon-btn:hover {
-  background:
-    linear-gradient(
-      145deg,
-      #FDF7EC,
-      #CEDFEA
-    ) !important;
+#home .icon-btn:nth-child(2),
+#home .icon-btn:nth-child(5) {
+  background: #F5E9EA !important;
 }
 
-.phone .icon-btn:active {
-  transform: translate(2px,2px);
-  box-shadow:
-    inset 2px 2px #9CA9AB !important;
+#home .icon-btn:nth-child(3),
+#home .icon-btn:nth-child(6) {
+  background: #E9EFE8 !important;
 }
 
-/* 아이콘 모서리 장식 */
-.phone .icon-btn::after {
+#home .icon-btn::after {
   content: "✧";
   position: absolute;
-  right: 5px;
-  top: 3px;
-  color: #B1C4CC;
-  font-size: 10px;
-  pointer-events: none;
+  top: 4px;
+  right: 6px;
+  color: #A6B8C2;
+  font-size: 12px;
 }
 
-.phone .icon-btn:nth-child(2n)::after {
+#home .icon-btn:nth-child(even)::after {
   content: "♡";
-  color: #D7ABB7;
+  color: #CBA2AD;
 }
 
-.phone .icon-btn:nth-child(3n)::after {
-  content: "✿";
-  color: #929B80;
+#home .icon-btn .symbol {
+  font-size: 25px;
 }
 
-/* 11. 기존 카드 */
-.phone .desktop .card {
+#home .icon-btn:hover,
+#home .icon-btn.selected {
+  background: #DCE8EE !important;
+  outline: 1px dashed #253A5B;
+  outline-offset: -5px;
+}
+
+/* 각 페이지의 제목을 Windows 파일 헤더처럼 */
+.desktop .section-title {
+  position: relative;
+  margin: 2px 0 13px !important;
+  padding: 10px 12px !important;
+  border: 2px solid #7C91A0 !important;
   border-radius: 0 !important;
-  border-color: #9DADB5 !important;
-  background: #FFF9EF !important;
-  box-shadow: 2px 2px 0 #CCD1CD !important;
-}
-
-/* 12. 일반 버튼 */
-.phone .desktop button:not(.icon-btn):not(.hj-more-btn) {
-  border-radius: 0;
-}
-
-/* 13. 스크롤바 */
-.phone .desktop::-webkit-scrollbar {
-  width: 11px;
-}
-
-.phone .desktop::-webkit-scrollbar-track {
-  background: #E7E2D9;
-  border-left: 1px solid #9DA9AE;
-}
-
-.phone .desktop::-webkit-scrollbar-thumb {
-  background: #A2B7C4;
-  border: 2px solid #E7E2D9;
-}
-
-/* 14. 상태 표시줄 */
-.phone .taskbar {
-  background: #E7E2D9 !important;
-  border-top: 2px solid #718596 !important;
-  border-radius: 0 !important;
+  background: linear-gradient(
+    90deg, #E4EDF0, #FFF9F0
+  ) !important;
   color: #253A5B !important;
-  box-shadow: inset 0 1px #FFFFFF !important;
+  box-shadow: 3px 3px #B6C4C7 !important;
+  font-size: 17px !important;
+  text-align: left !important;
 }
 
-/* 15. 프로필 디자인과 전체 컬러 연결 */
+.desktop .section-title::after {
+  content: "♡";
+  position: absolute;
+  right: 12px;
+  top: 9px;
+  color: #B88D9C;
+}
+
+/* 캐릭터 선택: 포토 카드 */
+#characters .character-grid {
+  gap: 12px !important;
+  padding: 4px 2px 8px;
+}
+
+#characters .character-card {
+  padding: 9px !important;
+  border: 2px solid #7C91A0 !important;
+  border-radius: 0 !important;
+  background: #FFF9F0 !important;
+  color: #253A5B !important;
+  box-shadow: 3px 4px #B1C0C4 !important;
+}
+
+#characters .character-card:nth-child(2) {
+  transform: rotate(1deg);
+}
+
+#characters .character-card:first-child {
+  transform: rotate(-1deg);
+}
+
+#characters .portrait {
+  height: 175px !important;
+  border: 1px solid #B3C1C6 !important;
+  border-radius: 0 !important;
+  background: #E6E8E5 !important;
+}
+
+#characters .character-card strong {
+  color: #253A5B !important;
+}
+
+#characters .character-card small {
+  color: #71899B !important;
+}
+
+/* D-DAY도 다른 창과 어울리도록 */
+#characters .couple-dday {
+  border: 2px solid #7C91A0 !important;
+  border-radius: 0 !important;
+  background: #F5E9EA !important;
+  box-shadow: 3px 3px #B6C4C7 !important;
+}
+
+#characters .dday-number {
+  color: #253A5B !important;
+}
+
+/* 편지/만화/스토리/갤러리 목록 */
+#letters .chat-day,
+#letters .entry,
+#comics .entry,
+#stories .entry,
+#gallery .entry {
+  width: 100%;
+  margin: 9px 0 !important;
+  padding: 13px 12px !important;
+  border: 2px solid #8A9FAB !important;
+  border-radius: 0 !important;
+  background: #FFF9F0 !important;
+  color: #253A5B !important;
+  box-shadow: 3px 3px #B5C2C6 !important;
+  text-align: left;
+}
+
+#letters .chat-day:nth-child(even),
+#stories .entry:nth-child(even) {
+  background: #F5E9EA !important;
+}
+
+#comics .entry:nth-child(even),
+#gallery .entry:nth-child(even) {
+  background: #E8EFEA !important;
+}
+
+/* 빈 폴더도 프로그램 창처럼 */
+#letters .empty,
+#comics .empty,
+#stories .empty,
+#gallery .empty {
+  padding: 32px 12px !important;
+  border: 2px dashed #A3B4BA;
+  background: #FFF9F0 !important;
+  color: #71899B !important;
+}
+
+/* 검색창 */
+#letters .chat-search {
+  border: 2px solid #8A9FAB !important;
+  border-radius: 0 !important;
+  background: #FFFDF7 !important;
+  color: #253A5B !important;
+}
+
+/* 편지 상세 채팅: 윈도우 메신저 느낌 */
+#letterDetail .chat-bubble {
+  border: 1px solid #A7B9C0 !important;
+  border-radius: 2px !important;
+  background: #E5EFF1 !important;
+  color: #253A5B !important;
+}
+
+#letterDetail .jh .chat-bubble {
+  background: #F5E4E8 !important;
+}
+
+#letterDetail .chat-date {
+  border-radius: 0 !important;
+  background: #DDE7E7 !important;
+  color: #253A5B !important;
+}
+
+/* 상세 문서 */
+#letterDetail .detail-text,
+#recordDetail .detail-text,
+#recordDetail .window-content {
+  color: #253A5B !important;
+  line-height: 1.9;
+}
+
+#recordDetail .detail-image {
+  border: 5px solid #FFFDF7;
+  outline: 1px solid #9DAEB5;
+  box-shadow: 3px 3px #CBD1CD;
+}
+
+/* 설정 화면 */
+#settings .entry {
+  border: 2px solid #7C91A0 !important;
+  border-radius: 0 !important;
+  background: #F3F1E9 !important;
+  color: #253A5B !important;
+  box-shadow:
+    inset 2px 2px white,
+    2px 2px #B2C1C5 !important;
+}
+
+#settings .entry:nth-of-type(even) {
+  background: #E8EEF0 !important;
+}
+
+#settings .empty {
+  margin-top: 15px;
+  padding: 14px;
+  border: 1px dashed #A3B4BA;
+  background: #FFF9F0;
+  color: #72899A !important;
+}
+
+/* 뒤로 가기 */
+.desktop .back {
+  padding: 7px 12px !important;
+  border: 2px solid #7C91A0 !important;
+  border-radius: 0 !important;
+  background: #E7E5DD !important;
+  color: #253A5B !important;
+  box-shadow: 2px 2px #B6C4C7 !important;
+}
+
+/* 프로필은 기존 폴라로이드 구성 보존 */
 #profile .hj-profile-window {
-  border-color: #718596 !important;
+  border-color: #7C91A0 !important;
 }
 
 #profile .hj-profile-bar {
-  background:
-    linear-gradient(
-      90deg,
-      #456987,
-      #A0B8CB
-    ) !important;
+  background: linear-gradient(
+    90deg, #456987, #9CB8CA
+  ) !important;
 }
 
-#profile .hj-profile-inner {
-  background-color: #F8F3EB !important;
-}
-
-/* 16. 작은 스티커 디테일 */
-#profile .hj-name-tag {
-  background: #E0E9E4 !important;
-  border-color: #A3B5B0 !important;
-}
-
-#profile .hj-profile-online {
-  background: #F3DFE3 !important;
-}
-
-/* 17. 하단 조작 버튼은 기존 기능 유지 */
-.phone .controls button,
-.phone .control-btn {
-  border-radius: 2px !important;
-  border: 2px solid #718596 !important;
-  background:
-    linear-gradient(
-      #FFFDF7,
-      #D6D0C7
-    ) !important;
+/* 상태 표시줄 */
+.taskbar {
+  padding: 7px 9px !important;
+  border-top: 2px solid #7C91A0 !important;
+  background: #E5E0D8 !important;
   color: #253A5B !important;
-  box-shadow:
-    inset 2px 2px #FFFFFF,
-    inset -2px -2px #A0A6A7,
-    2px 2px #9AA6A9 !important;
 }
 
-.phone .controls button:active,
-.phone .control-btn:active {
-  transform: translateY(2px);
-  box-shadow: inset 2px 2px #A0A6A7 !important;
-}
-
-/* 18. 바깥 장식 */
-.phone .footer {
+/* 하단 다마고치 버튼은 사각형 유지 */
+.retro-key {
+  border-radius: 3px !important;
+  border-color: #8999A0 !important;
+  background: linear-gradient(
+    #FFFDF7, #D6D0C7
+  ) !important;
   color: #253A5B !important;
-  font-family: "Pixelify Sans", monospace !important;
-  letter-spacing: 1px !important;
 }
 
-/* 19. 모바일 */
+/* 모바일 */
 @media (max-width: 480px) {
-  body > .phone {
+  body {
+    padding: 5px !important;
+  }
+
+  .phone {
     padding: 6px !important;
-    box-shadow:
-      inset 2px 2px #FFFFFF,
-      inset -2px -2px #8295A4 !important;
   }
 
-  .phone .screen-frame {
-    padding: 4px !important;
+  .desktop {
+    height: min(70dvh, 620px) !important;
+    min-height: 360px;
+    padding: 8px !important;
   }
 
-  .phone .desktop {
-    padding: 7px !important;
+  #characters .portrait {
+    height: 135px !important;
   }
 
-  .phone .icon-grid {
-    gap: 6px !important;
-  }
-
-  .phone .icon-btn {
-    padding: 8px 3px !important;
-  }
-}
-
-/* 20. 접근성: 애니메이션 최소화 설정 */
-@media (prefers-reduced-motion: reduce) {
-  .phone .icon-btn {
-    transition: none !important;
+  #home .icon-btn {
+    min-height: 76px;
   }
 }
 
