@@ -10260,5 +10260,166 @@ body > .phone::after {
 })();
 </script>
 
+<!-- ===== HOME FOLDER ALIGNMENT FIX START ===== -->
+<style>
+
+/* 1. 영상과 폴더 비율 정리 */
+#home .hj-video-desktop {
+  display: grid !important;
+  grid-template-columns:
+    minmax(0, 2.85fr)
+    minmax(0, 1fr) !important;
+  gap: 8px !important;
+  align-items: stretch !important;
+}
+
+/* 2. 영상 창 */
+#home .hj-video-main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#home .hj-video-main > .window {
+  width: 100%;
+  margin: 0 !important;
+}
+
+/* 3. 폴더 영역을 영상 창 높이에 맞춤 */
+#home .hj-desktop-side {
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+}
+
+/* 4. 여섯 폴더를 균등하게 배치 */
+#home .hj-desktop-side .icon-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: repeat(6, minmax(0, 1fr));
+  gap: 3px !important;
+
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 5. 폴더 버튼은 투명하게 */
+#home .hj-desktop-side .icon-btn {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  min-height: 0 !important;
+  height: 100%;
+
+  padding: 3px 1px !important;
+  gap: 4px !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  color: #283B55 !important;
+  font-family: "Pixelify Sans", monospace;
+  font-size: 9px !important;
+  line-height: 1.15;
+  text-align: center;
+}
+
+/* 6. 폴더 아이콘 배경 */
+#home .hj-desktop-side .icon-btn .symbol {
+  position: relative;
+  isolation: isolate;
+
+  display: grid !important;
+  place-items: center;
+
+  width: 34px !important;
+  height: 30px !important;
+  margin: 0 !important;
+
+  background: #E7E9E5 !important;
+  border: 1px solid #8196A3 !important;
+  border-radius: 2px !important;
+  box-shadow: 1px 2px 0 #AAB9BE !important;
+
+  font-size: 20px !important;
+  line-height: 1;
+}
+
+/* 폴더 위쪽 탭 */
+#home .hj-desktop-side .icon-btn .symbol::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -5px;
+  left: 3px;
+
+  width: 13px;
+  height: 5px;
+
+  background: #E7E9E5;
+  border: 1px solid #8196A3;
+  border-bottom: 0;
+  border-radius: 2px 2px 0 0;
+}
+
+/* 7. 선택 효과 */
+#home .hj-desktop-side .icon-btn:hover,
+#home .hj-desktop-side .icon-btn.selected,
+#home .hj-desktop-side .icon-btn:focus-visible,
+#home .hj-desktop-side .icon-btn.hj-tapped {
+  background: rgba(95, 161, 223, .30) !important;
+  border-color: rgba(74, 136, 199, .75) !important;
+  outline: none !important;
+}
+
+/* 선택 시 폴더 아이콘도 살짝 파랗게 */
+#home .hj-desktop-side .icon-btn.selected .symbol,
+#home .hj-desktop-side .icon-btn:hover .symbol,
+#home .hj-desktop-side .icon-btn.hj-tapped .symbol {
+  background: #D7E9F5 !important;
+}
+
+/* 8. 작은 화면 */
+@media (max-width: 380px) {
+
+  #home .hj-video-desktop {
+    grid-template-columns:
+      minmax(0, 2.65fr)
+      minmax(0, 1fr) !important;
+    gap: 5px !important;
+  }
+
+  #home .hj-desktop-side .icon-grid {
+    gap: 2px !important;
+  }
+
+  #home .hj-desktop-side .icon-btn {
+    font-size: 8px !important;
+    gap: 2px !important;
+    padding: 2px 0 !important;
+  }
+
+  #home .hj-desktop-side .icon-btn .symbol {
+    width: 29px !important;
+    height: 26px !important;
+    font-size: 17px !important;
+  }
+
+  #home .hj-desktop-side .icon-btn .symbol::before {
+    width: 11px;
+  }
+}
+
+</style>
+   
 </body>
 </html>
