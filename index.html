@@ -10421,5 +10421,84 @@ body > .phone::after {
 
 </style>
    
+<!-- ===== HOME VIDEO WIDTH FINAL ADJUST START ===== -->
+<style>
+
+/* 1. 영상 영역을 더 넓게 */
+#home .hj-video-desktop {
+  grid-template-columns:
+    minmax(0, 4.2fr)
+    minmax(0, 1fr) !important;
+
+  gap: 3px !important;
+  width: 100%;
+}
+
+/* 2. 영상 창이 왼쪽 공간을 꽉 채우도록 */
+#home .hj-video-main {
+  min-width: 0;
+  width: 100%;
+}
+
+#home .hj-video-main > .window {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+/* 3. 폴더 영역을 오른쪽 끝에 붙이기 */
+#home .hj-desktop-side {
+  min-width: 0;
+  width: 100%;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* 4. 폴더 아이콘 정렬 */
+#home .hj-desktop-side .icon-grid {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  justify-items: end;
+}
+
+/* 5. 폴더 버튼은 오른쪽에 정렬 */
+#home .hj-desktop-side .icon-btn {
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin: 0 !important;
+
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* 6. 폴더 모양은 기존 크기 유지 */
+#home .hj-desktop-side .icon-btn .symbol {
+  flex-shrink: 0;
+}
+
+/* 7. 영상 안쪽 여백을 조금 줄이기 */
+#home .hj-video-main .window-content {
+  padding: 3px !important;
+}
+
+/* 8. 작은 화면 대응 */
+@media (max-width: 380px) {
+  #home .hj-video-desktop {
+    grid-template-columns:
+      minmax(0, 3.8fr)
+      minmax(0, 1fr) !important;
+    gap: 2px !important;
+  }
+
+  #home .hj-desktop-side .icon-btn {
+    font-size: 7px !important;
+  }
+}
+
+</style>
+
 </body>
 </html>
