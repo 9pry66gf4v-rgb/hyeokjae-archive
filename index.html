@@ -10615,5 +10615,37 @@ body > .phone::after {
 })();
 </script>
 
+<script>
+/* 프로필 키 단위 중복 수정 */
+(function () {
+  const profile = document.getElementById("profile");
+  if (!profile) return;
+
+  function fixHeight() {
+    const elements = profile.querySelectorAll(
+      ".hj-profile-fact"
+    );
+
+    elements.forEach(el => {
+      if (el.textContent.includes("cmcm")) {
+        el.textContent = el.textContent.replace(
+          /cm\s*cm/gi,
+          "cm"
+        );
+      }
+    });
+  }
+
+  fixHeight();
+
+  const observer = new MutationObserver(fixHeight);
+
+  observer.observe(profile, {
+    childList: true,
+    subtree: true
+  });
+})();
+</script>
+
 </body>
 </html>
