@@ -11636,6 +11636,7 @@ const tracks = [
           <i></i><i></i><i></i>
         </span>
       </div>
+      <div class="hj-v6-spec"><span>PERSONAL AUDIO EQUIPMENT / 2026</span><strong>● POWER ON</strong></div>
       <div class="hj-mp3-inner">
         <div class="hj-mp3-screen">
           <div class="hj-mp3-meta">
@@ -11648,6 +11649,7 @@ const tracks = [
           <div class="hj-mp3-sub">
             HYEOKJAE ARCHIVE · SOUND FILE
           </div>
+          <div class="hj-v6-displayhead"><span>▥ SPECTRUM ANALYZER</span><b>24 BAND / LED</b></div>
           <canvas id="hjMp3Canvas"
                   width="320" height="75"></canvas>
           <input id="hjMp3Seek" type="range"
@@ -11659,6 +11661,7 @@ const tracks = [
           </div>
         </div>
 
+        <div class="hj-v6-controlhead"><span>TRANSPORT CONTROL</span><span>◈ HJ-003</span></div>
         <div class="hj-mp3-controls">
           <button type="button" class="hj-mp3-control"
                   id="hjMp3Prev" aria-label="이전 곡">⏮</button>
@@ -11683,6 +11686,7 @@ const tracks = [
         <span>✳ MY PLAYLIST</span>
         <span>03 TRACKS</span>
       </div>
+      <div class="hj-v6-listcolumns"><span>NO. / AUDIO FILE</span><span>03 ITEMS</span></div>
       <div class="hj-mp3-list" id="hjMp3List"></div>
     </div>
 
@@ -12822,440 +12826,52 @@ function drawBars(values) {
 }
 </style>
 
-<!-- =========================================
- HYEOKJAE AUDIO SYSTEM / REFINED SKIN V5
- DESIGN ONLY - MUSIC FUNCTIONS PRESERVED
-========================================= -->
+<!-- HYEOKJAE AUDIO SYSTEM / REFINED V6 - replaces old V5 only -->
 <style>
-/* 전체 비율 */
-#stories .hj-mp3 {
-  --audio-navy: #253650;
-  --audio-dark: #22354A;
-  --audio-olive: #89977C;
-  --audio-blue: #B0CBD2;
-  --audio-silver: #E1E3DF;
-  --audio-border: #758A96;
-
-  width: 100%;
-  max-width: 440px;
-  margin: 12px auto 22px;
-  color: var(--audio-navy);
-}
-
-#stories .hj-mp3 *,
-#stories .hj-mp3 *::before,
-#stories .hj-mp3 *::after {
-  box-sizing: border-box;
-}
-
-/* 본체 */
-#stories .hj-mp3-unit {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid #667D8A;
-  border-radius: 0;
-  background: #DFE3DF;
-  box-shadow:
-    inset 1px 1px 0 #FFFFFF,
-    inset -1px -1px 0 #A0AFB2,
-    3px 3px 0 #9EADB1;
-}
-
-/* 상단 헤더 */
-#stories .hj-mp3-head {
-  min-height: 39px;
-  padding: 12px 13px;
-  border-bottom: 3px solid #89977C;
-  border-radius: 0;
-  background: #253650;
-  color: #F5F3EA;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 1px;
-}
-
-#stories .hj-mp3-dots {
-  display: flex;
-  gap: 4px;
-}
-
-#stories .hj-mp3-dots i {
-  width: 9px;
-  height: 9px;
-  border: 1px solid #D5E1E5;
-  border-radius: 0;
-  background: #B0CBD2;
-}
-
-#stories .hj-mp3-dots i:nth-child(2) {
-  background: #89977C;
-}
-
-#stories .hj-mp3-dots i:nth-child(3) {
-  background: #E4E5DE;
-}
-
-/* 플레이어 본체 내부 */
-#stories .hj-mp3-inner {
-  padding: 13px 12px 11px;
-  background:
-    linear-gradient(180deg,#E5E8E4,#DCE1DD);
-}
-
-/* LCD 디스플레이 */
-#stories .hj-mp3-screen {
-  position: relative;
-  padding: 14px 12px 12px;
-  border: 2px solid #758A96;
-  border-radius: 0;
-  background: #22354A;
-  color: #F4F3EA;
-  box-shadow:
-    inset 2px 2px 0 #152537,
-    inset -1px -1px 0 #4B6576,
-    0 1px 0 #FFFFFF;
-}
-
-/* 정보 라벨 */
-#stories .hj-detail-label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  color: #A8C1CB;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: .6px;
-}
-
-#stories .hj-mp3-meta {
-  margin-top: 8px;
-  color: #A8C1CB;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: .6px;
-}
-
-#stories .hj-detail-track {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 4px 7px;
-  border: 1px solid #71836C;
-  border-radius: 0;
-  background: #9EAE92;
-  color: #22354A;
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: .7px;
-}
-
-/* 곡 제목 */
-#stories .hj-mp3-track {
-  margin: 13px 0 5px;
-  color: #F5F3EA;
-  font-size: clamp(15px,4vw,19px);
-  line-height: 1.35;
-  font-weight: 800;
-  letter-spacing: -.4px;
-}
-
-#stories .hj-mp3-sub {
-  color: #92ADBA;
-  font-size: 8px;
-  letter-spacing: .7px;
-}
-
-/* 픽셀 LED 디스플레이 */
-#stories #hjMp3Canvas {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 285 / 70;
-  margin: 14px 0 5px;
-  border: 2px solid #7896A2;
-  border-radius: 0;
-  background: #B0CBD2;
-  image-rendering: pixelated;
-  box-shadow:
-    inset 1px 1px #7896A2,
-    0 1px 0 #506A79;
-}
-
-/* 주파수 라벨 */
-#stories .hj-detail-freq {
-  display: flex;
-  justify-content: space-between;
-  margin: 5px 0 11px;
-  color: #A4BBC5;
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: .4px;
-}
-
-/* 출력 레벨 */
-#stories .hj-detail-output {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  margin: 10px 0 7px;
-  color: #A8C1CB;
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: .6px;
-}
-
-#stories .hj-detail-meter {
-  display: flex;
-  gap: 3px;
-}
-
-#stories .hj-detail-meter i {
-  width: 8px;
-  height: 5px;
-  background: #4D6577;
-}
-
-#stories .hj-detail-meter i.on {
-  background: #A4B798;
-}
-
-/* 재생바 */
-#stories #hjMp3Seek {
-  display: block;
-  width: 100%;
-  height: 13px;
-  margin: 6px 0 8px;
-  accent-color: #89977C;
-  cursor: pointer;
-}
-
-#stories .hj-mp3-times {
-  color: #D5E2E5;
-  font-size: 10px;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-}
-
-/* 컨트롤 */
-#stories .hj-mp3-controls {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 7px;
-  padding: 18px 0 12px;
-}
-
-#stories .hj-mp3-control,
-#stories .hj-mp3-control.primary {
-  display: grid;
-  place-items: center;
-  width: 49px;
-  height: 40px;
-  padding: 0;
-  border: 2px solid #83959D;
-  border-radius: 0;
-  background: #F0F1EC;
-  color: #253650;
-  font-size: 17px;
-  cursor: pointer;
-  box-shadow:
-    inset 2px 2px #FFFFFF,
-    inset -2px -2px #AAB7BA,
-    1px 2px 0 #91A2A8;
-}
-
-#stories .hj-mp3-control.primary {
-  width: 64px;
-  height: 44px;
-  border-color: #6E8069;
-  background: #89977C;
-  color: #FFFFFF;
-  font-size: 19px;
-  box-shadow:
-    inset 2px 2px #B4C3A8,
-    inset -2px -2px #66765E,
-    1px 2px 0 #73836D;
-}
-
-#stories .hj-mp3-control:hover {
-  background: #D5E1E3;
-}
-
-#stories .hj-mp3-control.primary:hover {
-  background: #7B8B70;
-}
-
-#stories .hj-mp3-control:active {
-  transform: translate(1px,2px);
-  box-shadow: inset 2px 2px #91A2A8;
-}
-
-/* 미니멀 볼륨바 */
-#stories .hj-detail-volume {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
-  margin: 3px 0 10px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  box-shadow: none;
-  color: #536979;
-  font-size: 9px;
-  font-weight: 700;
-  letter-spacing: .5px;
-}
-
-#stories .hj-detail-volume::after {
-  content: none;
-  display: none;
-}
-
-#stories .hj-detail-volume input {
-  flex: 0 1 90px;
-  width: 90px;
-  min-width: 60px;
-  max-width: 110px;
-  height: 12px;
-  margin: 0;
-  accent-color: #89977C;
-  cursor: pointer;
-}
-
-#stories .hj-detail-volume-value {
-  min-width: auto;
-  padding: 0;
-  border: none;
-  background: transparent;
-  box-shadow: none;
-  color: #536979;
-  font-size: 9px;
-  font-weight: 700;
-}
-
-/* 재생 상태 */
-#stories .hj-mp3-status {
-  margin-top: 5px;
-  padding: 10px 2px 3px;
-  border-top: 1px solid #B2BFBE;
-  color: #6B7E88;
-  font-size: 9px;
-  letter-spacing: .6px;
-}
-
-#stories .hj-mp3-onair {
-  padding: 5px 9px;
-  border: 1px solid #728269;
-  border-radius: 0;
-  background: #89977C;
-  color: #FFFFFF;
-  font-size: 9px;
-  font-weight: 800;
-}
-
-/* 플레이리스트 */
-#stories .hj-mp3-listunit {
-  margin-top: 14px;
-  border: 1px solid #758A96;
-  border-radius: 0;
-  background: #F5F2EB;
-  box-shadow:
-    inset 1px 1px #FFFFFF,
-    3px 3px 0 #A2B0B4;
-  overflow: hidden;
-}
-
-#stories .hj-mp3-listhead {
-  padding: 11px 12px;
-  border-bottom: 3px solid #89977C;
-  background: #253650;
-  color: #F5F3EA;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: .8px;
-}
-
-#stories .hj-mp3-list {
-  display: grid;
-  gap: 0;
-  padding: 6px;
-  background: #F5F2EB;
-}
-
-#stories .hj-mp3-song {
-  min-height: 45px;
-  padding: 10px;
-  border: 1px solid transparent;
-  border-radius: 0;
-  background: transparent;
-  color: #34495D;
-  font-size: 11px;
-}
-
-#stories .hj-mp3-song + .hj-mp3-song {
-  border-top: 1px solid #E0E3DE;
-}
-
-#stories .hj-mp3-song.active {
-  border-color: #95ADB5;
-  background: #D3E2E5;
-  color: #253650;
-  font-weight: 800;
-  box-shadow: inset 3px 0 #89977C;
-}
-
-#stories .hj-mp3-song:hover {
-  background: #E2EBE9;
-}
-
-#stories .hj-mp3-num {
-  color: #718591;
-  font-size: 10px;
-}
-
-#stories .hj-detail-listfoot {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 11px;
-  border-top: 1px solid #C0CBC8;
-  background: #E2E6E2;
-  color: #667A86;
-  font-size: 9px;
-  letter-spacing: .4px;
-}
-
-/* 하단 */
-#stories .hj-mp3-footer {
-  margin-top: 13px;
-  padding: 8px 2px 0;
-  border-top: 1px solid #B2BFBE;
-  color: #71838B;
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: .6px;
-}
-
-/* 모바일 */
-@media (max-width: 380px) {
-  #stories .hj-mp3-inner {
-    padding: 9px;
-  }
-
-  #stories .hj-mp3-screen {
-    padding: 11px 9px;
-  }
-
-  #stories .hj-mp3-head {
-    font-size: 9px;
-    letter-spacing: .5px;
-  }
-
-  #stories .hj-mp3-track {
-    font-size: 15px;
-  }
-}
+/* All rules scoped to the music page. Audio logic is untouched. */
+#stories .hj-mp3 {--n:#22364d;--s:#e0e5e2;--k:#8c9c80;--b:#aec9d0;max-width:440px;width:100%;margin:8px auto 24px;color:var(--n);font-family:"Pixelify Sans","Gowun Dodum",sans-serif}
+#stories .hj-mp3 *,#stories .hj-mp3 *::before,#stories .hj-mp3 *::after{box-sizing:border-box}
+#stories .hj-mp3-unit{position:relative;overflow:hidden;border:1px solid #526a79;border-radius:0;background:linear-gradient(145deg,#f2f4ef 0%,#d6ddda 48%,#c7d0cf 100%);box-shadow:inset 1px 1px #fff,inset -2px -2px #8c9c9f,3px 4px 0 #8d9da3}
+#stories .hj-mp3-head{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:38px;padding:10px 12px;border:0;border-bottom:2px solid #879b84;border-radius:0;background:#243750;color:#f3f2e9;font-size:11px;font-weight:800;letter-spacing:.7px}
+#stories .hj-mp3-dots{display:flex;gap:4px}#stories .hj-mp3-dots i{display:block;width:8px;height:8px;border:1px solid #c1d3d7;border-radius:0;background:#7b91a1}#stories .hj-mp3-dots i:nth-child(2){background:#91a181}#stories .hj-mp3-dots i:nth-child(3){background:#d7e0dd}
+#stories .hj-v6-spec{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:9px 13px 8px;border-bottom:1px solid #aab9b8;color:#627582;font-size:8px;font-weight:800;letter-spacing:1px}
+#stories .hj-v6-spec strong{color:#667b66;font-weight:800}
+#stories .hj-mp3-inner{padding:10px 11px 12px;background:transparent}
+#stories .hj-mp3-screen{position:relative;overflow:hidden;padding:12px 12px 13px;border:3px double #78919d;border-radius:0;background:#21344a;color:#f1f2e9;box-shadow:inset 3px 3px 0 #142537,inset -2px -2px 0 #526b79,0 1px 0 #fff}
+#stories .hj-mp3-screen::before,#stories .hj-mp3-screen::after{content:"+";position:absolute;top:3px;font:9px monospace;color:#6c8595;pointer-events:none}#stories .hj-mp3-screen::before{left:4px}#stories .hj-mp3-screen::after{right:4px}
+#stories .hj-detail-label{display:flex;justify-content:space-between;align-items:center;gap:6px;margin:2px 0 10px;padding:0 6px 8px;border-bottom:1px solid #50687a;color:#b5ccd3;font-size:9px;font-weight:800;letter-spacing:.7px}
+#stories .hj-detail-label span:last-child{color:#b0c39e}
+#stories .hj-mp3-meta{display:flex;justify-content:space-between;align-items:center;gap:6px;margin:0;color:#a9c3ce;font-size:9px;letter-spacing:.6px}
+#stories .hj-mp3-meta span:last-child{padding:3px 5px;border:1px solid #758e96;color:#cbdde0;font-variant-numeric:tabular-nums}
+#stories .hj-detail-track{display:inline-block;margin:10px 0 0;padding:4px 7px;border:1px solid #758b70;border-radius:0;background:#9dad90;color:#203449;font-size:9px;font-weight:800;letter-spacing:1px}
+#stories .hj-mp3-track{margin:8px 0 5px;padding:0 0 9px;border-bottom:1px solid #4b6274;color:#f7f5ed;font-size:clamp(16px,4.5vw,20px);font-weight:900;letter-spacing:-.4px;line-height:1.4;overflow-wrap:anywhere}
+#stories .hj-mp3-sub{margin:6px 0 12px;color:#95b2bf;font-size:8px;letter-spacing:.8px}
+#stories .hj-v6-displayhead{display:flex;justify-content:space-between;align-items:center;margin:0 0 5px;color:#c2d4da;font-size:8px;letter-spacing:.6px}
+#stories .hj-v6-displayhead b{color:#a6bb99;font-weight:800}
+#stories #hjMp3Canvas{display:block;width:100%;height:auto;aspect-ratio:285/70;margin:0;border:3px solid #718f9c;border-radius:0;background:#b0cbd2;image-rendering:pixelated;box-shadow:0 2px 0 #102536}
+#stories .hj-detail-freq{display:flex;justify-content:space-between;margin:6px 0 9px;color:#9db6c0;font-size:8px;letter-spacing:.3px}
+#stories .hj-detail-output{display:flex;justify-content:space-between;align-items:center;gap:6px;margin:10px 0 5px;padding-top:9px;border-top:1px solid #4c6375;color:#acc3cc;font-size:8px;letter-spacing:.6px}
+#stories .hj-detail-meter{display:flex;gap:2px}#stories .hj-detail-meter i{display:block;width:8px;height:5px;background:#506777}#stories .hj-detail-meter i.on{background:#a8bc9b}
+#stories #hjMp3Seek{display:block;width:100%;height:12px;margin:10px 0 6px;accent-color:#9cac8b;cursor:pointer}
+#stories .hj-mp3-times{display:flex;justify-content:space-between;color:#e0e9e8;font-size:10px;font-variant-numeric:tabular-nums}
+#stories .hj-v6-controlhead{display:flex;justify-content:space-between;gap:8px;margin:13px 2px 0;padding:0 0 6px;border-bottom:1px solid #a7b6b7;color:#657b86;font-size:8px;font-weight:800;letter-spacing:1px}
+#stories .hj-mp3-controls{display:flex;justify-content:center;align-items:center;gap:8px;padding:14px 0 10px}
+#stories .hj-mp3-control,#stories .hj-mp3-control.primary{display:grid;place-items:center;width:48px;height:40px;padding:0;border:1px solid #748a95;border-radius:0;background:linear-gradient(145deg,#fff,#d5ddda);color:#263b52;font-size:17px;cursor:pointer;box-shadow:inset 2px 2px #fff,inset -2px -2px #9cacae,2px 2px 0 #94a5a8}
+#stories .hj-mp3-control.primary{width:63px;height:44px;border-color:#71816a;background:linear-gradient(145deg,#a4b499,#829476);color:#fff;font-size:20px;box-shadow:inset 2px 2px #c0d0b5,inset -2px -2px #61765e,2px 2px 0 #788b75}
+#stories .hj-mp3-control:hover{filter:brightness(.96)}#stories .hj-mp3-control:active{transform:translate(1px,2px);box-shadow:inset 2px 2px #8fa1a3}
+#stories .hj-detail-volume{display:flex;justify-content:flex-end;align-items:center;gap:8px;margin:3px 2px 10px;padding:0;border:0;background:transparent;box-shadow:none;color:#536979;font-size:9px;font-weight:800;letter-spacing:.5px}
+#stories .hj-detail-volume::after{content:none;display:none}#stories .hj-detail-volume input{flex:0 1 90px;width:90px;min-width:60px;max-width:110px;height:12px;margin:0;accent-color:#89977c;cursor:pointer}#stories .hj-detail-volume-value{min-width:auto;padding:0;border:0;background:transparent;box-shadow:none;color:#536979;font-size:9px;font-weight:800}
+#stories .hj-mp3-status{display:flex;align-items:center;justify-content:space-between;gap:6px;margin:4px 0 0;padding:10px 2px 0;border-top:1px solid #b0bebb;color:#657b86;font-size:9px;letter-spacing:.5px}
+#stories .hj-mp3-onair{display:inline-block;padding:4px 8px;border:1px solid #72856e;border-radius:0;background:#8e9e81;color:#fff;font-size:9px;font-weight:800}
+#stories .hj-mp3-listunit{margin-top:14px;overflow:hidden;border:1px solid #738a95;border-radius:0;background:#f4f2ec;box-shadow:inset 1px 1px #fff,3px 4px 0 #9caeb1}
+#stories .hj-mp3-listhead{display:flex;justify-content:space-between;gap:8px;padding:10px 12px;border-bottom:2px solid #8d9e81;background:#263b53;color:#f2f0e8;font-size:10px;font-weight:800;letter-spacing:.6px}
+#stories .hj-v6-listcolumns{display:flex;justify-content:space-between;padding:8px 12px;border-bottom:1px solid #c4cfca;background:#e0e5e1;color:#6a7e89;font-size:8px;letter-spacing:.7px}
+#stories .hj-mp3-list{display:grid;gap:0;padding:4px 7px;background:#f4f2ec}
+#stories .hj-mp3-song{display:flex;align-items:center;gap:9px;width:100%;min-height:43px;margin:0;padding:10px 8px;border:1px solid transparent;border-radius:0;background:transparent;color:#2b4258;text-align:left;font-size:11px;cursor:pointer}
+#stories .hj-mp3-song+.hj-mp3-song{border-top:1px solid #dbe1dc}#stories .hj-mp3-song.active{border-color:#9aafb2;background:#d2e1e4;color:#20354c;font-weight:800;box-shadow:inset 3px 0 #899a7d}#stories .hj-mp3-song:hover{background:#e1eae8}#stories .hj-mp3-num{color:#718794;font-size:10px}#stories .hj-mp3-name{flex:1;min-width:0;overflow-wrap:anywhere}
+#stories .hj-detail-listfoot{display:flex;justify-content:space-between;gap:8px;padding:8px 11px;border-top:1px solid #bfcac6;background:#e1e6e1;color:#677e88;font-size:9px;letter-spacing:.3px}
+#stories .hj-mp3-footer{display:flex;justify-content:space-between;gap:8px;margin:13px 0 4px;padding-top:8px;border-top:1px solid #b5c2bf;color:#71858d;font-size:8px;letter-spacing:.5px}
+@media(max-width:380px){#stories .hj-mp3-inner{padding:8px}#stories .hj-mp3-screen{padding:11px 9px}#stories .hj-mp3-head{font-size:9px}#stories .hj-v6-spec{font-size:7px}#stories .hj-mp3-track{font-size:16px}}
 </style>
 
 </body>
