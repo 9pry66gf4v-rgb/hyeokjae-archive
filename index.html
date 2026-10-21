@@ -11629,71 +11629,26 @@ const tracks = [
   const root = document.createElement("div");
   root.className = "hj-mp3";
   root.innerHTML = `
-    <div class="hj-mp3-unit">
-      <div class="hj-mp3-head">
-        <span>♫ HYEOKJAE POCKET MP3</span>
-        <span class="hj-mp3-dots">
-          <i></i><i></i><i></i>
-        </span>
-      </div>
-      <div class="hj-v6-spec"><span>PERSONAL AUDIO EQUIPMENT / 2026</span><strong>● POWER ON</strong></div>
+    <div class="hj-mp3-unit hj-v7-device">
+      <div class="hj-mp3-head"><span>♫ HYEOKJAE POCKET MP3</span><span class="hj-mp3-dots"><i></i><i></i><i></i></span></div>
+      <div class="hj-v7-model">MODEL HJ-003</div>
       <div class="hj-mp3-inner">
         <div class="hj-mp3-screen">
-          <div class="hj-mp3-meta">
-            <span>♪ NOW PLAYING</span>
-            <span id="hjMp3Number">01 / 03</span>
+          <div class="hj-v7-songhero">
+            <div class="hj-v7-discbox" aria-hidden="true"><div class="hj-v7-disc"><div class="hj-v7-disc-center"></div></div><span id="hjV7DiscNumber">DISC 01 / 03</span></div>
+            <div class="hj-v7-songinfo"><div class="hj-v7-digital">DIGITAL STEREO <span class="hj-v7-signal">● SIGNAL OK</span></div><div class="hj-mp3-meta"><span>▶ NOW PLAYING</span><span id="hjMp3Number">01 / 03</span></div><div class="hj-mp3-track" id="hjMp3Title">아쿠아리움 · BGM</div><div class="hj-mp3-sub">HYEOKJAE ARCHIVE — ORIGINAL SOUND FILE</div></div>
           </div>
-          <div class="hj-mp3-track" id="hjMp3Title">
-            정혁 · THEME
-          </div>
-          <div class="hj-mp3-sub">
-            HYEOKJAE ARCHIVE · SOUND FILE
-          </div>
-          <div class="hj-v6-displayhead"><span>▥ SPECTRUM ANALYZER</span><b>24 BAND / LED</b></div>
-          <canvas id="hjMp3Canvas"
-                  width="320" height="75"></canvas>
-          <input id="hjMp3Seek" type="range"
-                 min="0" max="100" value="0"
-                 aria-label="재생 위치">
-          <div class="hj-mp3-times">
-            <span id="hjMp3Current">00:00</span>
-            <span id="hjMp3Duration">00:00</span>
-          </div>
+          <div class="hj-v7-spectrumhead"><span>SPECTRUM ANALYZER</span><span>24 BAND</span></div>
+          <div class="hj-v7-spectrum"><canvas id="hjMp3Canvas" width="285" height="70"></canvas><div class="hj-v7-scale"><span>12</span><span>08</span><span>04</span><span>00</span></div></div>
+          <div class="hj-detail-freq hj-v7-freq-static"><span>63 Hz</span><span>1 kHz</span><span>16 kHz</span></div>
+          <div class="hj-v7-timeline"><span id="hjMp3Current">00:00</span><input id="hjMp3Seek" type="range" min="0" max="100" value="0" aria-label="재생 위치"><span id="hjMp3Duration">00:00</span></div>
         </div>
-
-        <div class="hj-v6-controlhead"><span>TRANSPORT CONTROL</span><span>◈ HJ-003</span></div>
-        <div class="hj-mp3-controls">
-          <button type="button" class="hj-mp3-control"
-                  id="hjMp3Prev" aria-label="이전 곡">⏮</button>
-          <button type="button"
-                  class="hj-mp3-control primary"
-                  id="hjMp3Play" aria-label="재생">▶</button>
-          <button type="button" class="hj-mp3-control"
-                  id="hjMp3Next" aria-label="다음 곡">⏭</button>
-        </div>
-
-        <div class="hj-mp3-status">
-          <span class="hj-mp3-onair" id="hjMp3Status">
-            ● STANDBY
-          </span>
-          <span>STEREO · VOL. 01</span>
-        </div>
+        <div class="hj-v7-transport"><div class="hj-v7-transport-head"><span>◉ TRANSPORT CONTROL</span><span>◆ HJ-003</span></div><div class="hj-v7-transport-body"><div class="hj-v7-leds"><span>▣ SHUFFLE</span><span>▣ REPEAT</span><span>▣ MUTE</span></div><div class="hj-mp3-controls"><button type="button" class="hj-mp3-control" id="hjMp3Prev" aria-label="이전 곡">◀◀</button><button type="button" class="hj-mp3-control primary" id="hjMp3Play" aria-label="재생">▶</button><button type="button" class="hj-mp3-control" id="hjMp3Next" aria-label="다음 곡">▶▶</button></div><div class="hj-v7-volume-slot"></div></div></div>
+        <div class="hj-mp3-status"><span class="hj-mp3-onair" id="hjMp3Status">● STANDBY</span><span>PERSONAL DIGITAL MUSIC PLAYER</span></div>
       </div>
     </div>
-
-    <div class="hj-mp3-listunit">
-      <div class="hj-mp3-listhead">
-        <span>✳ MY PLAYLIST</span>
-        <span>03 TRACKS</span>
-      </div>
-      <div class="hj-v6-listcolumns"><span>NO. / AUDIO FILE</span><span>03 ITEMS</span></div>
-      <div class="hj-mp3-list" id="hjMp3List"></div>
-    </div>
-
-    <div class="hj-mp3-footer">
-      <span>✦ MADE FOR HYEOKJAE</span>
-      <span>2000's EDITION</span>
-    </div>
+    <div class="hj-mp3-listunit"><div class="hj-mp3-listhead"><span>☷ &nbsp;MY PLAYLIST</span><span>03 TRACKS</span></div><div class="hj-v7-listcolumns"><span>NO.</span><span>FILE NAME</span><span>LENGTH</span></div><div class="hj-mp3-list" id="hjMp3List"></div></div>
+    <div class="hj-mp3-footer"><span>▥ HYEOKJAE AUDIO SYSTEM</span><span>2000's EDITION</span></div>
   `;
   page.appendChild(root);
 
@@ -11847,6 +11802,7 @@ function drawBars(values) {
     audio.load();
 
     get("hjMp3Title").textContent = tracks[index].title;
+    get("hjV7DiscNumber").textContent = "DISC " + String(index + 1).padStart(2, "0") + " / 03";
     get("hjMp3Number").textContent =
       String(index + 1).padStart(2, "0") + " / 03";
 
@@ -11901,10 +11857,9 @@ function drawBars(values) {
     button.type = "button";
     button.className = "hj-mp3-song";
     button.innerHTML =
-      '<span class="hj-mp3-num">' +
-      String(i + 1).padStart(2, "0") +
-      '</span><span>◉</span><span class="hj-mp3-name"></span>' +
-      '<span>♪</span>';
+      '<span class="hj-mp3-num">' + String(i + 1).padStart(2, "0") +
+      '</span><span class="hj-v7-musicnote">♫</span><span class="hj-mp3-name"></span>' +
+      '<span class="hj-v7-rowtime">--:--</span>';
 
     button.querySelector(".hj-mp3-name").textContent = track.title;
 
@@ -11916,8 +11871,14 @@ function drawBars(values) {
     get("hjMp3List").appendChild(button);
   });
 
+  const trackDurations = Array(tracks.length).fill(null);
   audio.addEventListener("loadedmetadata", () => {
     get("hjMp3Duration").textContent = formatTime(audio.duration);
+    if (Number.isFinite(audio.duration)) {
+      trackDurations[index] = formatTime(audio.duration);
+      const row = get("hjMp3List").querySelectorAll("button")[index];
+      if (row) row.querySelector(".hj-v7-rowtime").textContent = trackDurations[index];
+    }
   });
 
   audio.addEventListener("timeupdate", () => {
@@ -12609,7 +12570,7 @@ function drawBars(values) {
     ' aria-label="음악 음량">' +
     '<span class="hj-detail-volume-value">80%</span>';
 
-  controls.insertAdjacentElement("afterend", volume);
+  root.querySelector(".hj-v7-volume-slot").appendChild(volume);
 
   const volumeInput = volume.querySelector("input");
   const volumeValue =
@@ -12872,6 +12833,64 @@ function drawBars(values) {
 #stories .hj-detail-listfoot{display:flex;justify-content:space-between;gap:8px;padding:8px 11px;border-top:1px solid #bfcac6;background:#e1e6e1;color:#677e88;font-size:9px;letter-spacing:.3px}
 #stories .hj-mp3-footer{display:flex;justify-content:space-between;gap:8px;margin:13px 0 4px;padding-top:8px;border-top:1px solid #b5c2bf;color:#71858d;font-size:8px;letter-spacing:.5px}
 @media(max-width:380px){#stories .hj-mp3-inner{padding:8px}#stories .hj-mp3-screen{padding:11px 9px}#stories .hj-mp3-head{font-size:9px}#stories .hj-v6-spec{font-size:7px}#stories .hj-mp3-track{font-size:16px}}
+</style>
+
+
+<style>
+/* HYEOKJAE AUDIO SYSTEM — V7 IMAGE-INSPIRED COMPLETE REDESIGN */
+#stories .hj-mp3{width:100%;max-width:440px;margin:7px auto 18px;color:#263b52;font-family:"Pixelify Sans","Gowun Dodum",sans-serif}
+#stories .hj-mp3-unit{border:2px solid #6d8490;border-radius:0;background:linear-gradient(100deg,#c9d3d1,#f2f4ef 13%,#d9e0dd 54%,#b6c3c4);box-shadow:inset 2px 2px #fff,inset -3px -3px #88999e,3px 4px 0 #85989d;overflow:hidden}
+#stories .hj-mp3-head{min-height:42px;padding:11px 12px;background:linear-gradient(#2c4964,#1d324b);color:#f6f5ed;border:4px solid #a6b7bc;border-bottom:3px solid #748f99;box-shadow:inset 0 0 0 1px #638193;font-size:clamp(10px,2.6vw,13px);letter-spacing:1px;white-space:nowrap}
+#stories .hj-mp3-dots{display:flex;gap:4px}#stories .hj-mp3-dots i{width:9px;height:9px;background:#b7d5df;border:1px solid #e8f2f0;box-shadow:1px 1px #3b5368}#stories .hj-mp3-dots i:nth-child(2){background:#a6b69d}#stories .hj-mp3-dots i:nth-child(3){background:#d9e2e2}
+#stories .hj-v7-model{padding:6px 12px;text-align:right;font-size:9px;letter-spacing:2px;border-bottom:1px solid #9badb2}
+#stories .hj-mp3-inner{padding:8px;background:transparent}
+#stories .hj-mp3-screen{padding:12px 10px 11px;border:5px solid #a3b7bd;outline:1px solid #50697c;background:linear-gradient(145deg,#1a2e44,#243e56);color:#f4f2eb;box-shadow:inset 0 0 0 2px #0c2034,0 1px 2px #81949b}
+#stories .hj-mp3-screen::before,#stories .hj-mp3-screen::after{content:'⊕';top:0;color:#809ba7;font-size:10px}
+#stories .hj-detail-label,#stories .hj-detail-track,#stories .hj-detail-output,#stories .hj-mp3-sub+.hj-detail-freq,#stories .hj-mp3-screen>.hj-detail-freq:not(.hj-v7-freq-static){display:none!important}
+#stories .hj-v7-songhero{display:grid;grid-template-columns:78px minmax(0,1fr);gap:11px;padding:6px 0 12px;border-bottom:1px solid #6d8a9b}
+#stories .hj-v7-discbox{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;border:1px solid #7595a7;min-height:112px;padding:8px 3px 5px;background:#183149}
+#stories .hj-v7-disc{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:repeating-radial-gradient(circle,#b8d3d8 0 1px,#5d8497 1px 2px,#9dbdc7 2px 3px);border:1px solid #d0e2e4;box-shadow:0 0 0 2px #527287}
+#stories .hj-v7-disc-center{width:19px;height:19px;border:4px solid #27445b;border-radius:50%;background:#c4d7da}
+#stories .hj-v7-discbox>span{font-size:8px;letter-spacing:.5px;color:#d1e1e3;white-space:nowrap}
+#stories .hj-v7-songinfo{min-width:0;display:flex;flex-direction:column;justify-content:center;gap:7px}
+#stories .hj-v7-digital{display:flex;align-items:center;justify-content:space-between;gap:4px;font-size:8px;letter-spacing:.7px;color:#c7dce1}
+#stories .hj-v7-signal{font-size:7px;white-space:nowrap;border:1px solid #5e8495;padding:3px 4px;color:#b6c9b1}
+#stories .hj-mp3-meta{display:flex;justify-content:space-between;gap:5px;margin:0;padding:0 0 5px;border-bottom:1px solid #5b7c8e;color:#c6dce2;font-size:9px;letter-spacing:.5px}
+#stories .hj-mp3-meta span:last-child{display:none}
+#stories .hj-mp3-track{margin:0;padding:0;border:0;color:#f8f6ee;font-family:"Gowun Dodum",sans-serif;font-size:clamp(15px,4.3vw,21px);font-weight:900;letter-spacing:-.4px;line-height:1.25;overflow-wrap:anywhere}
+#stories .hj-mp3-sub{margin:0;color:#aac6d0;font-size:8px;letter-spacing:.4px;line-height:1.5}
+#stories .hj-v7-spectrumhead{display:flex;justify-content:space-between;margin:10px 0 6px;color:#d0e0e3;font-size:9px;letter-spacing:1px}
+#stories .hj-v7-spectrum{display:grid;grid-template-columns:minmax(0,1fr) 15px;gap:5px;align-items:stretch}
+#stories #hjMp3Canvas{display:block;width:100%;height:auto;aspect-ratio:285/70;margin:0;border:3px solid #7d9eaa;border-radius:0;background:#b4cdd2;image-rendering:pixelated;box-shadow:none}
+#stories .hj-v7-scale{display:flex;flex-direction:column;justify-content:space-between;color:#bed4dc;font-size:8px;text-align:right}
+#stories .hj-v7-freq-static{display:flex!important;justify-content:space-between;margin:5px 19px 10px 0;color:#b7d0d7;font-size:9px}
+#stories .hj-v7-timeline{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;align-items:center;padding-top:9px;border-top:1px solid #577488;color:#f0f3ef;font-size:11px;font-weight:bold;font-variant-numeric:tabular-nums}
+#stories #hjMp3Seek{width:100%;height:12px;margin:0;accent-color:#9eaf96;cursor:pointer}
+#stories .hj-v7-transport{margin-top:9px;padding:8px 7px 11px;border:2px solid #a0b1b6;background:linear-gradient(125deg,#e8edeb,#ccd6d5 65%,#dbe1dd);box-shadow:inset 1px 1px #fff,inset -2px -2px #98a9ad}
+#stories .hj-v7-transport-head{display:flex;justify-content:space-between;gap:4px;padding:0 1px 8px;border-bottom:1px solid #a8b9bc;color:#526d7d;font-size:8px;letter-spacing:.7px}
+#stories .hj-v7-transport-body{display:grid;grid-template-columns:46px minmax(0,1fr);gap:6px;align-items:center;padding-top:9px}
+#stories .hj-v7-leds{display:flex;flex-direction:column;gap:8px;color:#536c7c;font-size:8px;white-space:nowrap}
+#stories .hj-v7-leds span:first-letter{color:#82977c}
+#stories .hj-mp3-controls{display:flex;justify-content:center;gap:6px;margin:0;padding:0}
+#stories .hj-mp3-control{width:clamp(32px,10vw,52px);height:44px;display:grid;place-items:center;padding:0;border:2px solid #7a929c;border-radius:0;background:linear-gradient(145deg,#fafcf8,#ccd7d5);box-shadow:inset 2px 2px #fff,inset -2px -2px #8c9da1,2px 2px #7f969c;color:#234058;font-size:13px}
+#stories .hj-mp3-control.primary{width:clamp(40px,13vw,62px);height:52px;border:3px solid #6b8070;background:linear-gradient(135deg,#b3c2a8,#809579);box-shadow:inset 2px 2px #d1dbc8,inset -2px -2px #596d58,2px 2px #657b70;color:#fff;font-size:20px}
+#stories .hj-v7-volume-slot{grid-column:1/-1;display:flex;justify-content:flex-end}
+#stories .hj-detail-volume{display:flex;justify-content:flex-end;align-items:center;gap:6px;margin:5px 0 0;padding:0;border:0;background:transparent;box-shadow:none;color:#536b7b;font-size:9px}
+#stories .hj-detail-volume>span:first-child::before{content:'MASTER ';}#stories .hj-detail-volume input{width:90px;max-width:90px;min-width:60px;height:12px;accent-color:#879b80;margin:0}#stories .hj-detail-volume-value{padding:0;border:0;background:none;color:#536b7b;font-size:9px}
+#stories .hj-mp3-status{display:flex;justify-content:space-between;align-items:center;margin:8px 0 0;padding:5px 2px 0;border:0;color:#5f7682;font-size:8px;letter-spacing:.4px}
+#stories .hj-mp3-onair{padding:3px 5px;background:#899d84;color:#fff;border:1px solid #768d74;font-size:8px}
+#stories .hj-mp3-listunit{margin-top:10px;border:2px solid #8299a1;border-radius:0;background:#f3f3eb;box-shadow:3px 4px #91a2a4}
+#stories .hj-mp3-listhead{display:flex;justify-content:space-between;gap:5px;padding:11px 12px;border-bottom:3px solid #899e87;background:linear-gradient(#294761,#213951);color:#f5f5ef;font-size:12px;letter-spacing:.7px}
+#stories .hj-v7-listcolumns{display:grid;grid-template-columns:30px minmax(0,1fr) 45px;gap:6px;padding:8px 10px;border-bottom:1px solid #9db0b7;background:#dce5e3;color:#4d6777;font-size:9px;letter-spacing:.5px}
+#stories .hj-v7-listcolumns span:last-child{text-align:right}
+#stories .hj-mp3-list{display:block;padding:0;background:#f5f3ec}
+#stories .hj-mp3-song{display:grid;grid-template-columns:30px 15px minmax(0,1fr) 39px;gap:6px;align-items:center;width:100%;min-height:49px;padding:8px 10px;border:0;border-bottom:1px solid #c3d0d0;border-radius:0;background:transparent;color:#263e57;text-align:left;font-size:11px;box-shadow:none}
+#stories .hj-mp3-song.active{border:0;border-bottom:1px solid #9fb8bd;background:#c6dce2;box-shadow:inset 5px 0 #8c9e86;color:#1d3751;font-weight:bold}
+#stories .hj-mp3-song.active .hj-mp3-num::before{content:'▶ ';font-size:8px}
+#stories .hj-mp3-num{font-size:10px;color:#536f81}#stories .hj-v7-musicnote{font-size:16px;color:#294d67}#stories .hj-mp3-name{min-width:0;overflow-wrap:anywhere;font-family:"Gowun Dodum",sans-serif;font-size:11px}#stories .hj-v7-rowtime{text-align:right;font-size:9px;color:#526f7f;font-variant-numeric:tabular-nums}
+#stories .hj-detail-listfoot{padding:8px 10px;border-top:1px solid #b8c9ca;background:#dce5e3;color:#637d89;font-size:8px}
+#stories .hj-mp3-footer{display:flex;justify-content:space-between;gap:5px;margin:12px 0 0;padding:6px 0;border-top:1px solid #a6b6b8;color:#506c7e;font-size:8px;letter-spacing:.4px}
+@media(max-width:340px){#stories .hj-v7-songhero{grid-template-columns:64px minmax(0,1fr);gap:7px}#stories .hj-v7-disc{width:48px;height:48px}#stories .hj-v7-discbox{min-height:100px}#stories .hj-v7-digital{font-size:7px}#stories .hj-v7-signal{font-size:6px}#stories .hj-mp3-song{gap:4px;padding:7px 5px}#stories .hj-mp3-control{width:32px}}
 </style>
 
 </body>
