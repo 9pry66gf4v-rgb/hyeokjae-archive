@@ -11657,6 +11657,30 @@ const tracks = [
   audio.preload = "metadata";
    window.hjMusicAudio = audio;
 audio.volume = 0.8;
+   
+  // 음량 슬라이더
+  const volume = document.createElement("label");
+  volume.className = "hj-detail-volume";
+  volume.innerHTML =
+    '<span>VOL</span>' +
+    '<input type="range" min="0" max="100" value="80"' +
+    ' aria-label="음악 음량">' +
+    '<span class="hj-detail-volume-value">80%</span>';
+
+  root.querySelector(".hj-v7-volume-slot").appendChild(volume);
+
+  const volumeInput = volume.querySelector("input");
+  const volumeValue =
+    volume.querySelector(".hj-detail-volume-value");
+
+  volumeInput.addEventListener("input", () => {
+    volumeValue.textContent = volumeInput.value + "%";
+    if (window.hjMusicAudio) {
+      window.hjMusicAudio.volume =
+        Number(volumeInput.value) / 100;
+    }
+  });
+
 
   let index = 0;
   let context = null;
@@ -12507,7 +12531,7 @@ function drawBars(values) {
   // 트랙 식별 라벨
   const trackLabel = document.createElement("div");
   trackLabel.className = "hj-detail-track";
-  screen.insertBefore(trackLabel, title);
+ title.parentElement.insertBefore(trackLabel, title);
 
   // 주파수 눈금
   const freq = document.createElement("div");
@@ -12561,32 +12585,7 @@ function drawBars(values) {
     subtree: true
   });
 
-  // 음량 슬라이더
-  const volume = document.createElement("label");
-  volume.className = "hj-detail-volume";
-  volume.innerHTML =
-    '<span>VOL</span>' +
-    '<input type="range" min="0" max="100" value="80"' +
-    ' aria-label="음악 음량">' +
-    '<span class="hj-detail-volume-value">80%</span>';
-
-  root.querySelector(".hj-v7-volume-slot").appendChild(volume);
-
-  const volumeInput = volume.querySelector("input");
-  const volumeValue =
-    volume.querySelector(".hj-detail-volume-value");
-
-  // 기존 플레이어 오디오를 찾아 연결
-  // 기존 코드의 new Audio()는 지역 변수라
-  // 외부에서 직접 접근할 수 없으므로
-  // 슬라이더 연결은 아래 주석의 한 줄 수정이 필요함.
-  volumeInput.addEventListener("input", () => {
-    volumeValue.textContent = volumeInput.value + "%";
-    if (window.hjMusicAudio) {
-      window.hjMusicAudio.volume =
-        Number(volumeInput.value) / 100;
-    }
-  });
+ 
 
   // 플레이리스트 하단 정보
   const listFoot = document.createElement("div");
