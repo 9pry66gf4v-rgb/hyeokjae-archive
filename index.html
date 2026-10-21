@@ -11585,20 +11585,22 @@ body > .phone::after {
   window.hjPocketPlayerInstalled = true;
 
   // 세 번째 곡을 올린 뒤 파일 이름을 바꾸면 돼!
-  const tracks = [
-    {
-      title: "정혁 · THEME",
-      src: "music/정혁 브금 FINAL3.wav"
-    },
-    {
-      title: "홍윤재 · THEME",
-      src: "music/윤재 브금 FINAL4.wav"
-    },
-    {
-      title: "HYEOKJAE · TRACK 03",
-      src: "music/track03.mp3"
-    }
-  ];
+ 
+const tracks = [
+  {
+    title: "아쿠아리움 · BGM",
+    src: "music/aquarium_theme.mp3"
+  },
+  {
+    title: "정혁 · THEME",
+    src: "music/정혁 브금 FINAL3.wav"
+  },
+  {
+    title: "홍윤재 · THEME",
+    src: "music/윤재 브금 FINAL4.wav"
+  }
+];
+
 
   // 홈의 STORY 버튼을 MUSIC으로 변경
   document.querySelectorAll('[data-page="stories"]').forEach(btn => {
