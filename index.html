@@ -11718,28 +11718,59 @@ audio.volume = 0.8;
            String(s).padStart(2, "0");
   }
 
-  function drawBars(values) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    const count = 24;
-    const gap = 4;
-    const width = (canvas.width - gap * (count - 1)) / count;
+function drawBars(values) {
+  const W = canvas.width;
+  const H = canvas.height;
 
-    for (let i = 0; i < count; i++) {
-      const value = values ? values[i] / 255 : 0;
-      const height = values
-        ? Math.max(4, value * 70)
-        : 5 + (i % 4) * 3;
+  ctx.clearRect(0, 0, W, H);
 
-      ctx.fillStyle = i % 6 === 0 ? "#718268" : "#24344d";
+  const columns = 24;
+  const rows = 12;
+  const gapX = 3;
+  const gapY = 2;
+  const side = 3;
+  const top = 4;
+
+  const cellW =
+    (W - side * 2 - gapX * (columns - 1)) / columns;
+
+  const cellH =
+    (H - top * 2 - gapY * (rows - 1)) / rows;
+
+  for (let x = 0; x < columns; x++) {
+    const energy = values ? values[x] / 255 : 0;
+
+    // 실제 주파수 세기를 LED 단계로 변환
+    const active = values
+      ? Math.min(rows, Math.round(energy * rows * 1.25))
+      : 0;
+
+    for (let y = 0; y < rows; y++) {
+      const fromBottom = rows - y;
+      const on = fromBottom <= active;
+
+      let color;
+
+      if (!on) {
+        color = "#90ADB6";
+      } else if (fromBottom >= 10) {
+        color = "#89977C";
+      } else {
+        color = "#263B52";
+      }
+
+      ctx.fillStyle = color;
       ctx.fillRect(
-        i * (width + gap),
-        canvas.height - height,
-        width,
-        height
+        side + x * (cellW + gapX),
+        top + y * (cellH + gapY),
+        cellW,
+        cellH
       );
     }
   }
+}
+
 
   function animate() {
     if (audio.paused || !analyser) {
@@ -12612,6 +12643,116 @@ audio.volume = 0.8;
   requestAnimationFrame(tick);
 })();
 </script>
+
+<!-- HYEOKJAE AUDIO / LED + ANALOG CONTROL -->
+<style>
+/* 픽셀 LED 화면 */
+#stories #hjMp3Canvas {
+  display: block;
+  width: 100%;
+  height: 100px;
+  margin: 13px 0 5px;
+  border: 2px solid #7897A3;
+  border-radius: 0;
+  background: #B4CDD2;
+  image-rendering: pixelated;
+  box-shadow:
+    inset 2px 2px #7996A2,
+    inset -1px -1px #D8E8E9;
+}
+
+/* 주파수 라벨 */
+#stories .hj-detail-freq {
+  display: flex;
+  justify-content: space-between;
+  margin: 4px 0 12px;
+  color: #B1C7D0;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .4px;
+}
+
+/* 볼륨 컨트롤 패널 */
+#stories .hj-detail-volume {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 0 12px;
+  padding: 15px 12px 20px;
+  border: 2px solid #83959B;
+  background:
+    linear-gradient(180deg,#E7EBE8,#D8DFDB);
+  color: #283B55;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .8px;
+  box-shadow:
+    inset 2px 2px #FFFFFF,
+    inset -2px -2px #A8B5B4;
+}
+
+/* 슬라이더 눈금 */
+#stories .hj-detail-volume::after {
+  content: "";
+  position: absolute;
+  left: 66px;
+  right: 64px;
+  bottom: 9px;
+  height: 6px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #84969C 0 1px,
+      transparent 1px 12px
+    );
+  pointer-events: none;
+}
+
+/* 실제 볼륨 슬라이더 */
+#stories .hj-detail-volume input {
+  flex: 1;
+  width: auto;
+  max-width: none;
+  min-width: 40px;
+  height: 16px;
+  margin: 0;
+  accent-color: #89977C;
+  cursor: pointer;
+}
+
+/* 볼륨 수치 표시 */
+#stories .hj-detail-volume-value {
+  min-width: 45px;
+  padding: 5px 6px;
+  border: 1px solid #94A4A6;
+  background: #F5F3ED;
+  color: #283B55;
+  text-align: center;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  box-shadow: inset 1px 1px #FFFFFF;
+}
+
+/* 모바일 화면 */
+@media (max-width: 380px) {
+  #stories .hj-detail-volume {
+    gap: 6px;
+    padding: 12px 8px 18px;
+    font-size: 9px;
+  }
+
+  #stories .hj-detail-volume::after {
+    left: 50px;
+    right: 57px;
+  }
+
+  #stories #hjMp3Canvas {
+    height: 90px;
+  }
+}
+</style>
 
 </body>
 </html>
