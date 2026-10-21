@@ -12822,5 +12822,441 @@ function drawBars(values) {
 }
 </style>
 
+<!-- =========================================
+ HYEOKJAE AUDIO SYSTEM / REFINED SKIN V5
+ DESIGN ONLY - MUSIC FUNCTIONS PRESERVED
+========================================= -->
+<style>
+/* 전체 비율 */
+#stories .hj-mp3 {
+  --audio-navy: #253650;
+  --audio-dark: #22354A;
+  --audio-olive: #89977C;
+  --audio-blue: #B0CBD2;
+  --audio-silver: #E1E3DF;
+  --audio-border: #758A96;
+
+  width: 100%;
+  max-width: 440px;
+  margin: 12px auto 22px;
+  color: var(--audio-navy);
+}
+
+#stories .hj-mp3 *,
+#stories .hj-mp3 *::before,
+#stories .hj-mp3 *::after {
+  box-sizing: border-box;
+}
+
+/* 본체 */
+#stories .hj-mp3-unit {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #667D8A;
+  border-radius: 0;
+  background: #DFE3DF;
+  box-shadow:
+    inset 1px 1px 0 #FFFFFF,
+    inset -1px -1px 0 #A0AFB2,
+    3px 3px 0 #9EADB1;
+}
+
+/* 상단 헤더 */
+#stories .hj-mp3-head {
+  min-height: 39px;
+  padding: 12px 13px;
+  border-bottom: 3px solid #89977C;
+  border-radius: 0;
+  background: #253650;
+  color: #F5F3EA;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+#stories .hj-mp3-dots {
+  display: flex;
+  gap: 4px;
+}
+
+#stories .hj-mp3-dots i {
+  width: 9px;
+  height: 9px;
+  border: 1px solid #D5E1E5;
+  border-radius: 0;
+  background: #B0CBD2;
+}
+
+#stories .hj-mp3-dots i:nth-child(2) {
+  background: #89977C;
+}
+
+#stories .hj-mp3-dots i:nth-child(3) {
+  background: #E4E5DE;
+}
+
+/* 플레이어 본체 내부 */
+#stories .hj-mp3-inner {
+  padding: 13px 12px 11px;
+  background:
+    linear-gradient(180deg,#E5E8E4,#DCE1DD);
+}
+
+/* LCD 디스플레이 */
+#stories .hj-mp3-screen {
+  position: relative;
+  padding: 14px 12px 12px;
+  border: 2px solid #758A96;
+  border-radius: 0;
+  background: #22354A;
+  color: #F4F3EA;
+  box-shadow:
+    inset 2px 2px 0 #152537,
+    inset -1px -1px 0 #4B6576,
+    0 1px 0 #FFFFFF;
+}
+
+/* 정보 라벨 */
+#stories .hj-detail-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  color: #A8C1CB;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .6px;
+}
+
+#stories .hj-mp3-meta {
+  margin-top: 8px;
+  color: #A8C1CB;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .6px;
+}
+
+#stories .hj-detail-track {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 7px;
+  border: 1px solid #71836C;
+  border-radius: 0;
+  background: #9EAE92;
+  color: #22354A;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .7px;
+}
+
+/* 곡 제목 */
+#stories .hj-mp3-track {
+  margin: 13px 0 5px;
+  color: #F5F3EA;
+  font-size: clamp(15px,4vw,19px);
+  line-height: 1.35;
+  font-weight: 800;
+  letter-spacing: -.4px;
+}
+
+#stories .hj-mp3-sub {
+  color: #92ADBA;
+  font-size: 8px;
+  letter-spacing: .7px;
+}
+
+/* 픽셀 LED 디스플레이 */
+#stories #hjMp3Canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 285 / 70;
+  margin: 14px 0 5px;
+  border: 2px solid #7896A2;
+  border-radius: 0;
+  background: #B0CBD2;
+  image-rendering: pixelated;
+  box-shadow:
+    inset 1px 1px #7896A2,
+    0 1px 0 #506A79;
+}
+
+/* 주파수 라벨 */
+#stories .hj-detail-freq {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 0 11px;
+  color: #A4BBC5;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .4px;
+}
+
+/* 출력 레벨 */
+#stories .hj-detail-output {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 10px 0 7px;
+  color: #A8C1CB;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .6px;
+}
+
+#stories .hj-detail-meter {
+  display: flex;
+  gap: 3px;
+}
+
+#stories .hj-detail-meter i {
+  width: 8px;
+  height: 5px;
+  background: #4D6577;
+}
+
+#stories .hj-detail-meter i.on {
+  background: #A4B798;
+}
+
+/* 재생바 */
+#stories #hjMp3Seek {
+  display: block;
+  width: 100%;
+  height: 13px;
+  margin: 6px 0 8px;
+  accent-color: #89977C;
+  cursor: pointer;
+}
+
+#stories .hj-mp3-times {
+  color: #D5E2E5;
+  font-size: 10px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 컨트롤 */
+#stories .hj-mp3-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  padding: 18px 0 12px;
+}
+
+#stories .hj-mp3-control,
+#stories .hj-mp3-control.primary {
+  display: grid;
+  place-items: center;
+  width: 49px;
+  height: 40px;
+  padding: 0;
+  border: 2px solid #83959D;
+  border-radius: 0;
+  background: #F0F1EC;
+  color: #253650;
+  font-size: 17px;
+  cursor: pointer;
+  box-shadow:
+    inset 2px 2px #FFFFFF,
+    inset -2px -2px #AAB7BA,
+    1px 2px 0 #91A2A8;
+}
+
+#stories .hj-mp3-control.primary {
+  width: 64px;
+  height: 44px;
+  border-color: #6E8069;
+  background: #89977C;
+  color: #FFFFFF;
+  font-size: 19px;
+  box-shadow:
+    inset 2px 2px #B4C3A8,
+    inset -2px -2px #66765E,
+    1px 2px 0 #73836D;
+}
+
+#stories .hj-mp3-control:hover {
+  background: #D5E1E3;
+}
+
+#stories .hj-mp3-control.primary:hover {
+  background: #7B8B70;
+}
+
+#stories .hj-mp3-control:active {
+  transform: translate(1px,2px);
+  box-shadow: inset 2px 2px #91A2A8;
+}
+
+/* 미니멀 볼륨바 */
+#stories .hj-detail-volume {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin: 3px 0 10px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  color: #536979;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+
+#stories .hj-detail-volume::after {
+  content: none;
+  display: none;
+}
+
+#stories .hj-detail-volume input {
+  flex: 0 1 90px;
+  width: 90px;
+  min-width: 60px;
+  max-width: 110px;
+  height: 12px;
+  margin: 0;
+  accent-color: #89977C;
+  cursor: pointer;
+}
+
+#stories .hj-detail-volume-value {
+  min-width: auto;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  color: #536979;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+/* 재생 상태 */
+#stories .hj-mp3-status {
+  margin-top: 5px;
+  padding: 10px 2px 3px;
+  border-top: 1px solid #B2BFBE;
+  color: #6B7E88;
+  font-size: 9px;
+  letter-spacing: .6px;
+}
+
+#stories .hj-mp3-onair {
+  padding: 5px 9px;
+  border: 1px solid #728269;
+  border-radius: 0;
+  background: #89977C;
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+/* 플레이리스트 */
+#stories .hj-mp3-listunit {
+  margin-top: 14px;
+  border: 1px solid #758A96;
+  border-radius: 0;
+  background: #F5F2EB;
+  box-shadow:
+    inset 1px 1px #FFFFFF,
+    3px 3px 0 #A2B0B4;
+  overflow: hidden;
+}
+
+#stories .hj-mp3-listhead {
+  padding: 11px 12px;
+  border-bottom: 3px solid #89977C;
+  background: #253650;
+  color: #F5F3EA;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .8px;
+}
+
+#stories .hj-mp3-list {
+  display: grid;
+  gap: 0;
+  padding: 6px;
+  background: #F5F2EB;
+}
+
+#stories .hj-mp3-song {
+  min-height: 45px;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  color: #34495D;
+  font-size: 11px;
+}
+
+#stories .hj-mp3-song + .hj-mp3-song {
+  border-top: 1px solid #E0E3DE;
+}
+
+#stories .hj-mp3-song.active {
+  border-color: #95ADB5;
+  background: #D3E2E5;
+  color: #253650;
+  font-weight: 800;
+  box-shadow: inset 3px 0 #89977C;
+}
+
+#stories .hj-mp3-song:hover {
+  background: #E2EBE9;
+}
+
+#stories .hj-mp3-num {
+  color: #718591;
+  font-size: 10px;
+}
+
+#stories .hj-detail-listfoot {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 11px;
+  border-top: 1px solid #C0CBC8;
+  background: #E2E6E2;
+  color: #667A86;
+  font-size: 9px;
+  letter-spacing: .4px;
+}
+
+/* 하단 */
+#stories .hj-mp3-footer {
+  margin-top: 13px;
+  padding: 8px 2px 0;
+  border-top: 1px solid #B2BFBE;
+  color: #71838B;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .6px;
+}
+
+/* 모바일 */
+@media (max-width: 380px) {
+  #stories .hj-mp3-inner {
+    padding: 9px;
+  }
+
+  #stories .hj-mp3-screen {
+    padding: 11px 9px;
+  }
+
+  #stories .hj-mp3-head {
+    font-size: 9px;
+    letter-spacing: .5px;
+  }
+
+  #stories .hj-mp3-track {
+    font-size: 15px;
+  }
+}
+</style>
+
 </body>
 </html>
