@@ -11914,5 +11914,237 @@ const tracks = [
 })();
 </script>
 
+<!-- HYEOKJAE MUSIC PLAYER : CHIC SKIN -->
+<style>
+/* 전체 바디 */
+#stories .hj-mp3 {
+  --ink: #283B55;
+  --blue: #B8D4E0;
+  --olive: #929B80;
+  --silver: #E0E1DE;
+  --line: #84949A;
+
+  max-width: 440px;
+  margin: 12px auto 20px;
+  color: var(--ink);
+  font-family: inherit;
+}
+
+/* 메인 플레이어 */
+#stories .hj-mp3-unit {
+  border: 2px solid #283B55;
+  border-radius: 0;
+  background: #E0E1DE;
+  box-shadow:
+    inset 1px 1px #FFFFFF,
+    4px 4px 0 #A4B0B6;
+  overflow: hidden;
+}
+
+/* 상단 타이틀바 */
+#stories .hj-mp3-head {
+  background: #283B55;
+  color: #F7F3EC;
+  border-radius: 0;
+  padding: 10px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+}
+
+/* 장식 점 */
+#stories .hj-mp3-dots i {
+  width: 8px;
+  height: 8px;
+  border: 1px solid #D9E3E8;
+  border-radius: 0;
+  background: #B8D4E0;
+}
+#stories .hj-mp3-dots i:nth-child(2) {
+  background: #929B80;
+}
+#stories .hj-mp3-dots i:nth-child(3) {
+  background: #E0E1DE;
+}
+
+/* LCD 영역 */
+#stories .hj-mp3-inner {
+  padding: 13px;
+}
+#stories .hj-mp3-screen {
+  border: 2px solid #84949A;
+  border-radius: 0;
+  padding: 14px;
+  background: #B8D4E0;
+  box-shadow:
+    inset 2px 2px 0 #90AEBB,
+    inset -1px -1px 0 #E2F0F3;
+}
+
+/* 곡 제목 */
+#stories .hj-mp3-track {
+  margin: 12px 0 5px;
+  color: #283B55;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -.5px;
+}
+#stories .hj-mp3-meta,
+#stories .hj-mp3-sub,
+#stories .hj-mp3-times {
+  color: #3E596B;
+  letter-spacing: .5px;
+}
+
+/* 이퀄라이저 */
+#stories #hjMp3Canvas {
+  height: 86px;
+  margin: 14px 0;
+  border: 1px solid #8CA9B8;
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 24%,
+      #283B5511 25%,
+      transparent 26%,
+      transparent 49%,
+      #283B5511 50%,
+      transparent 51%,
+      transparent 74%,
+      #283B5511 75%,
+      transparent 76%
+    ),
+    #A9C8D6;
+  image-rendering: pixelated;
+}
+
+/* 재생바 */
+#stories #hjMp3Seek {
+  accent-color: #283B55;
+  height: 10px;
+}
+
+/* 재생 컨트롤 */
+#stories .hj-mp3-controls {
+  gap: 7px;
+  padding: 18px 0 9px;
+}
+#stories .hj-mp3-control,
+#stories .hj-mp3-control.primary {
+  width: 51px;
+  height: 39px;
+  border: 2px solid #84949A;
+  border-radius: 0;
+  color: #283B55;
+  font-size: 17px;
+  background: #F4F1EB;
+  box-shadow:
+    inset 2px 2px #FFFFFF,
+    inset -2px -2px #BCC4C7;
+  transition:
+    background .15s ease,
+    transform .15s ease;
+}
+#stories .hj-mp3-control.primary {
+  width: 60px;
+  background: #929B80;
+  border-color: #718069;
+  color: #FFFFFF;
+}
+#stories .hj-mp3-control:hover {
+  background: #D0DFE6;
+}
+#stories .hj-mp3-control.primary:hover {
+  background: #7D8B6D;
+}
+#stories .hj-mp3-control:active {
+  transform: translate(1px, 1px);
+  box-shadow: inset 2px 2px #9AA6AB;
+}
+
+/* 상태 표시 */
+#stories .hj-mp3-status {
+  padding-top: 9px;
+  font-size: 9px;
+  color: #687985;
+}
+#stories .hj-mp3-onair {
+  background: #929B80;
+  color: #FFFFFF;
+  border-radius: 0;
+  padding: 5px 8px;
+  letter-spacing: .6px;
+}
+
+/* 플레이리스트 창 */
+#stories .hj-mp3-listunit {
+  margin-top: 15px;
+  border: 2px solid #84949A;
+  border-radius: 0;
+  background: #FAF6EE;
+  box-shadow: 4px 4px 0 #A4B0B6;
+}
+#stories .hj-mp3-listhead {
+  background: #283B55;
+  color: #FAF6EE;
+  padding: 10px 12px;
+  font-size: 10px;
+  letter-spacing: .8px;
+}
+
+/* 개별 음악 */
+#stories .hj-mp3-list {
+  padding: 6px;
+  gap: 0;
+}
+#stories .hj-mp3-song {
+  min-height: 42px;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 0;
+  color: #283B55;
+  background: #FAF6EE;
+  font-size: 11px;
+}
+#stories .hj-mp3-song + .hj-mp3-song {
+  border-top: 1px solid #E1E5E3;
+}
+#stories .hj-mp3-song.active {
+  background: #D5E5EA;
+  border-color: #A4B0B6;
+  color: #283B55;
+}
+#stories .hj-mp3-song:hover {
+  background: #E6EDF0;
+}
+#stories .hj-mp3-num {
+  color: #687985;
+  font-size: 10px;
+}
+#stories .hj-mp3-footer {
+  margin-top: 16px;
+  color: #687985;
+  font-size: 9px;
+  letter-spacing: .7px;
+}
+
+/* 모바일 대응 */
+@media (max-width: 380px) {
+  #stories .hj-mp3-head {
+    font-size: 9px;
+    letter-spacing: .5px;
+  }
+  #stories .hj-mp3-inner {
+    padding: 9px;
+  }
+  #stories .hj-mp3-screen {
+    padding: 10px;
+  }
+  #stories .hj-mp3-track {
+    font-size: 15px;
+  }
+}
+</style>
+
 </body>
 </html>
