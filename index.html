@@ -12146,5 +12146,348 @@ const tracks = [
 }
 </style>
 
+<!-- =====================================
+ HYEOKJAE AUDIO SYSTEM
+ REFINED RETRO SKIN / VERSION 3.0
+ 기존 플레이어 기능 유지
+===================================== -->
+<style>
+#stories .hj-mp3 {
+  --hj-ink: #253650;
+  --hj-deep: #1e2d43;
+  --hj-blue: #9ebdcb;
+  --hj-olive: #89977c;
+  --hj-paper: #f4f1e9;
+  --hj-silver: #d9dedd;
+  --hj-line: #82939e;
+
+  width: 100%;
+  max-width: 440px;
+  margin: 14px auto 24px;
+  color: var(--hj-ink);
+  font-family: inherit;
+}
+
+#stories .hj-mp3 *,
+#stories .hj-mp3 *::before,
+#stories .hj-mp3 *::after {
+  box-sizing: border-box;
+}
+
+#stories .hj-mp3-unit {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #526579;
+  border-radius: 0;
+  background: #dce0de;
+  box-shadow:
+    inset 1px 1px #fff,
+    inset -1px -1px #9da9ae,
+    3px 3px 0 #a4b0b6;
+}
+
+#stories .hj-mp3-head {
+  min-height: 36px;
+  padding: 10px 12px;
+  background: #253650;
+  border-bottom: 2px solid #738a9c;
+  color: #f4f1e9;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+#stories .hj-mp3-dots {
+  display: flex;
+  gap: 4px;
+}
+
+#stories .hj-mp3-dots i {
+  width: 9px;
+  height: 9px;
+  border-radius: 0;
+  border: 1px solid #d6e0e3;
+  background: #b2c6d1;
+}
+
+#stories .hj-mp3-dots i:nth-child(2) {
+  background: #89977c;
+}
+
+#stories .hj-mp3-dots i:nth-child(3) {
+  background: #e5e5dc;
+}
+
+/* 플레이어 바디 */
+#stories .hj-mp3-inner {
+  padding: 14px 12px 12px;
+  background:
+    linear-gradient(180deg,#e5e8e5,#d8ddda);
+}
+
+/* 다크 LCD */
+#stories .hj-mp3-screen {
+  position: relative;
+  padding: 15px 13px 12px;
+  border: 3px solid #748b99;
+  border-radius: 0;
+  background: #263a50;
+  color: #e2eced;
+  box-shadow:
+    inset 2px 2px 0 #172638,
+    inset -1px -1px 0 #486277,
+    0 1px 0 #fff;
+}
+
+#stories .hj-mp3-screen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #8fa8b7;
+  opacity: .35;
+  pointer-events: none;
+}
+
+#stories .hj-mp3-meta {
+  color: #a9c3cf;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+#stories .hj-mp3-track {
+  margin: 15px 0 5px;
+  color: #f5f3e9;
+  font-size: clamp(14px,4vw,19px);
+  line-height: 1.4;
+  font-weight: 800;
+  letter-spacing: -.3px;
+  text-shadow: 0 1px #172638;
+}
+
+#stories .hj-mp3-sub {
+  color: #93acb9;
+  font-size: 8px;
+  letter-spacing: 1px;
+}
+
+/* 이퀄라이저 LCD 안쪽 패널 */
+#stories #hjMp3Canvas {
+  display: block;
+  width: 100%;
+  height: 98px;
+  margin: 16px 0 13px;
+  border: 1px solid #6e8c9d;
+  border-radius: 0;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 15px,
+      #a4c4d115 16px,
+      transparent 17px
+    ),
+    linear-gradient(180deg,#a5c5d2,#bdd4d8);
+  image-rendering: pixelated;
+  box-shadow: inset 2px 2px 0 #66869744;
+}
+
+/* 재생 진행바 */
+#stories #hjMp3Seek {
+  display: block;
+  width: 100%;
+  height: 14px;
+  margin: 4px 0 8px;
+  accent-color: #9caf9b;
+  cursor: pointer;
+}
+
+#stories .hj-mp3-times {
+  color: #c3d6dc;
+  font-size: 10px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 작은 장치 라벨 */
+#stories .hj-mp3-status {
+  margin-top: 3px;
+  padding: 10px 2px 3px;
+  border-top: 1px solid #b5bfbe;
+  color: #647684;
+  font-size: 9px;
+  letter-spacing: .7px;
+}
+
+#stories .hj-mp3-onair {
+  padding: 5px 9px;
+  border: 1px solid #71816b;
+  border-radius: 0;
+  background: #89977c;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .7px;
+}
+
+/* 버튼 영역 */
+#stories .hj-mp3-controls {
+  position: relative;
+  gap: 6px;
+  padding: 19px 0 16px;
+}
+
+#stories .hj-mp3-control,
+#stories .hj-mp3-control.primary {
+  display: grid;
+  place-items: center;
+  width: 49px;
+  height: 41px;
+  border: 1px solid #6f8490;
+  border-radius: 0;
+  background: #e8ece9;
+  color: #263a50;
+  font-size: 17px;
+  cursor: pointer;
+  box-shadow:
+    inset 2px 2px #fff,
+    inset -2px -2px #a7b5b9,
+    1px 2px 0 #7e929d;
+  transition:
+    background .15s ease,
+    transform .15s ease;
+}
+
+#stories .hj-mp3-control.primary {
+  width: 64px;
+  height: 46px;
+  border-color: #64735f;
+  background: #89977c;
+  color: #fff;
+  font-size: 19px;
+  box-shadow:
+    inset 2px 2px #b4c0a7,
+    inset -2px -2px #66765e,
+    1px 2px 0 #66765e;
+}
+
+#stories .hj-mp3-control:hover {
+  background: #c8d9df;
+}
+
+#stories .hj-mp3-control.primary:hover {
+  background: #77896e;
+}
+
+#stories .hj-mp3-control:active {
+  transform: translate(1px,2px);
+  box-shadow: inset 2px 2px #8a9a9e;
+}
+
+#stories .hj-mp3-control:focus-visible,
+#stories .hj-mp3-song:focus-visible {
+  outline: 2px solid #6c9dbb;
+  outline-offset: 2px;
+}
+
+/* 플레이리스트 */
+#stories .hj-mp3-listunit {
+  margin-top: 14px;
+  border: 1px solid #657987;
+  border-radius: 0;
+  background: #f5f2ea;
+  box-shadow:
+    inset 1px 1px #fff,
+    3px 3px 0 #a4b0b6;
+  overflow: hidden;
+}
+
+#stories .hj-mp3-listhead {
+  padding: 11px 12px;
+  border-bottom: 2px solid #82948a;
+  background: #253650;
+  color: #f4f1e9;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .9px;
+}
+
+#stories .hj-mp3-list {
+  display: grid;
+  gap: 0;
+  padding: 6px;
+  background: #f5f2ea;
+}
+
+#stories .hj-mp3-song {
+  min-height: 47px;
+  padding: 10px;
+  gap: 10px;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  color: #35465c;
+  font-size: 11px;
+  transition: background .12s ease;
+}
+
+#stories .hj-mp3-song + .hj-mp3-song {
+  border-top: 1px solid #dedfd9;
+}
+
+#stories .hj-mp3-song.active {
+  border: 1px solid #8faab5;
+  background: #d3e2e5;
+  color: #253650;
+  font-weight: 800;
+  box-shadow: inset 3px 0 #89977c;
+}
+
+#stories .hj-mp3-song:hover {
+  background: #e0e9e8;
+}
+
+#stories .hj-mp3-num {
+  color: #758895;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+#stories .hj-mp3-name {
+  line-height: 1.4;
+}
+
+/* 하단 작은 정보 */
+#stories .hj-mp3-footer {
+  margin: 13px 0 0;
+  padding: 8px 2px 0;
+  border-top: 1px solid #b2bdbb;
+  color: #6d7d83;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .7px;
+}
+
+/* 좁은 모바일 화면 */
+@media (max-width: 380px) {
+  #stories .hj-mp3-inner {
+    padding: 9px;
+  }
+  #stories .hj-mp3-screen {
+    padding: 11px 9px;
+  }
+  #stories .hj-mp3-track {
+    font-size: 15px;
+  }
+  #stories .hj-mp3-head {
+    font-size: 9px;
+    letter-spacing: .4px;
+  }
+}
+</style>
+
 </body>
 </html>
