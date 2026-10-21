@@ -11696,6 +11696,8 @@ const tracks = [
   const get = id => document.getElementById(id);
   const audio = new Audio();
   audio.preload = "metadata";
+   window.hjMusicAudio = audio;
+audio.volume = 0.8;
 
   let index = 0;
   let context = null;
@@ -12256,6 +12258,360 @@ const tracks = [
   }
 }
 </style>
+
+<!-- HYEOKJAE AUDIO SYSTEM / DETAIL EDITION -->
+<style>
+/* 01. 본체 프레임 */
+#stories .hj-mp3-unit {
+  border: 2px solid #667987;
+  background: #dce0dc;
+  box-shadow:
+    inset 1px 1px #fff,
+    inset -2px -2px #9ba8aa,
+    4px 4px 0 #8c9ca3;
+}
+
+#stories .hj-mp3-head {
+  border-bottom: 3px solid #8a9b86;
+  background: linear-gradient(90deg,#24364e,#344c63);
+  padding: 12px;
+  letter-spacing: 1px;
+}
+
+/* 02. LCD에 깊이감 */
+#stories .hj-mp3-screen {
+  border: 3px solid #738b9a;
+  background:
+    linear-gradient(145deg,#293e55,#1d2e42);
+  box-shadow:
+    inset 3px 3px 0 #142236,
+    inset -2px -2px 0 #496276,
+    0 2px 0 #f5f6f2;
+}
+
+#stories .hj-mp3-meta {
+  color: #adc5d0;
+}
+
+#stories .hj-mp3-track {
+  color: #f2f4ec;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -.5px;
+}
+
+#stories .hj-mp3-sub {
+  color: #a5b9c3;
+}
+
+#stories .hj-mp3-times {
+  color: #d1e1e5;
+}
+
+/* 03. 이퀄라이저 */
+#stories #hjMp3Canvas {
+  height: 105px;
+  margin: 13px 0 5px;
+  border: 2px solid #7594a1;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 15px,
+      #263b521c 16px,
+      transparent 17px
+    ),
+    #b1cbd2;
+  image-rendering: pixelated;
+}
+
+/* 04. 추가한 LCD 라벨 */
+#stories .hj-detail-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  color: #a8c3cc;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .7px;
+}
+
+#stories .hj-detail-track {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 7px;
+  border: 1px solid #8caa9a;
+  background: #9aaa8d;
+  color: #21374b;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .7px;
+}
+
+#stories .hj-detail-freq {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  color: #a7bec8;
+  font-size: 8px;
+  letter-spacing: .3px;
+}
+
+/* 05. 출력 레벨 */
+#stories .hj-detail-output {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+  margin: 12px 0 5px;
+  color: #b6cdd5;
+  font-size: 8px;
+  letter-spacing: .6px;
+}
+
+#stories .hj-detail-meter {
+  display: flex;
+  gap: 3px;
+}
+
+#stories .hj-detail-meter i {
+  display: block;
+  width: 9px;
+  height: 6px;
+  background: #4c6478;
+}
+
+#stories .hj-detail-meter i.on {
+  background: #a8bc99;
+}
+
+/* 06. 컨트롤 패널 */
+#stories .hj-mp3-controls {
+  gap: 7px;
+  padding: 17px 0 15px;
+}
+
+#stories .hj-mp3-control,
+#stories .hj-mp3-control.primary {
+  border-radius: 0;
+  border: 2px solid #82949b;
+  box-shadow:
+    inset 2px 2px #fff,
+    inset -2px -2px #a5b2b5,
+    2px 2px 0 #a0acaf;
+}
+
+#stories .hj-mp3-control.primary {
+  border-color: #6e8068;
+  background: #89977c;
+  color: #fff;
+  box-shadow:
+    inset 2px 2px #b4c3a7,
+    inset -2px -2px #67765f,
+    2px 2px 0 #74846d;
+}
+
+/* 07. 음량 조절 */
+#stories .hj-detail-volume {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 10px;
+  color: #516576;
+  font-size: 9px;
+  letter-spacing: .5px;
+}
+
+#stories .hj-detail-volume input {
+  width: 78px;
+  max-width: 35%;
+  height: 12px;
+  accent-color: #788d79;
+  cursor: pointer;
+}
+
+/* 08. 플레이리스트 */
+#stories .hj-mp3-listunit {
+  border: 2px solid #738895;
+  background: #f6f3ec;
+  box-shadow: 4px 4px 0 #a2aeb1;
+}
+
+#stories .hj-mp3-listhead {
+  background: #26374f;
+  border-bottom: 3px solid #89977c;
+  padding: 12px;
+  letter-spacing: 1px;
+}
+
+#stories .hj-mp3-song {
+  border-radius: 0;
+  min-height: 47px;
+  font-size: 11px;
+}
+
+#stories .hj-mp3-song.active {
+  background: #d3e2e4;
+  border: 1px solid #95acb5;
+  box-shadow: inset 3px 0 #89977c;
+}
+
+#stories .hj-detail-listfoot {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 11px;
+  background: #e0e5e1;
+  border-top: 1px solid #c1cac8;
+  color: #637584;
+  font-size: 9px;
+  letter-spacing: .5px;
+}
+
+/* 09. 버튼 접근성 */
+#stories .hj-mp3 button:focus-visible {
+  outline: 2px solid #6a9bb9;
+  outline-offset: 2px;
+}
+</style>
+
+<script>
+(function () {
+  if (window.hjAudioDetailInstalled) return;
+
+  const root = document.querySelector("#stories .hj-mp3");
+  if (!root) return;
+
+  window.hjAudioDetailInstalled = true;
+
+  const screen = root.querySelector(".hj-mp3-screen");
+  const canvas = root.querySelector("#hjMp3Canvas");
+  const title = root.querySelector("#hjMp3Title");
+  const number = root.querySelector("#hjMp3Number");
+  const status = root.querySelector("#hjMp3Status");
+  const list = root.querySelector("#hjMp3List");
+  const controls = root.querySelector(".hj-mp3-controls");
+
+  if (!screen || !canvas || !title ||
+      !number || !status || !list || !controls) return;
+
+  // 상단 장치 라벨
+  const label = document.createElement("div");
+  label.className = "hj-detail-label";
+  label.innerHTML =
+    "<span>◈ DIGITAL STEREO</span>" +
+    "<span>● SIGNAL</span>";
+  screen.insertBefore(label, screen.firstChild);
+
+  // 트랙 식별 라벨
+  const trackLabel = document.createElement("div");
+  trackLabel.className = "hj-detail-track";
+  screen.insertBefore(trackLabel, title);
+
+  // 주파수 눈금
+  const freq = document.createElement("div");
+  freq.className = "hj-detail-freq";
+  freq.innerHTML =
+    "<span>63 Hz</span>" +
+    "<span>1 kHz</span>" +
+    "<span>16 kHz</span>";
+  canvas.insertAdjacentElement("afterend", freq);
+
+  // 출력 레벨
+  const output = document.createElement("div");
+  output.className = "hj-detail-output";
+  output.innerHTML =
+    '<span>OUTPUT LEVEL</span>' +
+    '<div class="hj-detail-meter" aria-hidden="true">' +
+    Array.from({length:10}, () => "<i></i>").join("") +
+    "</div>";
+
+  freq.insertAdjacentElement("afterend", output);
+  const meterBars = [...output.querySelectorAll("i")];
+
+  // 실제 재생 상태에 따라 LED 변화
+  function updateDetails() {
+    const n = number.textContent.trim().split("/")[0].trim();
+    trackLabel.textContent = "TRACK " + n;
+
+    const playing = status.textContent.includes("ON AIR");
+
+    const level = playing
+      ? 4 + Math.floor(Math.random() * 6)
+      : 0;
+
+    meterBars.forEach((bar, i) => {
+      bar.classList.toggle("on", i < level);
+    });
+  }
+
+  // 출력 레벨 장식: 기존 오디오 분석 그래프는 그대로 유지
+  const statusObserver = new MutationObserver(updateDetails);
+  statusObserver.observe(status, {
+    childList: true,
+    characterData: true,
+    subtree: true
+  });
+
+  const numberObserver = new MutationObserver(updateDetails);
+  numberObserver.observe(number, {
+    childList: true,
+    characterData: true,
+    subtree: true
+  });
+
+  // 음량 슬라이더
+  const volume = document.createElement("label");
+  volume.className = "hj-detail-volume";
+  volume.innerHTML =
+    '<span>VOL</span>' +
+    '<input type="range" min="0" max="100" value="80"' +
+    ' aria-label="음악 음량">' +
+    '<span class="hj-detail-volume-value">80%</span>';
+
+  controls.insertAdjacentElement("afterend", volume);
+
+  const volumeInput = volume.querySelector("input");
+  const volumeValue =
+    volume.querySelector(".hj-detail-volume-value");
+
+  // 기존 플레이어 오디오를 찾아 연결
+  // 기존 코드의 new Audio()는 지역 변수라
+  // 외부에서 직접 접근할 수 없으므로
+  // 슬라이더 연결은 아래 주석의 한 줄 수정이 필요함.
+  volumeInput.addEventListener("input", () => {
+    volumeValue.textContent = volumeInput.value + "%";
+    if (window.hjMusicAudio) {
+      window.hjMusicAudio.volume =
+        Number(volumeInput.value) / 100;
+    }
+  });
+
+  // 플레이리스트 하단 정보
+  const listFoot = document.createElement("div");
+  listFoot.className = "hj-detail-listfoot";
+  listFoot.innerHTML =
+    "<span>03 FILES · ALL TRACKS</span>" +
+    "<span>♡ ARCHIVE</span>";
+
+  list.parentElement.appendChild(listFoot);
+
+  updateDetails();
+
+  // 음악 재생 중 LED 표시 갱신
+  let lastUpdate = 0;
+  function tick(time) {
+    if (time - lastUpdate > 130) {
+      updateDetails();
+      lastUpdate = time;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  requestAnimationFrame(tick);
+})();
+</script>
 
 </body>
 </html>
