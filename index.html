@@ -11182,5 +11182,203 @@ body > .phone::after {
 }
 </style>
 
+<!-- ===== CHARACTER THEME SONG START ===== -->
+
+<style>
+/* 프로필 테마곡 버튼 */
+#profile .hj-theme-player {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin: 0 0 12px;
+  padding: 9px 11px;
+
+  background: #E8E8E3;
+  border: 1px solid #A4AFB7;
+  border-radius: 5px;
+
+  box-shadow: 2px 2px 0 #C0C6C5;
+}
+
+#profile .hj-theme-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 12px;
+  color: #30486B;
+}
+
+#profile .hj-theme-btn {
+  flex-shrink: 0;
+
+  min-width: 70px;
+  padding: 6px 10px;
+
+  background: #30486B;
+  border: 1px solid #22364F;
+  border-radius: 4px;
+
+  color: #FFFFFF;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+#profile .hj-theme-btn:hover {
+  background: #415E82;
+}
+
+#profile .hj-theme-btn:active {
+  transform: translateY(1px);
+}
+
+#profile .hj-theme-btn:focus-visible {
+  outline: 2px solid #8CA5BD;
+  outline-offset: 2px;
+}
+</style>
+
+<script>
+(function () {
+  const profile = document.getElementById("profile");
+
+  if (!profile) return;
+
+  // 중복 설치 방지
+  if (document.getElementById("hjThemePlayer")) return;
+
+ const tracks = {
+  "정혁": "music/정혁 브금 FINAL3.wav",
+  "홍윤재": "music/윤재 브금 FINAL4.wav"
+};
+
+  const player = document.createElement("div");
+  player.id = "hjThemePlayer";
+  player.className = "hj-theme-player";
+
+  player.innerHTML = `
+    <div class="hj-theme-label">
+      <span>♫</span>
+      <span>THEME SONG</span>
+    </div>
+
+    <button
+      type="button"
+      class="hj-theme-btn"
+      id="hjThemeButton"
+    >
+      ▶ PLAY
+    </button>
+  `;
+
+  // 기존 프로필 창 바로 위에 배치
+  const profileWindow = profile.querySelector(".window");
+
+  if (!profileWindow) return;
+
+  profileWindow.before(player);
+
+  const button = document.getElementById("hjThemeButton");
+  const audio = new Audio();
+
+  audio.preload = "none";
+
+  let currentCharacter = "";
+
+  function stopTheme() {
+    audio.pause();
+    audio.currentTime = 0;
+    button.textContent = "▶ PLAY";
+  }
+
+  function setCharacter(name) {
+    if (!tracks[name]) return;
+
+    stopTheme();
+
+    currentCharacter = name;
+    audio.src = tracks[name];
+    audio.load();
+  }
+
+  // 프로필 제목에서 캐릭터 확인
+  function updateCharacter() {
+    const title = document.getElementById("profileTitle");
+
+    if (!title) return;
+
+    const text = title.textContent || "";
+
+    const name = text.includes("홍윤재")
+      ? "홍윤재"
+      : text.includes("정혁")
+        ? "정혁"
+        : "";
+
+    if (name && name !== currentCharacter) {
+      setCharacter(name);
+    }
+  }
+
+  button.addEventListener("click", async function () {
+    updateCharacter();
+
+    if (!audio.src) return;
+
+    if (!audio.paused) {
+      audio.pause();
+      button.textContent = "▶ PLAY";
+      return;
+    }
+
+    try {
+      await audio.play();
+      button.textContent = "Ⅱ PAUSE";
+    } catch (error) {
+      console.error("테마곡 재생 실패:", error);
+      button.textContent = "▶ PLAY";
+    }
+  });
+
+  audio.addEventListener("ended", function () {
+    button.textContent = "▶ PLAY";
+  });
+
+  // 프로필이 바뀌면 캐릭터에 맞는 곡 설정
+  const title = document.getElementById("profileTitle");
+
+  if (title) {
+    const observer = new MutationObserver(updateCharacter);
+
+    observer.observe(title, {
+      childList: true,
+      characterData: true,
+      subtree: true
+    });
+  }
+
+  // 프로필을 나가면 음악 정지
+  const pageObserver = new MutationObserver(function () {
+    if (!profile.classList.contains("active")) {
+      if (!audio.paused) {
+        stopTheme();
+      }
+    }
+  });
+
+  pageObserver.observe(profile, {
+    attributes: true,
+    attributeFilter: ["class"]
+  });
+
+  updateCharacter();
+})();
+</script>
+
 </body>
 </html>
