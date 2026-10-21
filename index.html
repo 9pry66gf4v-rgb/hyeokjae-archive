@@ -11380,5 +11380,537 @@ body > .phone::after {
 })();
 </script>
 
+<!-- ===== HYEOKJAE POCKET PLAYER START ===== -->
+<style>
+#stories .hj-mp3 {
+  --ink: #24344d;
+  --blue: #6f9cc8;
+  --lcd: #a9c4d6;
+  --silver: #d9dde1;
+  --khaki: #a4ad8c;
+  width: 100%;
+  max-width: 440px;
+  margin: 8px auto 18px;
+  color: var(--ink);
+  font-family: inherit;
+}
+#stories .hj-mp3 * { box-sizing: border-box; }
+
+#stories .hj-mp3-unit {
+  border: 2px solid var(--ink);
+  border-radius: 17px;
+  overflow: hidden;
+  background: linear-gradient(145deg,#fafbfa 0%,#d9dde1 45%,#b6c0c9 100%);
+  box-shadow: inset 2px 2px #fff, 4px 5px 0 #24344d;
+}
+#stories .hj-mp3-head {
+  background: linear-gradient(180deg,#405875,#24344d);
+  color: #f5f6f5;
+  padding: 11px 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: .6px;
+}
+#stories .hj-mp3-dots {
+  display: flex;
+  gap: 5px;
+}
+#stories .hj-mp3-dots i {
+  width: 9px;
+  height: 9px;
+  border: 1px solid #24344d;
+  border-radius: 50%;
+  background: #a4ad8c;
+}
+#stories .hj-mp3-dots i:nth-child(2) { background: #6f9cc8; }
+#stories .hj-mp3-dots i:nth-child(3) { background: #e6e9eb; }
+
+#stories .hj-mp3-inner { padding: 12px; }
+
+#stories .hj-mp3-screen {
+  padding: 13px;
+  border: 2px solid #617e97;
+  border-radius: 13px;
+  background: linear-gradient(145deg,#c3d9e4,#9cb9cb);
+  box-shadow: inset 2px 3px 6px #415e7a33,
+              1px 2px 0 #fff;
+}
+#stories .hj-mp3-meta,
+#stories .hj-mp3-times {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: bold;
+}
+#stories .hj-mp3-track {
+  margin: 9px 0 3px;
+  font-size: 17px;
+  font-weight: 900;
+  overflow-wrap: anywhere;
+}
+#stories .hj-mp3-sub {
+  font-size: 9px;
+  letter-spacing: .7px;
+  opacity: .8;
+}
+#stories #hjMp3Canvas {
+  display: block;
+  width: 100%;
+  height: 75px;
+  margin: 11px 0;
+  image-rendering: pixelated;
+}
+#stories #hjMp3Seek {
+  width: 100%;
+  margin: 3px 0 7px;
+  accent-color: #24344d;
+  cursor: pointer;
+}
+#stories .hj-mp3-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 4px 7px;
+}
+#stories .hj-mp3-control {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  border: 2px solid #536780;
+  border-radius: 50%;
+  background: linear-gradient(145deg,#fff,#d4dbe0);
+  color: #24344d;
+  font-size: 17px;
+  cursor: pointer;
+  box-shadow: inset 2px 2px #fff, 2px 3px 0 #9da9b2;
+}
+#stories .hj-mp3-control.primary {
+  width: 53px;
+  height: 53px;
+  background: linear-gradient(145deg,#9ec2e3,#6f9cc8);
+  font-size: 20px;
+}
+#stories .hj-mp3-control:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+#stories .hj-mp3-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 3px 0;
+  font-size: 9px;
+  letter-spacing: .4px;
+}
+#stories .hj-mp3-onair {
+  background: #a4ad8c;
+  padding: 4px 9px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+#stories .hj-mp3-listunit {
+  margin-top: 13px;
+  border: 2px solid #24344d;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #f2f3f0;
+  box-shadow: 3px 4px 0 #24344d;
+}
+#stories .hj-mp3-listhead {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: #a4ad8c;
+  color: #24344d;
+  font-size: 11px;
+  font-weight: bold;
+}
+#stories .hj-mp3-list {
+  padding: 9px;
+  display: grid;
+  gap: 6px;
+}
+#stories .hj-mp3-song {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 11px 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: #34465e;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+}
+#stories .hj-mp3-song.active {
+  background: #d1e1eb;
+  border-color: #a1bfce;
+  font-weight: bold;
+}
+#stories .hj-mp3-song .hj-mp3-num {
+  font-size: 10px;
+  opacity: .7;
+}
+#stories .hj-mp3-song .hj-mp3-name {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+#stories .hj-mp3-footer {
+  margin: 14px 0 4px;
+  display: flex;
+  justify-content: space-between;
+  color: #5c6b78;
+  font-size: 9px;
+  letter-spacing: .4px;
+}
+</style>
+
+<script>
+(function () {
+  if (window.hjPocketPlayerInstalled) return;
+
+  const page = document.getElementById("stories");
+  if (!page) return;
+
+  window.hjPocketPlayerInstalled = true;
+
+  // 세 번째 곡을 올린 뒤 파일 이름을 바꾸면 돼!
+  const tracks = [
+    {
+      title: "정혁 · THEME",
+      src: "music/정혁 브금 FINAL3.wav"
+    },
+    {
+      title: "홍윤재 · THEME",
+      src: "music/윤재 브금 FINAL4.wav"
+    },
+    {
+      title: "HYEOKJAE · TRACK 03",
+      src: "music/track03.mp3"
+    }
+  ];
+
+  // 홈의 STORY 버튼을 MUSIC으로 변경
+  document.querySelectorAll('[data-page="stories"]').forEach(btn => {
+    if (btn.classList.contains("back")) return;
+    const symbol = btn.querySelector(".symbol");
+    if (symbol) {
+      symbol.textContent = "🎧";
+      [...btn.childNodes].forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE &&
+            node.textContent.includes("STORY")) {
+          node.textContent = " MUSIC";
+        }
+      });
+    } else {
+      btn.textContent = btn.textContent.replace(/STORY/gi, "MUSIC");
+    }
+  });
+
+  // STORY 페이지의 기존 뒤로가기 버튼은 보존
+  [...page.children].forEach(child => {
+    if (child.matches &&
+        child.matches('[data-page="home"], .back')) return;
+    child.hidden = true;
+  });
+
+  const root = document.createElement("div");
+  root.className = "hj-mp3";
+  root.innerHTML = `
+    <div class="hj-mp3-unit">
+      <div class="hj-mp3-head">
+        <span>♫ HYEOKJAE POCKET MP3</span>
+        <span class="hj-mp3-dots">
+          <i></i><i></i><i></i>
+        </span>
+      </div>
+      <div class="hj-mp3-inner">
+        <div class="hj-mp3-screen">
+          <div class="hj-mp3-meta">
+            <span>♪ NOW PLAYING</span>
+            <span id="hjMp3Number">01 / 03</span>
+          </div>
+          <div class="hj-mp3-track" id="hjMp3Title">
+            정혁 · THEME
+          </div>
+          <div class="hj-mp3-sub">
+            HYEOKJAE ARCHIVE · SOUND FILE
+          </div>
+          <canvas id="hjMp3Canvas"
+                  width="320" height="75"></canvas>
+          <input id="hjMp3Seek" type="range"
+                 min="0" max="100" value="0"
+                 aria-label="재생 위치">
+          <div class="hj-mp3-times">
+            <span id="hjMp3Current">00:00</span>
+            <span id="hjMp3Duration">00:00</span>
+          </div>
+        </div>
+
+        <div class="hj-mp3-controls">
+          <button type="button" class="hj-mp3-control"
+                  id="hjMp3Prev" aria-label="이전 곡">⏮</button>
+          <button type="button"
+                  class="hj-mp3-control primary"
+                  id="hjMp3Play" aria-label="재생">▶</button>
+          <button type="button" class="hj-mp3-control"
+                  id="hjMp3Next" aria-label="다음 곡">⏭</button>
+        </div>
+
+        <div class="hj-mp3-status">
+          <span class="hj-mp3-onair" id="hjMp3Status">
+            ● STANDBY
+          </span>
+          <span>STEREO · VOL. 01</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hj-mp3-listunit">
+      <div class="hj-mp3-listhead">
+        <span>✳ MY PLAYLIST</span>
+        <span>03 TRACKS</span>
+      </div>
+      <div class="hj-mp3-list" id="hjMp3List"></div>
+    </div>
+
+    <div class="hj-mp3-footer">
+      <span>✦ MADE FOR HYEOKJAE</span>
+      <span>2000's EDITION</span>
+    </div>
+  `;
+  page.appendChild(root);
+
+  const get = id => document.getElementById(id);
+  const audio = new Audio();
+  audio.preload = "metadata";
+
+  let index = 0;
+  let context = null;
+  let analyser = null;
+  let frame = null;
+  let freqData = null;
+
+  const canvas = get("hjMp3Canvas");
+  const ctx = canvas.getContext("2d");
+  const playButton = get("hjMp3Play");
+  const seek = get("hjMp3Seek");
+
+  function formatTime(seconds) {
+    if (!Number.isFinite(seconds)) return "00:00";
+    const m = Math.floor(seconds / 60);
+    const s = Math.floor(seconds % 60);
+    return String(m).padStart(2, "0") + ":" +
+           String(s).padStart(2, "0");
+  }
+
+  function drawBars(values) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const count = 24;
+    const gap = 4;
+    const width = (canvas.width - gap * (count - 1)) / count;
+
+    for (let i = 0; i < count; i++) {
+      const value = values ? values[i] / 255 : 0;
+      const height = values
+        ? Math.max(4, value * 70)
+        : 5 + (i % 4) * 3;
+
+      ctx.fillStyle = i % 6 === 0 ? "#718268" : "#24344d";
+      ctx.fillRect(
+        i * (width + gap),
+        canvas.height - height,
+        width,
+        height
+      );
+    }
+  }
+
+  function animate() {
+    if (audio.paused || !analyser) {
+      frame = null;
+      drawBars();
+      return;
+    }
+
+    analyser.getByteFrequencyData(freqData);
+
+    const values = new Uint8Array(24);
+    const usable = Math.min(freqData.length, 240);
+
+    for (let i = 0; i < 24; i++) {
+      const start = Math.floor(i * usable / 24);
+      const end = Math.floor((i + 1) * usable / 24);
+      let total = 0;
+
+      for (let j = start; j < end; j++) {
+        total += freqData[j];
+      }
+
+      values[i] = total / Math.max(1, end - start);
+    }
+
+    drawBars(values);
+    frame = requestAnimationFrame(animate);
+  }
+
+  async function prepareAudio() {
+    const AudioContextClass =
+      window.AudioContext || window.webkitAudioContext;
+
+    if (!AudioContextClass) return;
+
+    if (!context) {
+      context = new AudioContextClass();
+      analyser = context.createAnalyser();
+      analyser.fftSize = 512;
+      analyser.smoothingTimeConstant = 0.75;
+
+      const source = context.createMediaElementSource(audio);
+      source.connect(analyser);
+      analyser.connect(context.destination);
+
+      freqData = new Uint8Array(analyser.frequencyBinCount);
+    }
+
+    if (context.state === "suspended") {
+      await context.resume();
+    }
+  }
+
+  function updateList() {
+    get("hjMp3List").querySelectorAll("button").forEach((btn, i) => {
+      btn.classList.toggle("active", i === index);
+      btn.setAttribute("aria-pressed", String(i === index));
+    });
+  }
+
+  function loadTrack(nextIndex) {
+    index = (nextIndex + tracks.length) % tracks.length;
+
+    audio.pause();
+    audio.src = encodeURI(tracks[index].src);
+    audio.load();
+
+    get("hjMp3Title").textContent = tracks[index].title;
+    get("hjMp3Number").textContent =
+      String(index + 1).padStart(2, "0") + " / 03";
+
+    get("hjMp3Current").textContent = "00:00";
+    get("hjMp3Duration").textContent = "00:00";
+    seek.value = 0;
+    playButton.textContent = "▶";
+    get("hjMp3Status").textContent = "● STANDBY";
+
+    updateList();
+    drawBars();
+  }
+
+  async function play() {
+    try {
+      await prepareAudio();
+      await audio.play();
+      playButton.textContent = "Ⅱ";
+      get("hjMp3Status").textContent = "● ON AIR";
+
+      if (frame === null) animate();
+    } catch (error) {
+      console.error("MP3 PLAYER:", error);
+      get("hjMp3Status").textContent = "● FILE ERROR";
+      playButton.textContent = "▶";
+    }
+  }
+
+  function pause() {
+    audio.pause();
+    playButton.textContent = "▶";
+    get("hjMp3Status").textContent = "● PAUSED";
+  }
+
+  playButton.addEventListener("click", () => {
+    if (audio.paused) play();
+    else pause();
+  });
+
+  get("hjMp3Prev").addEventListener("click", () => {
+    loadTrack(index - 1);
+    play();
+  });
+
+  get("hjMp3Next").addEventListener("click", () => {
+    loadTrack(index + 1);
+    play();
+  });
+
+  tracks.forEach((track, i) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "hj-mp3-song";
+    button.innerHTML =
+      '<span class="hj-mp3-num">' +
+      String(i + 1).padStart(2, "0") +
+      '</span><span>◉</span><span class="hj-mp3-name"></span>' +
+      '<span>♪</span>';
+
+    button.querySelector(".hj-mp3-name").textContent = track.title;
+
+    button.addEventListener("click", () => {
+      loadTrack(i);
+      play();
+    });
+
+    get("hjMp3List").appendChild(button);
+  });
+
+  audio.addEventListener("loadedmetadata", () => {
+    get("hjMp3Duration").textContent = formatTime(audio.duration);
+  });
+
+  audio.addEventListener("timeupdate", () => {
+    get("hjMp3Current").textContent = formatTime(audio.currentTime);
+
+    if (Number.isFinite(audio.duration) && audio.duration > 0) {
+      seek.value = audio.currentTime / audio.duration * 100;
+    }
+  });
+
+  seek.addEventListener("input", () => {
+    if (Number.isFinite(audio.duration) && audio.duration > 0) {
+      audio.currentTime = seek.value / 100 * audio.duration;
+    }
+  });
+
+  audio.addEventListener("ended", () => {
+    loadTrack(index + 1);
+    play();
+  });
+
+  // MUSIC 페이지에서 나가면 재생 중지
+  const observer = new MutationObserver(() => {
+    if (!page.classList.contains("active")) {
+      pause();
+    }
+  });
+
+  observer.observe(page, {
+    attributes: true,
+    attributeFilter: ["class"]
+  });
+
+  loadTrack(0);
+})();
+</script>
+
 </body>
 </html>
