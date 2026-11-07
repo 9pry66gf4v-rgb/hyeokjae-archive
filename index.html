@@ -805,13 +805,20 @@ video {
 
 /* CHARACTER 둥둥혁재 영상 */
 
+
+/* CHARACTER 둥둥혁재 미니 프레임 */
+
 .character-floating-video {
   width: 100%;
-  margin: 12px 0 0;
-  padding: 0;
-  border: none;
-  background: transparent;
-  box-shadow: none;
+  box-sizing: border-box;
+  margin: 14px 0 4px;
+  padding: 6px;
+
+  background: #F8F5EE;
+  border: 1px solid #9AABBA;
+  border-radius: 9px;
+
+  box-shadow: 0 3px 0 rgba(40, 59, 85, 0.12);
   overflow: hidden;
 }
 
@@ -822,13 +829,15 @@ video {
   max-height: none;
   margin: 0;
   padding: 0;
+
   border: none;
-  border-radius: 0;
+  border-radius: 5px;
   background: transparent;
   box-shadow: none;
   object-fit: contain;
   pointer-events: none;
 }
+
 
 </style>
 </head>
