@@ -838,7 +838,59 @@ video {
   pointer-events: none;
 }
 
+.character-floating-video {
+  position: relative;
+  cursor: pointer;
+}
 
+.character-floating-video video {
+  display: block;
+  width: 100%;
+}
+
+.floating-dialogues {
+  position: absolute;
+  inset: 6px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.floating-bubble {
+  position: absolute;
+  width: 43%;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 2px solid #617D96;
+  border-radius: 10px;
+  color: #29435C;
+  font-size: 11px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.5;
+  box-shadow: 2px 3px 0 rgba(41, 67, 92, 0.18);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity .2s, transform .2s, visibility .2s;
+}
+
+.floating-bubble.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* 왼쪽 정혁 말풍선 */
+.bubble-jh {
+  top: 7%;
+  left: 3%;
+}
+
+/* 오른쪽 윤재 말풍선 */
+.bubble-yj {
+  top: 7%;
+  right: 3%;
+}
 </style>
 </head>
 
@@ -1033,19 +1085,16 @@ video {
 <!-- 둥둥혁재 영상 -->
 
 <!-- 둥둥혁재 영상 : 프레임 없는 자동재생 -->
-<div class="character-floating-video">
-  <video
-    autoplay
-    muted
-    loop
-    playsinline
-    preload="auto"
-    disablepictureinpicture
-  >
+<div class="character-floating-video" id="floatingVideoBox">
+  <video autoplay muted loop playsinline preload="auto" disablepictureinpicture>
     <source src="둥둥 혁재.mp4" type="video/mp4">
   </video>
-</div>
 
+  <div class="floating-dialogues" id="floatingDialogues">
+    <div class="floating-bubble bubble-jh" id="bubbleJh"></div>
+    <div class="floating-bubble bubble-yj" id="bubbleYj"></div>
+  </div>
+</div>
 </section>
 
         <!-- 캐릭터 상세 -->
@@ -1767,7 +1816,68 @@ showPage(
     : "home",
   false
 );
+const floatingConversations = [
+  [
+    "어때, 수조 속도 나쁘지 않지?",
+    "그러게. 생각보다 괜찮네."
+  ],
+  [
+    "윤재야, 나 좀 봐봐.",
+    "보고 있어."
+  ],
+  [
+    "우리 그냥 여기서 살까?",
+    "너는 금방 나가자고 할 것 같은데."
+  ],
+  [
+    "여기 물고기 진짜 많다!",
+    "너 또 신났네."
+  ],
+  [
+    "나 지금 물고기 같지 않아?",
+    "너는 물고기보다 말이 많아."
+  ],
+  [
+    "아무것도 안 하고 둥둥 떠다니는 거야.",
+    "그래. 조금만 더 있자."
+  ]
+];
 
+let lastFloatingConversation = -1;
+let floatingBubbleTimer;
+
+const floatingVideoBox = document.getElementById("floatingVideoBox");
+const bubbleJh = document.getElementById("bubbleJh");
+const bubbleYj = document.getElementById("bubbleYj");
+
+if (floatingVideoBox && bubbleJh && bubbleYj) {
+  floatingVideoBox.addEventListener("click", () => {
+    let randomIndex;
+
+    do {
+      randomIndex = Math.floor(
+        Math.random() * floatingConversations.length
+      );
+    } while (randomIndex === lastFloatingConversation);
+
+    lastFloatingConversation = randomIndex;
+
+    const [jhLine, yjLine] = floatingConversations[randomIndex];
+
+    clearTimeout(floatingBubbleTimer);
+
+    bubbleJh.textContent = jhLine;
+    bubbleYj.textContent = yjLine;
+
+    bubbleJh.classList.add("show");
+    bubbleYj.classList.add("show");
+
+    floatingBubbleTimer = setTimeout(() => {
+      bubbleJh.classList.remove("show");
+      bubbleYj.classList.remove("show");
+    }, 4000);
+  });
+}
 </script>
 
 <!-- ===== LETTER 채팅 기록 기능 시작 ===== -->
