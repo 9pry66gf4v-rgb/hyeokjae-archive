@@ -1005,24 +1005,27 @@ video {
   <div class="window-content">
 
     <div class="video-wrap">
-      <video
-        controls
-        playsinline
-        preload="metadata"
-        style="
-          width: 100%;
-          max-height: none;
-          height: auto;
-          object-fit: contain;
-          background: #182631;
-        "
-      >
-        <source
-          src="둥둥 혁재.mp4"
-          type="video/mp4"
-        >
-        영상을 재생할 수 없습니다.
-      </video>
+    
+<video
+  autoplay
+  muted
+  loop
+  playsinline
+  preload="auto"
+  disablepictureinpicture
+  style="
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+    background: transparent;
+    pointer-events: none;
+  "
+>
+  <source src="둥둥 혁재.mp4" type="video/mp4">
+</video>
+
     </div>
 
   </div>
