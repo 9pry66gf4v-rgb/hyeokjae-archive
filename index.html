@@ -702,6 +702,55 @@ video {
   color: #283B55;
 }
 
+/* COMIC 만화책 뷰어 */
+
+.comic-reader {
+  text-align: center;
+}
+
+.comic-reader-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+  object-fit: contain;
+  margin: 12px auto;
+  border: 2px solid #A4B0B6;
+  border-radius: 6px;
+  background: #FAF6EE;
+}
+
+.comic-page-count {
+  margin: 10px 0;
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 13px;
+  color: #283B55;
+}
+
+.comic-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.comic-navigation button {
+  flex: 1;
+  padding: 10px 5px;
+  border: 2px solid #929B80;
+  border-radius: 7px;
+  background: #E0E1DE;
+  color: #283B55;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.comic-navigation button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
 </style>
 </head>
 
@@ -1144,7 +1193,20 @@ const letters = [];
 }
 */
 
-const comics = [];
+
+const comics = [
+  {
+    title: "정혁 × 홍윤재",
+    text: "우리의 첫 번째 만화 ♡",
+    cover: "comic1.png.jpg",
+    pages: [
+      "comic1.png.jpg",
+      "comic2.png.jpg",
+      "comic3.png.jpg"
+    ]
+  }
+];
+
 
 /* 이야기 예시:
 {
@@ -1381,12 +1443,105 @@ renderList(
   "아직 도착한 편지가 없어요. 💌"
 );
 
-renderList(
-  comics,
-  "comicList",
-  "comics",
-  "아직 등록된 만화가 없어요. 📖"
-);
+
+/* COMIC 만화책 페이지 넘김 기능 */
+
+function openComic(comic) {
+  const pages = comic.pages || [];
+  let currentPage = 0;
+
+  recordParent = "comics";
+
+  $("recordTitle").textContent =
+    "📖 " + comic.title;
+
+  const body = $("recordBody");
+  body.replaceChildren();
+
+  const reader = document.createElement("div");
+  reader.className = "comic-reader";
+
+  const image = document.createElement("img");
+  image.className = "comic-reader-image";
+  image.alt = comic.title;
+
+  const count = document.createElement("div");
+  count.className = "comic-page-count";
+
+  const navigation = document.createElement("div");
+  navigation.className = "comic-navigation";
+
+  const prev = document.createElement("button");
+  prev.textContent = "◀ 이전";
+
+  const next = document.createElement("button");
+  next.textContent = "다음 ▶";
+
+  function updateComicPage() {
+    if (!pages.length) {
+      image.hidden = true;
+      count.textContent = "등록된 페이지가 없어요.";
+      prev.disabled = true;
+      next.disabled = true;
+      return;
+    }
+
+    image.hidden = false;
+    image.src = pages[currentPage];
+
+    count.textContent =
+      String(currentPage + 1).padStart(2, "0") +
+      " / " +
+      String(pages.length).padStart(2, "0");
+
+    prev.disabled = currentPage === 0;
+    next.disabled = currentPage === pages.length - 1;
+  }
+
+  prev.onclick = () => {
+    if (currentPage > 0) {
+      currentPage--;
+      updateComicPage();
+    }
+  };
+
+  next.onclick = () => {
+    if (currentPage < pages.length - 1) {
+      currentPage++;
+      updateComicPage();
+    }
+  };
+
+  navigation.append(prev, next);
+  reader.append(image, count, navigation);
+  body.append(reader);
+
+  updateComicPage();
+  showPage("recordDetail");
+}
+
+/* COMIC 목록 */
+
+const comicContainer = $("comicList");
+comicContainer.replaceChildren();
+
+if (comics.length === 0) {
+  const empty = document.createElement("p");
+  empty.className = "empty";
+  empty.textContent = "아직 등록된 만화가 없어요. 📖";
+  comicContainer.append(empty);
+} else {
+  comics.forEach(comic => {
+    const button = document.createElement("button");
+    button.className = "entry";
+    button.textContent = "📖 " + comic.title;
+
+    button.onclick = () => openComic(comic);
+
+    comicContainer.append(button);
+  });
+}
+
 
 renderList(
   stories,
