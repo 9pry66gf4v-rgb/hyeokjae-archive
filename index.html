@@ -1518,6 +1518,7 @@ function openComic(comic) {
     currentPage = nextPage;
     updateComicPage();
   }
+   window.turnComicPage = turnPage;
 
   // 휴대폰 손가락 스와이프
   let startX = 0;
@@ -1679,9 +1680,31 @@ function move(step) {
   });
 }
 
-$("prevBtn").onclick = () => move(-1);
 
-$("nextBtn").onclick = () => move(1);
+$("prevBtn").onclick = () => {
+  if (
+    currentPage === "recordDetail" &&
+    recordParent === "comics" &&
+    typeof window.turnComicPage === "function"
+  ) {
+    window.turnComicPage(-1);
+  } else {
+    move(-1);
+  }
+};
+
+$("nextBtn").onclick = () => {
+  if (
+    currentPage === "recordDetail" &&
+    recordParent === "comics" &&
+    typeof window.turnComicPage === "function"
+  ) {
+    window.turnComicPage(1);
+  } else {
+    move(1);
+  }
+};
+
 
 /* SELECT */
 
