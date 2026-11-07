@@ -702,9 +702,35 @@ video {
   color: #283B55;
 }
 
-/* COMIC 만화책 뷰어 */
+
+/* COMIC 전체 화면 만화 뷰어 */
+
+#recordDetail:has(.comic-reader) .window-content {
+  padding: 0;
+}
+
+#recordDetail:has(.comic-reader) .window {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+#recordDetail:has(.comic-reader) .window-head {
+  display: none;
+}
+
+#recordDetail:has(.comic-reader) {
+  margin: -10px;
+}
+
+#recordDetail:has(.comic-reader) .back {
+  margin: 10px;
+}
 
 .comic-reader {
+  width: 100%;
+  overflow: hidden;
+  background: #FAF6EE;
   text-align: center;
 }
 
@@ -712,38 +738,33 @@ video {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 280px;
+  max-height: none;
   object-fit: contain;
-  margin: 12px auto;
-  border: 2px solid #A4B0B6;
-  border-radius: 6px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
   background: #FAF6EE;
+  user-select: none;
+  -webkit-user-drag: none;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.comic-reader-image:active {
+  cursor: grabbing;
 }
 
 .comic-page-count {
-  margin: 10px 0;
+  padding: 12px 0;
   font-family: "Pixelify Sans", sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   color: #283B55;
+  background: #FAF6EE;
 }
 
 .comic-navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  margin-top: 12px;
-}
-
-.comic-navigation button {
-  flex: 1;
-  padding: 10px 5px;
-  border: 2px solid #929B80;
-  border-radius: 7px;
-  background: #E0E1DE;
-  color: #283B55;
-  font-weight: bold;
-  cursor: pointer;
+  display: none;
 }
 
 .comic-navigation button:disabled {
@@ -1446,14 +1467,14 @@ renderList(
 
 /* COMIC 만화책 페이지 넘김 기능 */
 
+
 function openComic(comic) {
   const pages = comic.pages || [];
   let currentPage = 0;
 
   recordParent = "comics";
 
-  $("recordTitle").textContent =
-    "📖 " + comic.title;
+  $("recordTitle").textContent = "📖 " + comic.title;
 
   const body = $("recordBody");
   body.replaceChildren();
@@ -1464,25 +1485,15 @@ function openComic(comic) {
   const image = document.createElement("img");
   image.className = "comic-reader-image";
   image.alt = comic.title;
+  image.draggable = false;
 
   const count = document.createElement("div");
   count.className = "comic-page-count";
-
-  const navigation = document.createElement("div");
-  navigation.className = "comic-navigation";
-
-  const prev = document.createElement("button");
-  prev.textContent = "◀ 이전";
-
-  const next = document.createElement("button");
-  next.textContent = "다음 ▶";
 
   function updateComicPage() {
     if (!pages.length) {
       image.hidden = true;
       count.textContent = "등록된 페이지가 없어요.";
-      prev.disabled = true;
-      next.disabled = true;
       return;
     }
 
@@ -1494,31 +1505,98 @@ function openComic(comic) {
       " / " +
       String(pages.length).padStart(2, "0");
 
-    prev.disabled = currentPage === 0;
-    next.disabled = currentPage === pages.length - 1;
+    $("desktop").scrollTop = 0;
   }
 
-  prev.onclick = () => {
-    if (currentPage > 0) {
-      currentPage--;
-      updateComicPage();
-    }
-  };
+  function turnPage(step) {
+    const nextPage = currentPage + step;
 
-  next.onclick = () => {
-    if (currentPage < pages.length - 1) {
-      currentPage++;
-      updateComicPage();
+    if (nextPage < 0 || nextPage >= pages.length) {
+      return;
     }
-  };
 
-  navigation.append(prev, next);
-  reader.append(image, count, navigation);
+    currentPage = nextPage;
+    updateComicPage();
+  }
+
+  // 휴대폰 손가락 스와이프
+  let startX = 0;
+  let startY = 0;
+
+  image.addEventListener("touchstart", event => {
+    startX = event.changedTouches[0].screenX;
+    startY = event.changedTouches[0].screenY;
+  }, { passive: true });
+
+  image.addEventListener("touchend", event => {
+    const diffX =
+      event.changedTouches[0].screenX - startX;
+
+    const diffY =
+      event.changedTouches[0].screenY - startY;
+
+    if (
+      Math.abs(diffX) > 50 &&
+      Math.abs(diffX) > Math.abs(diffY)
+    ) {
+      turnPage(diffX < 0 ? 1 : -1);
+    }
+  }, { passive: true });
+
+  // PC 마우스 드래그
+  let mouseStartX = 0;
+  let mouseStartY = 0;
+  let dragging = false;
+  let dragged = false;
+
+  image.addEventListener("mousedown", event => {
+    mouseStartX = event.clientX;
+    mouseStartY = event.clientY;
+    dragging = true;
+    dragged = false;
+  });
+
+  window.addEventListener("mouseup", event => {
+    if (!dragging) return;
+
+    dragging = false;
+
+    const diffX = event.clientX - mouseStartX;
+    const diffY = event.clientY - mouseStartY;
+
+    if (
+      Math.abs(diffX) > 50 &&
+      Math.abs(diffX) > Math.abs(diffY)
+    ) {
+      dragged = true;
+      turnPage(diffX < 0 ? 1 : -1);
+    }
+  });
+
+  // PC에서 이미지 양쪽 클릭
+  image.addEventListener("click", event => {
+    if (dragged) {
+      dragged = false;
+      return;
+    }
+
+    const rect = image.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+
+    if (x < rect.width / 2) {
+      turnPage(-1);
+    } else {
+      turnPage(1);
+    }
+  });
+
+  reader.append(image, count);
   body.append(reader);
 
   updateComicPage();
   showPage("recordDetail");
 }
+
 
 /* COMIC 목록 */
 
