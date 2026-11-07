@@ -1937,9 +1937,10 @@ function getNextFloatingConversation() {
 
   return nextIndex;
 }
+let floatingRestartTimer;
 let floatingReplyTimer;
 let floatingHideTimer;
-
+   
 const floatingVideoBox =
   document.getElementById("floatingVideoBox");
 
@@ -1953,9 +1954,10 @@ if (floatingVideoBox && bubbleJh && bubbleYj) {
 
   floatingVideoBox.addEventListener("click", () => {
 
-    // 기존 타이머 초기화
-    clearTimeout(floatingReplyTimer);
-    clearTimeout(floatingHideTimer);
+  // 기존 타이머 초기화
+clearTimeout(floatingRestartTimer);
+clearTimeout(floatingReplyTimer);
+clearTimeout(floatingHideTimer);
 
   // 중복 없는 랜덤 대화 선택
 const randomIndex = getNextFloatingConversation();
@@ -1963,31 +1965,42 @@ const randomIndex = getNextFloatingConversation();
     const [jhLine, yjLine] =
       floatingConversations[randomIndex];
 
-    // 기존 말풍선 숨기기
+   // 기존 말풍선 숨기기
+bubbleJh.classList.remove("show");
+bubbleYj.classList.remove("show");
+
+// 새 대사 입력
+bubbleJh.textContent = jhLine;
+bubbleYj.textContent = yjLine;
+
+// 애니메이션을 처음 상태로 초기화
+bubbleJh.style.transition = "none";
+bubbleYj.style.transition = "none";
+
+// 숨겨진 상태를 브라우저에 반영
+void bubbleJh.offsetWidth;
+void bubbleYj.offsetWidth;
+
+// 애니메이션 다시 활성화
+bubbleJh.style.transition = "";
+bubbleYj.style.transition = "";
+
+// 잠깐 사라졌다가 정혁부터 뿅!
+floatingRestartTimer = setTimeout(() => {
+  bubbleJh.classList.add("show");
+
+  // 0.6초 뒤 윤재 등장
+  floatingReplyTimer = setTimeout(() => {
+    bubbleYj.classList.add("show");
+  }, 600);
+
+  // 윤재 등장 후 약 4초 유지
+  floatingHideTimer = setTimeout(() => {
     bubbleJh.classList.remove("show");
     bubbleYj.classList.remove("show");
+  }, 4600);
 
-    // 새 대사 입력
-    bubbleJh.textContent = jhLine;
-    bubbleYj.textContent = yjLine;
-
-    // 애니메이션 초기화
-    void floatingVideoBox.offsetWidth;
-
-    // 정혁 먼저 등장
-    bubbleJh.classList.add("show");
-
-    // 0.6초 후 윤재 등장
-    floatingReplyTimer = setTimeout(() => {
-      bubbleYj.classList.add("show");
-    }, 600);
-
-    // 윤재 등장 후 약 4초 유지
-    floatingHideTimer = setTimeout(() => {
-      bubbleJh.classList.remove("show");
-      bubbleYj.classList.remove("show");
-    }, 4600);
-
+}, 100);
   });
 
 }
