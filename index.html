@@ -803,6 +803,33 @@ video {
   display: none;
 }
 
+/* CHARACTER 둥둥혁재 영상 */
+
+.character-floating-video {
+  width: 100%;
+  margin: 12px 0 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  overflow: hidden;
+}
+
+.character-floating-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  object-fit: contain;
+  pointer-events: none;
+}
+
 </style>
 </head>
 
@@ -995,38 +1022,21 @@ video {
   </div>
    
 <!-- 둥둥혁재 영상 -->
-<div class="window" style="margin-top: 15px;">
 
-  <div class="window-head">
-    <span>🎬 둥둥혁재.mp4</span>
-    <span>♡</span>
-  </div>
+<!-- 둥둥혁재 영상 : 프레임 없는 자동재생 -->
+<div class="character-floating-video">
+  <video
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    disablepictureinpicture
+  >
+    <source src="둥둥 혁재.mp4" type="video/mp4">
+  </video>
+</div>
 
-  <div class="window-content">
-
-    <div class="video-wrap">
-    
-<video
-  autoplay
-  muted
-  loop
-  playsinline
-  preload="auto"
-  disablepictureinpicture
-  style="
-    display: block;
-    width: 100%;
-    height: auto;
-    max-height: none;
-    object-fit: contain;
-    background: transparent;
-    pointer-events: none;
-  "
->
-  <source src="둥둥 혁재.mp4" type="video/mp4">
-</video>
-
-    </div>
 
   </div>
 </div>
