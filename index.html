@@ -1903,7 +1903,40 @@ const floatingConversations = [
    "응, 다음에도 같이 오자. 약속."]
 ];
 
+let floatingShuffleBag = [];
 let lastFloatingConversation = -1;
+
+function getNextFloatingConversation() {
+  // 14개를 모두 사용했다면 다시 섞기
+  if (floatingShuffleBag.length === 0) {
+    floatingShuffleBag = Array.from(
+      { length: floatingConversations.length },
+      (_, i) => i
+    );
+
+    // Fisher-Yates 셔플
+    for (let i = floatingShuffleBag.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+
+      [floatingShuffleBag[i], floatingShuffleBag[j]] =
+        [floatingShuffleBag[j], floatingShuffleBag[i]];
+    }
+
+    // 이전 바퀴의 마지막 대사가 바로 반복되지 않도록
+    if (
+      floatingShuffleBag.length > 1 &&
+      floatingShuffleBag[floatingShuffleBag.length - 1] === lastFloatingConversation
+    ) {
+      [floatingShuffleBag[0], floatingShuffleBag[floatingShuffleBag.length - 1]] =
+        [floatingShuffleBag[floatingShuffleBag.length - 1], floatingShuffleBag[0]];
+    }
+  }
+
+  const nextIndex = floatingShuffleBag.pop();
+  lastFloatingConversation = nextIndex;
+
+  return nextIndex;
+}
 let floatingReplyTimer;
 let floatingHideTimer;
 
@@ -1924,16 +1957,8 @@ if (floatingVideoBox && bubbleJh && bubbleYj) {
     clearTimeout(floatingReplyTimer);
     clearTimeout(floatingHideTimer);
 
-    // 직전 대화와 중복되지 않게 선택
-    let randomIndex;
-
-    do {
-      randomIndex = Math.floor(
-        Math.random() * floatingConversations.length
-      );
-    } while (randomIndex === lastFloatingConversation);
-
-    lastFloatingConversation = randomIndex;
+  // 중복 없는 랜덤 대화 선택
+const randomIndex = getNextFloatingConversation();
 
     const [jhLine, yjLine] =
       floatingConversations[randomIndex];
