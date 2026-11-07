@@ -1645,9 +1645,15 @@ renderList(
 document.addEventListener("click", event => {
   const button = event.target.closest("[data-page]");
 
-  if (button) {
+ 
+if (button) {
+  if (button.dataset.page === "comics" && comics.length > 0) {
+    openComic(comics[0]);
+  } else {
     showPage(button.dataset.page);
   }
+}
+
 });
 
 /* 상세 페이지 뒤로 가기 */
